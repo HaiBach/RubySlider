@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!--[if IE 7]> <html class="ie ie7"> <![endif]-->
+<!--[if IE 8]> <html class="ie ie8"> <![endif]-->
+<!--[if (gt IE 8)|!(IE)]> <html> <![endif]-->
+<head>
+
+    <!-- Page Infomations -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <!-- CSS link -->
+    <link rel="stylesheet" href="../libs/css/code09.css">
+    <link rel="stylesheet" href="../code/codeslider.css">
+    <link rel="stylesheet" href="css/example.css">
+
+
+    <!-- CSS embed -->
+    <style> 
+    </style>
+
+    
+    <!-- Script link -->
+    <script src="../libs/scripts/modernizr.js"></script> <!-- Modernizr Plugins -->
+    
+</head>
+<body>
+
+
+    <!-- Header - begin
+    ============================================================== -->
+    <div class=" wrapper header logo-left dark">
+    <div class="container">
+        
+        <!-- Logo - begin
+        .......................................................... -->
+        <a class="logo" href="#">
+            <img src="../libs/imgs/logo.png" alt="[logo]">
+        </a>
+        <!-- Logo - end
+        .......................................................... -->
+
+    </div>
+    </div>
+    <!-- Header - end
+    ============================================================== -->
+
+
+
+
+
+    <!-- Breadcrumbs - begin
+    ============================================================== -->
+    <div class="wrapper breadcrumbs show-desktop">
+    <div class="container">
+        
+        <div class="page-title ma-b-20">
+            <h3 class="strong">ELEMENT</h3>
+            <h5>.GRAB STOP</h5>
+        </div>
+
+        <!-- Description - begin -->
+        
+    </div>
+    </div>
+    <!-- Breadcrumbs - end
+    ============================================================== -->
+
+
+
+
+    <!-- Slider - begin
+    ============================================================== -->
+    <div class="container">
+    <div class="row">
+
+        <!-- Control - begin -->
+        <div class="span4">
+
+            <p class="ma-t-50">Grap stop is element give a signal not move anymore when <span class="label info">isLoop-off</span></p>
+
+            <div class="hr dash left"></div>
+        </div>
+        <!-- Control - end -->
+
+
+        
+    
+        <!-- Slider markup - begin -->
+        <div class="cs span8" data-slider="isLoop-off isViewGrabStop-on">
+
+            <a class="cs-img" href="imgs/img0.png">[img0]</a>
+            <a class="cs-img" href="imgs/img1.png">[img1]</a>
+            <a class="cs-img" href="imgs/img2.png">[img2]</a>
+            <a class="cs-img" href="imgs/img3.png">[img3]</a>
+
+        </div>
+        <!-- Slider markup - end -->
+    
+    </div>
+    </div>
+    <!-- Slider - end
+    ============================================================== -->
+
+    
+    
+
+
+    <!-- Scripts link & custom - begin
+    ============================================================== -->
+    <script src="../libs/scripts/jquery-1.10.2.min.js"></script> <!-- jQuery Libary -->
+    <script src="../libs/scripts/jquery.easing.min.js"></script> <!-- Easing Plugin -->
+    <script src="../code/codeslider.js"></script> <!-- Javascript Custom -->
+
+    <script type="text/javascript">
+
+        jQuery(document).ready(function($) {
+
+            // Slider init
+            $('.cs').codeslider();
+
+
+            var cs = $('.cs').data('codeslider');
+            console.log(cs.ev);
+            // cs.on('loadAll', function() {
+            //     console.log('load all slide');
+            // })
+        });
+
+    </script>
+    <!-- Scripts link & custom - end
+    ============================================================== -->
+    
+</body>
+</html>

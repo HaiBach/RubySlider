@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<!--[if IE 7]> <html class="ie ie7"> <![endif]-->
+<!--[if IE 8]> <html class="ie ie8"> <![endif]-->
+<!--[if (gt IE 8)|!(IE)]> <html> <![endif]-->
+<head>
+
+    <!-- Page Infomations -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <!-- CSS link -->
+    <link rel="stylesheet" href="../libs/css/code09.css">
+    <link rel="stylesheet" href="../code/codeslider.css">
+    <link rel="stylesheet" href="css/example.css">
+
+
+    <!-- CSS embed -->
+    <style>
+        
+        /* Slider */
+        .cs-nav { display: none; }
+        .cs-timer.timer-bar { height: 10px; background-color: #eee; }
+        
+        .cs-pag { margin-top: 20px; }
+        .cs-pagitem { padding: 0; }
+        .cs-pagitem.sl-cur { border-color: transparent; }
+
+    </style>
+
+    
+    <!-- Script link -->
+    <script src="../libs/scripts/modernizr.js"></script> <!-- Modernizr Plugins -->
+    
+</head>
+<body>
+
+
+    <!-- Header - begin
+    ============================================================== -->
+    <div class=" wrapper header logo-left dark">
+    <div class="container">
+        
+        <!-- Logo - begin
+        .......................................................... -->
+        <a class="logo" href="#">
+            <img src="../libs/imgs/logo.png" alt="[logo]">
+        </a>
+        <!-- Logo - end
+        .......................................................... -->
+
+    </div>
+    </div>
+    <!-- Header - end
+    ============================================================== -->
+
+
+
+
+
+    <!-- Breadcrumbs - begin
+    ============================================================== -->
+    <div class="wrapper breadcrumbs show-desktop">
+    <div class="container">
+        
+        <div class="page-title ma-b-20">
+            <h3 class="strong">SLIDESHOW</h3>
+            <h5>.LAZYLOAD</h5>
+        </div>
+        
+        <!-- Description -->
+        <p><span class="label info">Auto pause</span> when next slide not loaded.
+            <br><span class="label info">Restore play</span> when next slide download completed.
+        </p>
+        
+    </div>
+    </div>
+    <!-- Breadcrumbs - end
+    ============================================================== -->
+
+
+
+
+    <!-- Slider - begin
+    ============================================================== -->
+    <div class="container">
+        <div class="cs" data-slider="name-1 hCanvas-300 isSlideshow-on delay-2000 timer-bar thumb-list wThumb-70 hThumb-40">
+
+            <a class="cs-img" href="imgs/img_heavy0.jpg">[img0]</a>
+            <a class="cs-img" href="imgs/img_heavy1.jpg">[img1]</a>
+            <a class="cs-img" href="imgs/img_heavy2.jpg">[img2]</a>
+            <a class="cs-img" href="imgs/img_heavy3.jpg">[img3]</a>
+            <a class="cs-img" href="imgs/img_heavy4.jpg">[img4]</a>
+            <a class="cs-img" href="imgs/img_heavy5.jpg">[img5]</a>
+            <a class="cs-img" href="imgs/img_heavy6.jpg">[img6]</a>
+            <a class="cs-img" href="imgs/img_heavy7.jpg">[img7]</a>
+            <a class="cs-img" href="imgs/img_heavy8.jpg">[img8]</a>
+            <a class="cs-img" href="imgs/img_heavy9.jpg">[img9]</a>
+
+        </div>
+
+        <div class="cs-pag" data-slider="name-1"></div>
+    </div>
+    <!-- Slider - end
+    ============================================================== -->
+
+
+
+
+
+    <!-- Control - begin
+    ============================================================== -->
+    <div class="wrapper">
+    <div class="container">
+    <div class="row">
+            
+    </div>
+    </div>
+    </div>
+    <!-- Control - end
+    ============================================================== -->
+
+    
+    
+
+
+    <!-- Scripts link & custom - begin
+    ============================================================== -->
+    <script src="../libs/scripts/jquery-1.10.2.min.js"></script> <!-- jQuery Libary -->
+    <script src="../libs/scripts/jquery.easing.min.js"></script> <!-- Easing Plugin -->
+    <script src="../code/codeslider.js"></script> <!-- Javascript Custom -->
+
+    <script type="text/javascript">
+
+        jQuery(document).ready(function($) {
+
+            // Slider init
+            $('.cs').codeslider();
+        });
+
+    </script>
+    <!-- Scripts link & custom - end
+    ============================================================== -->
+    
+</body>
+</html>

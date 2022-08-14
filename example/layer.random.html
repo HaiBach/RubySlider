@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<!--[if IE 7]> <html class="ie ie7"> <![endif]-->
+<!--[if IE 8]> <html class="ie ie8"> <![endif]-->
+<!--[if (gt IE 8)|!(IE)]> <html> <![endif]-->
+<head>
+
+    <!-- Page Infomations -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <!-- CSS link -->
+    <link rel="stylesheet" href="../libs/css/code09.css">
+    <link rel="stylesheet" href="../code/codeslider.css">
+    <link rel="stylesheet" href="css/example.css">
+
+
+    <!-- CSS embed -->
+    <style>
+        
+        /* Layer */
+        .text {
+            padding: 20px;
+            background-color: #f5f5f5;
+            border: 1px solid #444;
+        }
+
+    </style>
+
+    
+    <!-- Script link -->
+    <script src="../libs/scripts/modernizr.js"></script> <!-- Modernizr Plugins -->
+    
+</head>
+<body>
+
+
+    <!-- Header - begin
+    ============================================================== -->
+    <div class=" wrapper header logo-left dark">
+    <div class="container">
+        
+        <!-- Logo - begin
+        .......................................................... -->
+        <a class="logo" href="#">
+            <img src="../libs/imgs/logo.png" alt="[logo]">
+        </a>
+        <!-- Logo - end
+        .......................................................... -->
+
+    </div>
+    </div>
+    <!-- Header - end
+    ============================================================== -->
+
+
+
+
+
+    <!-- Breadcrumbs - begin
+    ============================================================== -->
+    <div class="wrapper breadcrumbs show-desktop">
+    <div class="container">
+        
+        <div class="page-title ma-b-20">
+            <h3 class="strong">LAYER</h3>
+            <h5>.RANDOM VALUE</h5>
+        </div>
+        
+        <!-- Description -->
+        <ul class="list condensed text-code">
+            <li>Slide 0 : <b>x</b>, <b>y</b> random value</li>
+            <li>Slide 1 : <b>rotate</b> random value</li>
+            <li>Slide 2 : <b>scale</b> random value</li>
+            <li>Slide 3 : <b>skew</b> random value</li>
+            <li>Slide 4 : <b>opacity</b> random value</li>
+        </ul>
+        
+    </div>
+    </div>
+    <!-- Breadcrumbs - end
+    ============================================================== -->
+
+
+
+
+    <!-- Slider - begin
+    ============================================================== -->
+    <div class="container">
+        
+        <div class="cs" data-slider="isLoop-off">
+            
+            <!-- Layer with xy random value -->
+            <div>
+                <a class="cs-img" href="imgs/img_wide0.png">[img]</a>
+
+                <h6 data-layer="
+                    count-infinite direction-alternate
+
+                    x-center y-center opacity-1 start-0 speed-2000;
+                    x-ra y-ra start-0 speed-2000;
+                    "
+                    class="text">LAYER1</h6>
+            </div>
+
+
+            
+            <!-- Layer with rotate random value -->
+            <div>
+                <a class="cs-img" href="imgs/img_wide1.png">[img]</a>
+
+                <h6 data-layer="
+                    count-infinite direction-alternate
+
+                    x-20 y-center opacity-1 start-0;
+                    x-center opacity-1 rotate-ra start-500 speed-2000;
+                    "
+                    class="text">LAYER2</h6>
+            </div>
+
+
+
+            <!-- Layer with scale random value -->
+            <div>
+                <a class="cs-img" href="imgs/img_wide2.png">[img]</a>
+
+                <h6 data-layer="
+                    count-infinite direction-alternate
+
+                    x-20 y-20 opacity-1 start-0;
+                    x-center opacity-1 scale-ra start-500 speed-2000;
+                    "
+                    class="text">LAYER3</h6>
+
+                <h6 data-layer="
+                    count-infinite direction-alternate
+
+                    x-20 y-170 opacity-1 start-0;
+                    x-center opacity-1 scale-1-ra start-500 speed-2000;
+                    "
+                    class="text">LAYER4</h6>
+
+                <h6 data-layer="
+                    count-infinite direction-alternate
+
+                    x-20 y-320 opacity-1 start-0;
+                    x-center opacity-1 scale-ra-ra start-500 speed-2000;
+                    "
+                    class="text">LAYER5</h6>
+            </div>
+
+
+            <!-- Layer with skew random value -->
+            <div>
+                <a class="cs-img" href="imgs/img_wide3.png">[img]</a>
+
+                <h6 data-layer="
+                    count-infinite direction-alternate
+
+                    x-20 y-20 opacity-1 start-0;
+                    x-center opacity-1 skew-ra start-500 speed-2000;
+                    "
+                    class="text">LAYER6</h6>
+
+                <h6 data-layer="
+                    count-infinite direction-alternate
+
+                    x-20 y-170 opacity-1 start-0;
+                    x-center opacity-1 skew-0-ra start-500 speed-2000;
+                    "
+                    class="text">LAYER7</h6>
+
+                <h6 data-layer="
+                    count-infinite direction-alternate
+
+                    x-20 y-320 opacity-1 start-0;
+                    x-center opacity-1 skew-ra-ra start-500 speed-2000;
+                    "
+                    class="text">LAYER8</h6>
+            </div>
+
+
+            <!-- Layer with opacity random value -->
+            <div>
+                <a class="cs-img" href="imgs/img_wide4.png">[img]</a>
+
+                <h6 data-layer="
+                    count-infinite direction-alternate
+
+                    x-20 y-center opacity-1 start-0;
+                    x-center opacity-ra start-500 speed-2000;
+                    "
+                    class="text">LAYER9</h6>
+            </div>
+
+
+            <!-- Layer with skew random value -->
+            <div>
+                <a class="cs-img" href="imgs/img_wide5.png">[img]</a>
+
+                <h6 data-layer="
+                    count-infinite direction-alternate
+
+                    x-center y-center opacity-1 start-1000 speed-1000;
+                    x-ra y-ra opacity-ra rotate-ra scale-ra skew-ra start-1000 speed-1000;
+                    x-center y-center opacity-1 rotate-0 scale-1 skew-0 start-1000 speed-1000;
+                    "
+                    class="text">LAYER10</h6>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- Slider - end
+    ============================================================== -->
+
+
+    
+    
+
+
+    <!-- Scripts link & custom - begin
+    ============================================================== -->
+    <script src="../libs/scripts/jquery-1.10.2.min.js"></script> <!-- jQuery Libary -->
+    <script src="../libs/scripts/jquery.easing.min.js"></script> <!-- Easing Plugin -->
+    <script src="../code/codeslider.js"></script> <!-- Javascript Custom -->
+
+    <script type="text/javascript">
+
+        jQuery(document).ready(function($) {
+
+            // Slider init
+            $('.cs').codeslider();
+        });
+
+    </script>
+    <!-- Scripts link & custom - end
+    ============================================================== -->
+    
+</body>
+</html>

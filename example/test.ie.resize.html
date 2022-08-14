@@ -1,0 +1,101 @@
+    <!DOCTYPE html>
+<!--[if IE 7]> <html class="ie ie7"> <![endif]-->
+<!--[if IE 8]> <html class="ie ie8"> <![endif]-->
+<!--[if (gt IE 8)|!(IE)]> <html> <![endif]-->
+<head>
+
+    <!-- Page Infomations -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <!-- CSS link -->
+    <link rel="stylesheet" href="../code/codeslider.css">
+
+
+    <!-- CSS embed -->
+    <style>
+        
+        /* Slider */
+        .cs-nav { display: none; }
+        .layer1 { padding: 30px; border: 6px solid #333; }
+
+        /* Control */
+        .btn.actived { border-color: #fa0; color: #fa0; }
+        input[type="text"] { font-family: monospace; font-size: 12px; }
+    </style>
+
+    
+    <!-- Script link -->
+    <script src="../libs/scripts/modernizr.js"></script> <!-- Modernizr Plugins -->
+    
+</head>
+<body>
+
+
+
+
+
+    <!-- Breadcrumbs - begin
+    ============================================================== -->
+    <div class="wrapper breadcrumbs show-desktop">
+    <div class="container">
+        
+        <div class="page-title ma-b-20">
+            <h3 class="strong">TEST IE</h3>
+            <h5>.RESIZE</h5>
+        </div>
+        
+    </div>
+    </div>
+    <!-- Breadcrumbs - end
+    ============================================================== -->
+
+
+
+
+    <!-- Slider - begin
+    ============================================================== -->
+    <div class="cs" data-slider="">
+
+        <a class="cs-img" href="imgs/img0.png">[img0]</a>
+        <a class="cs-img" href="imgs/img1.png">[img1]</a>
+        <a class="cs-img" href="imgs/img2.png">[img2]</a>
+        <a class="cs-img" href="imgs/img3.png">[img3]</a>
+        <a class="cs-img" href="imgs/img4.png">[img4]</a>
+        <a class="cs-img" href="imgs/img5.png">[img5]</a>
+
+    </div>
+    <!-- Slider - end
+    ============================================================== -->
+
+
+
+    
+    
+
+
+    <!-- Scripts link & custom - begin
+    ============================================================== -->
+    <script src="../libs/scripts/jquery-1.10.2.min.js"></script> <!-- jQuery Libary -->
+    <script src="../libs/scripts/jquery.easing.min.js"></script> <!-- Easing Plugin -->
+    <script src="../code/codeslider.js"></script> <!-- Javascript Custom -->
+
+    <script type="text/javascript">
+
+        jQuery(document).ready(function($) {
+
+            // Slider init
+            $('.cs').codeslider();
+            var code = $('.cs').data('codeslider');
+
+        });
+
+    </script>
+    <!-- Scripts link & custom - end
+    ============================================================== -->
+    
+</body>
+</html>

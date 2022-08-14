@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<!--[if IE 7]> <html class="ie ie7"> <![endif]-->
+<!--[if IE 8]> <html class="ie ie8"> <![endif]-->
+<!--[if (gt IE 8)|!(IE)]> <html> <![endif]-->
+<head>
+
+    <!-- Page Infomations -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <!-- CSS link -->
+    <link rel="stylesheet" href="../libs/css/code09.css">
+    <link rel="stylesheet" href="../code/codeslider.css">
+    <link rel="stylesheet" href="css/example.css">
+
+    
+    <!-- Script link -->
+    <script src="../libs/scripts/modernizr.js"></script> <!-- Modernizr Plugins -->
+    
+</head>
+<body>
+
+
+    <!-- Header - begin
+    ============================================================== -->
+    <div class=" wrapper header logo-left dark">
+    <div class="container">
+        
+        <!-- Logo - begin
+        .......................................................... -->
+        <a class="logo" href="#">
+            <img src="../libs/imgs/logo.png" alt="[logo]">
+        </a>
+        <!-- Logo - end
+        .......................................................... -->
+
+    </div>
+    </div>
+    <!-- Header - end
+    ============================================================== -->
+
+
+
+
+
+    <!-- Breadcrumbs - begin
+    ============================================================== -->
+    <div class="wrapper breadcrumbs show-desktop">
+    <div class="container">
+        
+        <div class="page-title ma-b-20">
+            <h3 class="strong">MARKUP</h3>
+            <h5>.CAPTION</h5>
+        </div>
+
+        <!-- Description -->
+    </div>
+    </div>
+    <!-- Breadcrumbs - end
+    ============================================================== -->
+
+
+
+
+    <!-- Slider - begin
+    ============================================================== -->
+    <div class="container">
+
+        <div class="cs" data-slider="isCap-on">
+            
+            <!-- Image default with caption simple -->
+            <img src="imgs/img0.png" alt="[Caption slide.0]">
+
+            <!-- Image lazy with caption simple -->
+            <img src="imgs/img1.png" alt="[Caption slide.1]">
+
+            <!-- Image lazy link tag with caption -->
+            <a class="cs-img" href="imgs/img2.png"><h3>[Caption <span class="text-success">slide.2</span>]</h3></a>
+
+            <!-- Image default and caption selt-contained -->
+            <div>
+                <img src="imgs/img3.png" alt="[This caption will ignore]">
+                <div class="cs-capitem">
+                    <h2 class="text-code">[Caption slide.3]</h2>
+                    <p>More description...</p>
+                </div>
+            </div>
+
+            <!-- Image lazy and caption selt-contained -->
+            <div>
+                <a class="cs-img" href="imgs/img4.png">[This caption will ignore]</a>
+                <div class="cs-capitem">
+
+                    <div style="padding: 20px; border: 1px dashed #ccc;">
+                        <h2><span class="label info">[Caption slide.4]</span></h2>
+
+                        <div class="hr dash left"></div>
+
+                        <p>More styling, more class...
+                            <br>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, odio, veniam, velit, hic nihil beatae libero eveniet eum consectetur totam debitis ducimus deserunt distinctio impedit molestiae iure aliquam quas aliquid!
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- Slider - end
+    ============================================================== -->
+
+    
+
+
+    
+    
+
+
+    <!-- Scripts link & custom - begin
+    ============================================================== -->
+    <script src="../libs/scripts/jquery-1.10.2.min.js"></script> <!-- jQuery Libary -->
+    <script src="../libs/scripts/jquery.easing.min.js"></script> <!-- Easing Plugin -->
+    <script src="../code/codeslider.js"></script> <!-- Javascript Custom -->
+
+    <script type="text/javascript">
+
+        jQuery(document).ready(function($) {
+
+            $('.cs').codeslider();  // Codeslider init
+        });
+
+    </script>
+    <!-- Scripts link & custom - end
+    ============================================================== -->
+    
+</body>
+</html>

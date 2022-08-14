@@ -1,0 +1,506 @@
+/*
+ * CodeGrid v1.0
+ * Copyright 2014, Thystudio
+ */
+
+
+/* Table of Content
+==================================================
+    .Normalize
+    ------------------
+    .Base 960 Grid
+    .Tablet (Portrait)
+    .Mobile (Portrait)
+    .Mobile (Landscape)
+    .Clearing
+    */
+
+
+
+/* Normalize
+ * normalize.css v2 | MIT License | git.io/normalize
+============================================================== */
+
+    article, aside, details,
+    figcaption, figure,
+    footer, header, hgroup,
+    main, nav, section, summary             { display: block; }
+
+    audio, canvas, video                    { display: inline-block; }
+    audio:not([controls])                   { display: none; height: 0; }
+    [hidden]                                { display: none; }
+
+    body                                    { margin: 0; }
+
+    abbr[title]                             { border-bottom: 1px dotted; }
+    b, strong                               { font-weight: bold; }
+    hr {
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+        height: 0;
+    }
+
+    mark                                    { background: #ff0; color: #000; }
+    code, kbd, pre, samp                    { font-family: monospace, serif; font-size: 1em; }
+    pre                                     { white-space: pre-wrap; }
+
+    q                                       { quotes: "\201C" "\201D" "\2018" "\2019"; }
+    small                                   { font-size: 85%; }
+    sub, sup {
+        font-size: 75%;
+        line-height: 0;
+        position: relative;
+        vertical-align: baseline;
+    }
+    sup                                     { top: -0.5em; }
+    sub                                     { bottom: -0.25em; }
+
+    img                                     { border: 0; }
+    figure                                  { margin: 0; }
+
+    ol, ul                                  { margin: 0; padding-left: 0; }
+    blockquote, q                           { quotes: none; }
+    blockquote:before, blockquote:after,
+    q:before, q:after                       { content: ''; content: none; }
+    table                                   { border-collapse: collapse; border-spacing: 0; }
+
+
+
+
+
+/* Base 960 Grid
+* Desktop Normal
+* Note: Design for a width of 940px
+============================================================== */
+    
+    /* Container & Row */
+    .container                      { position: relative; width: 940px; margin-left: auto; margin-right: auto; }
+    
+
+    /* Grid system default - gutter 44px
+    ------------------------------------------------------- */
+    .row                            { margin-left: -44px; }
+
+    /* Columns */
+    [class*="span"]                 { float: left; display: inline; min-height: 1px; margin-left: 44px; }
+
+    .span1                          { width: 38px;  }
+    .span2                          { width: 120px; }
+    .span3                          { width: 202px; }
+    .span4                          { width: 284px; }
+    .span5                          { width: 366px; }
+    .span6                          { width: 448px; }
+    .span7                          { width: 530px; }
+    .span8                          { width: 612px; }
+    .span9                          { width: 694px; }
+    .span10                         { width: 776px; }
+    .span11                         { width: 858px; }
+    .span12                         { width: 940px; }
+
+    /* Offsets */
+    .offset1                        { margin-left: 126px; }
+    .offset2                        { margin-left: 208px; }
+    .offset3                        { margin-left: 290px; }
+    .offset4                        { margin-left: 372px; }
+    .offset5                        { margin-left: 454px; }
+    .offset6                        { margin-left: 536px; }
+    .offset7                        { margin-left: 618px; }
+    .offset8                        { margin-left: 700px; }
+    .offset9                        { margin-left: 782px; }
+    .offset10                       { margin-left: 864px; }
+
+
+    
+    /* Grid system small - gutter 20px
+    ------------------------------------------------------- */
+    .row-small,
+    .row-small .row                 { margin-left: -20px; }
+
+    
+    /* Columns */
+    .row-small [class*="span"]      { margin-left: 20px; }
+
+    .row-small .span1               { width: 60px;  }
+    .row-small .span2               { width: 140px; }
+    .row-small .span3               { width: 220px; }
+    .row-small .span4               { width: 300px; }
+    .row-small .span5               { width: 380px; }
+    .row-small .span6               { width: 460px; }
+    .row-small .span7               { width: 540px; }
+    .row-small .span8               { width: 620px; }
+    .row-small .span9               { width: 700px; }
+    .row-small .span10              { width: 780px; }
+    .row-small .span11              { width: 860px; }
+    .row-small .span12              { width: 940px; }
+
+    /* Offsets */
+    .row-small .offset1             { margin-left: 100px; }
+    .row-small .offset2             { margin-left: 180px; }
+    .row-small .offset3             { margin-left: 260px; }
+    .row-small .offset4             { margin-left: 340px; }
+    .row-small .offset5             { margin-left: 420px; }
+    .row-small .offset6             { margin-left: 500px; }
+    .row-small .offset7             { margin-left: 580px; }
+    .row-small .offset8             { margin-left: 660px; }
+    .row-small .offset9             { margin-left: 740px; }
+    .row-small .offset10            { margin-left: 820px; }
+
+
+
+    /* Grid system less
+    ------------------------------------------------------- */
+    .row-less,
+    .row-less .row                  { margin-left: 0; }
+
+    /* Columns */
+    /* !important by: row-less combine with row and row-small */
+    .row-less [class*="span"]       { margin-left: 0    !important; }
+
+    .row-less .span1                { width: 8.33333%   !important; }
+    .row-less .span2                { width: 16.66666%  !important; }
+    .row-less .span3                { width: 25%        !important; }
+    .row-less .span4                { width: 33.33333%  !important; }
+    .row-less .span5                { width: 41.66666%  !important; }
+    .row-less .span6                { width: 50%        !important; }
+    .row-less .span7                { width: 58.33333%  !important; }
+    .row-less .span8                { width: 66.66666%  !important; }
+    .row-less .span9                { width: 75%        !important; }
+    .row-less .span10               { width: 83.33333%  !important; }
+    .row-less .span11               { width: 91.66666%  !important; }
+    .row-less .span12               { width: 100%       !important; }
+
+
+
+
+    /* Nesting container - width 892px - gutter 44px
+    ------------------------------------------------------- */
+    .container .container                       { width: auto; padding-left: 24px; }
+
+    /* Columns */
+    .container .container .span1                { width: 34px;  }
+    .container .container .span2                { width: 112px; }
+    .container .container .span3                { width: 190px; }
+    .container .container .span4                { width: 268px; }
+    .container .container .span5                { width: 346px; }
+    .container .container .span6                { width: 424px; }
+    .container .container .span7                { width: 502px; }
+    .container .container .span8                { width: 580px; }
+    .container .container .span9                { width: 658px; }
+    .container .container .span10               { width: 736px; }
+    .container .container .span11               { width: 814px; }
+    .container .container .span12               { width: 892px; }
+
+    /* Offsets */
+    .container .container .offset1              { margin-left: 122px; }
+    .container .container .offset2              { margin-left: 200px; }
+    .container .container .offset3              { margin-left: 278px; }
+    .container .container .offset4              { margin-left: 356px; }
+    .container .container .offset5              { margin-left: 434px; }
+    .container .container .offset6              { margin-left: 512px; }
+    .container .container .offset7              { margin-left: 590px; }
+    .container .container .offset8              { margin-left: 668px; }
+    .container .container .offset9              { margin-left: 746px; }
+    .container .container .offset10             { margin-left: 824px; }
+
+
+
+
+
+
+
+/* Desktop large
+ * Note: Design for a width of 1156px
+============================================================== */
+@media only screen and (min-width: 1282px) {
+
+    /* Container */
+    .container                      { width: 1156px; }
+
+    
+    /* Grid system default
+    ------------------------------------------------------- */
+    /* Columns */
+    .span1                          { width: 56px;  }
+    .span2                          { width: 156px; }
+    .span3                          { width: 256px; }
+    .span4                          { width: 356px; }
+    .span5                          { width: 456px; }
+    .span6                          { width: 556px; }
+    .span7                          { width: 656px; }
+    .span8                          { width: 756px; }
+    .span9                          { width: 856px; }
+    .span10                         { width: 956px; }
+    .span11                         { width: 1056px; }
+    .span12                         { width: 1156px; }
+
+    /* Offsets */
+    .offset1                        { margin-left: 144px; }
+    .offset2                        { margin-left: 244px; }
+    .offset3                        { margin-left: 344px; }
+    .offset4                        { margin-left: 444px; }
+    .offset5                        { margin-left: 544px; }
+    .offset6                        { margin-left: 644px; }
+    .offset7                        { margin-left: 744px; }
+    .offset8                        { margin-left: 844px; }
+    .offset9                        { margin-left: 944px; }
+    .offset10                       { margin-left: 1044px; }
+    
+
+
+
+    /* Grid system small
+    ------------------------------------------------------- */
+    /* Columns */
+    .row-small .span1               { width: 78px;  }
+    .row-small .span2               { width: 176px; }
+    .row-small .span3               { width: 274px; }
+    .row-small .span4               { width: 372px; }
+    .row-small .span5               { width: 470px; }
+    .row-small .span6               { width: 568px; }
+    .row-small .span7               { width: 666px; }
+    .row-small .span8               { width: 764px; }
+    .row-small .span9               { width: 862px; }
+    .row-small .span10              { width: 960px; }
+    .row-small .span11              { width: 1058px; }
+    .row-small .span12              { width: 1156px; }
+
+    /* Offsets */
+    .row-small .offset1             { margin-left: 118px; }
+    .row-small .offset2             { margin-left: 216px; }
+    .row-small .offset3             { margin-left: 314px; }
+    .row-small .offset4             { margin-left: 412px; }
+    .row-small .offset5             { margin-left: 510px; }
+    .row-small .offset6             { margin-left: 608px; }
+    .row-small .offset7             { margin-left: 706px; }
+    .row-small .offset8             { margin-left: 804px; }
+    .row-small .offset9             { margin-left: 902px; }
+    .row-small .offset10            { margin-left: 1000px; }
+
+
+
+
+    /* Nesting container - width 1108px
+    ------------------------------------------------------- */
+    /* Columns */
+    .container .container .span1                { width: 52px;  }
+    .container .container .span2                { width: 148px; }
+    .container .container .span3                { width: 244px; }
+    .container .container .span4                { width: 340px; }
+    .container .container .span5                { width: 436px; }
+    .container .container .span6                { width: 532px; }
+    .container .container .span7                { width: 628px; }
+    .container .container .span8                { width: 724px; }
+    .container .container .span9                { width: 820px; }
+    .container .container .span10               { width: 916px; }
+    .container .container .span11               { width: 1012px; }
+    .container .container .span12               { width: 1108px; }
+
+    /* Offsets */
+    .container .container .offset1              { margin-left: 140px; }
+    .container .container .offset2              { margin-left: 236px; }
+    .container .container .offset3              { margin-left: 332px; }
+    .container .container .offset4              { margin-left: 428px; }
+    .container .container .offset5              { margin-left: 524px; }
+    .container .container .offset6              { margin-left: 620px; }
+    .container .container .offset7              { margin-left: 716px; }
+    .container .container .offset8              { margin-left: 812px; }
+    .container .container .offset9              { margin-left: 908px; }
+    .container .container .offset10             { margin-left: 1004px; }
+
+}
+
+
+
+
+/* Tablet
+ * Note: Design for a width of 768px
+============================================================== */
+
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+    
+    /* Container */
+    .container                      { width: 748px; }
+
+    
+    /* Grid system default
+    ------------------------------------------------------- */
+    .row                            { margin-left: -32px; }
+    
+    /* Columns */
+    [class*="span"]                 { margin-left: 32px; }
+
+    .span1                          { width: 33px;  }
+    .span2                          { width: 98px;  }
+    .span3                          { width: 163px; }
+    .span4                          { width: 228px; }
+    .span5                          { width: 293px; }
+    .span6                          { width: 358px; }
+    .span7                          { width: 423px; }
+    .span8                          { width: 488px; }
+    .span9                          { width: 553px; }
+    .span10                         { width: 618px; }
+    .span11                         { width: 683px; }
+    .span12                         { width: 748px; }
+
+    /* Offsets */
+    .offset1                        { margin-left: 97px;  }
+    .offset2                        { margin-left: 162px; }
+    .offset3                        { margin-left: 227px; }
+    .offset4                        { margin-left: 292px; }
+    .offset5                        { margin-left: 357px; }
+    .offset6                        { margin-left: 422px; }
+    .offset7                        { margin-left: 487px; }
+    .offset8                        { margin-left: 522px; }
+    .offset9                        { margin-left: 617px; }
+    .offset10                       { margin-left: 682px; }
+
+
+    
+    /* Grid system small
+    ------------------------------------------------------- */
+    .row-small,
+    .row-small .row                 { margin-left: -20px; }
+    
+    /* Columns */
+    .row-small [class*="span"]      { margin-left: 20px; }
+
+    .row-small .span1               { width: 44px;  }
+    .row-small .span2               { width: 108px; }
+    .row-small .span3               { width: 172px; }
+    .row-small .span4               { width: 236px; }
+    .row-small .span5               { width: 300px; }
+    .row-small .span6               { width: 364px; }
+    .row-small .span7               { width: 428px; }
+    .row-small .span8               { width: 492px; }
+    .row-small .span9               { width: 556px; }
+    .row-small .span10              { width: 620px; }
+    .row-small .span11              { width: 684px; }
+    .row-small .span12              { width: 748px; }
+
+    /* Offsets */
+    .row-small .offset1             { margin-left: 84px;  }
+    .row-small .offset2             { margin-left: 148px; }
+    .row-small .offset3             { margin-left: 212px; }
+    .row-small .offset4             { margin-left: 276px; }
+    .row-small .offset5             { margin-left: 340px; }
+    .row-small .offset6             { margin-left: 404px; }
+    .row-small .offset7             { margin-left: 468px; }
+    .row-small .offset8             { margin-left: 532px; }
+    .row-small .offset9             { margin-left: 596px; }
+    .row-small .offset10            { margin-left: 660px; }
+
+    
+
+
+    /* Nesting container - width 700px - gutter 32px
+    ------------------------------------------------------- */
+    /* Columns */
+    .container .container .span1                { width: 29px;  }
+    .container .container .span2                { width: 90px; }
+    .container .container .span3                { width: 151px; }
+    .container .container .span4                { width: 212px; }
+    .container .container .span5                { width: 273px; }
+    .container .container .span6                { width: 334px; }
+    .container .container .span7                { width: 395px; }
+    .container .container .span8                { width: 456px; }
+    .container .container .span9                { width: 517px; }
+    .container .container .span10               { width: 578px; }
+    .container .container .span11               { width: 639px; }
+    .container .container .span12               { width: 700px; }
+
+    /* Offsets */
+    .container .container .offset1              { margin-left: 93px;  }
+    .container .container .offset2              { margin-left: 154px; }
+    .container .container .offset3              { margin-left: 215px; }
+    .container .container .offset4              { margin-left: 276px; }
+    .container .container .offset5              { margin-left: 337px; }
+    .container .container .offset6              { margin-left: 398px; }
+    .container .container .offset7              { margin-left: 459px; }
+    .container .container .offset8              { margin-left: 520px; }
+    .container .container .offset9              { margin-left: 581px; }
+    .container .container .offset10             { margin-left: 642px; }
+
+}
+
+
+
+
+/* Mobile (Portrait)
+ * Note: Design for a width of 320px + 480px
+============================================================== */
+
+@media only screen and (min-width: 1px) and (max-width: 767px) {
+
+    .container                      { width: auto; padding-left: 10px; padding-right: 10px; }
+
+
+    /* Grid system default
+    ------------------------------------------------------- */
+    .row                            { margin-left: 0; }
+    [class*="span"]                 { width: 100%; margin-left: 0; }
+    [class*="offset"]               { margin-left: 0; }
+
+
+
+    /* Grid system small
+    ------------------------------------------------------- */
+    .row-small,
+    .row-small .row                 { margin-left: 0; }
+    .row-small [class*="span"]      { width: 100%; margin-left: 0; }
+    .row-small [class*="offset"]    { margin-left: 0; }
+
+
+
+    /* Grid system less
+    ------------------------------------------------------- */
+    .row-less [class*="span"]       { width: 100% !important; }
+
+
+
+    /* Nesting container
+    ------------------------------------------------------- */
+    .container .container                       { padding-left: 10px; padding-right: 10px; }
+    .container .container [class*="span"]       { width: 100%; margin-left: 0; }
+    .container .container [class*="offset"]     { margin-left: 0; }
+
+}
+
+
+
+
+
+/* Mobile (Landscape)
+ * Note: Design for a width of 480px
+============================================================== */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+
+    .container                      { padding-left: 20px; padding-right: 20px; }
+
+
+    /* Grid system default
+    ------------------------------------------------------- */
+    [class*="span"]                 { }
+
+    /* Grid system small
+    ------------------------------------------------------- */
+    .row-small [class*="span"]      {  }
+
+    /* Nesting container
+    ------------------------------------------------------- */
+    .container .container           { padding-left: 15px; padding-right: 15px; }
+}
+
+
+
+
+
+/* Clearfix
+============================================================== */
+    .clearfix:after, .container:after,
+    [class*="row"]:after {
+        content: " ";
+        display: table;
+        clear: both;
+    }
+    .clearfix, .container, [class*="row"] { *zoom: 1; }               /* For IE7 */

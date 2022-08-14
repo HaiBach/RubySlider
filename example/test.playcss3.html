@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<!--[if IE 7]> <html class="ie ie7"> <![endif]-->
+<!--[if IE 8]> <html class="ie ie8"> <![endif]-->
+<!--[if (gt IE 8)|!(IE)]> <html> <![endif]-->
+<head>
+
+    <!-- Page Infomations -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <!-- CSS link -->
+    <link rel="stylesheet" href="../libs/css/code09.css">
+    <link rel="stylesheet" href="../code/codeslider.css">
+    <link rel="stylesheet" href="css/example.css">
+
+    
+    <!-- Script link -->
+    <script src="../libs/scripts/modernizr.js"></script> <!-- Modernizr Plugins -->
+
+    
+    <!-- Style embed -->
+    <style type="text/css">
+    
+        /* Codeslider core */
+        .cs-viewport            { overflow: hidden; }
+        .ie7 .cs-viewport       { position: relative; }
+
+        .cs-ready               { visibility: visible; }
+        .cs-hide                { display: none !important; }
+        .cs-hfit                { height: 100% !important; }
+        
+        .cs-canvas {
+            overflow: visible !important;
+            position: relative;
+            margin-bottom: 0;
+            -webkit-transition-property: -webkit-transform;
+               -moz-transition-property:    -moz-transform;
+                    transition-property:         transform;
+        }
+        .cs-canvas { height: 100%; }   /* Codeslider awake setup */
+
+        .cs-slide {
+            position: absolute;
+            display: block;
+            float: left;
+            left: 0; top: 0;
+            margin-bottom: 0;
+        }
+        .cs-slide.cs-sleep { height: 100%; }
+        .cs-slide.cs-sleep > * { display: none; }
+
+
+        /* Style css */
+        .border {
+            height: 500px;
+            margin-top: 50px;
+            border: 1px solid #ddd;
+        }
+
+        .cs-viewport {
+            height: 400px;
+            background-color: #f5f5f5;
+            margin-top: 50px;
+            overflow: visible;
+        }
+        .cs-canvas {
+        }
+
+        .cs-slide {
+            /*width: 300px; height: 200px;*/
+            width: 100%; height: 100%;
+            background-color: #ddd;
+        }
+
+
+        /* Transfrom */
+        .cs-canvas {
+            height: 200px; width: 300px;
+            -webkit-perspective: 800px;
+            -webkit-transform: translate(320px, 0);
+            -webkit-transform-origin: 50% 50%;
+            background-color: #eee;
+        }
+
+        .sl0 {
+            -webkit-transform: translate(0, 0);
+            z-index: 0;
+            opacity: 1;
+
+            -webkit-transition: -webkit-transform 2s;
+        }
+        .sl1 {
+            background-color: #ccc;
+            -webkit-transform: translate(251px, 0) rotateY(-75deg);
+            -webkit-transform-origin: 50% 50%;
+            z-index: -1
+            
+        }
+        .sl2 {
+            -webkit-transform: translate(302px, 0) rotateY(-75deg);
+            z-index: -2;
+        }
+        .sl3 {
+            background-color: #ccc;
+            -webkit-transform: translate(-251px, 0) rotateY(75deg);
+            z-index: -3;
+        }
+        .sl4 {
+            -webkit-transform: translate(-301px, 0) rotateY(75deg);
+            z-index: -4;
+        }
+
+    </style>
+    
+</head>
+<body>
+
+
+    <!-- Header - begin
+    ============================================================== -->
+    <div class=" wrapper header logo-left dark">
+    <div class="container">
+        
+        <!-- Logo - begin
+        .......................................................... -->
+        <a class="logo" href="#">
+            <img src="../libs/imgs/logo.png" alt="[logo]">
+        </a>
+        <!-- Logo - end
+        .......................................................... -->
+
+    </div>
+    </div>
+    <!-- Header - end
+    ============================================================== -->
+
+
+
+
+    <div class="container border">
+
+        <div class="cs-viewport">
+            <div class="cs-canvas">
+                
+                <div class="cs-slide sl3">SLIDE 3</div>
+                <div class="cs-slide sl4">SLIDE 4</div>
+                <div class="cs-slide sl0">SLIDE 0</div>
+                <div class="cs-slide sl1">SLIDE 1</div>
+                <div class="cs-slide sl2">SLIDE 2</div>
+
+                <!-- <div class="cs-slide sl2">SLIDE 2</div>
+                <div class="cs-slide sl1">SLIDE 1</div>
+                <div class="cs-slide sl0">SLIDE 0</div>
+                <div class="cs-slide sl3">SLIDE 3</div>
+                <div class="cs-slide sl4">SLIDE 4</div> -->
+
+            </div>
+        </div>
+                
+    </div>
+
+
+    
+    
+
+
+    <!-- Scripts link & custom - begin
+    ============================================================== -->
+    <script src="../libs/scripts/jquery-1.10.2.min.js"></script> <!-- jQuery Libary -->
+    <script src="../libs/scripts/jquery.easing.min.js"></script> <!-- Easing Plugin -->
+    <script src="../code/codeslider.js"></script> <!-- Javascript Custom -->
+
+    <script type="text/javascript">
+
+        jQuery(document).ready(function($) {
+
+            // Codeslider init
+            $('.cs').codeslider();
+
+
+
+            // Test timer
+            for(var i = 0; i < 10; i++) {
+                console.log('Vong lap 1: day la line ' + i);
+            }
+
+
+            setTimeout(function() { console.log('this is timer 0') }, 0);
+
+            
+
+            for(var i = 0; i < 15; i++) {
+                console.log('Vong lap 2: day la line ' + i);
+            }
+        });
+
+    </script>
+    <!-- Scripts link & custom - end
+    ============================================================== -->
+    
+</body>
+</html>

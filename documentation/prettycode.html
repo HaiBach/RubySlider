@@ -1,0 +1,111 @@
+
+
+<div class="ct ct-ready ct-dot ct-height-auto ct-pag-hor ct-pag-top"> <!-- markup: codetabs -->
+
+    <!-- MAIN SLIDES -->
+    <div class="ct-viewport"> <!-- markup: viewport --> 
+        <div class="ct-canvas"> <!-- markup: canvas -->
+            
+            <div class="ct-slide ct-ready"> ... </div> <!-- markup: slide -->
+            <div class="ct-slide ct-ready ct-cur"> ... </div>
+            <div class="ct-slide ct-ready"> ... </div>
+            ...
+        </div>
+    </div>
+
+
+    <!-- PAGINATION -->
+    <div class="ct-pag ct-tab ct-pag-hor ct-pag-top"> <!-- markup: pag-head -->
+        <div class="ct-paginner"> <!-- markup: pag-inner -->
+            
+            <div class="ct-pagitem"> ... </div> <!-- markup: pag-item -->
+            <div class="ct-pagitem ct-cur"> ... </div>
+            <div class="ct-pagitem"> ... </div>
+            ...
+        </div>
+    </div>
+
+
+    <!-- NAVIGATION -->
+    <div class="ct-nav"> <!-- markup: nav-head -->
+        <div class="ct-prev">prev</div>
+        <div class="ct-next">next</div>
+    </div>
+
+
+    <!-- CAPTION -->
+    <div class="ct-cap"> <!-- markup: cap-head -->
+        <div class="ct-capinner"> <!-- markup: cap-inner -->
+            <div class="ct-cap-cur"> ... </div>
+            <div class="ct-cap-last"> ... </div>
+        </div>
+    </div>
+
+
+    <!-- MEDIA -->
+    <div class="ct-media"> <!-- markup: media -->
+        <div class="ct-playpause ct-actived">play/pause</div> <!-- markup: playpause -->
+        <div class="ct-timer ct-timer-bar"> <!-- markup: timer-head -->
+            <div class="ct-timeritem"></div>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- DESCRIPTION - begin
+.............................................................
+@ Markup: codetab
+    + class '.ct-ready': will added to markup when codetabs loaded first slide, begin show in browser.
+    + class '.ct-dot' : type effect of codetabs, effect one, out-in, fade is type 'dot', also effect line is type 'line'
+    + class '.ct-height-auto' : type height of codetabs, include 2 option, 'height-auto' and 'height-fixed'
+    + class '.ct-pag-hor' : will added to markup when pagination turn on, direction of pagination, include 2 option, 'pag-hor' for horizontal
+
+
+
+.............................................................
+end -->
+
+
+
+$('.ct').codetabs({
+    deeplinking : {
+        prefixDefault : ['code', 'slide']
+    }
+});
+
+
+
+&lt;img src=&quot;image/image1.jpg&quot; alt=&quot;image 1&quot;&gt;
+
+&lt;!-- Replace 'img' tag --&gt;
+
+
+
+
+
+&lt;div class=&quot;ct&quot; data-tabs=&quot;isAutoRun-on isDeeplinking-on&quot;&gt;
+    
+    &lt;!-- Slides --&gt;
+    &lt;div id=&quot;swipeGestures&quot;&gt;...&lt;/div&gt;
+    &lt;div id=&quot;hugeEffect&quot;&gt;...&lt;/div&gt;
+    &lt;div id=&quot;flatDesign&quot;&gt;...&lt;/div&gt;
+    &lt;div id=&quot;trueTabs&quot;&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+
+
+
+&lt;div class=&quot;ct&quot; data-tabs=&quot;isAutoRun-on&quot;&gt;
+    
+    &lt;!-- Slide 1 --&gt;
+    &lt;div data-slide=&quot;media-{ ajax: url-content }&quot;&gt;
+        
+        &lt;!-- Pagination item of slide 1 --&gt;
+        &lt;div class=&quot;ct-pagitem&quot;&gt;pag 1&lt;/div&gt;
+    &lt;/div&gt;
+    
+    
+    &lt;!-- Slide 2, 3 same slide 1 --&gt;
+    ...
+&lt;/div&gt;

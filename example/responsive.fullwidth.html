@@ -1,0 +1,236 @@
+    <!DOCTYPE html>
+<!--[if IE 7]> <html class="ie ie7"> <![endif]-->
+<!--[if IE 8]> <html class="ie ie8"> <![endif]-->
+<!--[if (gt IE 8)|!(IE)]> <html> <![endif]-->
+<head>
+
+    <!-- Page Infomations -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <!-- CSS link -->
+    <link rel="stylesheet" href="../libs/css/code09.css">
+    <link rel="stylesheet" href="../code/codeslider.css">
+
+
+    <!-- CSS embed -->
+    <style>
+        
+        /* Slider */
+        .cs-nav { display: none; }
+        .layer1 { padding: 30px; border: 6px solid #333; }
+
+        /* Control */
+        .btn.actived { border-color: #fa0; color: #fa0; }
+        input[type="text"] { font-family: monospace; font-size: 12px; }
+    </style>
+
+    
+    <!-- Script link -->
+    <script src="../libs/scripts/modernizr.js"></script> <!-- Modernizr Plugins -->
+    
+</head>
+<body>
+
+
+    <!-- Header - begin
+    ============================================================== -->
+    <div class=" wrapper header logo-left dark">
+    <div class="container">
+        
+        <!-- Logo - begin
+        .......................................................... -->
+        <a class="logo" href="#">
+            <img src="../libs/imgs/logo.png" alt="[logo]">
+        </a>
+        <!-- Logo - end
+        .......................................................... -->
+
+    </div>
+    </div>
+    <!-- Header - end
+    ============================================================== -->
+
+
+
+
+
+    <!-- Breadcrumbs - begin
+    ============================================================== -->
+    <div class="wrapper breadcrumbs show-desktop">
+    <div class="container">
+        
+        <div class="page-title ma-b-20">
+            <h3 class="strong">RESPONSIVE</h3>
+            <h5>.FULLWIDTH</h5>
+        </div>
+        
+        <!-- Description -->
+        <div class="row">
+            <div class="span6">
+                <p class="no-ma">Max width of slider is <span class="label">1156px</span></p>
+                <ul class="list">
+                    <li>If width-page <span class="label warning">&gt; 1156px</span> &rarr; width-slider = 1156px</li>
+                    <li>If width-page <span class="label warning">&lt; 1156px</span> &rarr; width-slider = width-page</li>
+                </ul>
+            </div>
+
+            <div class="span6">
+                <p class="no-ma">In case width-page <span class="label">&lt; 1156px</span></p>
+                <ul class="list">
+
+                    <li>Setup <span class="label info">padding (slider padding)</span>
+                        <br>&rarr; Distance slider with edge container</li>
+                    <li>Setup <span class="label info">media ([width]-[min]-[max])</span>
+                        <br>&rarr; Set width-slider ranges from min-value to max-value</li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    </div>
+    <!-- Breadcrumbs - end
+    ============================================================== -->
+
+
+
+
+    <!-- Slider - begin
+    ============================================================== -->
+    <div class="cs" data-slider="responsive-1156">
+
+        <a class="cs-img" href="imgs/img0.png">[img0]</a>
+        <a class="cs-img" href="imgs/img1.png">[img1]</a>
+        <a class="cs-img" href="imgs/img2.png">[img2]</a>
+        <a class="cs-img" href="imgs/img3.png">[img3]</a>
+        <a class="cs-img" href="imgs/img4.png">[img4]</a>
+        <a class="cs-img" href="imgs/img5.png">[img5]</a>
+
+    </div>
+    <!-- Slider - end
+    ============================================================== -->
+
+
+
+
+
+    <!-- Control - begin
+    ============================================================== -->
+    <div class="wrapper">
+    <div class="container">
+    <div class="row">
+
+        <div class="span3">
+            <form class="block">
+                <input id="padding" class="toggle" type="text" placeholder="padding custom | number">
+            </form>
+        </div>
+
+        <div class="span3">
+            <a id="tMedia" class="btn block" href="#">Toggle media</a>
+        </div>
+
+        <div class="span6">
+            <form class="block">
+                <input id="mediaInput" class="toggle" type="text" placeholder="media custom | ['width1-min1-max1','width2-min2-max2', ...]">
+            </form>
+        </div>
+
+        <!-- <div class="span3">
+            <a id="tHeight" class="btn" href="#">Toggle height</a>
+        </div> -->
+            
+    </div>
+    </div>
+    </div>
+    <!-- Control - end
+    ============================================================== -->
+
+    
+    
+
+
+    <!-- Scripts link & custom - begin
+    ============================================================== -->
+    <script src="../libs/scripts/jquery-1.10.2.min.js"></script> <!-- jQuery Libary -->
+    <script src="../libs/scripts/jquery.easing.min.js"></script> <!-- Easing Plugin -->
+    <script src="../libs/scripts/code09.js"></script> <!-- Code09 Plugin -->
+    <script src="../code/codeslider.js"></script> <!-- Javascript Custom -->
+
+    <script type="text/javascript">
+
+        jQuery(document).ready(function($) {
+
+            // Slider init
+            $('.cs').codeslider();
+            var code = $('.cs').data('codeslider');
+
+
+            // Function toggle
+            $('#tHeight').on('click', function() {
+                var _el = $(this), _a = 'actived';
+
+                if( _el.hasClass(_a) ) {
+                    _el.removeClass(_a);
+                    code.prop({ responsive : 1156 });
+                }
+                else {
+                    _el.addClass(_a);
+                    code.prop({ responsive : '1156-300' });
+                }
+
+                return false;
+            });
+
+
+            $('#padding').on('keypress', function(e) {
+                var keycode = e.keyCode
+                  , val     = parseInt( $(this).val() );
+
+                if( keycode == 13 ) {
+                    code.prop({ padding : val });
+                    e.preventDefault();
+                }
+            });
+
+
+            /* Function toggle: media */
+            $('#tMedia').on('click', function() {
+                var _el = $(this), _a = 'actived';
+
+                if( _el.hasClass(_a) ) {
+                    _el.removeClass(_a);
+                    code.prop({ media : null, padding: 0 });
+                }
+                else {
+                    _el.addClass(_a);
+                    code.prop({ media : ['940-960-1281','748-768-959'], padding: ['20-480-767', '10-0-479'] });
+                }
+
+                return false;
+            });
+
+            $('#mediaInput').on('keypress', function(e) {
+                var keycode = e.keyCode
+                  , val     = $(this).val();
+
+                val = val.replace(/\'/g, '').replace(/\s+/g, '');
+                val = val.split('[')[1].split(']')[0].split(',');
+
+                if( keycode == 13 ) {
+                    code.prop({ media : val });
+                    e.preventDefault();
+                }
+            });
+
+        });
+
+    </script>
+    <!-- Scripts link & custom - end
+    ============================================================== -->
+    
+</body>
+</html>

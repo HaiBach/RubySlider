@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<!--[if IE 7]> <html class="ie ie7"> <![endif]-->
+<!--[if IE 8]> <html class="ie ie8"> <![endif]-->
+<!--[if (gt IE 8)|!(IE)]> <html> <![endif]-->
+<head>
+
+    <!-- Page Infomations -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <!-- CSS link -->
+    <link rel="stylesheet" href="../libs/css/code09.css">
+    <link rel="stylesheet" href="../code/codeslider.css">
+    <link rel="stylesheet" href="css/example.css">
+
+
+    <!-- CSS embed -->
+    <style>
+        .cs { margin-bottom: 20px; }
+        .cs-nav { display: none }
+        .btn.actived { border-color: #fa0; color: #fa0; }
+
+        /* Overlay pattern custom */
+        .cs-overlay {
+            background: url(../code/imgs/pattern_dot_dark.png) repeat;
+        }
+    </style>
+
+    
+    <!-- Script link -->
+    <script src="../libs/scripts/modernizr.js"></script> <!-- Modernizr Plugins -->
+    
+</head>
+<body>
+
+
+    <!-- Header - begin
+    ============================================================== -->
+    <div class=" wrapper header logo-left dark">
+    <div class="container">
+        
+        <!-- Logo - begin
+        .......................................................... -->
+        <a class="logo" href="#">
+            <img src="../libs/imgs/logo.png" alt="[logo]">
+        </a>
+        <!-- Logo - end
+        .......................................................... -->
+
+    </div>
+    </div>
+    <!-- Header - end
+    ============================================================== -->
+
+
+
+
+
+    <!-- Breadcrumbs - begin
+    ============================================================== -->
+    <div class="wrapper breadcrumbs show-desktop">
+    <div class="container">
+        
+        <div class="page-title ma-b-20">
+            <h3 class="strong">ELEMENT</h3>
+            <h5>.OVERLAY</h5>
+        </div>
+
+        <!-- Description -->
+
+        
+    </div>
+    </div>
+    <!-- Breadcrumbs - end
+    ============================================================== -->
+
+
+
+
+    <!-- Slider - begin
+    ============================================================== -->
+    <div class="container">
+    
+        <div class="cs" data-slider="isOverlay-on">
+
+            <a class="cs-img" href="imgs/img0.png">[img0]</a>
+            <a class="cs-img" href="imgs/img1.png">[img1]</a>
+            <a class="cs-img" href="imgs/img2.png">[img2]</a>
+            <a class="cs-img" href="imgs/img3.png">[img3]</a>
+            <a class="cs-img" href="imgs/img4.png">[img4]</a>
+            <a class="cs-img" href="imgs/img5.png">[img5]</a>
+            <a class="cs-img" href="imgs/img6.png">[img6]</a>
+            <a class="cs-img" href="imgs/img7.png">[img7]</a>
+
+        </div>
+    
+    </div>
+    <!-- Slider - end
+    ============================================================== -->
+
+
+
+
+
+    <!-- Control - begin
+    ============================================================== -->
+    <div class="container">
+        <a id="tOverlay" class="btn" href="#">Overlay off</a>
+    </div>
+    <!-- Control - end
+    ============================================================== -->
+
+    
+    
+
+
+    <!-- Scripts link & custom - begin
+    ============================================================== -->
+    <script src="../libs/scripts/jquery-1.10.2.min.js"></script> <!-- jQuery Libary -->
+    <script src="../libs/scripts/jquery.easing.min.js"></script> <!-- Easing Plugin -->
+    <script src="../code/codeslider.js"></script> <!-- Javascript Custom -->
+
+    <script type="text/javascript">
+
+        jQuery(document).ready(function($) {
+
+            // Slider init
+            $('.cs').codeslider();
+            var cs = $('.cs').data('codeslider');
+
+
+            // Function toggle
+            $('#tOverlay').on('click', function() {
+                var _el = $(this), _a = 'actived';
+
+                if( _el.hasClass(_a) ) {
+                    _el.removeClass(_a);
+                    cs.prop({ isOverlay: true });
+                }
+                else {
+                    _el.addClass(_a);
+                    cs.prop({ isOverlay: false });
+                }
+
+                return false;
+            });
+        });
+
+    </script>
+    <!-- Scripts link & custom - end
+    ============================================================== -->
+    
+</body>
+</html>

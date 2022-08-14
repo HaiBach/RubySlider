@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<!--[if IE 7]> <html class="ie ie7"> <![endif]-->
+<!--[if IE 8]> <html class="ie ie8"> <![endif]-->
+<!--[if (gt IE 8)|!(IE)]> <html> <![endif]-->
+<head>
+
+    <!-- Page Infomations -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <!-- CSS link -->
+    <link rel="stylesheet" href="../libs/css/code09.css">
+    <link rel="stylesheet" href="../code/codeslider.css">
+
+
+    <!-- CSS embed -->
+    <style>
+        
+        /* Slider */
+        .thumb-ver { position: relative; }
+        .thumb-ver .cs-viewport {
+            margin-left: 200px;
+        }
+        .thumb-ver .cs-pag {
+            position: absolute;
+            left: 0; top: 0;
+            height: 100%;
+        }
+
+
+
+        /* BULLET VERTICAL */
+        .bullet-ver {
+            position: relative;
+        }
+        .bullet-ver .cs-bullet {
+            position: absolute;
+            right: 5px; top: 0;
+            /*height: 100%;*/
+        }
+        .bullet-ver .cs-pagitem {
+            margin: 4px 5px;
+        }
+    
+        /* Bullet bottom */
+        .bullet-bottom .cs-bullet {
+            top: auto;
+            bottom: 0;
+        }
+
+        /* Bullet right */
+        .bullet-right { position: relative; }
+        .bullet-right .cs-bullet {
+            position: absolute;
+            right: 0; bottom: 0;
+        }
+
+
+
+        /* THUMBNAIL */
+        .cs-thumb {
+            padding: 10px 5px;
+            background-color: #333;
+        }
+        .cs-thumb .cs-pagitem {
+            margin-left: 5px; margin-right: 5px;
+        }
+
+        
+        /* Overlay */
+        .cs-thumb .thumb:after {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 100%; height: 100%;
+            left: -1px; top: -1px;
+            padding: 1px;
+            background-color: #333;
+            opacity: .65;
+            
+            -webkit-transform: translateZ(0);
+            -webkit-transition: opacity .2s;
+               -moz-transition: opacity .2s;
+                    transition: opacity .2s;
+        }
+        .cs-thumb .cs-pagitem.cs-cur .thumb:after {
+            opacity: 0;
+        }
+
+        /* Arrow */
+        .cs-pag.cs-thumb {
+            margin-top: 20px;
+        }
+        .cs-pagitem {
+            z-index: 2;
+        }
+        /*.cs-thumb .cs-pagitem:before {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 0; height: 0;
+            top: -15px;
+
+            border: solid red;
+            border-width: 0 10px 10px 10px;
+        }*/
+
+
+
+
+
+        /* TABS */
+        .tab-ver {
+            margin-top: 50px;
+            position: relative;
+        }
+        .tab-ver .cs-pag {
+            float: left;
+        }
+        .tab-ver .cs-pagitem {
+        }
+
+    </style>
+
+    
+    <!-- Script link -->
+    <script src="../libs/scripts/modernizr.js"></script> <!-- Modernizr Plugins -->
+    
+</head>
+<body>
+
+
+    <!-- Header - begin
+    ============================================================== -->
+    <div class=" wrapper header logo-left dark">
+    <div class="container">
+        
+        <!-- Logo - begin
+        .......................................................... -->
+        <a class="logo" href="#">
+            <img src="../libs/imgs/logo.png" alt="[logo]">
+        </a>
+        <!-- Logo - end
+        .......................................................... -->
+
+    </div>
+    </div>
+    <!-- Header - end
+    ============================================================== -->
+
+
+
+
+
+    <!-- Breadcrumbs - begin
+    ============================================================== -->
+    <div class="wrapper breadcrumbs show-desktop">
+    <div class="container">
+        
+        <div class="page-title ma-b-20">
+            <h3 class="strong">ELEMENT</h3>
+            <h5>.THUMBNAIL LINK</h5>
+        </div>
+
+    </div>
+    </div>
+    <!-- Breadcrumbs - end
+    ============================================================== -->
+
+
+
+
+    <!-- Slider - begin
+    ============================================================== -->
+    <div class="container">
+        
+        
+        <!-- THUMBNAIL HORIZONTAL -->
+        <div class="cs" data-slider="speed-2000 isPag-on pag-{ type: thumb, width: 200, height: 100 } ">
+
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy0.jpg">[img0]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy1.jpg">[img1]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy2.jpg">[img2]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy3.jpg">[img3]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy4.jpg">[img4]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy5.jpg">[img5]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy6.jpg">[img6]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy7.jpg">[img7]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy8.jpg">[img8]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy9.jpg">[img9]</a>
+
+
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy10.jpg">[img10]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy11.jpg">[img11]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy12.jpg">[img12]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy13.jpg">[img13]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy14.jpg">[img14]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy15.jpg">[img15]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy16.jpg">[img16]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy17.jpg">[img17]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy18.jpg">[img18]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy19.jpg">[img19]</a>
+
+
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy20.jpg">[img20]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy21.jpg">[img21]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy22.jpg">[img22]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy23.jpg">[img23]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy24.jpg">[img24]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy25.jpg">[img25]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy26.jpg">[img26]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy27.jpg">[img27]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy28.jpg">[img28]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy29.jpg">[img29]</a>
+
+
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy30.jpg">[img30]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy31.jpg">[img31]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy32.jpg">[img32]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy33.jpg">[img33]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy34.jpg">[img34]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy35.jpg">[img35]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy36.jpg">[img36]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy37.jpg">[img37]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy38.jpg">[img38]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy39.jpg">[img39]</a>
+
+
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy40.jpg">[img40]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy41.jpg">[img41]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy42.jpg">[img42]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy43.jpg">[img43]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy44.jpg">[img44]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy45.jpg">[img45]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy46.jpg">[img46]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy47.jpg">[img47]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy48.jpg">[img48]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy49.jpg">[img49]</a>
+
+
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy50.jpg">[img50]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy51.jpg">[img51]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy52.jpg">[img52]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy53.jpg">[img53]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy54.jpg">[img54]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy55.jpg">[img55]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy56.jpg">[img56]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy57.jpg">[img57]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy58.jpg">[img58]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy59.jpg">[img59]</a>
+
+
+
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy60.jpg">[img60]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy61.jpg">[img61]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy62.jpg">[img62]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy63.jpg">[img63]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy64.jpg">[img64]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy65.jpg">[img65]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy66.jpg">[img66]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy67.jpg">[img67]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy68.jpg">[img68]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy69.jpg">[img69]</a>
+
+
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy70.jpg">[img70]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy71.jpg">[img71]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy72.jpg">[img72]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy73.jpg">[img73]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy74.jpg">[img74]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy75.jpg">[img75]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy76.jpg">[img76]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy77.jpg">[img77]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy78.jpg">[img78]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy79.jpg">[img79]</a>
+
+
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy80.jpg">[img80]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy81.jpg">[img81]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy82.jpg">[img82]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy83.jpg">[img83]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy84.jpg">[img84]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy85.jpg">[img85]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy86.jpg">[img86]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy87.jpg">[img87]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy88.jpg">[img88]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy89.jpg">[img89]</a>
+
+
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy90.jpg">[img90]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy91.jpg">[img91]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy92.jpg">[img92]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy93.jpg">[img93]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy94.jpg">[img94]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy95.jpg">[img95]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy96.jpg">[img96]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy97.jpg">[img97]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy98.jpg">[img98]</a>
+            <a class="cs-img" href="imgs/temp/slide1000/img_heavy99.jpg">[img99]</a>
+
+        </div>
+
+
+
+        <!-- <div class="cs-nav" data-slider="name-1"></div> -->
+    </div>
+    <!-- Slider - end
+    ============================================================== -->
+
+
+
+
+    <div class="container ma-t-50">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, harum, sed, eveniet accusamus laboriosam atque ex quasi eaque perferendis vero voluptatum recusandae rem debitis omnis quae dolorum maxime illo et.</p>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, fugiat, corporis, voluptatem, molestiae facere placeat voluptate quod voluptates doloribus magnam saepe inventore et ex laudantium excepturi quo praesentium eligendi ea.</p>
+    </div>
+
+
+    
+    
+
+
+    <!-- Scripts link & custom - begin
+    ============================================================== -->
+    <script src="../libs/scripts/jquery-1.10.2.min.js"></script> <!-- jQuery Libary -->
+    <script src="../libs/scripts/jquery.easing.min.js"></script> <!-- Easing Plugin -->
+    <script src="../code/codeslider.js"></script> <!-- Javascript Custom -->
+
+    <script type="text/javascript">
+
+        jQuery(document).ready(function($) {
+
+            // Slider init
+            $('.cs').codeslider();
+        });
+
+    </script>
+    <!-- Scripts link & custom - end
+    ============================================================== -->
+    
+</body>
+</html>

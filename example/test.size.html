@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<!--[if IE 7]> <html class="ie ie7"> <![endif]-->
+<!--[if IE 8]> <html class="ie ie8"> <![endif]-->
+<!--[if (gt IE 8)|!(IE)]> <html> <![endif]-->
+<head>
+
+    <!-- Page Infomations -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <!-- CSS link -->
+    <link rel="stylesheet" href="../libs/css/code09.css">
+    <link rel="stylesheet" href="../code/codeslider.css">
+
+    
+    <!-- Script link -->
+    <script src="../libs/scripts/modernizr.js"></script> <!-- Modernizr Plugins -->
+
+    
+    <!-- Style embed -->
+    <style type="text/css">
+
+        /* Page style */
+        article { float: left; width: 100%; }
+        section { float: left; margin-right: 44px; }
+        select { width: 120px; margin-left: 10px; }
+
+
+        /* Codeslider style */
+        .cs.height-fixed .cs-viewport { height: 600px; }
+        .cs-viewport { background-color: #444; }
+
+    </style>
+    
+</head>
+<body>
+
+
+    <!-- Header - begin
+    ============================================================== -->
+    <div class=" wrapper header logo-left dark">
+    <div class="container">
+        
+        <!-- Logo - begin
+        .......................................................... -->
+        <a class="logo" href="#">
+            <img src="../libs/imgs/logo.png" alt="[logo]">
+        </a>
+        <!-- Logo - end
+        .......................................................... -->
+
+    </div>
+    </div>
+    <!-- Header - end
+    ============================================================== -->
+
+
+
+
+
+    <!-- Breadcrumbs - begin
+    ============================================================== -->
+    <div class="wrapper breadcrumbs show-desktop">
+    <div class="container">
+        
+        <div class="page-title ma-b-20">
+            <h3 class="strong">FUCNTION</h3>
+            <h5>.HEIGHT - IMAGE FITFILL</h5>
+        </div>
+
+        <!-- Description - begin -->
+        <p>Image background <span class="label info">always center</span> in slide.
+            <br><span class="label info">imgHeight / img</span> opts only available in height-type <span class="label info">fixed</span>
+            <br>Three image-type options only select one.
+        </p>
+    </div>
+    </div>
+    <!-- Breadcrumbs - end
+    ============================================================== -->
+
+
+
+
+    <!-- Slider - begin
+    ============================================================== -->
+    <div class="container">
+
+        <div class="cs" data-slider="isNav-off isPag-on height-fixed">
+            
+            <a class="cs-img" href="imgs/img_size0.png">[img0]</a>
+            <a class="cs-img" href="imgs/img_size1.png">[img1]</a>
+            <a class="cs-img" href="imgs/img_size2.png">[img2]</a>
+            <a class="cs-img" href="imgs/img_size3.png">[img3]</a>
+            <a class="cs-img" href="imgs/img_size4.png">[img4]</a>
+            <a class="cs-img" href="imgs/img_size5.png">[img5]</a>
+            <a class="cs-img" href="imgs/img_size6.png">[img6]</a>
+            <a class="cs-img" href="imgs/img_size7.png">[img7]</a>
+            <a class="cs-img" href="imgs/img_size8.png">[img8]</a>
+            <a class="cs-img" href="imgs/img_size9.png">[img9]</a>
+
+        </div>
+
+    </div>
+    <!-- Slider - end
+    ============================================================== -->
+
+    
+    
+
+
+
+    <!-- Control - begin
+    ============================================================== -->
+    <div class="wrapper">
+    <div class="container">
+
+        <div class="hr dash left"></div>
+        
+        <!-- Height type setting - begin -->
+        <article>
+           <section>
+                <span>Height type :</span>
+
+                <select id="height">
+                    <option value="auto" selected="selected">auto</option>
+                    <option value="min">min</option>
+                    <option value="max">max</option>
+                    <option value="fixed">fixed</option>
+                </select>
+            </section> 
+        </article>
+        <!-- Height type setting - end -->
+
+        
+        <!-- Image type setting - begin -->
+        <article>
+            <section>
+                <span>Image width type :</span>
+
+                <select id="imgWidth">
+                    <option value="none" selected="selected">none</option>
+                    <option value="smallfit">small fit</option>
+                    <option value="largefit">large fit</option>
+                    <option value="autofit">auto fit</option>
+                </select>
+            </section>
+
+            <section>
+                <span>Image height type :</span>
+
+                <select id="imgHeight">
+                    <option value="none" selected="selected">none</option>
+                    <option value="smallfit">small fit</option>
+                    <option value="largefit">large fit</option>
+                    <option value="autofit">auto fit</option>
+                </select>
+            </section>
+
+            <section>
+                <span>Image type :</span>
+
+                <select id="img">
+                    <option value="none" selected="selected">none</option>
+                    <option value="smallfit">small fit</option>
+                    <option value="largefit">large fit</option>
+                    <option value="autofit">auto fit</option>
+
+                    <option value="smallfill">small fill</option>
+                    <option value="largefill">large fill</option>
+                    <option value="autofill">auto fill</option>
+                </select>
+            </section>
+        </article>
+        <!-- Image type setting - end -->
+
+    </div>
+    </div>
+    <!-- Control - end
+    ============================================================== -->
+
+
+    
+    
+
+
+    <!-- Scripts link & custom - begin
+    ============================================================== -->
+    <script src="../libs/scripts/jquery-1.10.2.min.js"></script> <!-- jQuery Libary -->
+    <script src="../libs/scripts/jquery.easing.min.js"></script> <!-- Easing Plugin -->
+    <script src="../code/codeslider.js"></script> <!-- Javascript Custom -->
+
+    <script type="text/javascript">
+
+        jQuery(document).ready(function($) {
+
+            // Codeslider init
+            $('.cs').codeslider();
+            var cs = $('.cs').data('codeslider');
+
+
+            // Control setting
+            var type = ['height', 'imgWidth', 'imgHeight', 'img'];
+            for (var i = type.length-1; i >= 0; i--) {
+
+                $('#' + type[i]).data('type', type[i]).change(function() {
+                    var _value = $(this).val() , _o = {};
+
+                    _o[$(this).data('type')] = _value;  // Object, i.e: {'height': value}
+                    cs.prop(_o);                        // Slider: update properties
+                }).change();
+            }
+        });
+
+    </script>
+    <!-- Scripts link & custom - end
+    ============================================================== -->
+    
+</body>
+</html>

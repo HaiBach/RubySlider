@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!--[if IE 7]> <html class="ie ie7"> <![endif]-->
+<!--[if IE 8]> <html class="ie ie8"> <![endif]-->
+<!--[if (gt IE 8)|!(IE)]> <html> <![endif]-->
+<head>
+
+    <!-- Page Infomations -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <!-- CSS link -->
+    <link rel="stylesheet" href="../libs/css/code09.css">
+    <link rel="stylesheet" href="../code/codeslider.css">
+    <link rel="stylesheet" href="css/example.css">
+
+
+    <!-- CSS embed -->
+    <style>
+        .cs.height-fixed .cs-canvas { height: 200px; }
+    </style>
+
+    
+    <!-- Script link -->
+    <script src="../libs/scripts/modernizr.js"></script> <!-- Modernizr Plugins -->
+    
+</head>
+<body>
+
+
+    <!-- Header - begin
+    ============================================================== -->
+    <div class=" wrapper header logo-left dark">
+    <div class="container">
+        
+        <!-- Logo - begin
+        .......................................................... -->
+        <a class="logo" href="#">
+            <img src="../libs/imgs/logo.png" alt="[logo]">
+        </a>
+        <!-- Logo - end
+        .......................................................... -->
+
+    </div>
+    </div>
+    <!-- Header - end
+    ============================================================== -->
+
+
+
+
+
+    <!-- Breadcrumbs - begin
+    ============================================================== -->
+    <div class="wrapper breadcrumbs show-desktop">
+    <div class="container">
+        
+        <div class="page-title ma-b-20">
+            <h3 class="strong">MARKUP</h3>
+            <h5>.UL SWITCH</h5>
+        </div>
+
+        <!-- Description -->
+        <p>Markup using unordered list tag <span class="text-code"> &lt;ul&gt;&lt;li&gt; </span>
+            <br>Open <span class="label info">developer tool</span> in browser to see clearly.
+        </p>
+    </div>
+    </div>
+    <!-- Breadcrumbs - end
+    ============================================================== -->
+
+
+
+
+    <!-- Slider - begin
+    ============================================================== -->
+    <div class="container">
+
+        <div class="cs" data-slider="height-fixed">
+            <ul class="cs-canvas">
+                <a class="cs-img" href="imgs/img0.png">[caption slide.0]</a>
+                <a class="cs-img" href="imgs/img1.png">[caption slide.1]</a>
+                <a class="cs-img" href="imgs/img2.png">[caption slide.2]</a>
+                <a class="cs-img" href="imgs/img3.png">[caption slide.3]</a>
+            </ul>
+        </div>
+
+    </div>
+    <!-- Slider - end
+    ============================================================== -->
+
+
+
+
+
+    <!-- Markup render output - begin
+    ============================================================== -->
+    <div class="container">
+
+    </div>
+    <!-- Markup render output - begin
+    ============================================================== -->
+
+
+    
+    
+
+
+    <!-- Scripts link & custom - begin
+    ============================================================== -->
+    <script src="../libs/scripts/jquery-1.10.2.min.js"></script> <!-- jQuery Libary -->
+    <script src="../libs/scripts/jquery.easing.min.js"></script> <!-- Easing Plugin -->
+    <script src="../code/codeslider.js"></script> <!-- Javascript Custom -->
+
+    <script type="text/javascript">
+
+        jQuery(document).ready(function($) {
+
+            // Codeslider init
+            $('.cs').codeslider();
+            var cs = $('.cs').data('codeslider');
+
+
+            // Render output
+            cs.ev.on('loadAll', function() {
+
+                // $('#output').text($('.cs').html());
+            });
+        });
+
+    </script>
+    <!-- Scripts link & custom - end
+    ============================================================== -->
+    
+</body>
+</html>

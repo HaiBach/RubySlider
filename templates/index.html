@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<!--[if IE 7]> <html class="ie ie7"> <![endif]-->
+<!--[if IE 8]> <html class="ie ie8"> <![endif]-->
+<!--[if (gt IE 8)|!(IE)]> <html> <![endif]-->
+<head>
+
+    <!-- Page Infomations -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <!-- Title of page -->
+    <title>CODESLIDER | Multi layout</title>
+
+    <!-- Favicon & apple-icon -->
+    <link rel="shortcut icon" href="../libs/imgs/icons/favicon.ico">
+    <link rel="apple-touch-icon" href="../libs/imgs/icons/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="../libs/imgs/icons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../libs/imgs/icons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="../libs/imgs/icons/apple-touch-icon-144x144.png">
+
+    
+    <!-- CSS link -->
+    <link rel="stylesheet" href="../libs/css/code09.css">
+    <link rel="stylesheet" href="../code/codeslider.css">
+
+    <!-- Font custom -->
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Raleway:100,200,400,700,900'>
+
+
+    <!-- CSS embed -->
+    <style>
+
+        /* Theme
+        ------------------------------------------------*/
+        /* Button */
+        .btn.actived { border-color: #fa0; color: #fa0; }
+    
+        /* Feature */
+        .feature-item { margin-bottom: 20px; }
+        .feature-item > * { margin-left: 63px; }
+        .feature-item > h5 { margin-bottom: 0; color: #000; }
+        .feature-item > p { color: #777; }
+
+        /* Icon feature */
+        .icon {
+            float: left;
+            width: 48px; height: 48px;
+            margin: 0 15px 0 0;
+            background: url(imgs/theme/feature_icon.png) no-repeat;
+        }
+        .icon.three         { background-position: 0 0; }
+        .icon.res           { background-position: -48px 0; }
+        .icon.css3          { background-position: -96px 0; }
+        .icon.touch         { background-position: -144px 0; }
+        .icon.lazy          { background-position: -192px -48px; }
+        .icon.fitfill       { background-position: -336px 0; }
+        .icon.center        { background-position: -288px 0; }
+        .icon.mutual        { background-position: -240px -48px; }
+        .icon.fullwidth     { background-position: -240px 0; }
+        .icon.showhide      { background-position: -288px -48px; }
+        .icon.layer         { background-position: -384px 0; }
+        .icon.multi         { background-position: -432px 0; }
+        .icon.autoplay      { background-position: -144px -48px; }
+        .icon.markup        { background-position: 0 -48px; }
+        .icon.keyboard      { background-position: -96px -48px; }
+        .icon.update        { background-position: -48px -48px; }
+
+        
+        /* View more */
+        .view-more > h5 {
+            height: 150px;
+            line-height: 150px;
+            text-align: center;
+        }
+        .view-more.demo > h5 { background-color: #0cf; }
+        .view-more.tutorial > h5 { background-color: #fa0; }
+
+
+        /* Title big */
+        .title-big {
+            overflow-y: hidden;
+            height: 55px;
+            border-bottom: 1px solid #e5e5e5;
+            margin-bottom: 50px;
+
+            font-family: 'Raleway', sans-serif;
+            font-size: 75px;
+            font-weight: 100;
+            line-height: 1em;
+            color: #ddd;
+            text-align: center;
+        }
+        @media only screen and (min-width: 1px) and (max-width: 767px) {
+            .title-big {
+                height: 30px;
+                font-size: 40px;
+                font-weight: 200;
+            }
+        }
+
+
+
+
+        
+        /* Slider
+        ------------------------------------------------*/
+        .cs { background-color: transparent; }
+        .sl1 .cs-img > img { background-color: #fa0; }
+        .nav-hide .cs-nav { display: none; }
+
+
+        /* Layer */
+        .logo1 {
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 2px solid #fff;
+        }
+        .line1 {
+            height: 0;
+            border-bottom: 3px solid #fff;
+            background-color: #fff;
+            box-shadow: 0 1px 0 hsla(0,0%,0%,.15);
+        }
+        .line2 {
+            width: 0;
+            border-left: 1px dashed #fff;
+        }
+
+        .text {
+            font-family: 'Raleway', sans-serif;
+            line-height: 1em;
+            text-shadow: 0 1px 0 hsla(0,0%,0%,.05) !important;
+            margin-bottom: 0 !important;
+        }
+
+        .text.thin { font-weight: 100; }
+        .text.light { font-weight: 200; }
+        .text.ex-bold { font-weight: 700; }
+        .text.ul-bold { font-weight: 900; }
+
+        .text.f90 { font-size: 90px; }
+        .text.f120 { font-size: 120px; }
+        .text.f200 { font-size: 200px; }
+        .text.f400 { font-size: 400px; }
+        
+        .img-box {
+            padding: 0;
+            background-color: #fff;
+            border: 8px solid #fff;
+            box-shadow: 3px 3px 0 hsla(0,0%,0%,.15);
+        }
+        .z1 { z-index: 1; }
+        .z2 { z-index: 2; }
+        .z3 { z-index: 3; }
+        .z4 { z-index: 4; }
+        .text-black { color: hsla(0,0%,0%,0.1) !important; }
+        .ie .text-black { color: #e02a2a !important; }
+
+    </style>
+
+
+    
+    <!-- Script link -->
+    <script src="../libs/scripts/modernizr.js"></script> <!-- Modernizr Plugins -->
+    
+</head>
+<body>
+
+
+    <!-- Header - begin
+    ============================================================== -->
+    <div class=" wrapper header logo-left">
+    <div class="container">
+        
+        <!-- Logo - begin
+        .......................................................... -->
+        <a class="logo no-pa" href="index.html" data-mScale="85">
+            <img src="../libs/imgs/logo_hl.png" alt="[logo]">
+        </a>
+        <!-- Logo - end
+        .......................................................... -->
+
+        
+
+        <!-- Menu - begin
+        .......................................................... -->
+        <nav class="menu-hor fx-animate text-small">
+            <ul class="menu">
+
+                <li>
+                    <a href="#">Templates</a>
+                    <ul class="menu right">
+                        <li><a href="index.html">Slider Layer | Home</a></li>
+                        <li><a href="slider.free.html">Slider Free</a></li>
+                        <li><a href="slider.simple.html">Slider Simple</a></li>
+                        <li><a href="slider.bg.html">Slider Background</a></li>
+                        <li><a href="slider.device.html">Slider Device</a></li>
+                        <li><a href="slider.classic1.html">Slider Classic 1</a></li>
+                        <li><a href="slider.classic2.html">Slider Classic 2</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </nav>
+        <!-- Menu - end
+        .......................................................... -->
+
+    </div>
+    </div>
+    <!-- Header - end
+    ============================================================== -->
+
+
+
+
+
+    <!-- Slider layer - begin
+    ============================================================== -->
+    <div class="wrapper">
+    <div class="">
+        
+
+        <div class="cs cs-default nav-hide bg-dark" data-slider="responsive-1156 media-940-960-1281 media-748-768-959 mCanvas-20 speed-600 isLoop-off isPag-on isKeyboard-on idBegin-0">
+            
+            <!-- Slide 1 - begin -->
+            <div>
+                <a class="cs-img" href="imgs/slider/trans.png" style="background-color: #fa0">[bg]</a>
+                
+                <div data-layer="xy-bottomOut; x-center y-206 start-500;">
+                    <a class="cs-img" href="imgs/slider/cs_logo.png">[logo]</a>
+                </div>
+                <div data-layer="xy-bottomOut width-504; x-center y-305 start-800;" class="line1"></div>
+                <div class="show-desktop" data-layer="xy-bottomOut; x-center y-320 start-1000;">
+                    <span style="font-size: 14px;">on code - multi slider</span>
+                </div>
+
+                
+
+                <!-- Texture matrix -->
+                <a  data-layer="
+                    count-infinite direction-alternate
+                    xy-topOut opacity-ra start-0 speed-10000 es-linear; x-0 y-ra start-500 speed-10000;"
+                    class="cs-img" href="imgs/slider/texture_matrix.png">[texture]</a>
+
+                <a  data-layer="
+                    count-infinite direction-alternate
+                    xy-bottomOut opacity-1 start-0 speed-20000 es-linear; x-100 y--1000 start-500 speed-20000;"
+                    class="cs-img" href="imgs/slider/texture_matrix.png">[texture]</a>
+
+                <a  data-layer="
+                    count-infinite direction-alternate
+                    xy-topOut opacity-1 start-0 speed-30000 es-linear; x-200 y-ra start-500 speed-30000;"
+                    class="cs-img" href="imgs/slider/texture_matrix.png">[texture]</a>
+
+                <a  data-layer="
+                    count-infinite direction-alternate
+                    xy-bottomOut opacity-1 start-0 speed-30000 es-linear; x-300 y--500 start-500 speed-30000;"
+                    class="cs-img" href="imgs/slider/texture_matrix.png">[texture]</a>
+
+                <a  data-layer="
+                    count-infinite direction-alternate
+                    xy-topOut opacity-1 start-0 speed-20000 es-linear; x-400 y-ra start-500 speed-20000;"
+                    class="cs-img" href="imgs/slider/texture_matrix.png">[texture]</a>
+
+                <a  data-layer="
+                    count-infinite direction-alternate
+                    xy-bottomOut opacity-1 start-0 speed-10000 es-linear; x-500 y--800 start-500 speed-10000;"
+                    class="cs-img" href="imgs/slider/texture_matrix.png">[texture]</a>
+
+                <a  data-layer="
+                    count-infinite direction-alternate
+                    xy-topOut opacity-1 start-0 speed-20000 es-linear; x-600 y-ra start-500 speed-20000;"
+                    class="cs-img" href="imgs/slider/texture_matrix.png">[texture]</a>
+
+                <a  data-layer="
+                    count-infinite direction-alternate
+                    xy-bottomOut opacity-1 start-0 speed-10000 es-linear; x-700 y--1000 start-500 speed-10000;"
+                    class="cs-img" href="imgs/slider/texture_matrix.png">[texture]</a>
+
+                <a  data-layer="
+                    count-infinite direction-alternate
+                    xy-topOut opacity-1 start-0 speed-20000 es-linear; x-800 y-ra start-500 speed-20000;"
+                    class="cs-img" href="imgs/slider/texture_matrix.png">[texture]</a>
+
+                <a  data-layer="
+                    count-infinite direction-alternate
+                    xy-bottomOut opacity-1 start-0 speed-30000 es-linear; x-900 y--500 start-500 speed-30000;"
+                    class="cs-img" href="imgs/slider/texture_matrix.png">[texture]</a>
+
+                <a  data-layer="
+                    count-infinite direction-alternate
+                    xy-topOut opacity-1 start-0 speed-20000 es-linear; x-1000 y-ra start-500 speed-20000;"
+                    class="cs-img" href="imgs/slider/texture_matrix.png">[texture]</a>
+
+                <a  data-layer="
+                    count-infinite direction-alternate
+                    xy-bottomOut opacity-1 start-0 speed-10000 es-linear; x-1100 y--500 start-500 speed-10000;"
+                    class="cs-img" href="imgs/slider/texture_matrix.png">[texture]</a>
+            </div>
+            <!-- Slide 1 - end -->
+
+
+
+
+            <!-- Slide 2 - begin -->
+            <div data-slide="delay-14000">
+                <a class="cs-img" href="imgs/slider/trans.png" style="background-color: #c2d900">[bg]</a>
+                
+                <!-- Intro -->
+                <h1 data-layer="
+                    scale-4;
+                    x-center y-10 scale-1 start-200 speed-200;
+                    xy-topOut opacity-1 start-500 speed-200;"
+                    class="text thin f400">3</h1>
+
+                <h1 data-layer="
+                    xy-bottomOut;
+                    x-center y-center start-700 speed-200;
+                    xy-topOut opacity-1 start-500 speed-200;"
+                    class="text thin f200">LAYOUT</h1>
+
+
+
+                <!-- Preview: ipad -->
+                <a  data-layer="
+                    xy-bottomOut;
+                    x-center y-center start-1500 speed-400;
+                    xy-rightOut start-1800 speed-200;
+
+                    x-center y-center opacity-0 scale-0.2 start-0 speed-0;   -> time-3300
+                    opacity-1 scale-1 start-500 speed-200;
+                    scale-4 start-2900 speed-200;
+                    "
+                    class="cs-img" href="imgs/slider/ipad_green.png">[ipad]</a>
+                
+                <a  data-layer="
+                    ;
+                    x-251 y-center start-1900 speed-0;
+                    xy-rightOut start-1400 speed-0;
+
+                    x-251 y-center start-900 speed-0;
+                    start-1800 speed-0;
+                    "
+                    class="cs-img" style="z-index: 1" href="imgs/slider/ipad_edgeleft.png">[edge left]</a>
+                
+                <a  data-layer="
+                    ;
+                    x-845 y-center start-1900 speed-0;
+                    xy-rihgtOut start-1400 speed-0;
+                    "
+                    class="cs-img" style="z-index: 1" href="imgs/slider/ipad_edgeright.png">[edge right]</a>
+
+                
+
+                <!-- Preview: image layout line -->
+                <a  data-layer="
+                    xy-leftOut;
+                    x-center y-center start-1500 speed-400;
+                    x-845 start-800 speed-800 opacity-0.5;
+                    xy-rightOut start-1000 speed-200;
+                    
+                    x-center y-center opacity-0 scale-0.2 start-0 speed-0; -> time-3300
+                    opacity-1 scale-1 start-700 speed-200;
+
+                    opacity-0.5 start-1000 speed-1000;
+                    scale-4 start-1500 speed-200;
+                    "
+                    class="cs-img" href="imgs/slider/layout_img0.jpg">[img0]</a>
+                
+                <a  data-layer="
+                    xy-leftOut;
+                    x--223 y-center opacity-0.5 start-1700 speed-400;
+                    x-center opacity-1 start-600 speed-800;
+                    xy-rightOut start-1000 speed-200;"
+                    class="cs-img" href="imgs/slider/layout_img1.jpg">[img1]</a>
+
+
+                <!-- Preview : image layout dot -->
+                <a  data-layer="
+                    xy-topOut;
+                    x-73 y-center start-4200 speed-200;
+                    x-667 opacity-1 start-800 speed-800;
+                    x-right scale-4 start-1300 speed-200;
+                    "
+                    class="cs-img" href="imgs/slider/layout_img3a.jpg">[img3a]</a>
+
+                <a  data-layer="
+                    xy-bottomOut;
+                    x--109 y-center start-4300 speed-200;
+                    x-489 opacity-1 start-900 speed-700;
+                    scale-4 start-1100 speed-200;
+                    "
+                    class="cs-img" href="imgs/slider/layout_img3b.jpg">[img3b]</a>
+
+                <a  data-layer="
+                    xy-topOut;
+                    x--291 y-center start-4400 speed-200;
+                    x-311 opacity-1 start-1000 speed-600;
+                    x-left scale-4 start-900 speed-200;
+                    "
+                    class="cs-img" href="imgs/slider/layout_img3c.jpg">[img3c]</a>
+
+
+
+                <!-- Preview : image layout custom -->
+                <a  data-layer="
+                    scale-4;
+                    x-center y-center scale-1 start-7100 speed-200;
+                    xy-bottomOut start-1800 speed-200;
+                    "
+                    class="cs-img img-box z4" href="imgs/slider/layout_img4.jpg">[img custom]</a>
+
+                <a  data-layer="
+                    x-center y-center;
+                    rotate-10 start-7500 speed-800;
+                    x--50 y-150 opacity-1 rotate--45 scale-0.65 start-800 speed-400;
+                    xy-leftOut rotate-0 start-600 speed-200;
+                    "
+                    class="cs-img img-box z3" href="imgs/slider/layout_img5.jpg">[img custom]</a>
+
+                <a  data-layer="
+                    x-center y-center;
+                    rotate--10 start-7500 speed-800;
+                    x-800 y--100 rotate-45 scale-0.4 start-800 speed-400;
+                    xy-topOut rotate-0 start-600 speed-200;
+                    "
+                    class="cs-img img-box z2" href="imgs/slider/layout_img6.jpg">[img custom]</a>
+
+                <a  data-layer="
+                    x-center y-center;
+                    rotate-15 start-7500 speed-800;
+                    x-830 y-200 rotate-60 scale-0.5 start-800 speed-400;
+                    xy-rightOut rotate-0 start-600 speed-200;
+                    "
+                    class="cs-img img-box z1" href="imgs/slider/layout_img7.jpg">[img custom]</a>
+
+
+
+                <!-- End animation -->
+                <h1 data-layer="
+                    xy-leftOut;
+                    x-100 y-82 skew-15 start-9100 speed-200 es-easeOutQuint;
+                    opacity-1 skew-0 start-300 speed-100 es-easeOutExpo;
+                    "
+                    class="text thin f200">3</h1>
+
+                <h1 data-layer="
+                    xy-rightOut;
+                    x-230 y-110 skew-15 start-9200 speed-200 es-easeOutQuint;
+                    opacity-1 skew-0 start-200 speed-100 es-easeOutExpo;
+                    "
+                    class="text thin f200">LAYOUT</h1>
+
+                <a  data-layer="
+                    x-161 y-343 start-9400 speed-1000;"
+                    class="cs-img" href="imgs/slider/layout_line.png">[layout line]</a>
+
+                <a  data-layer="
+                    x-480 y-343 start-9900 speed-1000;"
+                    class="cs-img" href="imgs/slider/layout_dot.png">[layout dot]</a>
+
+                <a  data-layer="
+                    x-763 y-338 start-10400 speed-1000;"
+                    class="cs-img" href="imgs/slider/layout_custom.png">[layout custom]</a>
+
+                <div data-layer="height-67 x-445 y-343 start-9600 speed-200" class="line2"></div>
+                <div data-layer="height-67 x-722 y-343 start-10300 speed-200" class="line2"></div>
+
+
+            </div>
+            <!-- Slide 2 - end -->
+
+
+
+
+
+            <!-- Slide 3 - begin -->
+            <div data-slide="delay-14000">
+                <a class="cs-img" href="imgs/slider/trans.png" style="background-color: #ff4499">[bg]</a>
+
+                
+                <!-- Heart shape -->
+                <a  data-layer="
+                    opacity-0;
+                    x-center y-center opacity-1 start-1500 speed-5000 es-easeInCubic;
+
+                    scale-0.1 opacity-0 start-6500 speed-400 ease-ease;"
+                    class="cs-img" href="imgs/slider/heart_line.png">[heart]</a>
+                
+                <a  data-layer="
+                    opacity-0 scale-4;
+                    x-center y-center opacity-1 scale-1 start-8500 speed-200;
+                    x-711 opacity-1 start-1000 speed-800;"
+                    class="cs-img" href="imgs/slider/heart_out.png">[heart]</a>
+
+                <a  data-layer="
+                    opacity-0 scale-4;
+                    x-center y-center opacity-1 scale-1 start-9000 speed-200;
+                    x-711 opacity-1 start-500 speed-800;"
+                    class="cs-img" href="imgs/slider/heart_in.png">[heart]</a>
+
+                
+
+                <!-- Text shape -->
+                <h1 data-layer="
+                    xy-rightOut;
+                    x-70 y-100 opacity-0.5 start-10000;"
+                    class="text f90 thin">LAYER</h1>
+
+                <h1 data-layer="
+                    xy-rightOut;
+                    x-70 y-182 opacity-0.5 start-10200;"
+                    class="text f90">SUPPORTED</h1>
+
+                <h1 data-layer="
+                    xy-rightOut;
+                    x-70 y-276 start-10400;"
+                    class="text f90 ul-bold">MULTI</h1>
+
+                <h1 data-layer="
+                    xy-rightOut;
+                    x-70 y-365 start-10600;"
+                    class="text f90 light">TRANSITIONS</h1>
+
+
+
+                <!-- Dot pattern -->
+                <a  data-layer="
+                    x-center y-center scale-8 opacity-0;
+
+                    x-center y-168 scale-1 opacity-1 start-500 speed-200;
+                    x-506 y-111 speed-400;
+                    x-453 y-111;
+                    x-391 y-167;
+                    x-403 y-269;
+                    x-568 y-420;
+
+                    x-734 y-267;
+                    x-745 y-167;
+                    x-683 y-111;
+                    x-629 y-111;
+                    x-center y-168 opacity-1;
+                    
+                    y-bottom opacity-1 start-2000 speed-600 es-easeInQuint;
+                    y-400 start-600 speed-300 es-easeOutQuint;
+                    y-bottom start-300;
+                    x-ra start-300 speed-2000;"
+                    class="cs-img z2" href="imgs/slider/point_black.png">[point black]</a>
+
+                
+                <a  data-layer="
+                    opacity-0;
+                    x-center y-168 opacity-1 start-1000 speed-800;
+
+                    y-bottom start-5000 speed-600 es-easeInQuint;
+                    y-400 start-600 speed-300 es-easeOutQuint;
+                    y-bottom start-300;
+                    x-ra start-300 speed-2000;"
+                    class="cs-img" href="imgs/slider/point_white.png">[point]</a>
+
+                <a  data-layer="
+                    opacity-0;
+                    x-506 y-111 opacity-1 start-1500 speed-800;
+
+                    y-bottom start-5000 speed-600 es-easeInQuint;
+                    y-400 start-600 speed-300 es-easeOutQuint;
+                    y-bottom start-300;
+                    x-ra start-300 speed-2000;"
+                    class="cs-img" href="imgs/slider/point_white.png">[point]</a>
+
+                <a  data-layer="
+                    opacity-0;
+                    x-453 y-111 opacity-1 start-2000 speed-800;
+
+                    y-bottom start-4800 speed-600 es-easeInQuint;
+                    y-400 start-600 speed-300 es-easeOutQuint;
+                    y-bottom start-300;
+                    x-ra start-300 speed-2000;"
+                    class="cs-img" href="imgs/slider/point_white.png">[point]</a>
+
+                <a  data-layer="
+                    opacity-0;
+                    x-391 y-167 opacity-1 start-2500 speed-800;
+
+                    y-bottom start-4300 speed-600 es-easeInQuint;
+                    y-400 start-600 speed-300 es-easeOutQuint;
+                    y-bottom start-300;
+                    x-ra start-300 speed-2000;"
+                    class="cs-img" href="imgs/slider/point_white.png">[point]</a>
+
+                <a  data-layer="
+                    opacity-0;
+                    x-403 y-269 opacity-1 start-3000 speed-800;
+
+                    y-bottom start-3200 speed-600 es-easeInQuint;
+                    y-400 start-600 speed-300 es-easeOutQuint;
+                    y-bottom start-300;
+                    x-ra start-300 speed-2000;"
+                    class="cs-img" href="imgs/slider/point_white.png">[point]</a>
+
+                <a  data-layer="
+                    opacity-0;
+                    x-568 y-420 opacity-1 start-3500 speed-800;
+
+                    y-bottom start-3500 speed-600 es-easeInQuint;
+                    y-400 start-600 speed-300 es-easeOutQuint;
+                    y-bottom start-300;
+                    x-ra start-300 speed-2000;"
+                    class="cs-img" href="imgs/slider/point_white.png">[point]</a>
+
+                <a  data-layer="
+                    opacity-0;
+                    x-734 y-267 opacity-1 start-4000 speed-800;
+
+                    y-bottom start-2700 speed-600 es-easeInQuint;
+                    y-400 start-600 speed-300 es-easeOutQuint;
+                    y-bottom start-300;
+                    x-ra start-300 speed-2000;"
+                    class="cs-img" href="imgs/slider/point_white.png">[point]</a>
+
+                <a  data-layer="
+                    opacity-0;
+                    x-745 y-167 opacity-1 start-4500 speed-800;
+
+                    y-bottom start-2200 speed-600 es-easeInQuint;
+                    y-400 start-600 speed-300 es-easeOutQuint;
+                    y-bottom start-300;
+                    x-ra start-300 speed-2000;"
+                    class="cs-img" href="imgs/slider/point_white.png">[point]</a>
+
+                <a  data-layer="
+                    opacity-0;
+                    x-683 y-111 opacity-1 start-5000 speed-800;
+
+                    y-bottom start-1500 speed-600 es-easeInQuint;
+                    y-400 start-600 speed-300 es-easeOutQuint;
+                    y-bottom start-300;
+                    x-ra start-300 speed-2000;"
+                    class="cs-img" href="imgs/slider/point_white.png">[point]</a>
+
+                <a  data-layer="
+                    opacity-0;
+                    x-629 y-111 opacity-1 start-5500 speed-800;
+
+                    y-bottom start-800 speed-600 es-easeInQuint;
+                    y-400 start-600 speed-300 es-easeOutQuint;
+                    y-bottom start-300;
+                    x-ra start-300 speed-2000;"
+                    class="cs-img" href="imgs/slider/point_white.png">[point]</a>
+                
+            </div>
+            <!-- Slide 3 - end -->
+
+
+
+
+
+
+            <!-- Slide 4 - begin -->
+            <div data-slide="delay-12000">
+                <a class="cs-img" href="imgs/slider/trans.png" style="background-color: #ff3030">[bg]</a>
+
+
+                <!-- Heading -->
+                <h1 data-layer="
+                    count-infinite direction-alternate delay-1000
+                    x-100 y-200 opacity-1 start-0 speed-40000;
+                    x-300 y-ra opacity-1 speed-20000;"
+                    class="text thin f90 text-center text-black"><span class="text ul-bold">FUNY</span> WITH<br>LOOP TRANSITIONS</h1>
+
+                <h1 data-layer="
+                    scale-4;
+                    x-center y-center scale-1 start-500"
+                    class="text thin f90 text-center"><span class="text ul-bold">FUNY</span> WITH<br>LOOP TRANSITIONS</h1>
+
+                
+                <!-- Polygon pattern -->
+                <a  data-layer="
+                    count-infinite direction-alternate
+                    x-right y-ra opacity-1 rotate-ra start-0 speed-10000 es-linear;
+                    x-left y-ra opacity-1 rotate-ra start-0 speed-10000;"
+                    class="cs-img" href="imgs/slider/polygon1.png">[polygon]</a>
+
+                <a  data-layer="
+                    count-infinite direction-alternate
+                    x-left y-ra opacity-1 scale-0.5 rotate-ra start-0 speed-13000 es-linear;
+                    x-right y-ra opacity-1 rotate-ra start-0 speed-10000;"
+                    class="cs-img" href="imgs/slider/polygon1.png">[polygon]</a>
+
+                <a  data-layer="
+                    count-infinite direction-alternate
+                    x-right y-ra opacity-1 scale-0.4 rotate-ra start-0 speed-8000 es-linear;
+                    x-left y-ra opacity-1 rotate-ra start-0 speed-10000;"
+                    class="cs-img" href="imgs/slider/polygon1.png">[polygon]</a>
+
+                <a  data-layer="
+                    count-infinite direction-alternate
+                    x-left y-ra opacity-1 scale-0.6 rotate-ra start-0 speed-13000 es-linear;
+                    x-right y-ra opacity-1 rotate-ra start-0 speed-15000;"
+                    class="cs-img" href="imgs/slider/polygon1.png">[polygon]</a>
+
+
+
+                <a  data-layer="
+                    count-infinite direction-alternate
+                    x-left y-ra opacity-1 scale-0.6 rotate-ra start-0 speed-6000 es-linear;
+                    x-right y-ra opacity-1 rotate-ra start-0 speed-6000;"
+                    class="cs-img" href="imgs/slider/polygon2.png">[polygon]</a>
+
+                <a  data-layer="
+                    count-infinite direction-alternate
+                    x-right y-ra opacity-1 scale-0.4 rotate-ra start-0 speed-8000 es-linear;
+                    x-left y-ra opacity-1 rotate-ra start-0 speed-5000;"
+                    class="cs-img" href="imgs/slider/polygon2.png">[polygon]</a>
+
+                <a  data-layer="
+                    count-infinite direction-alternate
+                    x-left y-ra opacity-1 scale-1 rotate-ra start-0 speed-5000 es-linear;
+                    x-right y-ra opacity-1 rotate-ra start-0 speed-6000;"
+                    class="cs-img" href="imgs/slider/polygon2.png">[polygon]</a>
+
+                <a  data-layer="
+                    count-infinite direction-alternate
+                    x-right y-ra opacity-1 scale-0.9 rotate-ra start-0 speed-8000 es-linear;
+                    x-left y-ra opacity-1 rotate-ra start-0 speed-7000;"
+                    class="cs-img" href="imgs/slider/polygon2.png">[polygon]</a>
+
+                <a  data-layer="
+                    count-infinite direction-alternate
+                    x-left y-ra opacity-1 scale-0.5 rotate-ra start-0 speed-3000 es-linear;
+                    x-right y-ra opacity-1 rotate-ra start-0 speed-4000;"
+                    class="cs-img z2" href="imgs/slider/polygon2.png">[polygon]</a>
+
+                <a  data-layer="
+                    count-infinite direction-alternate
+                    x-right y-ra opacity-1 scale-0.4 rotate-ra start-0 speed-4000 es-linear;
+                    x-left y-ra opacity-1 rotate-ra start-0 speed-5000;"
+                    class="cs-img z2" href="imgs/slider/polygon2.png">[polygon]</a>
+            </div>
+            <!-- Slide 4 - end -->
+
+
+
+
+
+
+            <!-- Slide 5 - begin -->
+            <div data-slide="delay-11000">
+                <a class="cs-img" href="imgs/slider/trans.png" style="background-color: #00dcd2">[bg]</a>
+                
+                <!-- Typography -->
+                <h1 data-layer="
+                    scale-0.2;
+                    x-center y-180 scale-1 start-200 speed-500;
+                    x-200 start-700 speed-200;
+                    x-280 start-200 speed-200;
+                    x-center start-100 speed-200;
+                    scale-6 start-200 speed-200 opacity-0;
+                    
+                    x-0 y-center scale-1 start-6000 speed-0;
+                    xy-topOut start-0 opacity-1;
+                    y-65 start-200 speed-800 opacity-1 es-easeOutExpo;
+                    "
+                    class="text thin f120">RESPONSIVE</h1>
+
+                <h1 data-layer="
+                    scale-0.2;
+                    x-center y-180 scale-1 start-2000 speed-500;
+                    scale-1.5 start-700 speed-200;
+                    scale-0.5 start-200 speed-200;
+                    scale-1 start-100 speed-200;
+                    scale-6 start-200 speed-200 opacity-0;
+                    
+                    x-0 y-165 scale-1 start-4000 speed-0;
+                    xy-leftOut start-0 speed-0 opacity-1;
+                    x-0 start-300 speed-800 opacity-1 es-easeOutExpo;
+                    "
+                    class="text ul-bold f120">IMAGE</h1>
+
+                <h1 data-layer="
+                    scale-0.2;
+                    x-center y-180 scale-1 start-4000 speed-500;
+                    rotate-25 start-700 speed-200;
+                    rotate--45 start-200 speed-200;
+                    rotate-0 start-100 speed-200;
+                    scale-6 start-200 speed-200 opacity-0;
+                    
+                    x-0 y-265 scale-1 start-2000 speed-0;
+                    xy-rightOut start-0 speed-0 opacity-1;
+                    x-0 start-400 speed-800 opacity-1 es-easeOutExpo;
+                    "
+                    class="text f120">SLIDESHOW</h1>
+
+                <h1 data-layer="
+                    scale-0.2;
+                    x-center y-180 scale-1 start-6000 speed-500;
+                    opacity-0 skew-30 start-700 speed-200;
+                    opacity-1 skew--30 start-100 speed-100;
+                    opacity-0 skew-30 start-100 speed-100;
+                    opacity-1 skew-0 start-100 speed-200;
+                    scale-6 start-200 speed-200 opacity-0;
+                    
+                    x-0 y-center scale-1 start-0 speed-0;
+                    xy-bottomOut start-0 opacity-1;
+                    y-370 start-500 speed-800 opacity-1 es-easeOutExpo;
+                    "
+                    class="text thin f120">TOUCH</h1>
+            </div>
+            <!-- Slide 5 - end -->
+            
+        </div>
+    
+    </div>
+    </div>
+    <!-- Slider layer - end
+    ============================================================== -->
+
+
+
+
+
+    <!-- Slider control - begin
+    ============================================================== -->
+    <div class="pa-b-50">
+    <div class="container">
+        
+        <a id="tBox" class="btn small" href="#">Layout box | refresh slider</a>
+        <a id="tLayout" class="btn small" href="#">Layut dot</a>
+        <a id="tSlideshow" class="btn small" href="#">Slideshow</a>
+        <a id="tTimer" class="btn small" href="#">Timer bar</a>
+        <a id="tDrag" class="btn small" href="#">Drag off</a>
+        <a id="tLoop" class="btn small" href="#">Loop slide</a>
+        
+
+        <!-- <div class="hr dash left ma-b-10"></div> -->
+    </div>
+    </div>
+    <!-- Slider control - end
+    ============================================================== -->
+
+    
+
+
+
+    
+    <!-- Feature - begin
+    ============================================================== -->
+    <div class="wrapper pa-b-50">
+    <div class="container">
+    
+    
+    <div class="row">
+        <!-- Heading - begin -->
+        <div class="span12 title-big">FEATURES</div>
+        <!-- Heading - end -->
+
+
+        
+        <!-- Feature item 1 - begin -->
+        <div class="span4 feature-item">
+            <div class="icon three">&nbsp;</div>
+            <h5>3 Layout slider</h5>
+
+            <p>Support multiply layout, style as much as possible.</p>
+        </div>
+        <!-- Feature item 1 - end -->
+
+
+        <!-- Feature item 2 - begin -->
+        <div class="span4 feature-item">
+            <div class="icon res">&nbsp;</div>
+            <h5>Responsive</h5>
+            
+            <p>Support fully responsive and non-responsive.</p>
+        </div>
+        <!-- Feature item 2 - end -->
+
+
+        <!-- Feature item 3 - begin -->
+        <div class="span4 feature-item">
+            <div class="icon css3">&nbsp;</div>
+            <h5>CSS3 transition</h5>
+            
+            <p>Priority use css3 transitions instead of jquery animate &rarr; reduced memory, faster performance.</p>
+        </div>
+        <!-- Feature item 3 - end -->
+
+    </div>
+
+
+    <div class="row">
+
+        <!-- Feature item 4 - begin -->
+        <div class="span4 feature-item">
+            <div class="icon touch">&nbsp;</div>
+            <h5>Touch friendly</h5>
+
+            <p>Easy goto prev/next slide with intuitive touch/drag.</p>
+        </div>
+        <!-- Feature item 4 - end -->
+
+
+        <!-- Feature item 5 - begin -->
+        <div class="span4 feature-item">
+            <div class="icon lazy">&nbsp;</div>
+            <h5>Image lazyload</h5>
+
+            <p>Show slider after loaded first slide, without waiting loaded all slide.</p>
+        </div>
+        <!-- Feature item 5 - end -->
+
+
+        <!-- Feature item 6 - begin -->
+        <div class="span4 feature-item">
+            <div class="icon fitfill">&nbsp;</div>
+            <h5>Image auto fit/fill</h5>
+
+            <p>Image auto fit/fill slide. Support for images of different sizes.</p>
+        </div>
+        <!-- Feature item 6 - end -->
+
+    </div>
+
+    
+
+    <div class="autohide">
+    <div class="row">
+
+        <!-- Feature item 7 - begin -->
+        <div class="span4 feature-item">
+            <div class="icon center">&nbsp;</div>
+            <h5>Image center</h5>
+            
+            <p>If image size smaller/larger than slide, it's always in center of the slide.</p>
+        </div>
+        <!-- Feature item 7 - end -->
+
+
+        <!-- Feature item 8 - begin -->
+        <div class="span4 feature-item">
+            <div class="icon mutual">&nbsp;</div>
+            <h5>Layout mutual support</h5>
+            
+            <p>Switch layout, fallback layout custom when not brower not support css3 transition.</p>
+        </div>
+        <!-- Feature item 8 - end -->
+
+
+        <!-- Feature item 9 - begin -->
+        <div class="span4 feature-item">
+            <div class="icon fullwidth">&nbsp;</div>
+            <h5>Fullwidth helper</h5>
+
+            <p>With mCanvas &amp; media, setup fullwidth becomes more easier.</p>
+        </div>
+        <!-- Feature item 9 - end -->
+        
+    </div>
+
+
+    <div class="row">
+
+        <!-- Feature item 10 - begin -->
+        <div class="span4 feature-item">
+            <div class="icon showhide">&nbsp;</div>
+            <h5>Show/hide slider</h5>
+
+            <p>Support show/hide slider depend on width page, or device.</p>
+        </div>
+        <!-- Feature item 10 - end -->
+
+
+        <!-- Feature item 11 - begin -->
+        <div class="span4 feature-item">
+            <div class="icon layer">&nbsp;</div>
+            <h5>Layer support</h5>
+            
+            <p>More vivid with layer, and css3 transform and easy setup.</p>
+        </div>
+        <!-- Feature item 11 - end -->
+
+
+        <!-- Feature item 12 - begin -->
+        <div class="span4 feature-item">
+            <div class="icon multi">&nbsp;</div>
+            <h5>Layer multi transition</h5>
+
+            <p>Support multi transition with unlimited number.
+            <br>Repeat and direction animation.</p>
+        </div>
+        <!-- Feature item 12 - end -->
+        
+    </div>
+
+
+    <div class="row">
+
+        <!-- Feature item 13 - begin -->
+        <div class="span4 feature-item">
+            <div class="icon autoplay">&nbsp;</div>
+            <h5>Autoplay</h5>
+
+            <p>Auto play when slide load complete. Auto pause when go out page, or scroll out sider</p>
+        </div>
+        <!-- Feature item 13 - end -->
+
+
+        <!-- Feature item 14 - begin -->
+        <div class="span4 feature-item">
+            <div class="icon markup">&nbsp;</div>
+            <h5>Markup flexible</h5>
+            
+            <p>Can use div or unordered list tag for slide. Position of elements  can be in/outside slider...</p>
+        </div>
+        <!-- Feature item 14 - end -->
+
+
+        <!-- Feature item 15 - begin -->
+        <div class="span4 feature-item">
+            <div class="icon update">&nbsp;</div>
+            <h5>Update options</h5>
+
+            <p>Updated most of slider options.</p>
+        </div>
+        <!-- Feature item 15 - end -->
+        
+    </div>
+    </div>
+
+
+    </div>    
+    </div>
+    <!-- Feature - end
+    ============================================================== -->
+
+
+
+
+
+
+    <!-- Template - begin
+    ============================================================== -->
+    <div class="wrapper">
+    <div class="container">
+    <div class="row">
+        
+        <!-- Heading - begin -->
+        <div class="title-big">TEMPLATES</div>
+        <!-- Heading - end -->
+
+
+        <!-- Template gallery - begin
+        .......................................................... -->
+        <div class="items show-full">
+            
+            <!-- Item 1 - begin -->
+            <article class="span4">
+                <figure class="thumbnail">
+                    <a class="linkto" href="slider.free.html">
+                        <img src="imgs/slider/template_free.jpg" alt="[image]">
+                    </a>
+                </figure>
+                
+                <a class="meta" href="slider.free.html">
+                    <p class="title">Slider free</p>
+                    <!-- <span class="tags">photography / graphic</span> -->
+                </a>
+            </article>
+            <!-- Item 1 - end -->
+
+            
+            <!-- Item 2 - begin -->
+            <article class="span4">
+
+                <figure class="thumbnail">
+                    <a class="linkto" href="slider.simple.html">
+                        <img src="imgs/slider/template_simple.jpg" alt="[image]">
+                    </a>
+                </figure>
+
+                <a class="meta" href="slider.simple.html">
+                    <p class="title">Slider simple</p>
+                    <!-- <span class="tags">photography / graphic</span> -->
+                </a>
+            </article>
+            <!-- Item 2 - end -->
+
+            
+            <!-- Item 3 - begin -->
+            <article class="span4">
+
+                <figure class="thumbnail">
+                    <a class="linkto" href="slider.bg.html">
+                        <img src="imgs/slider/template_bg.jpg" alt="[image]">
+                    </a>
+                </figure>
+                    
+                <a class="meta" href="slider.bg.html">
+                    <p class="title">Slider background</p>
+                    <!-- <span class="tags">photography / graphic</span> -->
+                </a>
+            </article>
+            <!-- Item 3 - end -->
+
+            
+            <!-- Item 4 - begin -->
+            <article class="span4">
+
+                <figure class="thumbnail">
+                    <a class="linkto" href="slider.device.html">
+                        <img src="imgs/slider/template_device.jpg" alt="[image]">
+                    </a>
+                </figure>
+                    
+                <a class="meta" href="slider.device.html">
+                    <p class="title">Slider device</p>
+                    <!-- <span class="tags">photography / graphic</span> -->
+                </a>
+            </article>
+            <!-- Item 4 - end -->
+
+            
+            <!-- Item 5 - begin -->
+            <article class="span4">
+
+                <figure class="thumbnail">
+                    <a class="linkto" href="slider.classic1.html">
+                        <img src="imgs/slider/template_classic1.jpg" alt="[image]">
+                    </a>
+                </figure>
+                    
+                <a class="meta" href="slider.classic1.html">
+                    <p class="title">Slider classic 1</p>
+                </a>
+            </article>
+            <!-- Item 5 - end -->
+
+
+            <!-- Item 6 - begin -->
+            <article class="span4">
+
+                <figure class="thumbnail">
+                    <a class="linkto" href="slider.classic2.html">
+                        <img src="imgs/slider/template_classic2.jpg" alt="[image]">
+                    </a>
+                </figure>
+                    
+                <a class="meta" href="slider.classic2.html">
+                    <p class="title">Slider classic 2</p>
+                </a>
+            </article>
+            <!-- Item 6 - end -->
+
+
+        </div>
+        <!-- Template gallery - end
+        .......................................................... -->
+
+
+    </div>
+    </div>
+    </div>
+    <!-- Template - end
+    ============================================================== -->
+
+
+
+
+    
+
+    <!-- View more - begin
+    ============================================================== -->
+    <!-- <div class="pa-b-100 bg-dark">
+    <div class="container">
+    <div class="row">
+        
+        <div class="span4">
+            <a class="view-more demo" href="#"><h5>DEMO OTHERS</h5></a>
+        </div>
+
+        <div class="span4">
+            <a class="view-more tutorial" href="#"><h5>TUTORIAL</h5></a>
+        </div>
+
+    </div>
+    </div>
+    </div> -->
+    <!-- View more - end
+    ============================================================== -->
+
+
+
+
+    
+    
+    <!-- Footer - begin
+    ============================================================== -->
+    <div class="wrapper footer bo-t">
+    <div class="container">
+        
+        <!-- Copyright -->
+        <section class="copyright">
+            <p>&copy; 2013 Thystudio. All Rights Reserved.</p>
+        </section>
+
+    </div>
+    </div>
+    <!-- Footer - end
+    ============================================================== -->
+
+
+
+
+    <!-- Script - begin
+    ============================================================== -->
+    <script src="../libs/scripts/jquery-1.10.2.min.js"></script> <!-- jQuery Libary -->
+    <script src="../libs/scripts/jquery.easing.min.js"></script> <!-- Easing Plugins -->
+    <script src="../libs/scripts/code09.js"></script> <!-- CODE09 custom -->
+    <script src="../code/codeslider.js"></script> <!-- Codeslider Plugins -->
+
+
+    <script type="text/javascript">
+
+        function toggle(cs, $el, propON, propOFF) {
+            var _a = 'actived';
+
+            if( $el.hasClass(_a) ) { $el.removeClass(_a); cs.prop(propOFF); }
+            else                   { $el.addClass(_a); cs.prop(propON); }
+        }
+
+        function control() {
+            var code = $('.cs').data('codeslider');
+
+
+            // Toggle
+            $('#tBox').on('click', function() {
+                var _el = $(this), _a = 'actived', _l = 'layout-box';
+
+                if( _el.hasClass(_a) ) {
+                    _el.removeClass(_a);
+                    $('body').removeClass(_l);
+                    code.refresh();
+                }
+                else {
+                    _el.addClass(_a);
+                    $('body').addClass(_l);
+                    code.refresh();
+                }
+                return false;
+            });
+
+            $('#tLayout').on('click', function() {
+                var _on  = { fx : 'random' }
+                  , _off = { fx : 'carousel' };
+
+                toggle(code, $(this), _on, _off);
+                return false;
+            });
+
+            $('#tSlideshow').on('click', function() {
+                var _on  = { isSlideshow: true, timer: 'arc' }
+                  , _off = { isSlideshow: false, timer: 'none' };
+
+                toggle(code, $(this), _on, _off);
+                return false;
+            });
+
+            $('#tTimer').on('click', function() {
+                var _on  = { timer : 'bar' }
+                  , _off = { timer : 'arc' };
+
+                toggle(code, $(this), _on, _off);
+                return false;
+            });
+
+            $('#tDrag').on('click', function() {
+                var _el = $(this), _a = 'actived', _c = 'nav-hide';
+                var _on  = { isDrag : false }
+                  , _off = { isDrag : true };
+
+                if( _el.hasClass(_a) ) {
+                    _el.removeClass(_a);
+                    code.prop(_off);
+                    $('.cs').addClass(_c);      // After update properties
+                    
+                }
+                else {
+                    _el.addClass(_a);
+                    code.prop(_on);
+                    $('.cs').removeClass(_c);   // After update properties
+                }
+                return false;
+            });
+
+            $('#tLoop').on('click', function() {
+                var _on  = { isLoop : true }
+                  , _off = { isLoop : false };
+
+                toggle(code, $(this), _on, _off);
+                return false;
+            });
+        }
+
+
+        $(window).load(function() {
+
+            // Slider init
+            $('.cs').codeslider();
+
+            // Control func
+            control();
+        });
+    </script>
+
+    <!-- Script - end
+    ============================================================== -->
+
+</body>
+</html>

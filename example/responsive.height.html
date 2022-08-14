@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<!--[if IE 7]> <html class="ie ie7"> <![endif]-->
+<!--[if IE 8]> <html class="ie ie8"> <![endif]-->
+<!--[if (gt IE 8)|!(IE)]> <html> <![endif]-->
+<head>
+
+    <!-- Page Infomations -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <!-- CSS link -->
+    <link rel="stylesheet" href="../libs/css/code09.css">
+    <link rel="stylesheet" href="../code/codeslider.css">
+    <link rel="stylesheet" href="css/example.css">
+
+
+    <!-- CSS embed -->
+    <style>
+        .btn.actived { border-color: #fa0; color: #fa0; }
+    </style>
+
+    
+    <!-- Script link -->
+    <script src="../libs/scripts/modernizr.js"></script> <!-- Modernizr Plugins -->
+    
+</head>
+<body>
+
+
+    <!-- Header - begin
+    ============================================================== -->
+    <div class=" wrapper header logo-left dark">
+    <div class="container">
+        
+        <!-- Logo - begin
+        .......................................................... -->
+        <a class="logo" href="#">
+            <img src="../libs/imgs/logo.png" alt="[logo]">
+        </a>
+        <!-- Logo - end
+        .......................................................... -->
+
+    </div>
+    </div>
+    <!-- Header - end
+    ============================================================== -->
+
+
+
+
+
+    <!-- Breadcrumbs - begin
+    ============================================================== -->
+    <div class="wrapper breadcrumbs show-desktop">
+    <div class="container">
+        
+        <div class="page-title ma-b-20">
+            <h3 class="strong">RESPONSIVE</h3>
+            <h5>.HEIGHT VALUE</h5>
+        </div>
+        
+        <!-- Description -->
+        <p>Max width of slider is <span class="label">1156px</span>
+            <br>Toggle height will set max height of slider is <span class="label">300px</span>
+        </p>
+        
+    </div>
+    </div>
+    <!-- Breadcrumbs - end
+    ============================================================== -->
+
+
+
+
+    <!-- Slider - begin
+    ============================================================== -->
+    <div class="container">
+        <div class="cs" data-slider="responsive-1156">
+
+            <a class="cs-img" href="imgs/img_wide0.png">[img0]</a>
+            <a class="cs-img" href="imgs/img_wide1.png">[img1]</a>
+            <a class="cs-img" href="imgs/img_wide2.png">[img2]</a>
+            <a class="cs-img" href="imgs/img_wide3.png">[img3]</a>
+            <a class="cs-img" href="imgs/img_wide4.png">[img4]</a>
+            <a class="cs-img" href="imgs/img_wide5.png">[img5]</a>
+
+        </div>
+    </div>
+    <!-- Slider - end
+    ============================================================== -->
+
+
+
+
+
+    <!-- Control - begin
+    ============================================================== -->
+    <div class="container">
+        <a id="tHeight" class="btn" href="#">Toggle height</a>
+    </div>
+    <!-- Control - end
+    ============================================================== -->
+
+    
+    
+
+
+    <!-- Scripts link & custom - begin
+    ============================================================== -->
+    <script src="../libs/scripts/jquery-1.10.2.min.js"></script> <!-- jQuery Libary -->
+    <script src="../libs/scripts/jquery.easing.min.js"></script> <!-- Easing Plugin -->
+    <script src="../code/codeslider.js"></script> <!-- Javascript Custom -->
+
+    <script type="text/javascript">
+
+        jQuery(document).ready(function($) {
+
+            // Slider init
+            $('.cs').codeslider();
+            var code = $('.cs').data('codeslider');
+
+
+            // Function toggle
+            $('#tHeight').on('click', function() {
+                var _el = $(this), _a = 'actived';
+
+                if( _el.hasClass(_a) ) {
+                    _el.removeClass(_a);
+                    code.prop({ responsive: 1156, height: 'auto' });
+                }
+                else {
+                    _el.addClass(_a);
+                    code.prop({ responsive : '1156-300' });
+                }
+
+                return false;
+            });
+
+        });
+
+    </script>
+    <!-- Scripts link & custom - end
+    ============================================================== -->
+    
+</body>
+</html>

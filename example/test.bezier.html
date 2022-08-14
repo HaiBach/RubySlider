@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<!--[if IE 7]> <html class="ie ie7"> <![endif]-->
+<!--[if IE 8]> <html class="ie ie8"> <![endif]-->
+<!--[if (gt IE 8)|!(IE)]> <html> <![endif]-->
+<head>
+
+    <!-- Page Infomations -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    
+    <!-- Script link -->
+    <script src="../libs/scripts/modernizr.js"></script> <!-- Modernizr Plugins -->
+
+    
+    <!-- Style embed -->
+    <style type="text/css">
+    
+        /* Codeslider core */
+        .cs-viewport            { overflow: hidden; }
+        .ie7 .cs-viewport       { position: relative; }
+
+        .cs-ready               { visibility: visible; }
+        .cs-hide                { display: none !important; }
+        .cs-hfit                { height: 100% !important; }
+        
+        .cs-canvas {
+            overflow: visible !important;
+            position: relative;
+            margin-bottom: 0;
+            -webkit-transition-property: -webkit-transform;
+               -moz-transition-property:    -moz-transform;
+                    transition-property:         transform;
+        }
+        .cs-canvas { height: 100%; }   /* Codeslider awake setup */
+
+        .cs-slide {
+            position: absolute;
+            display: block;
+            float: left;
+            left: 0; top: 0;
+            margin-bottom: 0;
+        }
+        .cs-slide.cs-sleep { height: 100%; }
+        .cs-slide.cs-sleep > * { display: none; }
+
+
+        /* Style css */
+        .border {
+            height: 500px;
+            margin-top: 50px;
+            border: 1px solid #ddd;
+        }
+
+        .cs-viewport {
+            height: 400px;
+            background-color: #f5f5f5;
+            margin-top: 50px;
+            overflow: visible;
+        }
+        .cs-canvas {
+        }
+
+        .cs-slide {
+            /*width: 300px; height: 200px;*/
+            width: 100%; height: 100%;
+            background-color: #ddd;
+        }
+
+
+        /* Transfrom */
+        .cs-canvas {
+            height: 200px; width: 300px;
+            -webkit-perspective: 800px;
+            -webkit-transform: translate(320px, 0);
+            -webkit-transform-origin: 50% 50%;
+            background-color: #eee;
+        }
+
+        .sl0 {
+            -webkit-transform: translate(0, 0);
+            z-index: 0;
+            opacity: 1;
+
+            -webkit-transition: -webkit-transform 2s;
+        }
+        .sl1 {
+            background-color: #ccc;
+            -webkit-transform: translate(251px, 0) rotateY(-75deg);
+            -webkit-transform-origin: 50% 50%;
+            z-index: -1
+            
+        }
+        .sl2 {
+            -webkit-transform: translate(302px, 0) rotateY(-75deg);
+            z-index: -2;
+        }
+        .sl3 {
+            background-color: #ccc;
+            -webkit-transform: translate(-251px, 0) rotateY(75deg);
+            z-index: -3;
+        }
+        .sl4 {
+            -webkit-transform: translate(-301px, 0) rotateY(75deg);
+            z-index: -4;
+        }
+
+    </style>
+    
+</head>
+<body>
+
+
+
+
+    <div class="container border">
+
+        <div class="cs-viewport">
+            <div class="cs-canvas">
+                
+                <div class="cs-slide sl3">SLIDE 3</div>
+                <div class="cs-slide sl4">SLIDE 4</div>
+                <div class="cs-slide sl0">SLIDE 0</div>
+                <div class="cs-slide sl1">SLIDE 1</div>
+                <div class="cs-slide sl2">SLIDE 2</div>
+
+            </div>
+        </div>
+                
+    </div>
+
+
+    
+    
+
+
+    <!-- Scripts link & custom - begin
+    ============================================================== -->
+    <script src="../libs/scripts/jquery-1.10.2.min.js"></script> <!-- jQuery Libary -->
+    <script src="../libs/scripts/jquery.easing.min.js"></script> <!-- Easing Plugin -->
+    <script src="../code/codeslider.js"></script> <!-- Javascript Custom -->
+
+    <script type="text/javascript">
+
+        'strict mode';
+        jQuery(document).ready(function($) {
+
+
+            function Bezier(p1,p2,p3,p4) {
+              // defining the bezier functions in the polynomial form
+              var Cx = 3 * p1;
+              var Bx = 3 * (p3 - p1) - Cx;
+              var Ax = 1 - Cx - Bx;
+
+              var Cy = 3 * p2;
+              var By = 3 * (p4 - p2) - Cy;
+              var Ay = 1 - Cy - By;
+
+              function bezier_x(t) { return t * (Cx + t * (Bx + t * Ax)); }
+              function bezier_y(t) { return t * (Cy + t * (By + t * Ay)); }
+
+
+              // using Newton's method to aproximate the parametric value of x for t
+              function bezier_x_der(t) { return Cx + t * (2*Bx + 3*Ax * t); }
+
+              function find_x_for(t) {
+                var x=t, i=0, z;
+
+                while (i < 5) { // making 5 iterations max
+                  z = bezier_x(x) - t;
+
+                  if (Math.abs(z) < 1e-3) break; // if already got close enough
+
+                  x = x - z/bezier_x_der(x);
+                  i++;
+                }
+
+                return x;
+              };
+
+              return function(t) {
+                return bezier_y(find_x_for(t));
+              }
+            }
+
+
+            function print_bezier(p1,p2,p3,p4) {
+              console.log("\nBezier: ("+p1+","+p2+","+p3+","+p4+")");
+
+              var time   = new Date();
+              var bezier = new Bezier(p1,p2,p3,p4);
+
+              console.log('-------+--------');
+              console.log(' I     | O      ');
+              console.log('-------+--------');
+
+              for (var i=0; i < 1.001; i += 0.1) {
+                console.log(i.toFixed(4) + " | "+ bezier(i).toFixed(4))
+              }
+
+              console.log('-------+--------');
+              console.log("Done in: "+ (new Date() - time) + "ms")
+            }
+
+            print_bezier(0,0,1,1);
+            print_bezier(.25,0.1,.25,1);
+
+        });
+
+    </script>
+    <!-- Scripts link & custom - end
+    ============================================================== -->
+    
+</body>
+</html>

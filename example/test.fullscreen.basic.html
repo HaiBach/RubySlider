@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--[if IE 7]> <html class="ie ie7"> <![endif]-->
+<!--[if IE 8]> <html class="ie ie8"> <![endif]-->
+<!--[if (gt IE 8)|!(IE)]> <html> <![endif]-->
+<head>
+
+    <!-- Page Infomations -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <!-- CSS link -->
+    <link rel="stylesheet" href="../libs/css/code09.css">
+    <link rel="stylesheet" href="../code/codeslider.css">
+
+
+    <!-- CSS embed -->
+    <style>
+        
+        /* Layer */
+        .text {
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+    </style>
+
+    
+    <!-- Script link -->
+    <script src="../libs/scripts/modernizr.js"></script> <!-- Modernizr Plugins -->
+    
+</head>
+<body>
+
+    <!-- Slider - begin
+    ============================================================== -->
+    <div class="cs" data-slider="isFullscreen-on fx-random speed-800 img-autofill isNav-off">
+        
+        <div>
+            <!-- Image background -->
+            <a class="cs-img" href="imgs/img0.png">[img]</a>
+
+
+            <!-- Layer text -->
+            <h6 data-layer="x-left y-top start-0 speed-0" class="text">left top</h6>
+            <h6 data-layer="x-right y-top start-0" class="text">right top</h6>
+
+            <h6 data-layer="x-left y-center start-0 speed-0" class="text">left center</h6>
+            <h6 data-layer="x-right y-center start-0" class="text">right center</h6>
+
+            <h6 data-layer="x-left y-bottom start-0 speed-0" class="text">left bottom</h6>
+            <h6 data-layer="x-right y-bottom start-0" class="text">right bottom</h6>
+
+            <h6 data-layer="x-center y-center opacity-0.85 scale-3 start-0" class="text">center center</h6>
+
+        </div>
+        
+        <!-- <a class="cs-img" href="imgs/img_heavy0.jpg">[img0]</a> -->
+        <a class="cs-img" href="imgs/img_heavy1.jpg">[img1]</a>
+        <a class="cs-img" href="imgs/img_heavy2.jpg">[img2]</a>
+        <a class="cs-img" href="imgs/img_heavy3.jpg">[img3]</a>
+        <a class="cs-img" href="imgs/img_heavy4.jpg">[img4]</a>
+        <a class="cs-img" href="imgs/img_heavy5.jpg">[img5]</a>
+        <a class="cs-img" href="imgs/img_heavy6.jpg">[img6]</a>
+        <a class="cs-img" href="imgs/img_heavy7.jpg">[img7]</a>
+        <a class="cs-img" href="imgs/img_heavy8.jpg">[img8]</a>
+        <a class="cs-img" href="imgs/img_heavy9.jpg">[img9]</a>
+
+    </div>
+    <!-- Slider - end
+    ============================================================== -->
+
+
+    
+    
+
+
+    <!-- Scripts link & custom - begin
+    ============================================================== -->
+    <script src="../libs/scripts/jquery-1.10.2.min.js"></script> <!-- jQuery Libary -->
+    <script src="../libs/scripts/jquery.easing.min.js"></script> <!-- Easing Plugin -->
+    <script src="../code/codeslider.js"></script> <!-- Javascript Custom -->
+
+    <script type="text/javascript">
+
+        jQuery(document).ready(function($) {
+
+            // Slider init
+            $('.cs').codeslider();
+        });
+
+    </script>
+    <!-- Scripts link & custom - end
+    ============================================================== -->
+    
+</body>
+</html>
