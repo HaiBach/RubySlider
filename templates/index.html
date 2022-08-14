@@ -4,1318 +4,1157 @@
 <!--[if (gt IE 8)|!(IE)]> <html> <![endif]-->
 <head>
 
+    <!-- Title of page -->
+    <title>RUBY SLIDER</title>
+
     <!-- Page Infomations -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    
-    <!-- Title of page -->
-    <title>CODESLIDER | Multi layout</title>
+    <meta name="description" content="Best Slider - Tabs premium jQuery plugin">
+    <meta name="keywords" content="tabs, slider, carousel, gallery, touch, swipe, drag, css3, responsive, transform, transition, lazyload, fullscreen, revolution slider, master slider, layer slider">
+    <meta name="author" content="HaiBach">
+
 
     <!-- Favicon & apple-icon -->
     <link rel="shortcut icon" href="../libs/imgs/icons/favicon.ico">
-    <link rel="apple-touch-icon" href="../libs/imgs/icons/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="../libs/imgs/icons/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="../libs/imgs/icons/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="../libs/imgs/icons/apple-touch-icon-144x144.png">
+    <link rel="icon" sizes="192x192" href="../libs/imgs/icons/icon-highres.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="../libs/imgs/icons/touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../libs/imgs/icons/touch-icon-ipad-retina.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="../libs/imgs/icons/touch-icon-ipad-pro.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../libs/imgs/icons/touch-icon-iphone-6-plus.png">
 
-    
+
     <!-- CSS link -->
-    <link rel="stylesheet" href="../libs/css/code09.css">
-    <link rel="stylesheet" href="../code/codeslider.css">
-
-    <!-- Font custom -->
-    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Raleway:100,200,400,700,900'>
+    <link rel="stylesheet" href="../libs/css/ruby00.css">
+    <link rel="stylesheet" href="../libs/css/ruby01.css">
+    <link rel="stylesheet" href="../libs/css/styles.custom.css">
+    <link rel="stylesheet" href="../ruby/rubyslider.css">
 
 
     <!-- CSS embed -->
     <style>
 
-        /* Theme
-        ------------------------------------------------*/
-        /* Button */
-        .btn.actived { border-color: #fa0; color: #fa0; }
-    
-        /* Feature */
-        .feature-item { margin-bottom: 20px; }
-        .feature-item > * { margin-left: 63px; }
-        .feature-item > h5 { margin-bottom: 0; color: #000; }
-        .feature-item > p { color: #777; }
-
-        /* Icon feature */
-        .icon {
-            float: left;
-            width: 48px; height: 48px;
-            margin: 0 15px 0 0;
-            background: url(imgs/theme/feature_icon.png) no-repeat;
-        }
-        .icon.three         { background-position: 0 0; }
-        .icon.res           { background-position: -48px 0; }
-        .icon.css3          { background-position: -96px 0; }
-        .icon.touch         { background-position: -144px 0; }
-        .icon.lazy          { background-position: -192px -48px; }
-        .icon.fitfill       { background-position: -336px 0; }
-        .icon.center        { background-position: -288px 0; }
-        .icon.mutual        { background-position: -240px -48px; }
-        .icon.fullwidth     { background-position: -240px 0; }
-        .icon.showhide      { background-position: -288px -48px; }
-        .icon.layer         { background-position: -384px 0; }
-        .icon.multi         { background-position: -432px 0; }
-        .icon.autoplay      { background-position: -144px -48px; }
-        .icon.markup        { background-position: 0 -48px; }
-        .icon.keyboard      { background-position: -96px -48px; }
-        .icon.update        { background-position: -48px -48px; }
-
-        
-        /* View more */
-        .view-more > h5 {
-            height: 150px;
-            line-height: 150px;
-            text-align: center;
-        }
-        .view-more.demo > h5 { background-color: #0cf; }
-        .view-more.tutorial > h5 { background-color: #fa0; }
-
-
-        /* Title big */
-        .title-big {
-            overflow-y: hidden;
-            height: 55px;
-            border-bottom: 1px solid #e5e5e5;
-            margin-bottom: 50px;
-
-            font-family: 'Raleway', sans-serif;
-            font-size: 75px;
-            font-weight: 100;
-            line-height: 1em;
-            color: #ddd;
-            text-align: center;
-        }
-        @media only screen and (min-width: 1px) and (max-width: 767px) {
-            .title-big {
-                height: 30px;
-                font-size: 40px;
-                font-weight: 200;
-            }
-        }
-
-
-
-
-        
-        /* Slider
-        ------------------------------------------------*/
-        .cs { background-color: transparent; }
-        .sl1 .cs-img > img { background-color: #fa0; }
-        .nav-hide .cs-nav { display: none; }
-
-
-        /* Layer */
-        .logo1 {
-            padding: 20px;
-            margin-bottom: 20px;
-            border: 2px solid #fff;
-        }
-        .line1 {
-            height: 0;
-            border-bottom: 3px solid #fff;
+        /* STYLE CUSTOM FOR HOME */
+        .bg-wrap {
+            padding-top: 24px; padding-bottom: 24px;
             background-color: #fff;
-            box-shadow: 0 1px 0 hsla(0,0%,0%,.15);
+            border-radius: 4px;
         }
-        .line2 {
-            width: 0;
-            border-left: 1px dashed #fff;
-        }
-
-        .text {
-            font-family: 'Raleway', sans-serif;
-            line-height: 1em;
-            text-shadow: 0 1px 0 hsla(0,0%,0%,.05) !important;
-            margin-bottom: 0 !important;
-        }
-
-        .text.thin { font-weight: 100; }
-        .text.light { font-weight: 200; }
-        .text.ex-bold { font-weight: 700; }
-        .text.ul-bold { font-weight: 900; }
-
-        .text.f90 { font-size: 90px; }
-        .text.f120 { font-size: 120px; }
-        .text.f200 { font-size: 200px; }
-        .text.f400 { font-size: 400px; }
-        
-        .img-box {
-            padding: 0;
-            background-color: #fff;
-            border: 8px solid #fff;
-            box-shadow: 3px 3px 0 hsla(0,0%,0%,.15);
-        }
-        .z1 { z-index: 1; }
-        .z2 { z-index: 2; }
-        .z3 { z-index: 3; }
-        .z4 { z-index: 4; }
-        .text-black { color: hsla(0,0%,0%,0.1) !important; }
-        .ie .text-black { color: #e02a2a !important; }
-
     </style>
 
 
-    
-    <!-- Script link -->
-    <script src="../libs/scripts/modernizr.js"></script> <!-- Modernizr Plugins -->
-    
 </head>
 <body>
 
+    <!-- HEADER - begin
+    ======================================================================== -->
+    <div class="wrapper header logo-left"><div class="container">
 
-    <!-- Header - begin
-    ============================================================== -->
-    <div class=" wrapper header logo-left">
+        <!-- Logo -->
+        <a class="logo" href="../templates/" data-mScale="100">RubySlider</a>
+
+        <!-- Menu -->
+        <nav data-rubymenu></nav>
+
+    </div></div>
+    <!-- HEADER - end
+    ======================================================================== -->
+
+
+
+
+
+
+
+
+    <!-- PLUGINS PREVIEW - begin
+    ======================================================================== -->
+    <div class="wrapper pa-b-100" style="overflow: hidden;">
+
+        <!-- TITLE HEADING - begin -->
+        <style>
+            .title-head h1 {
+                letter-spacing: 4px;
+            }
+        </style>
+        <div class="title-head">
+        <div class="title-head-inner">
+            <h1>PLUGIN PREVIEW</h1>
+            <h5>best slider &amp; tabs premium jQuery plugin</h5>
+        </div>
+        </div>
+        <!-- TITLE HEADING - end -->
+
+
+
+        <!-- SLIDER PREVIEW - begin -->
+        <style>
+            .slider-preview > .rs01viewport {
+                overflow: visible;
+            }
+            .slider-preview .rs01slide {
+                border-radius: 4px;
+            }
+            .slider-preview .rs01ss-control {
+                right: 5px; top: 5px;
+            }
+
+            .slider-preview .rs01iframe {
+                display: block;
+                margin-bottom: 0;
+            }
+        </style>
+
+        <div class="container">
+        <div class="slider-preview rs01 rs01timer-arcTop"
+            data-slider='{
+                "fx"          : "coverflow3D",
+                "coverflow3D" : { "widthSlide" : [0.8, [940, 960, 10000]], "opacity" : 0.3 },
+                "speed"       : 800,
+                "width"       : 940,
+                "imageback"   : { "position" : "fit" },
+                "isKeyboard"  : true,
+
+                "isSlideshow" : true,
+                "slideshow"   : { "delay" : 5000, "isAutoRun" : false },
+                "timerArc"    : { "stroke" : "#cc0055" },
+                "video"       : { "isPauseThenRemove" : true }
+            }'>
+
+            <a class="rs01imgback" href="imgs/vietnam-large1.jpg">vietnam 1</a>
+            <a class="rs01imgback" href="imgs/vietnam-large2.jpg">vietnam 2</a>
+            <a class="rs01imgback" href="imgs/vietnam-large3.jpg">vietnam 3</a>
+            <a class="rs01imgback" href="imgs/vietnam-large4.jpg">vietnam 4</a>
+
+            <!-- Video iframe -->
+            <a class="rs01imgback" href="imgs/video-preview.jpg" data-video-link="https://www.youtube.com/watch?v=2O0nz6o_oAE">Pictures of South East Asia</a>
+
+        </div>
+        </div>
+        <!-- SLIDER PREVIEW - end -->
+
+    </div>
+    <!-- PLUGINS PREVIEW - end
+    ======================================================================== -->
+
+
+
+
+
+
+
+    <!-- EFFECT OTHERS - begin
+    ======================================================================== -->
+    <style>
+        .effect-others {
+            background-color: #f9f9f9;
+            border: 1px solid #e5e5e5;
+            border-width: 1px 0;
+            text-align: center;
+        }
+
+        .effect-title {
+            display: inline-block;
+            margin: 20px auto 50px auto;
+            padding: 10px 25px;
+            border: 1px solid #999;
+            border-radius: 20px;
+        }
+        .effect-title:hover {
+            border-color: #c05;
+        }
+
+
+        /* SLIDER */
+        .effect-others .rs01 {
+            text-align: left;
+        }
+        .effect-others .rs01pag.rs01bullet {
+            position: absolute;
+            bottom: 0;
+        }
+    </style>
+
+    <div class="wrapper effect-others"><div class="container">
+
+        <!-- Heading - begin -->
+        <div class="title-big-wrap">
+            <h1>LAYOUT <strong>&amp;</strong> EFFECT OTHERS</h1>
+        </div>
+        <!-- Heading - end -->
+
+
+
+
+        <div class="row">
+
+            <!-- MATH EFFECT - begin -->
+            <div class="col6">
+            <div class="rs01 ruby-mark"
+                data-slider='{
+                    "fx"    : "rectRun",
+                    "speed" : 800,
+                    "width" : 940,
+                    "pag"   : { "type": "bullet", "isMark": true }
+                }'>
+
+                <a class="rs01imgback" href="imgs/season-landscape2.jpg">season 2</a>
+                <a class="rs01imgback" href="imgs/season-landscape4.jpg">season 4</a>
+                <a class="rs01imgback" href="imgs/season-landscape7.jpg">season 7</a>
+            </div>
+
+            <a class="effect-title" href="slider-effect-math.html" target="_blank">8 Math Effects</a>
+            </div>
+            <!-- MATH EFFECT - end -->
+
+
+
+            <!-- CSS ONE EFFECT - begin -->
+            <div class="col6">
+            <div class="rs01 ruby-mark"
+                data-slider='{
+                    "fx"    : "cssOne",
+                    "speed" : 800,
+                    "width" : 940,
+                    "pag"   : { "type": "bullet", "isMark": true }
+                }'>
+
+                <a class="rs01imgback" href="imgs/season-landscape2.jpg">season 2</a>
+                <a class="rs01imgback" href="imgs/season-landscape4.jpg">season 4</a>
+                <a class="rs01imgback" href="imgs/season-landscape7.jpg">season 7</a>
+            </div>
+
+            <a class="effect-title" href="slider-effect-cssOne.html" target="_blank">50+ CSS One Effects</a>
+            </div>
+            <!-- CSS ONE EFFECT - end -->
+
+
+
+            <!-- CENTER LAYOUT - LINE EFFECT - begin -->
+            <div class="col6">
+            <div class="rs01 ruby-mark"
+                data-slider='{
+                    "fx"         : "line",
+                    "speed"      : 400,
+                    "width"      : 755,
+                    "widthSlide" : 0.8,
+                    "margin"     : 1,
+                    "pag"        : { "type": "bullet", "isMark": true }
+                }'>
+
+                <a class="rs01imgback" href="imgs/season-landscape2.jpg">season 2</a>
+                <a class="rs01imgback" href="imgs/season-landscape4.jpg">season 4</a>
+                <a class="rs01imgback" href="imgs/season-landscape7.jpg">season 7</a>
+            </div>
+
+            <a class="effect-title" href="slider-layout-center.html" target="_blank">Center Layout - Line Effect</a>
+            </div>
+            <!-- CENTER LAYOUT - LINE EFFECT - end -->
+
+
+
+            <!-- TABS LAYOUT - begin -->
+            <div class="col6">
+            <div class="rs01 rs01flat"
+                data-slider='{
+                    "optionsPlus" : "tabs",
+                    "fx"          : "cssOne",
+                    "cssOne"      : "scalePulse",
+                    "speed"       : 800,
+                    "pag"         : { "align": "center" }
+                }'>
+
+
+                <div>
+                    <div class="rs01pagitem">OVERVIEW</div>
+
+                    <div class="font-blokk">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet blanditiis aspernatur repellendus, esse illum suscipit nihil, minima beatae quaerat labore nisi fugit, officiis dignissimos saepe ab facilis qui non quas!</p>
+                        <p>Nam facilis tempore maxime incidunt deserunt, ipsum pariatur, accusamus animi quidem velit tenetur eum nesciunt quos veniam architecto neque impedit! Sed accusamus commodi dignissimos dolorem distinctio, itaque dicta non maiores?</p>
+                    </div>
+                </div>
+
+
+                <div>
+                    <div class="rs01pagitem">LAYOUT</div>
+
+
+                    <!-- Dummy Content - begin -->
+                    <div class="row font-blokk">
+                        <div class="col4">
+                            <p class="bo-l-h"><i>Consectetur adipisicing elit. Vel, sequi, quis, minima, dolor quisquam numquam quod in repudiandae officia.</i></p>
+                        </div>
+
+                        <div class="col8">
+                            <p class="dropcap">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti, pariatur aliquam molestias aspernatur non. Facere, quibusdam, reiciendis, natus laudantium debitis suscipit consequatur voluptatibus mollitia temporibus quia ratione dignissimos magnam provident.</p>
+                            <p>Assumenda, repudiandae, iste magni labore culpa eum expedita eligendi odio molestiae temporibus id ab nihil ad sunt mollitia veritatis excepturi. Ullam, odit nesciunt doloribus natus non repudiandae error itaque vero?</p>
+                        </div>
+                    </div>
+                    <!-- Dummy Content - end -->
+                </div>
+
+
+                <div>
+                    <div class="rs01pagitem">SWIPE PREVENT</div>
+
+                    <form class="block">
+
+                        <input type="text" class="large" placeholder="Username">
+                        <input type="text" class="large" placeholder="Password">
+                        <input type="text" class="large" placeholder="Repeat Password">
+                        <input type="text" class="large" placeholder="Email">
+                        <textarea name="" cols="30" rows="5" placeholder="Your bio"></textarea>
+
+                        <label class="checkbox text-small muted pull-left" for="terms">
+                            <input id="terms" type="checkbox">I have read and I agree the Terms of Use
+                        </label>
+
+                        <input class="btn large pull-right no-ma" type="submit" value="Register">
+                    </form>
+                </div>
+
+
+                <div>
+                    <div class="rs01pagitem">IMAGE LAZYLOAD</div>
+
+                    <div class="row">
+                        <div class="col4 col-xs-4">
+                            <a class="rs01img card-img" href="imgs/food-thumbnail1.jpg">Food 1</a>
+                        </div>
+
+                        <div class="col4 col-xs-4">
+                            <a class="rs01img card-img" href="imgs/food-thumbnail2.jpg">Food 2</a>
+                        </div>
+
+                        <div class="col4 col-xs-4">
+                            <a class="rs01img card-img" href="imgs/food-thumbnail3.jpg">Food 3</a>
+                        </div>
+
+                        <div class="col4 col-xs-4">
+                            <a class="rs01img card-img" href="imgs/food-thumbnail4.jpg">Food 4</a>
+                        </div>
+
+                        <div class="col4 col-xs-4">
+                            <a class="rs01img card-img" href="imgs/food-thumbnail6.jpg">Food 6</a>
+                        </div>
+
+                        <div class="col4 col-xs-4">
+                            <a class="rs01img card-img" href="imgs/food-thumbnail7.jpg">Food 7</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div>
+                    <div class="rs01pagitem">IFRAME</div>
+
+                    <div>
+                        <a class="rs01iframe" href="https://www.google.com/maps/embed/v1/place?key=AIzaSyCCdHNpkWq_yU8PbLAF_r6CnnGCfNWcfro&amp;q=Tour+Eiffel,Champ-de-Mars,5+Avenue+Anatole+France,75007+Paris&amp;zoom=17" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></a>
+                    </div>
+                </div>
+            </div>
+
+            <a class="effect-title" href="page-templates-tabs.html" target="_blank">Tabs Layout</a>
+            </div>
+            <!-- TABS LAYOUT - end -->
+
+        </div>
+    </div></div>
+    <!-- EFFECT OTHERS - end
+    ======================================================================== -->
+
+
+
+
+
+
+
+    <!-- CREATE CUSTOM CSS EFFECTS - begin
+    ======================================================================== -->
+    <style>
+        .create-custom-css-effect {
+            padding-top: 50px; padding-bottom: 50px;
+            background-color: #cc0055;
+        }
+        .create-custom-css-effect .title {
+            color: #fff;
+        }
+        a.btn-try-it-now {
+            background-color: rgba(0,0,0,0.2);
+            border-color: #333;
+            color: #fff;
+            -webkit-transition: background-color .2s;
+                    transition: background-color .2s;
+        }
+        a.btn-try-it-now:hover {
+            background-color: rgba(0,0,0,0.8);
+            border-color: #333;
+            color: #fff;
+        }
+
+        .create-custom-css-effect .preview img {
+            display: block;
+            width: 100%; height: auto;
+            max-width: 300px;
+        }
+        @media only screen and (min-width: 1px) and (max-width: 767px) {
+            .create-custom-css-effect .preview {
+                text-align: center;
+            }
+            .create-custom-css-effect .preview a {
+                display: inline-block;
+            }
+        }
+    </style>
+
+    <div class="create-custom-css-effect"><div class="container"><div class="row">
+        <div class="col6 col-xs-6">
+            <h1 class="title">CREATE CUSTOM <br><strong>CSS-EFFECT</strong></h1>
+            <a class="btn btn-try-it-now" href="page-create-css-effect.html" target="_blank">Try It Now</a>
+        </div>
+        <div class="col6 col-xs-6 preview">
+            <a href="page-create-css-effect.html" target="_blank">
+                <img src="imgs/page-create-css-effect/create-css-effect-01.svg" alt="Create custom CSS effect">
+            </a>
+        </div>
+    </div></div></div>
+    <!-- CREATE CUSTOM CSS EFFECTS - end
+    ======================================================================== -->
+
+
+
+
+
+
+
+    <!-- STARTER TEMPLATES - begin
+    ======================================================================== -->
+    <div class="wrapper">
     <div class="container">
-        
-        <!-- Logo - begin
+    <div class="row">
+
+        <!-- Heading - begin -->
+        <div class="title-big-wrap">
+            <h1>70+ STARTER TEMPLATES</h1>
+            <p class="muted text-center">including features templates</p>
+        </div>
+        <!-- Heading - end -->
+
+
+
+        <!-- Slider templates - begin
         .......................................................... -->
-        <a class="logo no-pa" href="index.html" data-mScale="85">
-            <img src="../libs/imgs/logo_hl.png" alt="[logo]">
-        </a>
-        <!-- Logo - end
+        <div class="items show-full thumbnail-slider clearfix">
+
+            <!-- Item - begin -->
+            <div class="col3 col-xs-4 col-xxs-6">
+                <article>
+                    <figure class="thumbnail">
+                        <a class="linkto" href="slider-effect-coverflow3D.html">
+                            <img src="imgs/template-fx-coverflow3D.png" alt="Coverflow3D Effect">
+                        </a>
+                    </figure>
+
+                    <a class="meta" href="slider-effect-coverflow3D.html">
+                        <p class="title">Coverflow3D Effect</p>
+                    </a>
+                </article>
+            </div>
+            <!-- Item - end -->
+
+
+            <!-- Item - begin -->
+            <div class="col3 col-xs-4 col-xxs-6">
+                <article>
+                    <figure class="thumbnail">
+                        <a class="linkto" href="slider-layout-classic1.html">
+                            <img src="imgs/template-layout-classic1.png" alt="Classic-1 Layout">
+                        </a>
+                    </figure>
+
+                    <a class="meta" href="slider-layout-classic1.html">
+                        <p class="title">Classic-1 Layout</p>
+                    </a>
+                </article>
+            </div>
+            <!-- Item - end -->
+
+
+            <!-- Item - begin -->
+            <div class="col3 col-xs-4 col-xxs-6">
+                <article>
+                    <figure class="thumbnail">
+                        <a class="linkto" href="slider-layout-coverscreen.html">
+                            <img src="imgs/template-layout-fullscreen.png" alt="CoverScreen Layout">
+                        </a>
+                    </figure>
+
+                    <a class="meta" href="slider-layout-coverscreen.html">
+                        <p class="title">CoverScreen Layout</p>
+                    </a>
+                </article>
+            </div>
+            <!-- Item - end -->
+
+
+            <!-- Item - begin -->
+            <div class="col3 col-xs-4 col-xxs-6">
+                <article>
+                    <figure class="thumbnail">
+                        <a class="linkto" href="slider-layout-outbox.html">
+                            <img src="imgs/template-layout-outbox.png" alt="Outbox Layout">
+                        </a>
+                    </figure>
+
+                    <a class="meta" href="slider-layout-outbox.html">
+                        <p class="title">Outbox Layout</p>
+                    </a>
+                </article>
+            </div>
+            <!-- Item - end -->
+
+
+            <!-- Item - begin -->
+            <div class="col3 col-xs-4 col-xxs-6">
+                <article>
+                    <figure class="thumbnail">
+                        <a class="linkto" href="slider-layout-nested.html">
+                            <img src="imgs/template-layout-nested.png" alt="Nested Layout">
+                        </a>
+                    </figure>
+
+                    <a class="meta" href="slider-layout-nested.html">
+                        <p class="title">Nested Layout</p>
+                    </a>
+                </article>
+            </div>
+            <!-- Item - end -->
+
+
+            <!-- Item - begin -->
+            <div class="col3 col-xs-4 col-xxs-6">
+                <article>
+                    <figure class="thumbnail">
+                        <a class="linkto" href="slider-layout-caption.html">
+                            <img src="imgs/template-layout-caption.png" alt="Caption Layout">
+                        </a>
+                    </figure>
+
+                    <a class="meta" href="slider-layout-caption.html">
+                        <p class="title">Caption Layout</p>
+                    </a>
+                </article>
+            </div>
+            <!-- Item - end -->
+
+
+            <!-- Item - begin -->
+            <div class="col3 col-xs-4 col-xxs-6">
+                <article>
+                    <figure class="thumbnail">
+                        <a class="linkto" href="slider-layout-heightAuto.html">
+                            <img src="imgs/template-layout-heightAuto.png" alt="Height-Auto Layout">
+                        </a>
+                    </figure>
+
+                    <a class="meta" href="slider-layout-heightAuto.html">
+                        <p class="title">Height-Auto Layout</p>
+                    </a>
+                </article>
+            </div>
+            <!-- Item - end -->
+
+
+            <!-- Item - begin -->
+            <div class="col3 col-xs-4 col-xxs-6">
+                <article>
+                    <figure class="thumbnail">
+                        <a class="linkto" href="slider-layout-inbox.html">
+                            <img src="imgs/template-layout-inbox.png" alt="Slider in Box">
+                        </a>
+                    </figure>
+
+                    <a class="meta" href="slider-layout-inbox.html">
+                        <p class="title">Slider in Box</p>
+                    </a>
+                </article>
+            </div>
+            <!-- Item - end -->
+
+
+            <!-- Item - begin -->
+            <div class="col3 col-xs-4 col-xxs-6">
+                <article>
+                    <figure class="thumbnail">
+                        <a class="linkto" href="slider-api-addremove.html">
+                            <img src="imgs/template-api-addremove.png" alt="Add-Remove Slider">
+                        </a>
+                    </figure>
+
+                    <a class="meta" href="slider-api-addremove.html">
+                        <p class="title">Add-Remove Slider</p>
+                    </a>
+                </article>
+            </div>
+            <!-- Item - end -->
+
+
+            <!-- Item - begin -->
+            <div class="col3 col-xs-4 col-xxs-6">
+                <article>
+                    <figure class="thumbnail">
+                        <a class="linkto" href="slider-slideshow-timerArc.html">
+                            <img src="imgs/template-timer-arc.png" alt="Arc Timer - Slideshow">
+                        </a>
+                    </figure>
+
+                    <a class="meta" href="slider-slideshow-timerArc.html">
+                        <p class="title">Arc Timer - Slideshow</p>
+                    </a>
+                </article>
+            </div>
+            <!-- Item - end -->
+
+
+            <!-- Item - begin -->
+            <div class="col3 col-xs-4 col-xxs-6">
+                <article>
+                    <figure class="thumbnail">
+                        <a class="linkto" href="slider-api-deeplinkingMulti.html">
+                            <img src="imgs/template-api-deeplinkingMulti.png" alt="Deep Linking Multi">
+                        </a>
+                    </figure>
+
+                    <a class="meta" href="slider-api-deeplinkingMulti.html">
+                        <p class="title">Deep Linking Multi</p>
+                    </a>
+                </article>
+            </div>
+            <!-- Item - end -->
+
+
+            <!-- Item - begin -->
+            <div class="col3 col-xs-4 col-xxs-6">
+                <article>
+                    <figure class="thumbnail">
+                        <a class="linkto" href="page-templates-slider.html">
+                            <img src="imgs/icon-more.png" alt="More Templates">
+                        </a>
+                    </figure>
+
+                    <a class="meta" href="page-templates-slider.html">
+                        <p class="title">More Slider Templates</p>
+                    </a>
+                </article>
+            </div>
+            <!-- Item - end -->
+
+        </div>
+        <!-- Slider templates - end
         .......................................................... -->
 
-        
 
-        <!-- Menu - begin
+
+        <!-- Tabs Templates - begin
         .......................................................... -->
-        <nav class="menu-hor fx-animate text-small">
-            <ul class="menu">
+        <div class="items show-full thumbnail-tabs clearfix">
 
-                <li>
-                    <a href="#">Templates</a>
-                    <ul class="menu right">
-                        <li><a href="index.html">Slider Layer | Home</a></li>
-                        <li><a href="slider.free.html">Slider Free</a></li>
-                        <li><a href="slider.simple.html">Slider Simple</a></li>
-                        <li><a href="slider.bg.html">Slider Background</a></li>
-                        <li><a href="slider.device.html">Slider Device</a></li>
-                        <li><a href="slider.classic1.html">Slider Classic 1</a></li>
-                        <li><a href="slider.classic2.html">Slider Classic 2</a></li>
-                    </ul>
-                </li>
+            <!-- Item - begin -->
+            <div class="col3 col-xs-4 col-xxs-6">
+                <article>
 
+                    <figure class="thumbnail">
+                        <a class="linkto" href="tabs-layout-device.html">
+                            <img src="imgs/template-layout-device.png" alt="Device Layout">
+                        </a>
+                    </figure>
+
+                    <a class="meta" href="tabs-layout-device.html">
+                        <p class="title">Device Layout</p>
+                    </a>
+                </article>
+            </div>
+            <!-- Item - end -->
+
+
+            <!-- Item - begin -->
+            <div class="col3 col-xs-4 col-xxs-6">
+                <article>
+                    <figure class="thumbnail">
+                        <a class="linkto" href="tabs-layout-vertical.html">
+                            <img src="imgs/template-layout-vertical.png" alt="Tabs Vertical">
+                        </a>
+                    </figure>
+
+                    <a class="meta" href="tabs-layout-vertical.html">
+                        <p class="title">Tabs Vertical</p>
+                    </a>
+                </article>
+            </div>
+            <!-- Item - end -->
+
+
+            <!-- Item - begin -->
+            <div class="col3 col-xs-4 col-xxs-6">
+                <article>
+                    <figure class="thumbnail">
+                        <a class="linkto" href="tabs-style-highlight.html">
+                            <img src="imgs/template-style-highlight.png" alt="Highlight Slide">
+                        </a>
+                    </figure>
+
+                    <a class="meta" href="tabs-style-highlight.html">
+                        <p class="title">Highlight Slide</p>
+                    </a>
+                </article>
+            </div>
+            <!-- Item - end -->
+
+
+            <!-- Item - begin -->
+            <div class="col3 col-xs-4 col-xxs-6">
+                <article>
+                    <figure class="thumbnail">
+                        <a class="linkto" href="page-templates-tabs.html">
+                            <img src="imgs/icon-more.png" alt="More Templates">
+                        </a>
+                    </figure>
+
+                    <a class="meta" href="page-templates-tabs.html">
+                        <p class="title">More Tabs Templates</p>
+                    </a>
+                </article>
+            </div>
+            <!-- Item - end -->
+
+
+        </div>
+        <!-- Tabs Templates - end
+        .......................................................... -->
+
+    </div>
+    </div>
+    </div>
+    <!-- STARTER TEMPLATES - end
+    ======================================================================== -->
+
+
+
+
+
+
+    <div class="container">
+        <div class="hr circle ma-100"></div>
+    </div>
+
+
+
+
+
+
+    <!-- CORE FEATURES - begin
+    ======================================================================== -->
+    <style>
+        .ie8 .main-features {
+            display: none;
+        }
+        .feature-item {
+            float: left;
+            width: 100%;
+            margin-bottom: 70px;
+        }
+        .feature-item .col5 {
+            font-size: 16px;
+            line-height: 1.6em;
+        }
+        .feature-item .col7 {
+            text-align: center;
+        }
+        .feature-title {
+            font-weight: 400;
+        }
+        .feature-item img {
+            display: inline-block;
+            max-width: 448px;
+            width: 100%; height: auto;
+        }
+    </style>
+    <div class="wrapper main-features">
+    <div class="container">
+    <div class="row">
+
+        <!-- Heading - begin -->
+        <div class="title-big-wrap">
+            <h1>MAIN FEATURES</h1>
+            <p class="muted text-center"></p>
+        </div>
+        <!-- Heading - end -->
+
+
+        <!-- Features list - begin -->
+        <div class="feature-item">
+            <div class="col5">
+                <h2 class="feature-title">Designed As <b>Modules</b></h2>
+                <p>Get <span class="text-success">smallest size</span> of plugins for each case.</p>
+            </div>
+
+            <div class="col7">
+                <img src="imgs/description-02.svg" alt="Module feature">
+            </div>
+        </div>
+
+
+        <div class="feature-item">
+            <div class="col5">
+                <h2 class="feature-title"><b>Touch/Swipe</b> Gestures</h2>
+                <p>Switch between slides easy and flexibility with support swipe gestures, especially with tabs have many slides or on the mobile devices.
+                    <br>Tested on <span class="text-success">iOS</span>, <span class="text-success">Android</span>, <span class="text-success">Window Phone</span> device.</p>
+            </div>
+
+            <div class="col7">
+                <img src="imgs/description-03.svg" alt="Swipe gestures feature">
+            </div>
+        </div>
+
+
+        <div class="feature-item">
+            <div class="col5">
+                <h2 class="feature-title"><b>Huge</b> Effects</h2>
+                <ul class="list round condensed">
+                    <li>Line effect</li>
+                    <li>Fade effect</li>
+                    <li>None effect</li>
+                    <li>Coverflow3D effect</li>
+                    <li>8+ Math effects (only for slider)</li>
+                    <li>50+ CSS One effects</li>
+                    <li>250+ separate CSS effects</li>
+                </ul>
+            </div>
+
+            <div class="col7">
+                <img src="imgs/description-04.svg" alt="Effects feature">
+            </div>
+        </div>
+
+
+        <div class="feature-item">
+            <div class="col5">
+                <h2 class="feature-title">Hareware Accelerated</h2>
+                <p>RubySlider completely used new techniques used in the transition effects to create smooth transition, fastest, and saves the system memory</p>
+            </div>
+
+            <div class="col7">
+                <img src="imgs/description-05.svg" alt="Harewave accelerate feature">
+            </div>
+        </div>
+
+
+        <div class="feature-item">
+            <div class="col5">
+                <h2 class="feature-title">Fully <b>Responsive</b></h2>
+                <p>Fully supported responsive in all browsers and devices : desktop - tablet - mobile</p>
+            </div>
+
+            <div class="col7">
+                <img src="imgs/description-06.svg" alt="Fully responsive feature">
+            </div>
+        </div>
+
+
+        <div class="feature-item">
+            <div class="col5">
+                <h2 class="feature-title"><b>Lazyload</b></h2>
+                <p>Slider initialized <span class="text-success">faster</span> and <span class="text-success">smarter</span>
+                    <br>Supported Image, Video, Iframe lazyload.</p>
+            </div>
+
+            <div class="col7">
+                <img src="imgs/description-07.svg" alt="Lazyload feature">
+            </div>
+        </div>
+
+
+        <div class="feature-item">
+            <div class="col5">
+                <h2 class="feature-title">Image <b>Position</b></h2>
+                <p>Supported 5 position of image background: center - fit - fill - stretch - tile</p>
+            </div>
+
+            <div class="col7">
+                <img src="imgs/description-08.svg" alt="Image position feature">
+            </div>
+        </div>
+
+
+        <div class="feature-item">
+            <div class="col5">
+                <h2 class="feature-title">Slideshow with <b>Timer</b></h2>
+                <p>Fully supported all functions of slideshow.</p>
+                <ul class="list round condensed">
+                    <li>2+ timer</li>
+                    <li>PlayPause button</li>
+                    <li>Delay - Loop - Hover pause - Auto run - ...</li>
+                </ul>
+            </div>
+
+            <div class="col7">
+                <img src="imgs/description-09.svg" alt="Slideshow feature">
+            </div>
+        </div>
+
+
+        <div class="feature-item">
+            <div class="col5">
+                <h2 class="feature-title">Powerful <b>API</b></h2>
+                <p>RubySlider is equipped with the powerful api.</p>
+                <ul class="list round condensed">
+                    <li>Instant update options (upto 70% options)</li>
+                    <li>Supported multiple, range value of option</li>
+                    <li>Add - remove slides</li>
+                    <li>Remote api from outside markup</li>
+                </ul>
+            </div>
+
+            <div class="col7">
+                <img src="imgs/description-10.svg" alt="Powerfull api feature">
+            </div>
+        </div>
+
+
+        <div class="feature-item">
+            <div class="col5">
+                <h2 class="feature-title"><b>70+</b> Starter Templates</h2>
+                <p>Included over 70+ slider & tabs basic templates</p>
+            </div>
+
+            <div class="col7">
+                <img src="imgs/description-11.svg" alt="Starter templates feature">
+            </div>
+        </div>
+        <!-- Features list - end -->
+
+    </div>
+    </div>
+    </div>
+    <!-- CORE FEATURES - end
+    ======================================================================== -->
+
+
+
+
+
+
+    <div class="container">
+        <div class="hr circle ma-100"></div>
+    </div>
+
+
+
+
+
+
+
+    <!-- LIST ALL FEATURES - begin
+    ======================================================================== -->
+    <div class="wrapper">
+    <div class="container">
+    <div class="row">
+
+        <!-- Heading - begin -->
+        <div class="title-big-wrap">
+            <h1>LIST OF ALL FEATURES</h1>
+            <p class="muted text-center"></p>
+        </div>
+        <!-- Heading - end -->
+
+
+
+        <!-- Script size - begin -->
+        <style>
+            .sizeinfo {
+                float: left;
+                margin-bottom: 30px;
+            }
+            .sizeinfo-main {
+                float: left;
+                margin-bottom: 20px;
+            }
+            .sizeinfo-sub {
+                float: left;
+                padding: 10px 20px;
+                border: 1px dashed #ccc;
+                border-radius: 4px;
+            }
+            .sizeinfo-text {
+                float: left;
+            }
+            .sizeinfo-num {
+                float: left;
+                padding-left: 20px; padding-right: 20px;
+            }
+            .huge-text {
+                font-size: 110px;
+                line-height: .7em;
+            }
+        </style>
+
+        <div class="sizeinfo">
+            <div class="col8">
+            <div class="sizeinfo-main">
+
+                <div class="sizeinfo-text">
+                    <h1 class="no-ma">core script</h1>
+                    <h4>minify &amp; gziped</h4>
+                </div>
+                <div class="sizeinfo-num">
+                    <h1 class="huge-text">25kb</h1>
+                </div>
+
+            </div>
+            </div>
+
+            <div class="col4">
+            <div class="sizeinfo-sub">
+                <h4 class="no-ma">Full size of script 45kb</h4>
+            </div>
+            </div>
+        </div>
+        <!-- Script size - end -->
+
+
+
+
+        <!-- List features - begin -->
+        <div class="col4">
+            <h4>General</h4>
+            <ul class="list round ma-b-50">
+                <li>jQuery 1.9+, 2.x, 3.x supported</li>
+                <li>HTML5 valid and SEO friendly markup</li>
+                <li>CSS3 transitions with jQuery fallback</li>
+                <li>Hardware accelerated CSS3 transforms</li>
+                <li>Cross browser IE8+ and modern browsers</li>
+                <li>Setup options in HTML5 data attribute</li>
+                <li>Supported outside markup</li>
+
+                <li>Fallback options for old browser</li>
+                <li>Mobile-options for mobile device</li>
+                <li>Elements supported high resolution</li>
+                <li>Memory leak free</li>
+                <li><span class="text-success">Supported integrated into Wordpress</span></li>
+
+                <li>70+ starter templates</li>
             </ul>
-        </nav>
-        <!-- Menu - end
-        .......................................................... -->
-
-    </div>
-    </div>
-    <!-- Header - end
-    ============================================================== -->
-
-
-
-
-
-    <!-- Slider layer - begin
-    ============================================================== -->
-    <div class="wrapper">
-    <div class="">
-        
-
-        <div class="cs cs-default nav-hide bg-dark" data-slider="responsive-1156 media-940-960-1281 media-748-768-959 mCanvas-20 speed-600 isLoop-off isPag-on isKeyboard-on idBegin-0">
-            
-            <!-- Slide 1 - begin -->
-            <div>
-                <a class="cs-img" href="imgs/slider/trans.png" style="background-color: #fa0">[bg]</a>
-                
-                <div data-layer="xy-bottomOut; x-center y-206 start-500;">
-                    <a class="cs-img" href="imgs/slider/cs_logo.png">[logo]</a>
-                </div>
-                <div data-layer="xy-bottomOut width-504; x-center y-305 start-800;" class="line1"></div>
-                <div class="show-desktop" data-layer="xy-bottomOut; x-center y-320 start-1000;">
-                    <span style="font-size: 14px;">on code - multi slider</span>
-                </div>
-
-                
-
-                <!-- Texture matrix -->
-                <a  data-layer="
-                    count-infinite direction-alternate
-                    xy-topOut opacity-ra start-0 speed-10000 es-linear; x-0 y-ra start-500 speed-10000;"
-                    class="cs-img" href="imgs/slider/texture_matrix.png">[texture]</a>
-
-                <a  data-layer="
-                    count-infinite direction-alternate
-                    xy-bottomOut opacity-1 start-0 speed-20000 es-linear; x-100 y--1000 start-500 speed-20000;"
-                    class="cs-img" href="imgs/slider/texture_matrix.png">[texture]</a>
-
-                <a  data-layer="
-                    count-infinite direction-alternate
-                    xy-topOut opacity-1 start-0 speed-30000 es-linear; x-200 y-ra start-500 speed-30000;"
-                    class="cs-img" href="imgs/slider/texture_matrix.png">[texture]</a>
-
-                <a  data-layer="
-                    count-infinite direction-alternate
-                    xy-bottomOut opacity-1 start-0 speed-30000 es-linear; x-300 y--500 start-500 speed-30000;"
-                    class="cs-img" href="imgs/slider/texture_matrix.png">[texture]</a>
-
-                <a  data-layer="
-                    count-infinite direction-alternate
-                    xy-topOut opacity-1 start-0 speed-20000 es-linear; x-400 y-ra start-500 speed-20000;"
-                    class="cs-img" href="imgs/slider/texture_matrix.png">[texture]</a>
-
-                <a  data-layer="
-                    count-infinite direction-alternate
-                    xy-bottomOut opacity-1 start-0 speed-10000 es-linear; x-500 y--800 start-500 speed-10000;"
-                    class="cs-img" href="imgs/slider/texture_matrix.png">[texture]</a>
-
-                <a  data-layer="
-                    count-infinite direction-alternate
-                    xy-topOut opacity-1 start-0 speed-20000 es-linear; x-600 y-ra start-500 speed-20000;"
-                    class="cs-img" href="imgs/slider/texture_matrix.png">[texture]</a>
-
-                <a  data-layer="
-                    count-infinite direction-alternate
-                    xy-bottomOut opacity-1 start-0 speed-10000 es-linear; x-700 y--1000 start-500 speed-10000;"
-                    class="cs-img" href="imgs/slider/texture_matrix.png">[texture]</a>
-
-                <a  data-layer="
-                    count-infinite direction-alternate
-                    xy-topOut opacity-1 start-0 speed-20000 es-linear; x-800 y-ra start-500 speed-20000;"
-                    class="cs-img" href="imgs/slider/texture_matrix.png">[texture]</a>
-
-                <a  data-layer="
-                    count-infinite direction-alternate
-                    xy-bottomOut opacity-1 start-0 speed-30000 es-linear; x-900 y--500 start-500 speed-30000;"
-                    class="cs-img" href="imgs/slider/texture_matrix.png">[texture]</a>
-
-                <a  data-layer="
-                    count-infinite direction-alternate
-                    xy-topOut opacity-1 start-0 speed-20000 es-linear; x-1000 y-ra start-500 speed-20000;"
-                    class="cs-img" href="imgs/slider/texture_matrix.png">[texture]</a>
-
-                <a  data-layer="
-                    count-infinite direction-alternate
-                    xy-bottomOut opacity-1 start-0 speed-10000 es-linear; x-1100 y--500 start-500 speed-10000;"
-                    class="cs-img" href="imgs/slider/texture_matrix.png">[texture]</a>
-            </div>
-            <!-- Slide 1 - end -->
-
-
-
-
-            <!-- Slide 2 - begin -->
-            <div data-slide="delay-14000">
-                <a class="cs-img" href="imgs/slider/trans.png" style="background-color: #c2d900">[bg]</a>
-                
-                <!-- Intro -->
-                <h1 data-layer="
-                    scale-4;
-                    x-center y-10 scale-1 start-200 speed-200;
-                    xy-topOut opacity-1 start-500 speed-200;"
-                    class="text thin f400">3</h1>
-
-                <h1 data-layer="
-                    xy-bottomOut;
-                    x-center y-center start-700 speed-200;
-                    xy-topOut opacity-1 start-500 speed-200;"
-                    class="text thin f200">LAYOUT</h1>
-
-
-
-                <!-- Preview: ipad -->
-                <a  data-layer="
-                    xy-bottomOut;
-                    x-center y-center start-1500 speed-400;
-                    xy-rightOut start-1800 speed-200;
-
-                    x-center y-center opacity-0 scale-0.2 start-0 speed-0;   -> time-3300
-                    opacity-1 scale-1 start-500 speed-200;
-                    scale-4 start-2900 speed-200;
-                    "
-                    class="cs-img" href="imgs/slider/ipad_green.png">[ipad]</a>
-                
-                <a  data-layer="
-                    ;
-                    x-251 y-center start-1900 speed-0;
-                    xy-rightOut start-1400 speed-0;
-
-                    x-251 y-center start-900 speed-0;
-                    start-1800 speed-0;
-                    "
-                    class="cs-img" style="z-index: 1" href="imgs/slider/ipad_edgeleft.png">[edge left]</a>
-                
-                <a  data-layer="
-                    ;
-                    x-845 y-center start-1900 speed-0;
-                    xy-rihgtOut start-1400 speed-0;
-                    "
-                    class="cs-img" style="z-index: 1" href="imgs/slider/ipad_edgeright.png">[edge right]</a>
-
-                
-
-                <!-- Preview: image layout line -->
-                <a  data-layer="
-                    xy-leftOut;
-                    x-center y-center start-1500 speed-400;
-                    x-845 start-800 speed-800 opacity-0.5;
-                    xy-rightOut start-1000 speed-200;
-                    
-                    x-center y-center opacity-0 scale-0.2 start-0 speed-0; -> time-3300
-                    opacity-1 scale-1 start-700 speed-200;
-
-                    opacity-0.5 start-1000 speed-1000;
-                    scale-4 start-1500 speed-200;
-                    "
-                    class="cs-img" href="imgs/slider/layout_img0.jpg">[img0]</a>
-                
-                <a  data-layer="
-                    xy-leftOut;
-                    x--223 y-center opacity-0.5 start-1700 speed-400;
-                    x-center opacity-1 start-600 speed-800;
-                    xy-rightOut start-1000 speed-200;"
-                    class="cs-img" href="imgs/slider/layout_img1.jpg">[img1]</a>
-
-
-                <!-- Preview : image layout dot -->
-                <a  data-layer="
-                    xy-topOut;
-                    x-73 y-center start-4200 speed-200;
-                    x-667 opacity-1 start-800 speed-800;
-                    x-right scale-4 start-1300 speed-200;
-                    "
-                    class="cs-img" href="imgs/slider/layout_img3a.jpg">[img3a]</a>
-
-                <a  data-layer="
-                    xy-bottomOut;
-                    x--109 y-center start-4300 speed-200;
-                    x-489 opacity-1 start-900 speed-700;
-                    scale-4 start-1100 speed-200;
-                    "
-                    class="cs-img" href="imgs/slider/layout_img3b.jpg">[img3b]</a>
-
-                <a  data-layer="
-                    xy-topOut;
-                    x--291 y-center start-4400 speed-200;
-                    x-311 opacity-1 start-1000 speed-600;
-                    x-left scale-4 start-900 speed-200;
-                    "
-                    class="cs-img" href="imgs/slider/layout_img3c.jpg">[img3c]</a>
-
-
-
-                <!-- Preview : image layout custom -->
-                <a  data-layer="
-                    scale-4;
-                    x-center y-center scale-1 start-7100 speed-200;
-                    xy-bottomOut start-1800 speed-200;
-                    "
-                    class="cs-img img-box z4" href="imgs/slider/layout_img4.jpg">[img custom]</a>
-
-                <a  data-layer="
-                    x-center y-center;
-                    rotate-10 start-7500 speed-800;
-                    x--50 y-150 opacity-1 rotate--45 scale-0.65 start-800 speed-400;
-                    xy-leftOut rotate-0 start-600 speed-200;
-                    "
-                    class="cs-img img-box z3" href="imgs/slider/layout_img5.jpg">[img custom]</a>
-
-                <a  data-layer="
-                    x-center y-center;
-                    rotate--10 start-7500 speed-800;
-                    x-800 y--100 rotate-45 scale-0.4 start-800 speed-400;
-                    xy-topOut rotate-0 start-600 speed-200;
-                    "
-                    class="cs-img img-box z2" href="imgs/slider/layout_img6.jpg">[img custom]</a>
-
-                <a  data-layer="
-                    x-center y-center;
-                    rotate-15 start-7500 speed-800;
-                    x-830 y-200 rotate-60 scale-0.5 start-800 speed-400;
-                    xy-rightOut rotate-0 start-600 speed-200;
-                    "
-                    class="cs-img img-box z1" href="imgs/slider/layout_img7.jpg">[img custom]</a>
-
-
-
-                <!-- End animation -->
-                <h1 data-layer="
-                    xy-leftOut;
-                    x-100 y-82 skew-15 start-9100 speed-200 es-easeOutQuint;
-                    opacity-1 skew-0 start-300 speed-100 es-easeOutExpo;
-                    "
-                    class="text thin f200">3</h1>
-
-                <h1 data-layer="
-                    xy-rightOut;
-                    x-230 y-110 skew-15 start-9200 speed-200 es-easeOutQuint;
-                    opacity-1 skew-0 start-200 speed-100 es-easeOutExpo;
-                    "
-                    class="text thin f200">LAYOUT</h1>
-
-                <a  data-layer="
-                    x-161 y-343 start-9400 speed-1000;"
-                    class="cs-img" href="imgs/slider/layout_line.png">[layout line]</a>
-
-                <a  data-layer="
-                    x-480 y-343 start-9900 speed-1000;"
-                    class="cs-img" href="imgs/slider/layout_dot.png">[layout dot]</a>
-
-                <a  data-layer="
-                    x-763 y-338 start-10400 speed-1000;"
-                    class="cs-img" href="imgs/slider/layout_custom.png">[layout custom]</a>
-
-                <div data-layer="height-67 x-445 y-343 start-9600 speed-200" class="line2"></div>
-                <div data-layer="height-67 x-722 y-343 start-10300 speed-200" class="line2"></div>
-
-
-            </div>
-            <!-- Slide 2 - end -->
-
-
-
-
-
-            <!-- Slide 3 - begin -->
-            <div data-slide="delay-14000">
-                <a class="cs-img" href="imgs/slider/trans.png" style="background-color: #ff4499">[bg]</a>
-
-                
-                <!-- Heart shape -->
-                <a  data-layer="
-                    opacity-0;
-                    x-center y-center opacity-1 start-1500 speed-5000 es-easeInCubic;
-
-                    scale-0.1 opacity-0 start-6500 speed-400 ease-ease;"
-                    class="cs-img" href="imgs/slider/heart_line.png">[heart]</a>
-                
-                <a  data-layer="
-                    opacity-0 scale-4;
-                    x-center y-center opacity-1 scale-1 start-8500 speed-200;
-                    x-711 opacity-1 start-1000 speed-800;"
-                    class="cs-img" href="imgs/slider/heart_out.png">[heart]</a>
-
-                <a  data-layer="
-                    opacity-0 scale-4;
-                    x-center y-center opacity-1 scale-1 start-9000 speed-200;
-                    x-711 opacity-1 start-500 speed-800;"
-                    class="cs-img" href="imgs/slider/heart_in.png">[heart]</a>
-
-                
-
-                <!-- Text shape -->
-                <h1 data-layer="
-                    xy-rightOut;
-                    x-70 y-100 opacity-0.5 start-10000;"
-                    class="text f90 thin">LAYER</h1>
-
-                <h1 data-layer="
-                    xy-rightOut;
-                    x-70 y-182 opacity-0.5 start-10200;"
-                    class="text f90">SUPPORTED</h1>
-
-                <h1 data-layer="
-                    xy-rightOut;
-                    x-70 y-276 start-10400;"
-                    class="text f90 ul-bold">MULTI</h1>
-
-                <h1 data-layer="
-                    xy-rightOut;
-                    x-70 y-365 start-10600;"
-                    class="text f90 light">TRANSITIONS</h1>
-
-
-
-                <!-- Dot pattern -->
-                <a  data-layer="
-                    x-center y-center scale-8 opacity-0;
-
-                    x-center y-168 scale-1 opacity-1 start-500 speed-200;
-                    x-506 y-111 speed-400;
-                    x-453 y-111;
-                    x-391 y-167;
-                    x-403 y-269;
-                    x-568 y-420;
-
-                    x-734 y-267;
-                    x-745 y-167;
-                    x-683 y-111;
-                    x-629 y-111;
-                    x-center y-168 opacity-1;
-                    
-                    y-bottom opacity-1 start-2000 speed-600 es-easeInQuint;
-                    y-400 start-600 speed-300 es-easeOutQuint;
-                    y-bottom start-300;
-                    x-ra start-300 speed-2000;"
-                    class="cs-img z2" href="imgs/slider/point_black.png">[point black]</a>
-
-                
-                <a  data-layer="
-                    opacity-0;
-                    x-center y-168 opacity-1 start-1000 speed-800;
-
-                    y-bottom start-5000 speed-600 es-easeInQuint;
-                    y-400 start-600 speed-300 es-easeOutQuint;
-                    y-bottom start-300;
-                    x-ra start-300 speed-2000;"
-                    class="cs-img" href="imgs/slider/point_white.png">[point]</a>
-
-                <a  data-layer="
-                    opacity-0;
-                    x-506 y-111 opacity-1 start-1500 speed-800;
-
-                    y-bottom start-5000 speed-600 es-easeInQuint;
-                    y-400 start-600 speed-300 es-easeOutQuint;
-                    y-bottom start-300;
-                    x-ra start-300 speed-2000;"
-                    class="cs-img" href="imgs/slider/point_white.png">[point]</a>
-
-                <a  data-layer="
-                    opacity-0;
-                    x-453 y-111 opacity-1 start-2000 speed-800;
-
-                    y-bottom start-4800 speed-600 es-easeInQuint;
-                    y-400 start-600 speed-300 es-easeOutQuint;
-                    y-bottom start-300;
-                    x-ra start-300 speed-2000;"
-                    class="cs-img" href="imgs/slider/point_white.png">[point]</a>
-
-                <a  data-layer="
-                    opacity-0;
-                    x-391 y-167 opacity-1 start-2500 speed-800;
-
-                    y-bottom start-4300 speed-600 es-easeInQuint;
-                    y-400 start-600 speed-300 es-easeOutQuint;
-                    y-bottom start-300;
-                    x-ra start-300 speed-2000;"
-                    class="cs-img" href="imgs/slider/point_white.png">[point]</a>
-
-                <a  data-layer="
-                    opacity-0;
-                    x-403 y-269 opacity-1 start-3000 speed-800;
-
-                    y-bottom start-3200 speed-600 es-easeInQuint;
-                    y-400 start-600 speed-300 es-easeOutQuint;
-                    y-bottom start-300;
-                    x-ra start-300 speed-2000;"
-                    class="cs-img" href="imgs/slider/point_white.png">[point]</a>
-
-                <a  data-layer="
-                    opacity-0;
-                    x-568 y-420 opacity-1 start-3500 speed-800;
-
-                    y-bottom start-3500 speed-600 es-easeInQuint;
-                    y-400 start-600 speed-300 es-easeOutQuint;
-                    y-bottom start-300;
-                    x-ra start-300 speed-2000;"
-                    class="cs-img" href="imgs/slider/point_white.png">[point]</a>
-
-                <a  data-layer="
-                    opacity-0;
-                    x-734 y-267 opacity-1 start-4000 speed-800;
-
-                    y-bottom start-2700 speed-600 es-easeInQuint;
-                    y-400 start-600 speed-300 es-easeOutQuint;
-                    y-bottom start-300;
-                    x-ra start-300 speed-2000;"
-                    class="cs-img" href="imgs/slider/point_white.png">[point]</a>
-
-                <a  data-layer="
-                    opacity-0;
-                    x-745 y-167 opacity-1 start-4500 speed-800;
-
-                    y-bottom start-2200 speed-600 es-easeInQuint;
-                    y-400 start-600 speed-300 es-easeOutQuint;
-                    y-bottom start-300;
-                    x-ra start-300 speed-2000;"
-                    class="cs-img" href="imgs/slider/point_white.png">[point]</a>
-
-                <a  data-layer="
-                    opacity-0;
-                    x-683 y-111 opacity-1 start-5000 speed-800;
-
-                    y-bottom start-1500 speed-600 es-easeInQuint;
-                    y-400 start-600 speed-300 es-easeOutQuint;
-                    y-bottom start-300;
-                    x-ra start-300 speed-2000;"
-                    class="cs-img" href="imgs/slider/point_white.png">[point]</a>
-
-                <a  data-layer="
-                    opacity-0;
-                    x-629 y-111 opacity-1 start-5500 speed-800;
-
-                    y-bottom start-800 speed-600 es-easeInQuint;
-                    y-400 start-600 speed-300 es-easeOutQuint;
-                    y-bottom start-300;
-                    x-ra start-300 speed-2000;"
-                    class="cs-img" href="imgs/slider/point_white.png">[point]</a>
-                
-            </div>
-            <!-- Slide 3 - end -->
-
-
-
-
-
-
-            <!-- Slide 4 - begin -->
-            <div data-slide="delay-12000">
-                <a class="cs-img" href="imgs/slider/trans.png" style="background-color: #ff3030">[bg]</a>
-
-
-                <!-- Heading -->
-                <h1 data-layer="
-                    count-infinite direction-alternate delay-1000
-                    x-100 y-200 opacity-1 start-0 speed-40000;
-                    x-300 y-ra opacity-1 speed-20000;"
-                    class="text thin f90 text-center text-black"><span class="text ul-bold">FUNY</span> WITH<br>LOOP TRANSITIONS</h1>
-
-                <h1 data-layer="
-                    scale-4;
-                    x-center y-center scale-1 start-500"
-                    class="text thin f90 text-center"><span class="text ul-bold">FUNY</span> WITH<br>LOOP TRANSITIONS</h1>
-
-                
-                <!-- Polygon pattern -->
-                <a  data-layer="
-                    count-infinite direction-alternate
-                    x-right y-ra opacity-1 rotate-ra start-0 speed-10000 es-linear;
-                    x-left y-ra opacity-1 rotate-ra start-0 speed-10000;"
-                    class="cs-img" href="imgs/slider/polygon1.png">[polygon]</a>
-
-                <a  data-layer="
-                    count-infinite direction-alternate
-                    x-left y-ra opacity-1 scale-0.5 rotate-ra start-0 speed-13000 es-linear;
-                    x-right y-ra opacity-1 rotate-ra start-0 speed-10000;"
-                    class="cs-img" href="imgs/slider/polygon1.png">[polygon]</a>
-
-                <a  data-layer="
-                    count-infinite direction-alternate
-                    x-right y-ra opacity-1 scale-0.4 rotate-ra start-0 speed-8000 es-linear;
-                    x-left y-ra opacity-1 rotate-ra start-0 speed-10000;"
-                    class="cs-img" href="imgs/slider/polygon1.png">[polygon]</a>
-
-                <a  data-layer="
-                    count-infinite direction-alternate
-                    x-left y-ra opacity-1 scale-0.6 rotate-ra start-0 speed-13000 es-linear;
-                    x-right y-ra opacity-1 rotate-ra start-0 speed-15000;"
-                    class="cs-img" href="imgs/slider/polygon1.png">[polygon]</a>
-
-
-
-                <a  data-layer="
-                    count-infinite direction-alternate
-                    x-left y-ra opacity-1 scale-0.6 rotate-ra start-0 speed-6000 es-linear;
-                    x-right y-ra opacity-1 rotate-ra start-0 speed-6000;"
-                    class="cs-img" href="imgs/slider/polygon2.png">[polygon]</a>
-
-                <a  data-layer="
-                    count-infinite direction-alternate
-                    x-right y-ra opacity-1 scale-0.4 rotate-ra start-0 speed-8000 es-linear;
-                    x-left y-ra opacity-1 rotate-ra start-0 speed-5000;"
-                    class="cs-img" href="imgs/slider/polygon2.png">[polygon]</a>
-
-                <a  data-layer="
-                    count-infinite direction-alternate
-                    x-left y-ra opacity-1 scale-1 rotate-ra start-0 speed-5000 es-linear;
-                    x-right y-ra opacity-1 rotate-ra start-0 speed-6000;"
-                    class="cs-img" href="imgs/slider/polygon2.png">[polygon]</a>
-
-                <a  data-layer="
-                    count-infinite direction-alternate
-                    x-right y-ra opacity-1 scale-0.9 rotate-ra start-0 speed-8000 es-linear;
-                    x-left y-ra opacity-1 rotate-ra start-0 speed-7000;"
-                    class="cs-img" href="imgs/slider/polygon2.png">[polygon]</a>
-
-                <a  data-layer="
-                    count-infinite direction-alternate
-                    x-left y-ra opacity-1 scale-0.5 rotate-ra start-0 speed-3000 es-linear;
-                    x-right y-ra opacity-1 rotate-ra start-0 speed-4000;"
-                    class="cs-img z2" href="imgs/slider/polygon2.png">[polygon]</a>
-
-                <a  data-layer="
-                    count-infinite direction-alternate
-                    x-right y-ra opacity-1 scale-0.4 rotate-ra start-0 speed-4000 es-linear;
-                    x-left y-ra opacity-1 rotate-ra start-0 speed-5000;"
-                    class="cs-img z2" href="imgs/slider/polygon2.png">[polygon]</a>
-            </div>
-            <!-- Slide 4 - end -->
-
-
-
-
-
-
-            <!-- Slide 5 - begin -->
-            <div data-slide="delay-11000">
-                <a class="cs-img" href="imgs/slider/trans.png" style="background-color: #00dcd2">[bg]</a>
-                
-                <!-- Typography -->
-                <h1 data-layer="
-                    scale-0.2;
-                    x-center y-180 scale-1 start-200 speed-500;
-                    x-200 start-700 speed-200;
-                    x-280 start-200 speed-200;
-                    x-center start-100 speed-200;
-                    scale-6 start-200 speed-200 opacity-0;
-                    
-                    x-0 y-center scale-1 start-6000 speed-0;
-                    xy-topOut start-0 opacity-1;
-                    y-65 start-200 speed-800 opacity-1 es-easeOutExpo;
-                    "
-                    class="text thin f120">RESPONSIVE</h1>
-
-                <h1 data-layer="
-                    scale-0.2;
-                    x-center y-180 scale-1 start-2000 speed-500;
-                    scale-1.5 start-700 speed-200;
-                    scale-0.5 start-200 speed-200;
-                    scale-1 start-100 speed-200;
-                    scale-6 start-200 speed-200 opacity-0;
-                    
-                    x-0 y-165 scale-1 start-4000 speed-0;
-                    xy-leftOut start-0 speed-0 opacity-1;
-                    x-0 start-300 speed-800 opacity-1 es-easeOutExpo;
-                    "
-                    class="text ul-bold f120">IMAGE</h1>
-
-                <h1 data-layer="
-                    scale-0.2;
-                    x-center y-180 scale-1 start-4000 speed-500;
-                    rotate-25 start-700 speed-200;
-                    rotate--45 start-200 speed-200;
-                    rotate-0 start-100 speed-200;
-                    scale-6 start-200 speed-200 opacity-0;
-                    
-                    x-0 y-265 scale-1 start-2000 speed-0;
-                    xy-rightOut start-0 speed-0 opacity-1;
-                    x-0 start-400 speed-800 opacity-1 es-easeOutExpo;
-                    "
-                    class="text f120">SLIDESHOW</h1>
-
-                <h1 data-layer="
-                    scale-0.2;
-                    x-center y-180 scale-1 start-6000 speed-500;
-                    opacity-0 skew-30 start-700 speed-200;
-                    opacity-1 skew--30 start-100 speed-100;
-                    opacity-0 skew-30 start-100 speed-100;
-                    opacity-1 skew-0 start-100 speed-200;
-                    scale-6 start-200 speed-200 opacity-0;
-                    
-                    x-0 y-center scale-1 start-0 speed-0;
-                    xy-bottomOut start-0 opacity-1;
-                    y-370 start-500 speed-800 opacity-1 es-easeOutExpo;
-                    "
-                    class="text thin f120">TOUCH</h1>
-            </div>
-            <!-- Slide 5 - end -->
-            
         </div>
-    
-    </div>
-    </div>
-    <!-- Slider layer - end
-    ============================================================== -->
 
+        <div class="col4">
+            <h4>Slider</h4>
+            <ul class="list round ma-b-50">
+                <li>Designed as Modules</li>
+                <li>Touch swipe gesture</li>
+                <li>Mouse swipe gesture in Desktop</li>
+                <li>Instant initializing</li>
 
+                <li>Line - Fade effect</li>
+                <li>8+ Math effects</li>
+                <li>50+ CSS One, 250+ CSS Two - Four effects</li>
+                <li>Coverflow 3D effect</li>
 
+                <li>Fully Responsive</li>
+                <li>Center layout</li>
+                <li>Carousel, outbox slider layout</li>
+                <li>Nested slider</li>
+                <li>Multiple slider</li>
+                <li>Fullwidth, coverscreen slider layout</li>
+                <li>Height auto, height fixed layout</li>
+                <li>Caption of slide</li>
+                <li>Center - fill - fit - stretch - tile image position</li>
 
+                <li>Smart loading</li>
+                <li>Image lazyload</li>
+                <li>Youtube, Vimeo lazyload</li>
+                <li>Iframe lazyload</li>
 
-    <!-- Slider control - begin
-    ============================================================== -->
-    <div class="pa-b-50">
-    <div class="container">
-        
-        <a id="tBox" class="btn small" href="#">Layout box | refresh slider</a>
-        <a id="tLayout" class="btn small" href="#">Layut dot</a>
-        <a id="tSlideshow" class="btn small" href="#">Slideshow</a>
-        <a id="tTimer" class="btn small" href="#">Timer bar</a>
-        <a id="tDrag" class="btn small" href="#">Drag off</a>
-        <a id="tLoop" class="btn small" href="#">Loop slide</a>
-        
-
-        <!-- <div class="hr dash left ma-b-10"></div> -->
-    </div>
-    </div>
-    <!-- Slider control - end
-    ============================================================== -->
-
-    
-
-
-
-    
-    <!-- Feature - begin
-    ============================================================== -->
-    <div class="wrapper pa-b-50">
-    <div class="container">
-    
-    
-    <div class="row">
-        <!-- Heading - begin -->
-        <div class="span12 title-big">FEATURES</div>
-        <!-- Heading - end -->
-
-
-        
-        <!-- Feature item 1 - begin -->
-        <div class="span4 feature-item">
-            <div class="icon three">&nbsp;</div>
-            <h5>3 Layout slider</h5>
-
-            <p>Support multiply layout, style as much as possible.</p>
+                <li>Keyboard, mousewheel event navigation</li>
+            </ul>
         </div>
-        <!-- Feature item 1 - end -->
 
-
-        <!-- Feature item 2 - begin -->
-        <div class="span4 feature-item">
-            <div class="icon res">&nbsp;</div>
-            <h5>Responsive</h5>
-            
-            <p>Support fully responsive and non-responsive.</p>
+        <div class="col4">
+            <h4>Tabs layout</h4>
+            <ul class="list round ma-b-50">
+                <li>None effect</li>
+                <li>5+ style for Tabs</li>
+                <li>14 position for pagination</li>
+                <li>Tabs - thumbnail - bullet - list pagination</li>
+                <li>Supported arrow, mark of pagination</li>
+                <li>Fully customizable for pagination</li>
+                <li>Fully supported Vertical Tabs</li>
+                <li>Area prevent touch swipe gestures</li>
+            </ul>
         </div>
-        <!-- Feature item 2 - end -->
 
-
-        <!-- Feature item 3 - begin -->
-        <div class="span4 feature-item">
-            <div class="icon css3">&nbsp;</div>
-            <h5>CSS3 transition</h5>
-            
-            <p>Priority use css3 transitions instead of jquery animate &rarr; reduced memory, faster performance.</p>
+        <div class="col4">
+            <h4>Slideshow</h4>
+            <ul class="list round ma-b-50">
+                <li>Fully functions of slideshow</li>
+                <li>Auto play - pause slideshow</li>
+                <li>Hover to pause slideshow</li>
+                <li>Arc - line timer control</li>
+            </ul>
         </div>
-        <!-- Feature item 3 - end -->
 
-    </div>
-
-
-    <div class="row">
-
-        <!-- Feature item 4 - begin -->
-        <div class="span4 feature-item">
-            <div class="icon touch">&nbsp;</div>
-            <h5>Touch friendly</h5>
-
-            <p>Easy goto prev/next slide with intuitive touch/drag.</p>
+        <div class="col4">
+            <h4>Powerfull API & Modules</h4>
+            <ul class="list round ma-b-50">
+                <li>Deep linking module</li>
+                <li>Cookie module</li>
+                <li>Instant update options</li>
+                <li>Range value in option</li>
+                <li>Add - remove slide</li>
+                <li>Remote api from other markup</li>
+            </ul>
         </div>
-        <!-- Feature item 4 - end -->
-
-
-        <!-- Feature item 5 - begin -->
-        <div class="span4 feature-item">
-            <div class="icon lazy">&nbsp;</div>
-            <h5>Image lazyload</h5>
-
-            <p>Show slider after loaded first slide, without waiting loaded all slide.</p>
-        </div>
-        <!-- Feature item 5 - end -->
-
-
-        <!-- Feature item 6 - begin -->
-        <div class="span4 feature-item">
-            <div class="icon fitfill">&nbsp;</div>
-            <h5>Image auto fit/fill</h5>
-
-            <p>Image auto fit/fill slide. Support for images of different sizes.</p>
-        </div>
-        <!-- Feature item 6 - end -->
-
-    </div>
-
-    
-
-    <div class="autohide">
-    <div class="row">
-
-        <!-- Feature item 7 - begin -->
-        <div class="span4 feature-item">
-            <div class="icon center">&nbsp;</div>
-            <h5>Image center</h5>
-            
-            <p>If image size smaller/larger than slide, it's always in center of the slide.</p>
-        </div>
-        <!-- Feature item 7 - end -->
-
-
-        <!-- Feature item 8 - begin -->
-        <div class="span4 feature-item">
-            <div class="icon mutual">&nbsp;</div>
-            <h5>Layout mutual support</h5>
-            
-            <p>Switch layout, fallback layout custom when not brower not support css3 transition.</p>
-        </div>
-        <!-- Feature item 8 - end -->
-
-
-        <!-- Feature item 9 - begin -->
-        <div class="span4 feature-item">
-            <div class="icon fullwidth">&nbsp;</div>
-            <h5>Fullwidth helper</h5>
-
-            <p>With mCanvas &amp; media, setup fullwidth becomes more easier.</p>
-        </div>
-        <!-- Feature item 9 - end -->
-        
-    </div>
-
-
-    <div class="row">
-
-        <!-- Feature item 10 - begin -->
-        <div class="span4 feature-item">
-            <div class="icon showhide">&nbsp;</div>
-            <h5>Show/hide slider</h5>
-
-            <p>Support show/hide slider depend on width page, or device.</p>
-        </div>
-        <!-- Feature item 10 - end -->
-
-
-        <!-- Feature item 11 - begin -->
-        <div class="span4 feature-item">
-            <div class="icon layer">&nbsp;</div>
-            <h5>Layer support</h5>
-            
-            <p>More vivid with layer, and css3 transform and easy setup.</p>
-        </div>
-        <!-- Feature item 11 - end -->
-
-
-        <!-- Feature item 12 - begin -->
-        <div class="span4 feature-item">
-            <div class="icon multi">&nbsp;</div>
-            <h5>Layer multi transition</h5>
-
-            <p>Support multi transition with unlimited number.
-            <br>Repeat and direction animation.</p>
-        </div>
-        <!-- Feature item 12 - end -->
-        
-    </div>
-
-
-    <div class="row">
-
-        <!-- Feature item 13 - begin -->
-        <div class="span4 feature-item">
-            <div class="icon autoplay">&nbsp;</div>
-            <h5>Autoplay</h5>
-
-            <p>Auto play when slide load complete. Auto pause when go out page, or scroll out sider</p>
-        </div>
-        <!-- Feature item 13 - end -->
-
-
-        <!-- Feature item 14 - begin -->
-        <div class="span4 feature-item">
-            <div class="icon markup">&nbsp;</div>
-            <h5>Markup flexible</h5>
-            
-            <p>Can use div or unordered list tag for slide. Position of elements  can be in/outside slider...</p>
-        </div>
-        <!-- Feature item 14 - end -->
-
-
-        <!-- Feature item 15 - begin -->
-        <div class="span4 feature-item">
-            <div class="icon update">&nbsp;</div>
-            <h5>Update options</h5>
-
-            <p>Updated most of slider options.</p>
-        </div>
-        <!-- Feature item 15 - end -->
-        
-    </div>
-    </div>
-
-
-    </div>    
-    </div>
-    <!-- Feature - end
-    ============================================================== -->
-
-
-
-
-
-
-    <!-- Template - begin
-    ============================================================== -->
-    <div class="wrapper">
-    <div class="container">
-    <div class="row">
-        
-        <!-- Heading - begin -->
-        <div class="title-big">TEMPLATES</div>
-        <!-- Heading - end -->
-
-
-        <!-- Template gallery - begin
-        .......................................................... -->
-        <div class="items show-full">
-            
-            <!-- Item 1 - begin -->
-            <article class="span4">
-                <figure class="thumbnail">
-                    <a class="linkto" href="slider.free.html">
-                        <img src="imgs/slider/template_free.jpg" alt="[image]">
-                    </a>
-                </figure>
-                
-                <a class="meta" href="slider.free.html">
-                    <p class="title">Slider free</p>
-                    <!-- <span class="tags">photography / graphic</span> -->
-                </a>
-            </article>
-            <!-- Item 1 - end -->
-
-            
-            <!-- Item 2 - begin -->
-            <article class="span4">
-
-                <figure class="thumbnail">
-                    <a class="linkto" href="slider.simple.html">
-                        <img src="imgs/slider/template_simple.jpg" alt="[image]">
-                    </a>
-                </figure>
-
-                <a class="meta" href="slider.simple.html">
-                    <p class="title">Slider simple</p>
-                    <!-- <span class="tags">photography / graphic</span> -->
-                </a>
-            </article>
-            <!-- Item 2 - end -->
-
-            
-            <!-- Item 3 - begin -->
-            <article class="span4">
-
-                <figure class="thumbnail">
-                    <a class="linkto" href="slider.bg.html">
-                        <img src="imgs/slider/template_bg.jpg" alt="[image]">
-                    </a>
-                </figure>
-                    
-                <a class="meta" href="slider.bg.html">
-                    <p class="title">Slider background</p>
-                    <!-- <span class="tags">photography / graphic</span> -->
-                </a>
-            </article>
-            <!-- Item 3 - end -->
-
-            
-            <!-- Item 4 - begin -->
-            <article class="span4">
-
-                <figure class="thumbnail">
-                    <a class="linkto" href="slider.device.html">
-                        <img src="imgs/slider/template_device.jpg" alt="[image]">
-                    </a>
-                </figure>
-                    
-                <a class="meta" href="slider.device.html">
-                    <p class="title">Slider device</p>
-                    <!-- <span class="tags">photography / graphic</span> -->
-                </a>
-            </article>
-            <!-- Item 4 - end -->
-
-            
-            <!-- Item 5 - begin -->
-            <article class="span4">
-
-                <figure class="thumbnail">
-                    <a class="linkto" href="slider.classic1.html">
-                        <img src="imgs/slider/template_classic1.jpg" alt="[image]">
-                    </a>
-                </figure>
-                    
-                <a class="meta" href="slider.classic1.html">
-                    <p class="title">Slider classic 1</p>
-                </a>
-            </article>
-            <!-- Item 5 - end -->
-
-
-            <!-- Item 6 - begin -->
-            <article class="span4">
-
-                <figure class="thumbnail">
-                    <a class="linkto" href="slider.classic2.html">
-                        <img src="imgs/slider/template_classic2.jpg" alt="[image]">
-                    </a>
-                </figure>
-                    
-                <a class="meta" href="slider.classic2.html">
-                    <p class="title">Slider classic 2</p>
-                </a>
-            </article>
-            <!-- Item 6 - end -->
-
-
-        </div>
-        <!-- Template gallery - end
-        .......................................................... -->
-
+        <!-- List features - end -->
 
     </div>
     </div>
     </div>
-    <!-- Template - end
-    ============================================================== -->
+    <!-- LIST ALL FEATURES - end
+    ======================================================================== -->
 
 
 
 
-    
-
-    <!-- View more - begin
-    ============================================================== -->
-    <!-- <div class="pa-b-100 bg-dark">
-    <div class="container">
-    <div class="row">
-        
-        <div class="span4">
-            <a class="view-more demo" href="#"><h5>DEMO OTHERS</h5></a>
-        </div>
-
-        <div class="span4">
-            <a class="view-more tutorial" href="#"><h5>TUTORIAL</h5></a>
-        </div>
-
-    </div>
-    </div>
-    </div> -->
-    <!-- View more - end
-    ============================================================== -->
 
 
 
-
-    
-    
     <!-- Footer - begin
-    ============================================================== -->
-    <div class="wrapper footer bo-t">
-    <div class="container">
-        
+    ======================================================================== -->
+    <div class="wrapper footer"><div class="container">
+
         <!-- Copyright -->
         <section class="copyright">
-            <p>&copy; 2013 Thystudio. All Rights Reserved.</p>
+            <p>&copy; HaiBach. All Rights Reserved.</p>
         </section>
-
-    </div>
-    </div>
+        
+    </div></div>
     <!-- Footer - end
-    ============================================================== -->
+    ======================================================================== -->
+
+
+
 
 
 
 
     <!-- Script - begin
-    ============================================================== -->
-    <script src="../libs/scripts/jquery-1.10.2.min.js"></script> <!-- jQuery Libary -->
-    <script src="../libs/scripts/jquery.easing.min.js"></script> <!-- Easing Plugins -->
-    <script src="../libs/scripts/code09.js"></script> <!-- CODE09 custom -->
-    <script src="../code/codeslider.js"></script> <!-- Codeslider Plugins -->
-
-
-    <script type="text/javascript">
-
-        function toggle(cs, $el, propON, propOFF) {
-            var _a = 'actived';
-
-            if( $el.hasClass(_a) ) { $el.removeClass(_a); cs.prop(propOFF); }
-            else                   { $el.addClass(_a); cs.prop(propON); }
-        }
-
-        function control() {
-            var code = $('.cs').data('codeslider');
-
-
-            // Toggle
-            $('#tBox').on('click', function() {
-                var _el = $(this), _a = 'actived', _l = 'layout-box';
-
-                if( _el.hasClass(_a) ) {
-                    _el.removeClass(_a);
-                    $('body').removeClass(_l);
-                    code.refresh();
-                }
-                else {
-                    _el.addClass(_a);
-                    $('body').addClass(_l);
-                    code.refresh();
-                }
-                return false;
-            });
-
-            $('#tLayout').on('click', function() {
-                var _on  = { fx : 'random' }
-                  , _off = { fx : 'carousel' };
-
-                toggle(code, $(this), _on, _off);
-                return false;
-            });
-
-            $('#tSlideshow').on('click', function() {
-                var _on  = { isSlideshow: true, timer: 'arc' }
-                  , _off = { isSlideshow: false, timer: 'none' };
-
-                toggle(code, $(this), _on, _off);
-                return false;
-            });
-
-            $('#tTimer').on('click', function() {
-                var _on  = { timer : 'bar' }
-                  , _off = { timer : 'arc' };
-
-                toggle(code, $(this), _on, _off);
-                return false;
-            });
-
-            $('#tDrag').on('click', function() {
-                var _el = $(this), _a = 'actived', _c = 'nav-hide';
-                var _on  = { isDrag : false }
-                  , _off = { isDrag : true };
-
-                if( _el.hasClass(_a) ) {
-                    _el.removeClass(_a);
-                    code.prop(_off);
-                    $('.cs').addClass(_c);      // After update properties
-                    
-                }
-                else {
-                    _el.addClass(_a);
-                    code.prop(_on);
-                    $('.cs').removeClass(_c);   // After update properties
-                }
-                return false;
-            });
-
-            $('#tLoop').on('click', function() {
-                var _on  = { isLoop : true }
-                  , _off = { isLoop : false };
-
-                toggle(code, $(this), _on, _off);
-                return false;
-            });
-        }
-
-
-        $(window).load(function() {
-
-            // Slider init
-            $('.cs').codeslider();
-
-            // Control func
-            control();
-        });
-    </script>
-
+    ======================================================================== -->
+    <script src="../libs/scripts/jquery-last.min.js"></script>
+    <script src="../libs/scripts/ruby01.js"></script>
+    <script src="../ruby/rubyanimate.js"></script> <!-- Ruby Animate -->
+    <script src="../ruby/rubyslider.js"></script> <!-- RubySlider Plugin -->
+    <script src="../libs/scripts/custom.js"></script> <!-- Page custom script -->
     <!-- Script - end
-    ============================================================== -->
+    ======================================================================== -->
 
 </body>
 </html>

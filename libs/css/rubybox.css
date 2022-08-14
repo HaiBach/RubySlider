@@ -1,0 +1,76 @@
+/**
+ * RUBYBOX STYLE MAIN
+ * @package         RubyBox
+ * @author          HaiBach
+ * @link            http://
+ * @version         1.0
+ */
+
+
+.rb01wrap {
+    position: fixed;
+    display: none;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    z-index: 100001;
+}
+.rb01outer {
+    position: absolute;
+    left: 0; top: 0;
+    min-width: 80px; min-height: 80px;
+    z-index: 100002;
+}
+.rb01inner {
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid;
+    overflow: auto;
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+
+
+/* OPACITY & BACKGROUND */
+.rb01wrap.rb01opacity               { background-color: hsla(0,0%,0%,.8); }
+.rb01opacity .rb01inner             { border-color: hsla(0,0%,0%,.5); }
+/* Support old browser <=IE8 */
+.rb01wrap.rb01no-opacity            { background-color: #000; }
+.rb01no-opacity .rb01inner          { border-color: #222; }
+
+
+/* ACTIVED */
+.rb01wrap.rb01actived, .rb01actived .rb01content {
+    display: block !important;
+}
+
+
+/* BUTTON CLOSE */
+.rb01btn-close {
+    position: absolute;
+    width: 60px; height: 40px;
+    right: 0; top: 0;
+    background: url(../imgs/rb01close-color.png) no-repeat center center;
+    text-indent: -9999px;
+    opacity: .3;
+    cursor: pointer;
+    z-index: 100003;
+}
+.rb01btn-close:hover {
+    opacity: .8;
+}
+
+
+/* FULLSCREEN */
+.rb01fullscreen .rb01inner {
+    border-width: 0;
+}
+
+
+/* LOCK SCREEN */
+.rb01lock                           { overflow: hidden !important; }
+.rb01lock-scroll                    { margin-right: 17px !important; }
+
+
+/* OTHERS */
+.rb01scroll-y                       { overflow-y : scroll; }

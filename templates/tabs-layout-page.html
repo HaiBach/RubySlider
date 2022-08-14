@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<!--[if IE 7]> <html class="ie ie7"> <![endif]-->
+<!--[if IE 8]> <html class="ie ie8"> <![endif]-->
+<!--[if (gt IE 8)|!(IE)]> <html> <![endif]-->
+<head>
+
+    <!-- Page Infomations -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Best Slider - Tabs premium jQuery plugin">
+    <meta name="keywords" content="tabs, slider, carousel, gallery, touch, swipe, drag, css3, responsive, transform, transition, lazyload, fullscreen, revolution slider, master slider, layer slider">
+    <meta name="author" content="Ruby Slider - HaiBach">
+
+    <!-- Title of page -->
+    <title>PAGE LAYOUT | RUBY SLIDER</title>
+
+    <!-- Favicon & apple-icon -->
+    <link rel="shortcut icon" href="../libs/imgs/icons/favicon.ico">
+    <link rel="icon" sizes="192x192" href="../libs/imgs/icons/icon-highres.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="../libs/imgs/icons/touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../libs/imgs/icons/touch-icon-ipad-retina.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="../libs/imgs/icons/touch-icon-ipad-pro.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../libs/imgs/icons/touch-icon-iphone-6-plus.png">
+
+
+    <!-- CSS link -->
+    <link rel="stylesheet" href="../libs/css/ruby00.css">
+    <link rel="stylesheet" href="../libs/css/ruby01.css">
+    <link rel="stylesheet" href="../libs/css/styles.custom.css">
+    <link rel="stylesheet" href="../ruby/rubyslider.css">
+
+
+    <!-- CSS embed -->
+    <style>
+        .body-custom {
+            overflow-x: hidden;
+            background-color: #333;
+        }
+    </style>
+
+
+</head>
+<body>
+
+    <style>
+        /* FIXED AND STYLE MENU */
+        .rm01hanger a.link-actived {
+            background-color: #fff;
+            border-color: #cc0055;
+            color: #333;
+        }
+        .rm01offcanvas a.link-actived {
+            color: #fff;
+        }
+
+        /* TABS PREVIEW */
+        .tabs-preview {
+            overflow : hidden;
+        }
+        .tabs-preview > .rs01viewport > .rs01canvas > .rs01slide {
+            background-color: #fff;
+        }
+    </style>
+
+    <div class="tabs-preview rs01"
+        data-slider='{
+            "optionsPlus" : "tabs",
+            "name"        : "tabsPreview",
+            "fx"          : "cssOne",
+            "cssOne"      : ["glueHor", "wheelHor"],
+
+            "speed"       : 1000,
+            "width"       : 940,
+
+            "isPag"       : false,
+            "isSwipe"     : false,
+            "isKeyboard"  : true,
+            "mobile"      : { "fx": "line", "speed": 600 }
+        }'>
+
+
+        <!-- PAGE 1 - begin
+        ======================================================================== -->
+        <div id="overview">
+            <div class="wrapper header logo-left">
+            <div class="container">
+
+                <!-- Logo -->
+                <a class="logo" href="../templates/" data-mScale="100">RubySlider</a>
+
+                <!-- Menu -->
+                <nav class="rm01" data-options='{ "isOffCanvas": false }'>
+                <ul class="rm01menu">
+                    <li><a class="btn-goto link-actived" data-rubyslider-api='{ "markup": "tabsPreview", "name": "goto", "param1": "#overview" }'>Overview</a></li>
+                    <li><a class="btn-goto" data-rubyslider-api='{ "markup": "tabsPreview", "name": "goto", "param1": "#slider-nested" }'>Slider Nested</a></li>
+                    <li><a class="btn-goto" data-rubyslider-api='{ "markup": "tabsPreview", "name": "goto", "param1": "#swipe-prevent" }'>Swipe Prevent</a></li>
+                    <li><a class="btn-goto" data-rubyslider-api='{ "markup": "tabsPreview", "name": "goto", "param1": "#image-lazyload" }'>Image Lazyload</a></li>
+                </ul>
+                </nav>
+            </div>
+            </div>
+
+
+
+
+            <div class="wrapper container">
+
+                <!-- TITLE HEADING -->
+                <div class="title-head">
+                <div class="title-head-inner">
+                    <h1>OVERVIEW PAGE</h1>
+                </div>
+                </div>
+
+
+                <!-- PAGE CONTENT -->
+                <div class="row font-blokk">
+                    <div class="col4 col-xs-6">
+                        <div class="card-outline">
+                            <a class="rs01img card-thumbnail" href="imgs/animal-focus-thumbnail1.jpg">Animal 1</a>
+                            <div class="card-content">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae.</div>
+                        </div>
+                    </div>
+
+                    <div class="col4 col-xs-6">
+                        <div class="card-outline">
+                            <a class="rs01img card-thumbnail" href="imgs/animal-focus-thumbnail2.jpg">Animal 2</a>
+                            <div class="card-content">Lorem ipsum dolor sit amet, consectetur adipisi elit. Deleniti, pariatur aliquam molestias aspernatur. Facere, quibusdam.</div>
+                        </div>
+                    </div>
+
+                    <div class="col4 col-xs-6">
+                        <div class="card-outline">
+                            <a class="rs01img card-thumbnail" href="imgs/animal-focus-thumbnail3.jpg">Animal 3</a>
+                            <div class="card-content">Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim donec consectetur io.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="wrapper footer container">
+                <section class="copyright">
+                    <p>&copy; HaiBach. All Rights Reserved.</p>
+                </section>
+            </div>
+        </div>
+        <!-- PAGE 1 - end
+        ======================================================================== -->
+
+
+
+
+        <!-- PAGE 2 - begin
+        ======================================================================== -->
+        <div id="slider-nested">
+            <div class="wrapper header logo-left">
+            <div class="container">
+
+                <!-- Logo -->
+                <a class="logo" href="../templates/" data-mScale="100">RubySlider</a>
+
+                <!-- Menu -->
+                <nav class="rm01" data-options='{ "isOffCanvas": false }'>
+                <ul class="rm01menu">
+                    <li><a class="btn-goto" data-rubyslider-api='{ "markup": "tabsPreview", "name": "goto", "param1": "#overview" }'>Overview</a></li>
+                    <li><a class="btn-goto link-actived" data-rubyslider-api='{ "markup": "tabsPreview", "name": "goto", "param1": "#slider-nested" }'>Slider Nested</a></li>
+                    <li><a class="btn-goto" data-rubyslider-api='{ "markup": "tabsPreview", "name": "goto", "param1": "#swipe-prevent" }'>Swipe Prevent</a></li>
+                    <li><a class="btn-goto" data-rubyslider-api='{ "markup": "tabsPreview", "name": "goto", "param1": "#image-lazyload" }'>Image Lazyload</a></li>
+                </ul>
+                </nav>
+            </div>
+            </div>
+
+
+
+
+            <div class="wrapper">
+
+                <!-- TITLE HEADING -->
+                <div class="container title-head">
+                <div class="title-head-inner">
+                    <h1>SLIDER NESTED PAGE</h1>
+                </div>
+                </div>
+
+
+                <!-- Slider Nested -->
+                <div class="rs01 slider-nested ruby-mark rs01nav-dark ma-b-30"
+                    data-slider='{
+                        "fx"      : "randomMath",
+                        "speed"   : 1000,
+                        "width"   : 940,
+                        "padding" : 10,
+                        "pag"     : { "type" : "bullet", "isMark" : true },
+                        "isNav"   : true
+                    }'>
+
+                    <a class="rs01imgback" href="imgs/season-landscape2.jpg">season 2</a>
+                    <a class="rs01imgback" href="imgs/season-landscape4.jpg">season 4</a>
+                    <a class="rs01imgback" href="imgs/season-landscape6.jpg">season 6</a>
+                    <a class="rs01imgback" href="imgs/season-landscape7.jpg">season 7</a>
+                </div>
+
+
+                <!-- Dummy Content -->
+                <div class="container">
+                <div class="row font-blokk">
+
+                    <div class="col4">
+                        <p class="bo-l-h"><i>Consectetur adipisicing elit. Vel, sequi, quis, minima, dolor quisquam numquam quod in repudiandae officia.</i></p>
+                    </div>
+
+                    <div class="col8">
+                        <p class="dropcap">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti, pariatur aliquam molestias aspernatur non. Facere, quibusdam, reiciendis, natus laudantium debitis suscipit consequatur voluptatibus mollitia temporibus quia ratione dignissimos magnam provident.</p>
+                        <p>Assumenda, repudiandae, iste magni labore culpa eum expedita eligendi odio molestiae temporibus id ab nihil ad sunt mollitia veritatis excepturi. Ullam, odit nesciunt doloribus natus non repudiandae error itaque vero?</p>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="wrapper footer container">
+                <section class="copyright">
+                    <p>&copy; HaiBach. All Rights Reserved.</p>
+                </section>
+            </div>
+        </div>
+        <!-- PAGE 2 - end
+        ======================================================================== -->
+
+
+
+
+
+        <!-- PAGE 3 - begin
+        ======================================================================== -->
+        <div id="swipe-prevent">
+            <div class="wrapper header logo-left">
+            <div class="container">
+
+                <!-- Logo -->
+                <a class="logo" href="../templates/" data-mScale="100">RubySlider</a>
+
+                <!-- Menu -->
+                <nav class="rm01" data-options='{ "isOffCanvas": false }'>
+                <ul class="rm01menu">
+                    <li><a class="btn-goto" data-rubyslider-api='{ "markup": "tabsPreview", "name": "goto", "param1": "#overview" }'>Overview</a></li>
+                    <li><a class="btn-goto" data-rubyslider-api='{ "markup": "tabsPreview", "name": "goto", "param1": "#slider-nested" }'>Slider Nested</a></li>
+                    <li><a class="btn-goto link-actived" data-rubyslider-api='{ "markup": "tabsPreview", "name": "goto", "param1": "#swipe-prevent" }'>Swipe Prevent</a></li>
+                    <li><a class="btn-goto" data-rubyslider-api='{ "markup": "tabsPreview", "name": "goto", "param1": "#image-lazyload" }'>Image Lazyload</a></li>
+                </ul>
+                </nav>
+            </div>
+            </div>
+
+
+
+
+            <div class="wrapper container">
+
+                <!-- TITLE HEADING -->
+                <div class="title-head">
+                <div class="title-head-inner">
+                    <h1>SWIPE PREVENT PAGE</h1>
+                </div>
+                </div>
+
+
+                <!-- PAGE CONTENT -->
+                <div class="row">
+                    <div class="col4">
+                        <div class="rs01swipe-prevent area-highlight">
+                            <h2 class="color-hl">Area prevent Swipe gestures</h2>
+                            <p><i>Insert class "{ns}swipe-prevent" to stop swipe gestures on that element</i></p>
+                            <p class="font-blokk"><i>Consectetur adipisicing elit. Vel, sequi, quis, minima, dolor quisqua</i></p>
+                            <a class="">Go to &rarr;</a>
+                        </div>
+                    </div>
+
+                    <div class="col8">
+
+                        <!-- FORM TABS - begin -->
+                        <div class="tabs-form rs01 rs01size-large"
+                            data-slider='{
+                                "optionsPlus" : "tabs",
+                                "fx"          : "cssOne",
+                                "cssOne"      : "scalePulse",
+                                "speed"       : 600
+                            }'>
+
+                            <div>
+                                <h4 class="rs01pagitem muted">REGISTER</h4>
+                                <form class="block clearfix">
+
+                                    <input type="text" class="large" placeholder="Username">
+                                    <input type="text" class="large" placeholder="Password">
+                                    <input type="text" class="large" placeholder="Repeat Password">
+                                    <input type="text" class="large" placeholder="Email">
+                                    <textarea name="" cols="30" rows="5" placeholder="Your bio"></textarea>
+
+                                    <label class="checkbox text-small muted pull-left" for="terms">
+                                        <input id="terms" type="checkbox">I have read and I agree the Terms of Use
+                                    </label>
+
+                                    <input class="btn large pull-right no-ma" type="submit" value="Register">
+                                </form>
+                            </div>
+
+
+                            <div>
+                                <h4 class="rs01pagitem">SIGN IN</h4>
+                                <form class="block clearfix">
+
+                                    <input type="text" class="large" placeholder="Username">
+                                    <input type="password" class="large" placeholder="Password">
+
+                                    <label class="checkbox text-small muted pull-left">
+                                        <input type="checkbox">Remember?
+                                    </label>
+
+                                    <input class="btn large pull-right no-ma" type="submit" value="Login">
+                                </form>
+                            </div>
+
+
+                            <div>
+                                <h4 class="rs01pagitem">ACCOUNT RESET</h4>
+                                <p class="text-small muted">Forget your username or lost your password? No worries, simply <span class="color-hl">enter your email</span> and we'll send you new login details</p>
+
+                                <form class="block no-ma clearfix">
+                                    <input type="text" class="large" placeholder="Email">
+                                    <input class="btn large pull-right no-ma" type="submit" value="Send">
+                                </form>
+                            </div>
+                        </div>
+                        <!-- FORM TABS - end -->
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+            <div class="wrapper footer container">
+                <section class="copyright">
+                    <p>&copy; HaiBach. All Rights Reserved.</p>
+                </section>
+            </div>
+        </div>
+        <!-- PAGE 3 - end
+        ======================================================================== -->
+
+
+
+
+
+        <!-- PAGE 4 - begin
+        ======================================================================== -->
+        <div id="image-lazyload">
+            <div class="wrapper header logo-left">
+            <div class="container">
+
+                <!-- Logo -->
+                <a class="logo" href="../templates/" data-mScale="100">RubySlider</a>
+
+                <!-- Menu -->
+                <nav class="rm01" data-options='{ "isOffCanvas": false }'>
+                <ul class="rm01menu">
+                    <li><a class="btn-goto" data-rubyslider-api='{ "markup": "tabsPreview", "name": "goto", "param1": "#overview" }'>Overview</a></li>
+                    <li><a class="btn-goto" data-rubyslider-api='{ "markup": "tabsPreview", "name": "goto", "param1": "#slider-nested" }'>Slider Nested</a></li>
+                    <li><a class="btn-goto" data-rubyslider-api='{ "markup": "tabsPreview", "name": "goto", "param1": "#swipe-prevent" }'>Swipe Prevent</a></li>
+                    <li><a class="btn-goto link-actived" data-rubyslider-api='{ "markup": "tabsPreview", "name": "goto", "param1": "#image-lazyload" }'>Image Lazyload</a></li>
+                </ul>
+                </nav>
+            </div>
+            </div>
+
+
+
+
+            <div class="wrapper container">
+
+                <!-- TITLE HEADING -->
+                <div class="title-head">
+                <div class="title-head-inner">
+                    <h1>IMAGE LAZYLOAD PAGE</h1>
+                </div>
+                </div>
+
+
+                <!-- PAGE CONTENT -->
+                <div class="row">
+                    <div class="col4 col-xs-6">
+                        <a class="rs01img card-img" href="imgs/food-thumbnail1.jpg">Food 1</a>
+                    </div>
+
+                    <div class="col4 col-xs-6">
+                        <a class="rs01img card-img" href="imgs/food-thumbnail2.jpg">Food 2</a>
+                    </div>
+
+                    <div class="col4 col-xs-6">
+                        <a class="rs01img card-img" href="imgs/food-thumbnail3.jpg">Food 3</a>
+                    </div>
+
+                    <div class="col4 col-xs-6">
+                        <a class="rs01img card-img" href="imgs/food-thumbnail4.jpg">Food 4</a>
+                    </div>
+
+                    <div class="col4 col-xs-6">
+                        <a class="rs01img card-img" href="imgs/food-thumbnail6.jpg">Food 6</a>
+                    </div>
+
+                    <div class="col4 col-xs-6">
+                        <a class="rs01img card-img" href="imgs/food-thumbnail7.jpg">Food 7</a>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="wrapper footer container">
+                <section class="copyright">
+                    <p>&copy; HaiBach. All Rights Reserved.</p>
+                </section>
+            </div>
+        </div>
+        <!-- PAGE 4 - end
+        ======================================================================== -->
+    </div>
+
+
+
+
+
+
+
+    <!-- Script - begin
+    ======================================================================== -->
+    <script src="../libs/scripts/jquery-last.min.js"></script>
+    <script src="../libs/scripts/ruby01.js"></script>
+    <script src="../ruby/rubyanimate.js"></script> <!-- Ruby Animate -->
+    <script src="../ruby/rubyslider.js"></script> <!-- RubySlider Plugin -->
+    <script src="../libs/scripts/custom.js"></script> <!-- Page custom script -->
+
+
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+
+        /**
+         * GET API OF TABS PREVIEW
+         */
+        var code = $('.tabs-preview').data('rubyslider');
+
+
+
+
+        /**
+         * SETUP FULL-HEIGHT FOR EACH SLIDE
+         */
+        code.ev.on('loaded after resize', function() {
+            var hWindow   = $(window).height(),
+                $slideCur = code.slideCur();
+
+            $slideCur.css('min-height', hWindow);
+        });
+
+
+
+        /**
+         * SETUP OTHERS
+         */
+        $('body').addClass('body-custom');
+    });
+    </script>
+    <!-- Script - end
+    ======================================================================== -->
+
+</body>
+</html>

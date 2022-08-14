@@ -1,0 +1,620 @@
+/**
+ * RUBY FORM MAIN STYLE
+ * @package         RubyForm
+ * @author          HaiBach
+ * @link            http://haibach.net
+ * @version         1.6
+ */
+
+
+/**
+ * BUTTONS
+ */
+.rf01btn {
+    display: inline-block;
+    padding: 10px 15px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    color: #999;
+    white-space: nowrap;
+    text-decoration: none;
+    cursor: pointer;
+}
+.rf01btn:hover {
+    border-color: #999;
+    color: #444;
+}
+.rf01btn.rt03actived {
+    border-color: #cc0055;
+    color: #cc0055;
+}
+
+/* BUTTON LARGE */
+.rf01btn-large {
+    display: inline-block;
+    padding: 8px 20px;
+    margin-left: 10px; margin-right: 10px;
+    border: 1px solid transparent;
+    color: #999;
+    font-size: 21px;
+    line-height: 48px;
+    height: 48px;
+    font-weight: 300;
+    cursor: pointer;
+}
+.rf01btn-large:hover {
+    color: #cc0055;
+    border-color: #cc0055;
+}
+
+/* Mau sac cho button */
+.rf01btn-blue               { color: #cc0055 !important; }
+.rf01btn-blue:hover         { border-color: #cc0055; }
+.rf01btn-red                { color: #dd0000 !important; }
+.rf01btn-red:hover          { border-color: #dd0000; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * UI INPUT & TEXTAREA
+ */
+input.rf01input, textarea.rf01input {
+    margin: 0;
+    padding: 7px 10px;
+    border: none;
+    border-radius: 4px;
+    box-shadow: none;
+}
+.rf01input:focus {
+    box-shadow: none !important;
+}
+input.rf01input-smallhide {
+    padding: 0 3px;
+    border-left-width: 0;
+    color: #ccc;
+    font-size: 13px;
+}
+
+/* Input style 2 */
+.rf01input-style2 input {
+    width: 100px;
+    padding: 5px 0;
+    border-width: 0 0 1px 0;
+    color: #666;
+    font-family: Consolas, Monaco, monospace;
+    font-size: 16px;
+    text-align: center;
+}
+.rf01input-style2 span {
+    font-size: 11px;
+    color: #999;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * UI CHECKBOX
+ */
+.rf01checkbox {
+    position: relative;
+    display: block;
+    width: 56px; height: 30px;
+    background-color: #eee;
+    border-radius: 50px;
+    cursor: pointer;
+
+    -webkit-transition: border-color .2s;
+            transition: border-color .2s;
+}
+.rf01checkbox:after {
+    content: '';
+    position: absolute;
+    display: block;
+    top: 0; left: 0;
+    width: 28px; height: 28px;
+    background-color: #999;
+    border: 1px solid transparent;
+    border-radius: 100%;
+
+    -webkit-transition: -webkit-transform .15s, border-color .15s;
+            transition:         transform .15s, border-color .15s;
+}
+.rf01checkbox:before {
+    content: 'OFF';
+    position: absolute;
+    left: 0;
+    display: block;
+    width: 36px;
+    padding-left: 10px; padding-right: 10px;
+    color: #666;
+    font-size: 8px;
+    font-weight: bold;
+    line-height: 30px;
+    text-align: right;
+}
+
+.rf01checkbox.rt03selected {
+    background-color: #cc0055;
+    /*background-color: rgba(0,153,221,.75);*/
+}
+.rf01checkbox.rt03selected:after {
+    border-color: #cc0055;
+    background-color: #fff;
+    -webkit-transform: translateX(26px);
+            transform: translateX(26px);
+}
+.rf01checkbox.rt03selected:before {
+    color: #fff;
+    content: 'ON';
+    text-align: left;
+}
+
+
+/* CHECKBOX : STYLE INLINE */
+.rf01checkbox-inline                        { display: inline-block; }
+.rf01checkbox-inline.rt03selected           { border-color: #666; }
+.rf01checkbox-inline.rt03selected:after     { border-color: #666; }
+
+
+/* CHECKBOX : TYPE TEXT */
+.rf01checkbox-text {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.rf01checkbox-text:before, .rf01checkbox-text:after {
+    display: inline-block;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px;
+}
+.rf01checkbox-text:before {
+    content: attr(data-before);
+    padding-left: 20px;
+    border-right-width: 0;
+}
+.rf01checkbox-text:after {
+    content: attr(data-after);
+    padding-right: 20px;
+    border-left-width: 0;
+}
+
+.rf01checkbox-text.rt03selected:before,
+.rf01checkbox-text:after {
+    border-color: #ddd;
+    border-style: dashed;
+    color: #ccc;
+}
+.rf01checkbox-text.rt03selected:after,
+.rf01checkbox-text:before {
+    border-color: #666;
+    border-style: solid;
+    color: #444;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * UI INPUT UP-DOWN
+ */
+.rf01input-updown {
+    display: inline-block;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    font-family: Consolas, Monaco, monospace;
+    text-align: center;
+}
+.rf01input-updown > * {
+    display: block;
+    float: left;
+}
+input.rf01input-updown-value {
+    max-width: 80px;
+    margin: 0;
+    border: none;
+    background-color: #f9f9f9;
+    border-radius: 4px 0 0 4px;
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6em;
+    text-align: center;
+}
+input.rf01input-updown-value:focus {
+    outline: none;
+}
+
+.rf01input-updown-unit {
+    padding: 11px 8px 11px 0;
+    color: #ccc;
+    font-size: .9em;
+    line-height: 16px;
+}
+
+.rf01input-updown-up, .rf01input-updown-down {
+    width: 42px;
+    padding: 11px 0;
+    background-color: #eee;
+    color: #666;
+    line-height: 16px;
+    cursor: pointer;
+
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+.rf01input-updown-up:hover , .rf01input-updown-down:hover {
+    background-color: #cc0055;
+    color: #fff;
+}
+.rf01input-updown-up {
+    border-radius: 0 4px 4px 0;
+}
+
+/* SIZE SMALL */
+.rt03updown-small input.rf01input-updown-value      { padding: 5px 5px 5px 10px; }
+.rt03updown-small .rf01input-updown-up,
+.rt03updown-small .rf01input-updown-down            { padding: 6px 0; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * UI INPUT MODAL
+ */
+.rf01input-modal {
+    display: block;
+}
+.rf01input-modal > span {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    text-decoration: none;
+    color: #666;
+}
+.rf01input-modal:hover > span, .rf01input-modal.cb18actived > span {
+    border-color: #cc0055;
+    color: #cc0055;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * UI RANGER
+ */
+.rr01 {
+    position: relative;
+    overflow: hidden;
+    font-family: Consolas, Monaco, monospace;
+
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+
+
+/* RANGER TRACK */
+.rr01track {
+    height: 1px;
+    border: solid transparent;
+    border-width: 18px 0;
+    cursor: pointer;
+}
+.rr01track:after {
+    content: '';
+    display: block;
+    height: 1px;
+    background-color: #e5e5e5;
+}
+
+
+/* RANGER THUMB */
+.rr01thumb {
+    position: absolute;
+    left: 0; top: 5px;
+    width: 25px; height: 25px;
+    cursor: pointer;
+    z-index: 2;
+}
+.rr01thumb::after {
+    display: block;
+    content: '';
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    background-color: #cc0055;
+}
+.rr01thumb:before {
+    position: absolute;
+    right: 100%; top: 50%;
+    content: '';
+    display: block;
+    width: 20000px; height: 1px;
+    margin-right: -12px;
+    background-color: #cc0055;
+}
+
+
+/* RANGER VALUE */
+input.rr01value {
+    width: 80px;
+    padding: 5px 0;
+    border: none;
+    border-bottom: 1px dashed transparent;
+    color: #999;
+    font-size: 11px;
+    box-shadow: none;
+}
+input.rr01value:focus {
+    color: #333;
+    border-bottom-color: #ccc;
+    box-shadow: none;
+}
+
+
+/* RANGER OTHER */
+.rr01novalue > input {
+    display: none;
+}
+
+/* RANGER LIST */
+.rr01list {
+    position: absolute;
+    left: 0; top: 0;
+}
+.rr01list-ele {
+    position: absolute;
+    top: 0;
+    width: 50px;
+    color: #ccc;
+    text-align: center;
+    text-indent: -9999px;
+}
+.rr01list-ele:after {
+    content: '';
+    position: absolute;
+    left: 50%; top: 31px;
+    display: block;
+    width: 5px; height: 5px;
+    background-color: #ddd;
+    border-radius: 50%;
+}
+.rr01list-ele:nth-child(1):after,
+.rr01list-ele:nth-child(5):after {
+    display: none;
+}
+.rr01list-ele:nth-child(1) {
+    width: 25px;
+    left: 0;
+    text-align: left;
+}
+.rr01list-ele:nth-child(2) {
+    left: 40px;
+}
+.rr01list-ele:nth-child(3) {
+    left: 80px;
+}
+.rr01list-ele:nth-child(4) {
+    left: 140px;
+}
+.rr01list-ele:nth-child(5) {
+    width: 25px;
+    left: 195px;
+    text-align: right;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * UI SELECT ONE
+ */
+.rf01select-one {
+    display: inline-block;
+    position: relative;
+}
+.rf01select-one .rt03select-item {
+    display: inline-block;
+    margin: 0 2px 10px 2px;
+    border: 1px dashed transparent;
+    border-radius: 4px;
+    color: #999;
+    font-size: 11px;
+    text-align: center;
+    cursor: pointer;
+}
+.rf01select-one .rt03select-item i {
+    margin: 7px 12px;
+}
+.rf01select-one .rt03select-item span {
+    display: block;
+    padding: 5px 0;
+    border-radius: 0 0 3px 3px;
+}
+.rf01select-one .rt03select-item:hover {
+    border-color: #ddd;
+}
+.rf01select-one .rt03select-item.rt03selected {
+    border: 1px solid #cc0055;
+}
+.rf01select-one .rt03select-item.rt03selected span {
+    background-color: #cc0055;
+    color: #fff;
+}
+
+
+/* Setup khac */
+.rf01select-one .rt03select-item > .rf01input-modal {
+    display: none;
+    position: absolute;
+    left: 0; bottom: 0;
+    margin-top: 20px;
+}
+.rf01select-one .rt03select-item.rt03selected > .rf01input-modal {
+    display: block;
+}
+.rf01select-one .rt03select-item.rf01input-modal-into.rt03selected {
+    margin-bottom: 65px;
+}

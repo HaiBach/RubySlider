@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<!--[if IE 7]> <html class="ie ie7"> <![endif]-->
+<!--[if IE 8]> <html class="ie ie8"> <![endif]-->
+<!--[if (gt IE 8)|!(IE)]> <html> <![endif]-->
+<head>
+
+    <!-- Page Infomations -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Best Slider - Tabs premium jQuery plugin">
+    <meta name="keywords" content="tabs, slider, carousel, gallery, touch, swipe, drag, css3, responsive, transform, transition, lazyload, fullscreen, revolution slider, master slider, layer slider">
+    <meta name="author" content="Ruby Slider - HaiBach">
+    
+    <!-- Title of page -->
+    <title>DEVICE LAYOUT | RUBY SLIDER</title>
+
+    <!-- Favicon & apple-icon -->
+    <link rel="shortcut icon" href="../libs/imgs/icons/favicon.ico">
+    <link rel="icon" sizes="192x192" href="../libs/imgs/icons/icon-highres.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="../libs/imgs/icons/touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../libs/imgs/icons/touch-icon-ipad-retina.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="../libs/imgs/icons/touch-icon-ipad-pro.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../libs/imgs/icons/touch-icon-iphone-6-plus.png">
+
+
+    <!-- CSS link -->
+    <link rel="stylesheet" href="../libs/css/ruby00.css">
+    <link rel="stylesheet" href="../libs/css/ruby01.css">
+    <link rel="stylesheet" href="../libs/css/styles.custom.css">
+    <link rel="stylesheet" href="../ruby/rubyslider.css">
+
+
+</head>
+<body>
+
+    <!-- HEADER - begin
+    ======================================================================== -->
+    <div class="wrapper header logo-left"><div class="container">
+        
+        <!-- Logo -->
+        <a class="logo" href="../templates/" data-mScale="100">RubySlider</a>
+
+        <!-- Menu -->
+        <nav data-rubymenu></nav>
+        
+    </div></div>
+    <!-- HEADER - end
+    ======================================================================== -->
+
+
+
+
+
+
+    <!-- TEMPLATE PREVIEW - begin
+    ======================================================================== -->
+    <div class="wrapper">
+    <div class="container">
+
+        <!-- TITLE HEADING - begin -->
+        <div class="title-head">
+        <div class="title-head-inner">
+            <h1>DEVICE LAYOUT</h1>
+        </div>
+        </div>
+        <!-- TITLE HEADING - end -->
+
+
+
+        <!-- LAYOUT DEVICE - begin -->
+        <style>
+
+            .layout-device {
+                position: relative;
+            }
+            .device {
+                overflow: hidden;
+                height: 550px;
+                box-shadow: inset 0 -10px 25px -20px hsla(0,0%,0%,.5);
+                border-bottom: 1px solid #f9f9f9;
+            }
+            .device > img {
+                display: block;
+                width: 100%; height: auto;
+            }
+
+            /* SLIDER PREVIEW */
+            .slider-preview {
+                position: absolute;
+                left: 92px; top: 33px;
+                width: 754px;
+            }
+            .slider-preview .rs01thumbnail .rs01pagitem {
+                width: 100px; height: 70px;
+            }
+            
+
+            /* MEDIA WIDTH */
+            @media only screen and (min-width: 768px) and (max-width: 959px) {
+                .device {
+                    height: 440px;
+                }
+                .slider-preview {
+                    left: 73px; top: 26px;
+                    width: 600px;
+                }
+                .slider-preview .rs01thumbnail .rs01pagitem {
+                    width: 80px; height: 60px;
+                }
+            }
+            @media only screen and (max-width: 767px) {
+                .device {
+                    display: none;
+                }
+                .slider-preview {
+                    position: static;
+                    width: auto;
+                }
+            }
+        </style>
+
+        <div class="layout-device">
+
+            <!-- DEVICE -->
+            <div class="device">
+                <img src="imgs/ipad-landscape.png" alt="ipad device">
+            </div>
+
+
+            <!-- SLIDER PREVIEW - begin -->
+            <div class="slider-preview rs01"
+                data-slider='{
+                    "fx"    : "cssOne",
+                    "speed" : 800,
+                    "width" : 940
+                }'>
+
+                <a class="rs01imgback" href="imgs/vietnam1.jpg">vietnam 1</a>
+                <a class="rs01imgback" href="imgs/vietnam2.jpg">vietnam 2</a>
+                <a class="rs01imgback" href="imgs/vietnam3.jpg">vietnam 3</a>
+                <a class="rs01imgback" href="imgs/vietnam4.jpg">vietnam 4</a>
+                <a class="rs01imgback" href="imgs/vietnam5.jpg">vietnam 5</a>
+
+            </div>
+            <!-- SLIDER PREVIEW - end -->
+
+        </div>
+        <!-- LAYOUT DEVICE - end -->
+    
+    </div>
+    </div>
+    <!-- TEMPLATE PREVIEW - end
+    ======================================================================== -->
+
+
+
+
+
+    
+
+    <!-- Footer - begin
+    ======================================================================== -->
+    <div class="wrapper footer"><div class="container">
+        
+        <!-- Copyright -->
+        <section class="copyright">
+            <p>&copy; HaiBach. All Rights Reserved.</p>
+        </section>
+        
+    </div></div>
+    <!-- Footer - end
+    ======================================================================== -->
+
+
+
+
+
+
+
+    <!-- Script - begin
+    ======================================================================== -->
+    <script src="../libs/scripts/jquery-last.min.js"></script>
+    <script src="../libs/scripts/ruby01.js"></script>
+    <script src="../ruby/rubyanimate.js"></script> <!-- Ruby Animate -->
+    <script src="../ruby/rubyslider.js"></script> <!-- RubySlider Plugin -->
+    <script src="../libs/scripts/custom.js"></script> <!-- Page custom script -->
+    <!-- Script - end
+    ======================================================================== -->
+
+</body>
+</html>
