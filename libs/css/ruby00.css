@@ -2,7 +2,7 @@
  * RUBY01 STYLE TEMPLATES
  * Styles Custom
  * @author          HaiBach
- * @version         1.0
+ * @version         1.x
  */
 
 
@@ -389,7 +389,7 @@
         word-wrap: break-word;
     }
     h1, h2         { font-weight: 100; }
-    h3, h4, h5, h6 { font-weight: 300; }
+    h3, h4, h5, h6 { font-weight: 700; }
 
     h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; }
     h1 { font-size: 46px; line-height: 50px; margin-bottom: 20px; }
@@ -785,16 +785,7 @@
     /* Prettyprint
     ---------------------------------------------------------- */
     .prettyprint, .prettyall {
-        margin-top: 0; margin-bottom: 20px;
-        /*padding: 10px;*/
-        padding: 0 15px;
-
-        /*border: 1px solid #e5e5e5;*/
-        border-left: 1px dashed #d5d5d5;
-        background-color: #fff;
         font-family: "Source Code Pro", monospace, sans-serif;
-        font-size: 12px;
-        line-height: 19px;
     }
     .prettyprint span { word-wrap: break-word; }
     .prettyall > .prettyprint {
@@ -3074,10 +3065,12 @@
     ---------------------------------------------------------- */
     .alert {
         position: relative;
+        min-height: 40px;
         margin-bottom: 10px;
         padding: 20px 20px 20px 72px;
 
         background-color: #d9f9f9;
+        border: 1px solid #87cfcf;
         color: #069;
 
         font-size: 14px;

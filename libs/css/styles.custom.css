@@ -37,6 +37,13 @@ body {
 /**
  * STYLE CUSTOM IN THEME
  */
+.wrapper                    { padding-top: 50px; padding-bottom: 50px; }
+.pa-30                      { padding-top: 30px; padding-bottom: 30px; }
+.nowrap                     { white-space: nowrap; }
+.copyright                  { color: #999; }
+
+
+
 
 
 /**
@@ -73,12 +80,6 @@ body {
 .logo:hover {
     background-position: center -55px;
 }
-
-
-
-/**
- * MENU
- */
 
 
 
@@ -210,11 +211,6 @@ body {
 }
 .hr.circle:before { left: 0; }
 .hr.circle:after  { right: 0; }
-
-
-.pa-30                      { padding-top: 30px; padding-bottom: 30px; }
-.nowrap                     { white-space: nowrap; }
-.copyright                  { color: #999; }
 
 
 /* BUTTON */

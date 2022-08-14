@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Page Infomations -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Best Slider - Tabs premium jQuery plugin">
+    <meta name="keywords" content="tabs, slider, carousel, gallery, touch, swipe, drag, css3, responsive, transform, transition, lazyload, fullscreen, revolution slider, master slider, layer slider">
+    <meta name="author" content="Ruby Slider - HaiBach">
+    
+    <!-- Title of page -->
+    <title>TEST LAYER</title>
+
+    <!-- Favicon & apple-icon -->
+    <link rel="shortcut icon" href="../libs/imgs/icons/favicon.ico">
+    <link rel="icon" sizes="192x192" href="../libs/imgs/icons/icon-highres.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="../libs/imgs/icons/touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../libs/imgs/icons/touch-icon-ipad-retina.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="../libs/imgs/icons/touch-icon-ipad-pro.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../libs/imgs/icons/touch-icon-iphone-6-plus.png">
+
+
+    <!-- CSS link -->
+    <link rel="stylesheet" href="../libs/css/ruby00.css">
+    <link rel="stylesheet" href="../libs/css/ruby01.css">
+    <link rel="stylesheet" href="../libs/css/styles.custom.css">
+    <link rel="stylesheet" href="../ruby/rubyslider.css">
+
+
+</head>
+<body>
+
+
+    <!-- TEMPLATE PREVIEW - begin
+    ======================================================================== -->
+    <div class="wrapper" style="overflow: hidden;">
+    <div class="container">
+
+        <!-- TITLE HEADING - begin -->
+        <div class="title-head">
+            <h1>TEST LAYER</h1>
+        </div>
+        <!-- TITLE HEADING - end -->
+
+        
+
+        <!-- SLIDER PREVIEW - begin -->
+        <style>
+            .slider-preview {
+                /*width: 300px;*/
+                margin-left: auto; margin-right: auto;
+            }
+
+            .h1 {
+                padding-bottom: 50px;
+            }
+        </style>
+
+        <div class="slider-preview rs01 rs01timer-arcTop"
+            data-slider='{
+                "name"        : "slider1",
+                "isAutoInit"  : true,
+                "type" : "slider",
+                "fx"          : "line",
+                "speed"       : 600,
+                "width"       : 940,
+                "widthSlide2"  : 0.8,
+                "isKeyboard"  : true,
+                "idBegin"     : 0,
+                "isMask"      : false,
+
+                "isNav"       : true,
+                "isPag0"       : false,
+                "isCap0"       : true,
+                "isSlideshow0" : true,
+
+                "pag0"         : { "type": "bullet" },
+                "slideshow0"   : { "isHoverPause": true }
+            }'>
+
+            <div class="slide1" data-slide='{ "parallax": { "isScroll": false } }'>
+                <a class="rs01imgback" href="imgs/animal-focus-free1.jpg">Focus</a>
+
+                <!-- <a class="rs01imgback" href="imgs/season-landscape2.jpg"
+                    data-layer-animate='[
+                        { "x": 200 }, { "x": 100, "duration": 10000 }
+                    ]'
+                    >season 2</a> -->
+                
+
+
+                <!-- <a  class="rs01img" href="imgs/temp/cs_logo.png"
+
+                    data-layer='{
+                        "count"        : 1,
+                        "isResponsive" : true
+                    }'
+                    data-layer-animate='[
+                        { "xy": "bottomOut" },
+                        { "xy": "center", "rotate": 360, "duration": 1000, "delay": 500 },
+                        { "y": "top", "rotate": 0, "opacity": 1, "duration": 1000 },
+                        { "scale": 0.5, "skew": 20, "width": 200, "duration": 10000, "easing": "easeOutBounce" }
+                    ]'
+                    >[logo]</a> -->
+                
+
+                <!-- TEST FIT WIDTH IMAGE IN CONTAINER -->
+                <!-- <style>
+                    .new-layer > img { width: 100% !important; }
+                </style>
+
+                <div
+                    class="new-layer"
+
+                    data-layer='{
+                        "count"        : 1,
+                        "isResponsive" : true
+                    }'
+                    data-layer-animate='[
+                        { "xy": "bottomOut" },
+                        { "xy": "center", "rotate": 360, "duration": 1000, "delay": 500 },
+                        { "y": "top", "rotate": 0, "opacity": 1, "duration": 1000 },
+                        { "scale": 0.5, "skew": 20, "width": 200, "duration": 10000, "easing": "easeOutBounce" }
+                    ]'
+                    ><a class="rs01img" href="imgs/temp/cs_logo.png"></a></div> -->
+                
+
+
+                <div class="h1"
+                    style="color: #fff; background-color: #000; padding-top: 20px; font-size: 50px; line-height: 50px"
+                    data-layer-animate='[
+                        { "xy": "centerCenter" },
+                        { "x": 100, "duration": 1000, "delay": 200 },
+                        { "y": 100, "fx": "newspaperOut", "duration": 2000, "delay": 0 },
+                        { "x": 300, "fx": "slideOneRightIn", "overflow": "hidden", "duration": 600, "delay": 2000 },
+                        { "y": 300, "fx": "flipXIn", "overflow": "", "duration": 1000, "delay": 1000 },
+                        { "x": 500, "duration": 700, "delay": 5000 }
+                    ]'
+
+                    data-parallax="4"
+
+                    >This is LayerText</div>
+
+                <!-- <a
+                    data-layer-animate='[
+                        { "xy": "leftBottom" },
+                        { "x": "center", "duration": 10000 }
+                    ]'
+
+                    data-rubyslider-api='{
+                        "name"   : "goto",
+                        "param1" : 1,
+                        "markup" : "slider1"
+                    }'
+
+                    style="padding: 20px; background-color: #444; color: #fff;"
+                    >API Remote</a> -->
+
+
+
+
+
+
+                <!-- <a  data-layer-animate='[{ "xy": "topOut" }, { "xy": "center", "duration": 10000 }]'
+                    style="padding: 20px; background-color: #444; color: #fff;"
+                    >Layer 1</a>
+
+                <a  data-layer-animate='[{ "xy": "rightOut" }, { "xy": "center", "duration": 10000 }]'
+                    style="padding: 20px; background-color: #444; color: #fff;"
+                    >Layer 2</a>
+
+                <a  data-layer-animate='[{ "xy": "bottomOut" }, { "xy": "center", "duration": 10000 }]'
+                    style="padding: 20px; background-color: #444; color: #fff;"
+                    >Layer 3</a>
+
+                <a  data-layer-animate='[{ "xy": "leftOut" }, { "xy": "center", "duration": 10000 }]'
+                    style="padding: 20px; background-color: #444; color: #fff;"
+                    >Layer 4</a> -->
+
+
+
+                
+                <!-- <a  data-layer-animate='[{ "xy": "leftTop" }, { "xy": "rightTop", "duration": 10000 }]'
+                    style="padding: 20px; background-color: #444; color: #fff;"
+                    >Layer 11</a>
+
+                <a  data-layer-animate='[{ "xy": "rightTop" }, { "xy": "rightBottom", "duration": 10000 }]'
+                    style="padding: 20px; background-color: #444; color: #fff;"
+                    >Layer 12</a>
+
+                <a  data-layer-animate='[{ "xy": "rightBottom" }, { "xy": "leftBottom", "duration": 10000 }]'
+                    style="padding: 20px; background-color: #444; color: #fff;"
+                    >Layer 13</a>
+
+                <a  data-layer-animate='[{ "xy": "leftBottom" }, { "xy": "leftTop", "duration": 10000 }]'
+                    style="padding: 20px; background-color: #444; color: #fff;"
+                    >Layer 14</a> -->
+
+
+
+
+                <!-- <a  data-layer-animate='[{ "xy": "centerTop" }, { "xy": "rightCenter", "duration": 10000 }]'
+                    style="padding: 20px; background-color: #444; color: #fff;"
+                    >Layer 21</a>
+
+                <a  data-layer-animate='[{ "xy": "rightCenter" }, { "xy": "centerBottom", "duration": 10000 }]'
+                    style="padding: 20px; background-color: #444; color: #fff;"
+                    >Layer 22</a>
+
+                <a  data-layer-animate='[{ "xy": "centerBottom" }, { "xy": "leftCenter", "duration": 10000 }]'
+                    style="padding: 20px; background-color: #444; color: #fff;"
+                    >Layer 23</a>
+
+                <a  data-layer-animate='[{ "xy": "leftCenter" }, { "xy": "centerTop", "duration": 10000 }]'
+                    style="padding: 20px; background-color: #444; color: #fff;"
+                    >Layer 24</a> -->
+
+            </div>
+
+            
+            <!-- <a class="rs01imgback" href="imgs/season-landscape3.jpg">season 3</a>
+            
+            <div class="season7">
+                <a class="rs01imgback" href="imgs/season-landscape7.jpg">season 7</a>
+            </div> -->
+
+
+            <!-- <a class="rs01imgback" href="imgs/animal-focus-free2.jpg">animal 2</a> -->
+            <!-- <a class="rs01imgback" href="imgs/animal-focus-free3.jpg">animal 3</a>
+            <a class="rs01imgback" href="imgs/animal-focus-free4.jpg">animal 4</a>
+            <a class="rs01imgback" href="imgs/animal-focus-free5.jpg">animal 5</a>
+            <a class="rs01imgback" href="imgs/animal-focus-free6.jpg">animal 6</a> -->
+
+
+
+            <!-- LAYER IMAGE LAZY -->
+            <!-- <div>
+                <a class="rs01imgback" href="imgs/animal-focus-free2.jpg">animal 2</a>
+
+                <a  class="rs01img"
+                    href="imgs/season-landscape2.jpg"
+                    style="width: 400px; height: auto;"
+
+                    data-layer-animate='[
+                        { "y": 100 }
+                    ]'
+                    >season</a>
+            </div> -->
+            
+
+            
+
+            <!-- LAYER IFRAME LAZY -->
+            <div>
+                <a class="rs01imgback" href="imgs/animal-focus-free3.jpg">animal 3</a>
+
+                <!-- <a  class="rs01iframe"
+                    href="https://www.google.com/maps/embed/v1/place?key=AIzaSyCCdHNpkWq_yU8PbLAF_r6CnnGCfNWcfro&amp;q=Tour+Eiffel,Champ-de-Mars,5+Avenue+Anatole+France,75007+Paris&amp;zoom=17"
+                    width="600" height="400" frameborder="0" style="border:0" allowfullscreen
+                    
+                    data-layer='{
+                        "isResponsive": true
+                    }'
+                    data-layer-animate='[
+                        { "x": 100, "y": 20 }
+                    ]'
+                    ></a> -->
+
+            </div>
+
+
+
+            
+
+
+
+
+
+
+
+
+            <!-- LAYER FIXED / HOME -->
+            <!-- <img
+                class="rs01layeritem-home rs01img"
+                src="imgs/season-landscape8.jpg" alt=""
+                data-layer-animate='[
+                    { "x": 200 }
+                ]'> -->
+
+
+            <!-- <a  class="rs01layeritem-home rs01img"
+                href="imgs/season-landscape7.jpg"
+                style="width: 100px; height: auto;"
+                data-layer-animate='[
+                    { "x": 100, "y": 200 }
+                ]'
+
+                >season 7</a> -->
+
+            <!-- <a  class="rs01layeritem-home rs01img"
+                data-flickr="https://www.flickr.com/photos/paulinajackiewicz/27643648135/in/faves-43368164@N06/"
+                data-layer-animate='[
+                    { "x": 10, "y": 200 }
+                ]'
+                data-layer='{
+                    "isResponsive" : false
+                }'
+                data-image='{
+                    "isResponsive" : true
+                }'
+                >Flickr photo ajax</a> -->
+
+
+            <!-- <h1 class="rs01layeritem-home"
+                style="padding: 10px; background-color: #333; color: #fff;"
+
+                data-layer-animate='[
+                    { "x": 50, "y": "center" }, { "x": "center", "fx": "rollLeftIn", "duration": 10000 }
+                ]'
+                data-layer='{
+                    "isResponsive": false
+                }'
+
+                >TEST LAYER</h1> -->
+
+        </div>
+        <!-- SLIDER PREVIEW - end -->
+
+    
+    </div>
+    </div>
+    <!-- TEMPLATE PREVIEW - end
+    ======================================================================== -->
+
+
+    <!-- <div class="rs01nav" data-slider='{ "name": "slider1" }'></div> -->
+    <!-- <div class="rs01pag" data-slider='{ "name": "slider1" }'></div> -->
+    <!-- <div class="rs01cap" data-slider='{ "name": "slider1" }' style="padding: 20px; font-size: 2em;"></div> -->
+    <!-- <div class="rs01nav" data-rubyslider-markup="slider1"></div> -->
+    <a class="btn" data-rubyslider-api='{ "name": "next", "markup": "slider1" }'>Di toi Slide ke tiep</a>
+
+
+
+
+
+
+
+    <div class="container">
+        <p><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident, fugiat quae quasi accusantium a architecto similique, perferendis reiciendis beatae dolorum suscipit excepturi odit dolores dolore, sequi recusandae voluptatum ad aliquid.</span><span>Pariatur quasi optio laborum. Ab aliquam deleniti eos, omnis voluptas molestias veritatis alias, optio tempore quidem nesciunt in maiores fugiat beatae quae doloremque architecto amet natus ea vitae maxime dolor.</span></p>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi architecto, repellendus blanditiis tempore obcaecati, aspernatur velit animi aliquid, fugit eius harum dicta odit. Qui atque dolore quia suscipit aut unde.</p>
+        <p>Quod earum corrupti hic accusamus quam quia aspernatur et suscipit, culpa consequatur blanditiis, corporis alias ad. Natus dicta provident tenetur, eveniet voluptatem asperiores deleniti sunt? Praesentium quo voluptate, deserunt obcaecati.</p>
+    </div>
+
+
+
+
+
+
+
+
+    <!-- Script - begin
+    ======================================================================== -->
+    <script type="text/javascript" src="../libs/scripts/jquery-last.min.js"></script>
+    <script type="text/javascript" src="../libs/scripts/ruby01.js"></script>
+    <script type="text/javascript" src="../ruby/rubyanimate.js"></script> <!-- Ruby Animate -->
+    <script type="text/javascript" src="../ruby/rubyslider.js"></script> <!-- RubySlider Plugin -->
+    <!-- Script - end
+    ======================================================================== -->
+
+</body>
+</html>

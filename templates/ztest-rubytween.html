@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Page Infomations -->
+    <meta charset="utf-8">
+    <meta name="theme-color" content="transparent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="one of the best tabs plugins">
+    <meta name="author" content="rubyslider - thystudio - Nguyen Van Thy">
+    
+    <!-- Title of page -->
+    <title>TEST</title>
+
+    <!-- Favicon & apple-icon -->
+    <link rel="shortcut icon" href="../libs/imgs/icons/favicon.ico">
+    <link rel="icon" sizes="192x192" href="../libs/imgs/icons/icon-highres.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="../libs/imgs/icons/touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../libs/imgs/icons/touch-icon-ipad-retina.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="../libs/imgs/icons/touch-icon-ipad-pro.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../libs/imgs/icons/touch-icon-iphone-6-plus.png">
+
+
+    <!-- CSS link -->
+    <link rel="stylesheet" href="../libs/css/ruby00.css">
+    <link rel="stylesheet" href="../libs/css/ruby01.css">
+    <link rel="stylesheet" href="../libs/css/rubyform.css">
+    <link rel="stylesheet" href="../libs/css/styles.custom.css">
+
+
+    <!-- CSS embed -->
+    <style>
+
+    </style>
+    
+
+    
+</head>
+<body>
+
+    <!-- HEADER - begin
+    ============================================================== -->
+    <div class="wrapper header logo-left">
+    <div class="container">
+        
+        <!-- Logo - begin
+        .......................................................... -->
+        <a class="logo" href="../templates/" data-mScale="100">FOO TEST</a>
+        <!-- Logo - end
+        .......................................................... -->
+
+    </div>
+    </div>
+    <!-- HEADER - end
+    ============================================================== -->
+
+
+
+
+
+
+
+
+
+    <!-- TEST -->
+    <style>
+        
+        .tf {
+            position: relative;
+            height: 200px;
+            /*background-color: #f5f5f5;*/
+            transform-style: preserve-3d;
+            perspective: 800px;
+        }
+
+        .tf-item {
+            position: absolute;
+            left: 0; top: 0;
+            width: 100px; height: 100px;
+            line-height: 100px;
+            text-align: center;
+        }
+        .tf-item1 {
+            width: 200px;
+            /*border-radius: 100px;*/
+            background-color: #cc0055;
+            
+            /*-webkit-transition: -webkit-transform 10s cubic-bezier(0.25,0.46,0.45,0.94);
+            transition: transform 10s cubic-bezier(0.25,0.46,0.45,0.94);*/
+
+            transform-origin: 50% 50%;
+            transform: translate(200px, 100px) skew(30deg);
+            /*transform: skew(30deg) translate(200px, 100px) rotate(0);*/
+            /*-webkit-transform: matrix(1, 0, 0.57735, 1, 200, 100);*/
+            /*transform: matrix(1, 0, 0.57735, 1, 200, 100);*/
+        }
+        .tf:hover .tf-item10 {
+            transform: translate(500px, 0px) rotate(45deg);
+            -webkit-transform: matrix(0.70711, 0.70711, -0.70711, 0.70711, 500, 0);
+            /*transform: matrix(0.70711, 0.70711, -0.70711, 0.70711, 500, 0);*/
+        }
+
+        .tf-item2 {
+            background-color: #01bb00;
+            /*transform: translate(200px, 100px) skew(30deg) rotate(20deg);*/
+            /*transform: translate(200px, 100px);*/
+            /*transform: translate3d(200px, 100px, 100px) skew(30deg);*/
+            transform: translate(200px, 100px) skew(30deg);
+            -webkit-transform: translate(200px, 100px) skew(30deg);
+            /*transform: translate(257.735px, 100px) skew(30deg);*/
+            /*transform: translate(200px, 100px) skew(30deg);*/
+            /*transform: translate(200px, 100px) rotate(30deg);*/
+            /*transform: translate(200px, 100px) scale(2, .5);*/
+        }
+        .tf-item3 {
+            background-color: #00ccff;
+            border-radius: 20px;
+        }
+
+    
+
+        /**
+         * TRANSFORM CONTROL
+         */
+        .tf-control {
+            padding: 100px 30px;
+        }
+        .tf-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            color: #333;
+            line-height: 24px; height: 24px;
+            cursor: pointer;
+        }
+        .tf-btn:hover {
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+
+    <div class="tf wrapper">
+        
+        <div class="tf-item1 tf-item">Item 1</div>
+        <div class="tf-item2 tf-item">Item 2</div>
+        <div class="tf-item3 tf-item">Item 3</div>
+    </div>
+
+    <div class="tf-control">
+        <div class="tf-play tf-btn">Play</div>
+        <div class="tf-pause tf-btn">Pause</div>
+        <div class="tf-reverse tf-btn">Reverse</div>
+
+        
+        <!-- RANGER -->
+        <style>
+            .tf-move {
+                width: 400px;
+                margin-top: 50px;
+            }
+            .tf-move .rr01track:after {
+                background-color: rgba(0,0,0,.1);
+            }
+        </style>
+
+        <div
+            class="rr01 tf-move"
+            data-ranger='{ "valueBegin": 0, "range": [0, 100], "round": 0.1 }'
+            >
+            <input class="rr01value" type="text" name="" value="0">
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <!-- Script - begin
+    ============================================================== -->
+    <script type="text/javascript" src="../libs/scripts/jquery-last.min.js"></script>
+    <script type="text/javascript" src="../libs/scripts/rubyform.js"></script>
+    <script type="text/javascript" src="../ruby/rubytween.js"></script>
+
+
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {});
+    'use strict';
+
+
+        var rubytween = new RubyTween();
+        var $item1 = $('.tf-item1'),
+            $item2 = $('.tf-item2'),
+            $item3 = $('.tf-item3');
+
+        rubytween
+            // .animate($item1, { height: 600, perspectiveDirect: 1200, x: 600, rotate: 45 }, {
+            .css($item1, { perspectiveDirect: 1200, originTF: '0 50%', height: 600, opacity: 0.5 })
+
+            // .animate($item1, { height: 600, originTF: '0 100%', perspectiveDirect: 1000, x: '10%', rotate: 45 }, {
+            //     'duration' : 2000,
+            //     'delay'    : 1000
+            // })
+            // .animate($item1, { height: 200, x: 400 }, {
+            //     'duration' : 2000,
+            //     'delay'    : 1000
+            // })
+            // .animate($item1, { y: 200 }, {
+            //     'duration' : 1000,
+            //     'delay'    : 0
+            // })
+            // .animate($item1, { x: 0, y: 0, rotate: 0, skew: 0 }, {
+            //     'duration' : 500,
+            //     'isClearTFDefault' : false
+            // })
+
+
+
+            // .animate($item2, { 'width': 500, 'opacity': 0.5 }, {
+            //     'duration': 10000
+            // });
+            // .stop()
+
+
+
+            // .animate($item2, { x: 500, y: 0, rotate: 45, skew: 0, opacity: 0 }, {
+            //     'duration' : 1000,
+            //     'delay'    : 5000
+            // })
+            // .animate($item2, { x: 0, opacity: 1 }, {
+            //     'duration' : 1000,
+            //     'delay'    : 1000
+            // })
+            // .animate($item3, { x: 200, y: 300, rotate: 90 }, {
+            //     'duration' : 1000,
+            //     'delay'    : 7000
+            // })
+
+
+            // .animate($item2, { height: 500 }, {
+            //     'duration' : 10000,
+            //     'delay'    : 0
+            // })
+
+
+            // .go(25)
+            // .resume()
+            // .reverse()
+
+
+
+            // .css($item1, {
+            //     'height'  : 300,
+            //     'opacity' : .5,
+            //     'x'       : 100,    
+            //     'z'       : -500,
+            //     'rotate4'  : 30
+            // })
+            // .animate($item1, { height: 600, x: 600, rotate: 45 }, {
+            //     'duration' : 2000,
+            //     'delay'    : 1000
+            // })
+
+
+        // rt00VA['data']['0']['opts'].pop();
+        // rubytween.play();
+
+
+
+        var rubytween2 = new RubyTween();
+        rubytween2
+            // .animate($item1, { height: 600, skew: 0, rotate: 0, rotateY: 30, scale2: 0.7 }, {
+            //     'duration' : 2000,
+            //     'delay'    : 1000
+            // })
+            // .animate($item1, { height: 200 }, {
+            //     'duration' : 1000,
+            //     'delay'    : 0
+            // })
+
+
+
+            // .css($item1, {
+
+            // });
+
+
+
+
+
+
+
+
+
+        /**
+         * ANIMATE CONTROL
+         */
+        var $pause = $('.tf-pause'),
+            $play  = $('.tf-play'),
+            $reverse = $('.tf-reverse');
+
+        $pause.length && $pause.on('click', function() {
+            rubytween.pause();
+            return false;
+        });
+
+        $play.length && $play.on('click', function() {
+            rubytween.play();
+            return false;
+        });
+
+        $reverse.length && $reverse.on('click', function() {
+            rubytween.reverse();
+            return false;
+        });
+
+
+
+        /**
+         * SETUP RANGER
+         */
+        var $move      = $('.tf-move'),
+            $moveInput = $move.find('input'),
+            rr         = $move.rubyranger();
+
+        rr.ev.on('change', function() {
+            rubytween.go( parseInt($moveInput.val(), 10) );
+        });
+
+
+
+        // var foo = [1,2,4];
+        // // var foo = { fx: 'a', speed: 'b' };
+        // var goo = foo;
+
+        // console.log(goo);
+
+        // // foo = {};
+        // // foo.fx = 'math';
+        // // foo.speed = 2000;
+        // // foo = {};
+
+        // foo[0] = 'math';
+        // foo[1] = 2000;
+        // console.log(goo);
+
+    </script>
+    <!-- Script - end
+    ============================================================== -->
+
+</body>
+</html>

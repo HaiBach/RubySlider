@@ -188,10 +188,11 @@
 }
 .rm01drawer .rm01caret {
     position: absolute;
-    display: block;
-    width: 6px; height: 1px;
-    right: 15px; top: 23px;
-    background-color: #666;
+    right: 15px; top: 0;
+    padding-top: 12px; padding-bottom: 12px;
+}
+.rm01drawer .rm01caret:after {
+    content: '\0203A';
 }
 .rm01drawer .rm01menu a.rm01actived > .rm01caret {
     background-color: #333;
@@ -233,7 +234,7 @@
 }
 .rm01drawer .rm01fx-closed.rm01ghost {
     -webkit-animation: rm01leftIn .15s ease;
-    animation: rm01leftIn .15s ease;
+            animation: rm01leftIn .15s ease;
 }
 
 @keyframes rm01leftIn {
@@ -284,15 +285,18 @@
 .rm01ver {
     position: relative;
     margin-bottom: 30px;
-    border-right: 1px solid #e5e5e5;
+    /*border-right: 1px solid #e5e5e5;*/
 }
 .rm01ver .rm01list > a {
-    padding-top: 15px; padding-bottom: 15px;
+    padding-top: 12px; padding-bottom: 12px;
     color: #999;
 }
 
 .rm01ver .rm01list:hover > a {
     color: #333;
+}
+.rm01ver .rm01actived > a {
+    /*border-right: 6px solid #333;*/
 }
 
 
@@ -422,6 +426,25 @@ html.rm01push {
 }
 .rm01btn-toggle.rm01push:after {
     border-left-color: #333;
+}
+
+
+
+
+
+
+/**
+ * BREADCRUMB
+ */
+.rm01breadcrumb {
+    font-size: 10px;
+}
+.rm01breadcrumb-item:before {
+    content: '\0203A';
+    padding-left: 5px; padding-right: 5px;
+}
+.rm01breadcrumb-home:before {
+    content: none;
 }
 /* -------------------------------------------------------------------------- */
 

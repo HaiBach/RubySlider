@@ -3,8 +3,8 @@
  * @package         RubySlider
  * @author          HaiBach
  * @link            http://haibach.net/rubyslider
- * @version         1.6
- * @lastUpdate      11-11-2016
+ * @version         1.7
+ * @lastUpdate      Feb 11, 2017
  */
 
 
@@ -20,7 +20,7 @@ if( !window.rs01VA ) {
 
     window.rs01VA = {
         "rubyName"  : "rubyslider",
-        "rubyData"  : "slider",
+        "rubyData"  : "tabs",
         "namespace" : "rs01",
 
         "$ruby"     : $(),
@@ -66,7 +66,10 @@ if( !window.rs01VA ) {
          * OPTIONS TYPE OF ELEMENTS
          */
         // Change multiple options at once, like shortcut to a group priority options. included value: ["slider", "tabs"]
-        "optionsPlus"   : "slider",
+        "type"          : "tabs",
+
+        // Option beta: layout size. List of value: "auto", "fullwidth", "fullscreen"
+        "layout"        : "auto",
 
         // Setup main effect.
         "fx"            : "line",
@@ -112,28 +115,27 @@ if( !window.rs01VA ) {
         // Height of the slider. By default, it depends on the height image-background per slide.
         "height"        : null,
 
-        // Width of center slide compared to width of slider.
-        // + Value ​​in range [0-1] is the percentage(%) of slide compared to the slider.
-        // + Value greater than 1 is unit "px".
-        // + Support "range" features, value is array : [width slide, from, to]
-        "widthSlide"    : 1,
+        "responsiveLevels" : [1200, 992, 768, 576],
 
-        // Set width of image-background in the range width of the page.
-        // + Support multiple range, value is array : [width slide, from, to]
-        "widthRange"    : null,
+        // Width of center slide compared to width of slider.
+        // + Example for unit "percent(%)" : "100%" (string)
+        // + Example for unit "pixel" : 300 (number)
+        // + Support value depend on "responsiveLevels" option
+        "widthSlide"    : "100%",
 
         // Surrounding areas of image-background to slide in th range width of the page.
-        // + Support multiple range, value is array : [value, from, to]
-        "padding"       : 0,
+        // + Support value depend on "responsiveLevels" option
+        "padding"       : null,
 
-        // Distance between slides. Unit is px and supports distances left and right. Example:
-        // + "margin": [10, 20] → 10px is left distance, 20px is right distance
-        // + "margin": 30 → 30px is left and right distance
-        "margin"        : 30,
+        // Distance between slides.
+        // + Support value depend on "responsiveLevels" option
+        "margin"        : 0,
 
         // Duration of the effect. Unit millisecond.
         "speed"         : 400,
         "speedHeight"   : 400,
+
+        "skin"          : null,
 
         // Duration check and update rubyslider
         "delayUpdate"   : 1000,
@@ -165,7 +167,7 @@ if( !window.rs01VA ) {
         // In coverscreen - fullscreen mode, the heigth of slider equal to the height of window browser minus the height of offset objects.
         "offsetBy"      : null,
 
-        // Event Wheel, list of value: ["auto", "both", false]
+        // Event Wheel, list of value: "auto", "both", false
         "wheel"         : false,
 
 
@@ -178,35 +180,14 @@ if( !window.rs01VA ) {
         // Option exclusively for HTML5 data. RubySlider is automatically initialized after markup have loaded.
         "isAutoInit"    : true,
 
-        // Turn on/off layout center in effect "line".
+        // Enable layout center in effect "line"
         "isCenter"      : true,
-
-        // Turn on/off navigation control: next/previous button.
-        "isNav"         : false,
-
-        // Turn on/off pagination control: tabslist, thumbnail image.
-        "isPag"         : true,
-
-        // Turn on/off caption each slide.
+        // Enable caption each slide.
         "isCap"         : false,
-
-        // Turn on/off swipe gestures on rubyslider
-        "isSwipe"       : true,
         "isLoop"        : true,
         "isAnimRebound" : true,
-
-        // Turn on/off keyboard navigation, left/right arrow on keyboard to go prev/next slide.
-        "isKeyboard"    : false,
         "isOverlay"     : false,
         "isViewGrabStop": false,
-        "isFullscreen"  : false,
-        "isSlideshow"   : false,
-
-        // Turn on/off deep-linkinging features.
-        "isDeeplinking" : false,
-
-        // Turn on/off cookie features.
-        "isCookie"      : false,
         "isLoader"      : true,
         "isParallaxScroll"  : false,
         "isLayerParallax"   : false,
@@ -214,6 +195,9 @@ if( !window.rs01VA ) {
 
         // Auto insert "mask" class on <body> tag when swiping / toggle-slide in FxCSS
         "isBodyMaskInFxCSS" : true,
+
+        // Native fullscreen enable
+        "isNativeFS"    : false,
 
 
 
@@ -225,18 +209,19 @@ if( !window.rs01VA ) {
         /**
          * LOADING
          */
-        "load"          : {
-                            // The number of slides(tabs) preloaded before the rubyslider appears.
+        // Type of lazyload. List of value: "all", "smart", "single", "none"
+        "lazyType"      : "smart",
+        "lazySmart"     : {
+                            // The number of slides preloaded before the rubyslider appears.
                             // List of value : type number, "all"
                             "preload"       : 1,
 
                             // The number next slides will load after rubyslider appears, the slides will load in parallel.
-                            "amountEachLoad": 2,
-
-                            //  Turn on/off only download the lazy objects (ImageBack, VideoIframe, IframeLazy ..) of selected slide.
-                            "isLazy"        : true
+                            "amountEachLoad": 2
                           },
 
+        // Enable swipe (touch) gestures on rubyslider
+        "isSwipe"       : true,
         "swipe"         : {
                             // Easing for transition of effect after swipe end.
                             "easing"        : "easeOutQuint",
@@ -291,7 +276,7 @@ if( !window.rs01VA ) {
                           ],
 
         "coverflow3D"   : {
-                            "widthSlide"  : 0.8,
+                            "widthSlide"  : "80%",
                             "perspective" : 1200,
                             "zDeep"       : 600,
                             "rotate"      : 30,
@@ -299,6 +284,8 @@ if( !window.rs01VA ) {
                             "isDeepMulti" : true
                           },
 
+        // Enable navigation control: next/previous button.
+        "isNav"         : false,
         "nav"           : {
                             "isEventTap"    : true,
                             "markup"        : "<div class='{ns}nav'><div class='{ns}nav-prev'>prev</div><div class='{ns}nav-next'>next</div></div>",
@@ -312,9 +299,10 @@ if( !window.rs01VA ) {
          *  + Support align, value : "begin", "center", "end", "justify"
          *  + Support link thumbnail "data-thumbnail-link" on Imageback
          */
+        "isPag"         : true,
         "pag"           : {
                             // Type of pagination(tablist). List OF value : "thumbnail", "tabs", "bullet", "list".
-                            "type"          : "tabs",
+                            "type"          : "thumbnail",
 
                             // Setup fixed width for pagItem. By default, the pagItem will get largest width in the pagItems.
                             "width"         : null,
@@ -330,10 +318,13 @@ if( !window.rs01VA ) {
                             "direction"     : "hor",
 
                             // Setup the position of pagination compared to the content tabs. List of value: "begin", "center".
-                            "position"      : "begin",
+                            "position"      : "end",
 
                             // Align of pagItems compared to pagination. List of value: "begin", "center", "end", "justify".
-                            "align"         : "begin",
+                            "align"         : "center",
+                            "cssPosition"   : "relative",
+                            "hOffset"       : null,
+                            "vOffset"       : null,
 
                             // Time to transition of pagItem current automatically move to the center position.
                             "speed"         : 300,
@@ -356,7 +347,7 @@ if( !window.rs01VA ) {
                             // Turn on/off the current pagItem automatically moves into the center position of pagination.
                             // Only for Tabs horizontal, also tabs vertical allways have ItemCur in center position
                             "isItemCurCenterWhenTap" : true,
-                            "isJustifyWhenLarge"     : false,   // Kich thuoc tat ca items deu fit lai bang kich thuoc voi pagination
+                            "isJustifyWhenLarge"     : false,
 
                             // Turn on/off navigation next/previous of pagItem.
                             "isArrow"       : true,
@@ -365,11 +356,8 @@ if( !window.rs01VA ) {
                             "isTapOnArrow"  : true,
 
                             // Turn on/off mark of pagItem current. Supported animation.
-                            "isMark"        : false,
-
-                            // The size of mark depends on the size (can include "padding", "margin"..) pagItem current.
-                            // List of value: "self", "padding", "border", "margin".
-                            "sizeMarkTo"    : "border",
+                            "isMark"        : true,
+                            "isMarkTransition" : true,
 
                             // Adding classes to the pagination markup.
                             "moreClass"     : null,
@@ -384,7 +372,7 @@ if( !window.rs01VA ) {
                             "wheel"         : "auto",
 
                             "markupArrow"   : "<div class='{ns}pagarrow-item {ns}pagarrow-{dirs}'><div class='{ns}pagarrow-icon'></div></div>",
-                            "markupMark"    : "<div class='{ns}pagmark'><div class='{ns}pagmark-item'></div></div>"
+                            "markupMark"    : "<div class='{ns}pagmark'><div class='{ns}pagmark-item {ns}pagmark-margin'></div><div class='{ns}pagmark-item {ns}pagmark-border'></div><div class='{ns}pagmark-item {ns}pagmark-padding'></div><div class='{ns}pagmark-item {ns}pagmark-self'></div></div>"
 
                           },
 
@@ -515,6 +503,8 @@ if( !window.rs01VA ) {
                             "isLayerFade"   : true
                           },
 
+        // Enable slideshow
+        "isSlideshow"   : false,
         "slideshow"     : {
                             "delay"         : 8000,
 
@@ -618,9 +608,19 @@ if( !window.rs01VA ) {
                             "playInto"      : "ssControl"
                           },
 
-        /**
-         * DEEP LINKING
-         */
+        // Enable keyboard navigation, left/right arrow on keyboard to go prev/next slide.
+        "isKeyboard"    : false,
+        // Options for keyboard navigation features
+        "keyboard"      : {
+                            "nextKey"       : 39,
+                            "prevKey"       : 37,
+                            "nextAlterKey"  : null,
+                            "prevAlterKey"  : null
+                          },
+
+        // Enable deep-linking features
+        "isDeeplinking" : false,
+        // Options for deeplinking features
         "deeplinking"   : {
                             // Prefix 0 is name of rubyslider, support multi-liking on the same page.
                             // Prefix 1 is name of slide on that rubyslider.
@@ -636,9 +636,9 @@ if( !window.rs01VA ) {
                             "isOnlyShowID"  : true
                           },
 
-        /**
-         * COOKIE
-         */
+        // Enable cookie features
+        "isCookie"      : false,
+        // Options for cookie features
         "cookie"        : {
                             // Unique name of cookie to stored rubyslider, avoid conflict with other cookies on different pages. Default is empty-string.
                             "name"          : "",
@@ -647,13 +647,32 @@ if( !window.rs01VA ) {
                             "days"          : 7
                           },
 
-        // Options danh rieng cho thiet bi mobile
+        // Options in the native fullscreen mode
+        "nativeFS"      : {
+                            // Render button toggle fullscreen mode
+                            "isButton"       : true,
+
+                            // Markup of button toggle
+                            "markupButton"   : "<a class='{ns}toggle-nativeFS'></a>"
+                          },
+
+        "updateOptsInNativeFS" : {
+                            // "imageback"      : { "position": "fit" }
+                          },
+
+        // Trigger events
+        events          : {},
+
+        // Options for the desktop device
+        "desktop"       : {},
+
+        // Options for the mobile device
         "mobile"        : {
                             "speedHeight"   : null,
                             "direction"     : "hor"
                           },
 
-        // Options danh rieng cho nhung browser khong ho tro CSS Transform
+        // Options for the browser not support CSS Transform
         "fallback"      : {
                             "markup" : {
                                 "loader" : "<div class='{ns}loader {ns}loader-old'>loading</div>"
@@ -662,7 +681,7 @@ if( !window.rs01VA ) {
 
         "rev"           : ["erp"],          // ["omed", "ten.hcabiah"], ["eerf"], ["erp"]
         "versionBrand"  : "1",
-        "version"       : "1.6"
+        "version"       : "1.7"
     };
 
 
@@ -680,19 +699,24 @@ if( !window.rs01VA ) {
     rs01VA.optsPlus = {
 
         /**
-         * OPTIONS PLUS MAC DINH CHO TABS
+         * OPTIONS PLUS DEFAULT FOR TABS
          */
-        "tabs" : {},
+        "tabs" : {
+            "lazyType"  : "single",
+            "margin"    : 30,
+            "pag"       : {
+                            "type"      : "tabs",
+                            "position"  : "begin",
+                            "align"     : "begin"
+                          }
+        },
 
         /**
          * OPTIONS PLUS DEFAULT FOR SLIDER
          */
         "slider" : {
+            "lazyType"  : "smart",
             "margin"    : 0,
-            "load"      : {
-                            "isLazy"    : false
-                          },
-
             "pag"       : {
                             "type"      : "thumbnail",
                             "position"  : "end",
@@ -701,9 +725,10 @@ if( !window.rs01VA ) {
         },
 
         /**
-         * OPTIONS PLUS MAC DINH CHO CAROUSEL
+         * OPTIONS PLUG DEFAULT FOR CAROUSEL
          */
         "carousel" : {
+            "lazyType"   : "smart",
             "fx"         : "line",
             "speed"      : 600,
             "widthSlide" : 300,
@@ -712,11 +737,7 @@ if( !window.rs01VA ) {
             "isCenter"   : false,
             "isLoop"     : false,
             "isPag"      : false,
-            "isNav"      : true,
-
-            "load"       : {
-                            "isLazy": false
-                           }
+            "isNav"      : true
         }
     };
 
@@ -801,7 +822,7 @@ if( !window.rs01VA ) {
 
             // Check and convert to number float
             // Condition < 9007199254740992 : larger for incorrect results
-            if( /^\-?\d*\.?\d+\w*$/g.test(n) ) {
+            if( /^\-?\d*\.?\d+/g.test(n) ) {
                 var n1 = parseFloat(n);
                 if (n1 < 9007199254740992 ) return n1;
             }
@@ -954,10 +975,10 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
 
         Check : function() {
 
-            M.Browser();                            // Browser detect -> located above nam o tren phuc vu cho proto.ajax
+            M.Browser();                            // Detect the name browser
             M.CssName();                            // CSS: get prefixed css style
-            M.FirstSetup();                         // Setup bien dau tien ki init Ruby
-            cs.ev.trigger('init');                  // Callback event begin init
+            M.FirstSetup();                         // Initialize the variables at first
+            M.RunEvent('init');                     // Trigger callback event 'init'
 
 
 
@@ -985,7 +1006,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
 
 
         Ready : function() {
-            cs.ev.trigger('ready');                             // Trigger event 'ready'
+            M.RunEvent('ready');                                // Trigger event 'ready'
             $ruby.removeClass(va.ns + 'none');                  // Remove initially hidden rubyslider
 
             is.RUBYANIMATE && RUBYANIMATE.UpdateAllKeyframes(); // Update RubyAnimate keyframe into rubyslider
@@ -995,10 +1016,14 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
 
             is.SLIDESHOW && SLIDESHOW.RenderControl();          // Slideshow : render markup
             is.TIMER && TIMER.Render();                         // Timer: render markup
+            is.FULLSCREEN && FULLSCREEN.Render();               // Render the elemnts in fullscreen mode
 
             is.NAV && NAV.Render();                             // Navigation: render markup
             is.PAG && PAG.RenderSelf();                         // Pagination: render markup
             is.CAP && CAPTION.Render();                         // Caption: render markup
+
+            // Add loader icon in the case: lazyType == all
+            o.lazyType === 'all' && RENDER.LoaderAdd($ruby, $ruby, '$rubyLoader');
 
             PROP.Slides();                                      // Slide: properties, below 'PAG.RenderSelf' -> need to '$pagItem' defined
             RENDER.Other();                                     // Ruby: render other elements
@@ -1022,7 +1047,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             is.pag && !is.pagList && PAG.TypeSizeItem();
 
             // Insert 'init' class to detect rubyslider initialize
-            $ruby.addClass(va.ns +'init');
+            $ruby.addClass(M.NS('{ns}init {ns}no-loaded'));
 
             // Get size width of ruby
             SIZE.WidthForRuby();
@@ -1049,7 +1074,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
 
         Load : function() {
             is.initLoaded = true;                               // Store rubyslider initially loaded
-            cs.ev.trigger('loaded');                            // Trigger event 'loaded'
+            M.RunEvent('loaded');                               // Trigger event 'loaded'
 
             is.pag && !is.pagList && PAG.TypeSizeItem();        // Support for 'POSSIZE.CombineAtFirst()' below + position tabs vertical at first
 
@@ -1163,6 +1188,10 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             // Variable support for ruby full update -> additional info
             // Variable will reset to null if go to end 'API.update()'
             va.addInfo = null;
+
+            // Layout size of ruby
+            if( o.layout === 'fullwidth' ) is.fullwidth = true;
+            if( o.layout === 'fullscreen' && !!rs01MODULE.FULLSCREEN ) is.fullscreen = true;
         },
 
         /**
@@ -1417,8 +1446,9 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             $slCur.addClass(current).removeClass(deactived);
 
             // Callback event toggle
-            idLast !== undefined && cs.ev.trigger('deselectID', idLast);
-            cs.ev.trigger('selectID', idCur);
+            idLast !== undefined && M.RunEvent('deselectID', idLast);
+            M.RunEvent('selectID', idCur);
+
 
             // Setting number of slide left & right into layer center(no loop)
             !is.centerLoop && PROP.CenterNoLoop();
@@ -1466,7 +1496,6 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             is.SWIPE && SWIPE.ToggleEvent();
         },
 
-
         /**
          * CASES:
          *  + Value = -1 : remove all classes
@@ -1477,9 +1506,9 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
 
             /**
              * CONDITIONAL EXECUTION
-             *  + Improved on mobile -> not toggle class 'grabbing'
              */
-            if( is.mobile && type == 'grab' ) return;
+            // Ver 1.7 - Jan 14, 2017: Toggle grab support for mobile device
+            // if( is.mobile && type == 'grab' ) return;
 
 
             /**
@@ -1503,7 +1532,6 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             else $obj.addClass(classAdd).removeClass(classDel);
         },
 
-
         /**
          * GET VALUE IN STRING
          */
@@ -1515,9 +1543,6 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             // Array: return value 5
             return M.PInt(a[4]);
         },
-
-
-
 
         /**
          * SETUP VARIABLES WHEN SCROLL BROWSER
@@ -1625,6 +1650,21 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
         PPercent : function(v, source) {
             if( v > 0 && v < 1 ) v *= source;
             return M.R(v);
+        },
+
+        // Parse the value have percent unit to Pixel unit
+        PercentToPixel : function(value, source) {
+            var result = null;
+
+            // Case: The value is string with format '+/-100%'
+            if( /^\-?\d*\.?\d+\%$/.test(value) ) {
+                result = M.R(M.PFloat(value) * source / 100);
+            }
+            // Case: The value is numeric
+            else if( $.isNumeric(value) ) {
+                result = value;
+            }
+            return result;
         },
 
         // Convert string of style to json
@@ -1844,8 +1884,61 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             return (id > -1 ? value[id][name] : null);
         },
 
+        // Get index in Responsive Level
+        GetIndexInResponsive : function(resLevels) {
+            var index = null;
+            for( var i = 0, len = resLevels.length; i < len; i++ ) {
+
+                var min = resLevels[i],
+                    max = (i === 0) ? 10000 : resLevels[i - 1];
+
+                if( M.MatchMedia(min, max) ) {
+                    index = i;
+                    break;
+                }
+            }
+
+            // Case: not found index
+            if( index === null ) index = resLevels.length - 1;
+            return index;
+        },
+
+        // Parse Grid from a value
+        ParseGrid : function(fromValue, isInherit) {
+            var resLevelsLen = o.responsiveLevels.length,
+                grid         = null;
+
+            // Case: Size is Numeric
+            if( $.isNumeric(fromValue) || typeof fromValue === 'string' ) {
+                grid = [];
+
+                for( var i = 0; i < resLevelsLen; i++ ) {
+                    if( isInherit ) grid[i] = fromValue;
+                    else            grid[i] = (i == 0) ? fromValue : null;
+                }
+            }
+            // Case: Size is array
+            else if( $.isArray(fromValue) ) {
+
+                // Case: Size length < ResponsiveLevels length -> Additional item in the array of Size
+                if( fromValue.length < resLevelsLen ) {
+                    var valueLen  = fromValue.length;
+                    var valueLast = fromValue[valueLen - 1];
+
+                    grid = fromValue.slice();
+                    for( var i = valueLen; i < resLevelsLen; i++ ) {
+                        grid[i] = isInherit ? valueLast : null;
+                    }
+                }
+
+                // Case else: copy array
+                else grid = fromValue.slice();
+            }
+            return grid;
+        },
+
         /**
-         * SEARCH NESTED RUBY IN RUBY
+         * SEARCH ELEMENTS EXCEPT FORM RUBY-NESTED
          *  + Remove nested ruby
          */
         Find : function($target, selector) {
@@ -1953,6 +2046,16 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
          */
         Module : function(name) {
             return $.extend({}, rs01MODULE[name], one);
+        },
+
+        // Execute the events
+        RunEvent : function(name, param1, param2) {
+
+            // Trigger event on option
+            $.isFunction(o.events[name]) && o.events[name](cs);
+
+            // Trigger event on jQuery event
+            cs.ev.trigger(name, [param1, param2]);
         }
     }),
 
@@ -2053,6 +2156,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             is.DISPLAY       = !!rs01MODULE.DISPLAY;
             is.DEEPLINKING   = !!rs01MODULE.DEEPLINKING;
             is.COOKIE        = !!rs01MODULE.COOKIE;
+            is.FULLSCREEN    = !!rs01MODULE.FULLSCREEN;
             is.NESTED        = !!rs01MODULE.NESTED;
             is.CLASSADD      = !!rs01MODULE.CLASSADD;
             is.APIREMOTE     = !!rs01MODULE.APIREMOTE;
@@ -2082,15 +2186,16 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
              *  + Priority special options for mobile
              */
             var nameOptsPlus = null;
-            if( !!optsData.optionsPlus )                nameOptsPlus = optsData.optionsPlus;
-            if( !nameOptsPlus && !!OptsJS.optionsPlus ) nameOptsPlus = OptsJS.optionsPlus;
-            if( !nameOptsPlus )                         nameOptsPlus = optsDefault.optionsPlus;
+            if( !!optsData.type )                nameOptsPlus = optsData.type;
+            if( !nameOptsPlus && !!OptsJS.type ) nameOptsPlus = OptsJS.type;
+            if( !nameOptsPlus )                         nameOptsPlus = optsDefault.type;
 
             var optsPlus = rs01VA.optsPlus[nameOptsPlus];
             o = $.extend(true, o, optsDefault, optsPlus, OptsJS, optsData);
 
-            if( !is.tf && !$.isEmptyObject(o.fallback) )  o = $.extend(true, o, o.fallback);
-            if( is.mobile && !$.isEmptyObject(o.mobile) ) o = $.extend(true, o, o.mobile);
+            if( !is.tf )    o = $.extend(true, o, o.fallback);
+            if( is.mobile ) o = $.extend(true, o, o.mobile);
+            else            o = $.extend(true, o, o.desktop);
         },
 
 
@@ -2244,10 +2349,6 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
              * THE VALUE SETUP ONLY ONCE
              */
             if( !va.stepSetupInit ) {
-                is.loop = o.isLoop;
-
-                // Default swipe object is Canvas
-                va.$swipeCur = $canvas;
 
                 // Create tween object
                 va.tweenView    = new RubyTween();
@@ -2267,6 +2368,14 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
                 // Variable of Flickr
                 va.flickrData      = {};
                 va.flickrListPhoto = [];
+
+
+
+                // Shortcut for isLoop
+                is.loop = o.isLoop;
+
+                // Default swipe object is Canvas
+                va.$swipeCur = $canvas;
 
                 // Varible of position
                 va.xBuffer = 0;
@@ -2317,21 +2426,41 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
 
 
             /**
-             * SETUP CAC GIA TRI LUC BAT DAU CO THE UPDATE
+             * SETUP VARIABLE & PROPERTIES AT FRIST CAN BE UPDATE
              */
-            // Range chieu width cua slide
-            // Uu tien cho Thuoc tinh trong hieu u'ng dac biet
+            // Get WidthRange of Slide
+            // Priority 'width' properties in special effect
             var wName  = 'widthSlide',
                 fxName = o.fx,
                 wSlide = (!!o[fxName] && !!o[fxName][wName]) ? o[fxName][wName]
                                                              : o[wName];
 
-            va.sSlideRange = PROP.Chain3(wSlide, 'width');
+            va.wSlideGrid = M.ParseGrid(wSlide, true);
 
-            // Setup typeHeight cua Ruby
-            is.heightFixed = $.isNumeric(o.height);
-            // Type Height chuyen sang 'Fixed' neu Fullscreen
-            if( o.isFullscreen ) is.heightFixed = true;
+
+
+
+            /**
+             * GET GRID SIZE FOR RESPONSIVE
+             */
+            // Get grid size for the Responsive
+            var resLevels = o.responsiveLevels;
+            if( $.isArray(resLevels) && resLevels.length ) {
+
+                // Get Grid-width / Grid-heihgt
+                va.wGrid = M.ParseGrid(o.width, true);
+                va.hGrid = M.ParseGrid(o.height, o.width === null ? true : false);
+
+                // Get grid-padding for Responsive
+                va.maGrid = M.ParseGrid(o.margin, true);
+                va.paGrid = M.ParseGrid(o.padding2, false);
+            }
+
+            // Get type-height of Ruby
+            // is.heightFixed = $.isNumeric(o.height);
+            is.heightFixed = $.isArray(va.hGrid);
+            // Covert to height-fixed when Fullscreen
+            if( is.fullscreen ) is.heightFixed = true;
         },
 
         /**
@@ -2366,7 +2495,6 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             is.nav        = o.isNav && is.NAV;
             is.pag        = o.isPag && is.PAG;
             is.cap        = o.isCap && is.CAP;
-            is.fullscreen = o.isFullscreen && !!rs01MODULE.FULLSCREEN;
 
 
 
@@ -2416,7 +2544,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
                                        : (isHor ? 'left' : 'top');
 
                 // Name of pageX changes depending on direction of canvas & pagination
-                va[name].pageX = isHor ? 'pageX' : 'pageY';
+                va[name].pageXY = isHor ? 'pageX' : 'pageY';
             }
             SameValue('can');
             SameValue('pag');
@@ -2477,19 +2605,19 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
                 viewCSS  = ['cssOne', 'cssTwo', 'cssThree', 'cssFour'];
 
             // Setup 'view' option at first
-            va.view = 'basic';
-            if( $.inArray(o.fx, viewList) !== -1 )                  va.view = o.fx;
+            va.fxView = 'basic';
+            if( $.inArray(o.fx, viewList) !== -1 )                  va.fxView = o.fx;
             // Effect need RubyAnimate object
-            if( $.inArray(o.fx, viewCSS) !== -1 && is.RUBYANIMATE ) va.view = 'css';
-            if( $.inArray(o.fx, o.fxMathName) !== -1 )              va.view = 'math';
+            if( $.inArray(o.fx, viewCSS) !== -1 && is.RUBYANIMATE ) va.fxView = 'css';
+            if( $.inArray(o.fx, o.fxMathName) !== -1 )              va.fxView = 'math';
 
             // Automatically converted 'view' if module FX not available or vertical direction
-            if( num === 1 ) va.view = 'basic';
-            if( !is.dirsHor ) va.view = 'basic';
-            if( /^(mask|coverflow3D)$/.test(va.view) && !rs01MODULE['VIEW'+ va.view.toUpperCase()] ) va.view = 'basic';
+            if( num === 1 ) va.fxView = 'basic';
+            if( !is.dirsHor ) va.fxView = 'basic';
+            if( /^(mask|coverflow3D)$/.test(va.fxView) && !rs01MODULE['VIEW'+ va.fxView.toUpperCase()] ) va.fxView = 'basic';
 
             // Capitailize the first letter of 'view'
-            va.View = M.ProperCase(va.view);
+            va.View = M.ProperCase(va.fxView);
 
 
 
@@ -2497,7 +2625,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             /**
              * SETUP LAYOUT
              */
-            va.layout = 'line';
+            va.fxLayout = 'line';
             o.stepNav = o.stepPlay = 1;
 
 
@@ -2505,16 +2633,16 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
 
             /**
              * CONVERT TO OTHER LAYOUT
-             * @param string va.layout
+             * @param string va.fxLayout
              */
-            if( o.fx == 'line') va.layout = 'line';
+            if( o.fx == 'line') va.fxLayout = 'line';
 
             // If 'o.fx' is name of list 'o.fxMathName' or is array -> convert to 'dot' layout
-            else if( $.inArray(o.fx, va.fxInLayoutDot) !== -1 || $.isArray(o.fx) ) va.layout = 'dot';
+            else if( $.inArray(o.fx, va.fxInLayoutDot) !== -1 || $.isArray(o.fx) ) va.fxLayout = 'dot';
 
             // Convert to other layout depends on 'view' options
             var viewListToLine = ['mask', 'coverflow3D'];
-            if( $.inArray(o.fx, viewListToLine) !== -1 ) va.layout = 'line';
+            if( $.inArray(o.fx, viewListToLine) !== -1 ) va.fxLayout = 'line';
         },
 
         Center : function() {
@@ -2523,7 +2651,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
              * SETUP IN CASE: HAS SPECIAL NUMBER OF SLIDE
              */
             if( num == 1 || num == 2 ) {
-                if( va.layout === 'line' ) {
+                if( va.fxLayout === 'line' ) {
                     is.center = is.loop = false;
                 }
             }
@@ -2594,35 +2722,24 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
 
         Responsive : function() {
 
-            /**
-             * SETUP VALUE OF RESPONSIVE
-             */
-            // Width
-            if( !!o.widthRange ) va.sizeRange = PROP.Chain3(o.widthRange);
-            else                 va.sizeRange = null;    // Func update: reset value
-
-            // Padding
-            va.pa = { 'left': o.padding, 'top': 0 };    // va.pa always !== undefined
-            if( o.padding != 0 ) va.paRange = PROP.Chain3(o.padding);
-            else                 va.paRange = null;     // Func update: reset value
-
-            // Margin
-            if( o.margin != 0 ) va.maRange = PROP.Chain4(o.margin);
-            else                va.maRange = null;      // Func update: reset value
-
+            // Declare the variable at first
+            va.pa = [];
 
 
             /**
              * SETUP IN CASE: HAVE RESPONSIVE
              */
-            is.res = $.isNumeric(o.width) && is.RESPONSIVE;
+            // is.res = $.isNumeric(o.width) && is.RESPONSIVE;
+            is.res = $.isArray(va.wGrid) && is.RESPONSIVE;
             if( is.res ) {
 
-                va.wRes = o.width;
-                va.hRes = is.heightFixed ? o.height : 0;
+                // va.wRes = o.width;
+                va.wRes = va.wGrid[0];
+                // va.hRes = is.heightFixed ? o.height : 0;
+                va.hRes = is.heightFixed ? va.hGrid[0] : 0;
 
                 // Fullscreen: setup
-                if( o.isFullscreen ) {
+                if( is.fullscreen ) {
 
                     // Height responsive : auto add value when not setup --> used for fullscreen
                     if( va.hRes == 0 ) va.hRes = va.wRes;
@@ -2851,13 +2968,14 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
                 }
 
                 else if( fxType == 'none' ) va.fx[i] = 'none';
-                else                        va.fx[i] = (va.layout == 'line') ? null : optsCur.fx;
+                else                        va.fx[i] = (va.fxLayout == 'line') ? null : optsCur.fx;
 
 
                 // Setup Others options
                 va.slot[i]  = optsCur.slot;
                 va.speed[i] = optsCur.speed;
                 va.delay[i] = optsCur.slideshow.delay;
+                optsCur.imageback.posGrid = M.ParseGrid(optsCur.imageback.position, true);
                 slData['opts'] = optsCur;
 
                 // Check minimum value of 'speed' & 'delay'
@@ -2914,40 +3032,25 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
      */
     UPDATE = {
 
-        // Remove current class on ruby -> used for update properties
-        RemoveClass : function() {
-
-            // Ruby: remove exist class
-            var classRuby = '{ns}layout-{layout} {ns}view-{view} {ns}fx-{fx} {ns}height-{height}'
-                                .replace(/\{ns\}/g, va.ns)
-                                .replace(/\{layout\}/, vava.layout)
-                                .replace(/\{view\}/, vava.view)
-                                .replace(/\{fx\}/, vava.fxType)
-                                .replace(/\{height\}/, isis.heightFixed ? 'fixed' : 'auto');
-
-
-            // First, remove class in ruby
-            $ruby.removeClass(classRuby);
-
-            // Remove class added on pagination
-            is.pag && PAG.ToggleClass(false);
-        },
-
         // Add class into ruby after update
         AddClass : function() {
 
             // Ruby: class layout & height type
-            var ns        = ' '+ va.ns,
-                classRuby = '{ns}layout-{layout} {ns}view-{view} {ns}fx-{fx} {ns}height-{height}'
+            var ns        = ' ' + va.ns,
+                classRuby = '{ns}type-{type} {ns}layout-{layout} {ns}fxlayout-{fxlayout} {ns}fxview-{fxview} {ns}fxtype-{fxtype} {ns}height-{height} {ns}lazy-{lazytype}'
                                 .replace(/\{ns\}/g, va.ns)
-                                .replace(/\{layout\}/, va.layout)
-                                .replace(/\{view\}/, va.view)
-                                .replace(/\{fx\}/, va.fxType)
-                                .replace(/\{height\}/, is.heightFixed ? 'fixed' : 'auto');
+                                .replace(/\{type\}/, o.type)
+                                .replace(/\{layout\}/, o.layout)
+                                .replace(/\{fxlayout\}/, va.fxLayout)
+                                .replace(/\{fxview\}/, va.fxView)
+                                .replace(/\{fxtype\}/, va.fxType)
+                                .replace(/\{height\}/, is.heightFixed ? 'fixed' : 'auto')
+                                .replace(/\{lazytype\}/, o.lazyType);
 
             // Class recognize browser support transform & showInRange
             classRuby += ns + (is.tf ? 'transform' : 'no-transform');
             classRuby += is.opacity ? '' : ns +'no-opacity';
+            classRuby += o.skin !== null ? ns + o.skin : '';
             if( !is.showInRange ) classRuby += ns +'none';
 
             // Add class into ruby after setup
@@ -2957,18 +3060,41 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             is.pag && PAG.ToggleClass(true);
         },
 
+        // Remove current class on ruby -> used for update properties
+        RemoveClass : function() {
+
+            // Ruby: remove exist class
+            var classRuby = '{ns}type-{type} {ns}layout-{layout} {ns}fxlayout-{fxlayout} {ns}fxview-{fxview} {ns}fxtype-{fxtype} {ns}height-{height} {ns}lazy-{lazytype}'
+                                .replace(/\{ns\}/g, va.ns)
+                                .replace(/\{type\}/, oo.type)
+                                .replace(/\{layout\}/, oo.layout)
+                                .replace(/\{fxlayout\}/, vava.fxLayout)
+                                .replace(/\{fxview\}/, vava.fxView)
+                                .replace(/\{fxtype\}/, vava.fxType)
+                                .replace(/\{height\}/, isis.heightFixed ? 'fixed' : 'auto')
+                                .replace(/\{lazytype\}/, oo.lazyType);
+
+
+            // First, remove class in ruby
+            classRuby += oo.skin !== null ? (' ' + va.ns + oo.skin) : '';
+            $ruby.removeClass(classRuby);
+
+            // Remove class added on pagination
+            is.pag && PAG.ToggleClass(false);
+        },
+
         // Reset other when update options
         Reset : function() {
 
             // Layout dot: remove translate
-            if( va.layout == 'dot' ) {
+            if( va.fxLayout == 'dot' ) {
                 var _tf = {}; _tf[cssTf] = '';
                 va.$s.css(_tf);
                 POSITION.AnimateX($canvas, 0, 1, 1);
             }
 
             // Remove 'perspective' on Viewport
-            if( /^(basic)$/.test(va.view) ) {
+            if( /^(basic)$/.test(va.fxView) ) {
                 var tf = {}; tf[va.prefix +'perspective'] = '';
                 $viewport.css(tf);
             }
@@ -3029,7 +3155,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
          */
         Resize : function() {
             // console.log('resize');
-            cs.ev.trigger('resize');                            // Trigger event 'resize'
+            M.RunEvent('resize');                               // Trigger event 'resize'
 
             // Setup size of pagItem
             // + Search value of wItem/hItem
@@ -3083,7 +3209,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             }, 30);
 
             SIZE.AnimHeightForRuby(true);                       // animHeightForRuby: update make image shake
-            cs.ev.trigger('resizeEnd');                         // Trigger event 'resizeEnd'
+            M.RunEvent('resizeEnd');                            // Trigger event 'resizeEnd'
         }
     },
 
@@ -3132,7 +3258,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             o  = $.extend(true, o, options);
 
             // Layout line
-            if( o.fx === null ) { o.fx = va.layout = 'line' }
+            if( o.fx === null ) { o.fx = va.fxLayout = 'line' }
 
             // 'pag' options
             o.pag.direction = 'hor';
@@ -3159,6 +3285,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
         Structure : function() {
 
             // Setup markup first: Viewport, Canvas
+            RENDER.Anchor();
             RENDER.Viewport();
             RENDER.Canvas();
             RENDER.OverlayGhost($viewport);
@@ -3184,6 +3311,26 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
                 // Setup Videos
                 is.VIDEOIFRAME && VIDEOIFRAME.ConvertTag($slCur);
             });
+        },
+
+        /**
+         * CREATE MARKUP OF ANCHOR FOR FULLWIDTH - FULLSCREEN LAYOUT
+         */
+        Anchor : function() {
+
+            // Conditional execution
+            if( is.fullwidth || is.fullscreen ) {
+                var classAnchor = va.ns + 'anchor';
+
+                // Create new element 'anchor'
+                va.$anchor = $('<div/>', { 'class': classAnchor });
+
+                // Append $anchor after ruby
+                $ruby.before(va.$anchor);
+
+                // Set position & size for Ruby at fist
+                POSSIZE.Anchor();
+            }
         },
 
         /**
@@ -3316,6 +3463,27 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
 
 
 
+            /**
+             * GET LINK ON SLIDE
+             */
+            var dataLink   = $sl.data('link'),
+                linkTarget = $sl.data('link-target') || '',
+                link       = null;
+
+            if( dataLink !== undefined && !/^\s*$/.test(dataLink) ) {
+
+                // Store link url
+                link = dataLink;
+
+                // Create new markup of slide link
+                $sl
+                    .addClass(M.NS('{ns}link-onslide'))
+                    .removeAttr('data-link data-link-target');
+            }
+
+
+
+
             // Slide: add class -> make sure slide has class nameSlide
             // Slides assign to variable $s, add class 'sleep' to setup height 100% , hidden all children
             $sl
@@ -3326,6 +3494,8 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             // Slide: initialize properties in data to get info without error
             var FALSE = false;
             M.Data($sl, {
+                'link'       : link,
+                'linkTarget' : linkTarget,
                 'isLoading'  : FALSE,
                 'isLoaded'   : FALSE,
                 'isImgback'  : FALSE,
@@ -3483,7 +3653,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
         /**
          * RENDER ICON LOADER
          */
-        LoaderAdd : function($slide, $parent, name) {
+        LoaderAdd : function($save, $parent, name) {
 
             /**
              * CONDITIONAL EXECUTION
@@ -3502,7 +3672,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
                 $loader = $(markup);
 
             // Store loader into data slide & insert to parent
-            M.Data($slide)[name] = $loader;
+            M.Data($save)[name] = $loader;
             $parent.append($loader);
         },
 
@@ -3584,9 +3754,9 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
          * STORE ID OF SLIDES INTO ARRAY TO LOADDING SLIDE IN ORDER
          */
         Way : function() {
-            var IDToLoad = [],          // Store ID of slide in array
-                idCur    = cs.idCur,    // ID current
-                oload    = o.load;
+            var IDToLoad   = [],            // Store ID of slide in array
+                idCur      = cs.idCur,      // ID current
+                oLazySmart = o.lazySmart;
 
 
             /**
@@ -3714,7 +3884,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
              * THE NUMBER OF SLIDE PARALLEL LOADING
              *  + After complete preload -> 'va.nLoadParallet' allways = -1 -> plus 1 at first to easy setup
              */
-            va.nLoadParallel = oload.amountEachLoad + 1;
+            va.nLoadParallel = oLazySmart.amountEachLoad + 1;
 
 
             /**
@@ -3722,9 +3892,11 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
              *  + Case 'all': load all slides
              *  + Case == 0: allways preload 1 slide
              */
-            va.preload = oload.preload;
-            if( oload.preload == 'all' ) va.preload = num;
-            if( oload.preload <= 0 )     va.preload = 1;
+            va.preload = oLazySmart.preload;
+            if( oLazySmart.preload == 'all' || oLazySmart.preload > num ) va.preload = num;
+            if( oLazySmart.preload <= 0 ) va.preload = 1;
+            if( o.lazyType === 'none' )   va.preload = 0;
+            if( o.lazyType === 'single' ) va.preload = 1;
 
 
 
@@ -3741,7 +3913,8 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             if( cs.num > 0 ) {
 
                 // Case: slide at center position ->  load zigzag-round
-                if( va.layout == 'line' && is.centerLoop ) LoadZigzagByIDMap();
+                // Ver 1.7 - Jan 13, 2017: remove condition va.fxLayout == 'line', support for layout 'dot'
+                if( is.centerLoop ) LoadZigzagByIDMap();
 
                 // Case: slide at position linear
                 // If ID = 0: load linear, the rest is load zigzag-line
@@ -3765,7 +3938,8 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             /**
              * SETUP IDMAP FOR CENTER LAYOUT
              */
-            if( va.layout == 'line' && is.centerLoop ) {
+            // Ver 1.7 - Jan 13, 2017: remove condition va.fxLayout == 'line', support for layout 'dot'
+            if( is.centerLoop ) {
 
                 // Priority slide right appears if sum of slides is even number
                 var idBegin = M.C(num / 2) + cs.idCur;
@@ -3827,8 +4001,14 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
              * SETUP PRELOAD SLIDES AT RUBY APPEARANCE AT FIRST
              *  + This time 'LOAD.slideBegin()' in 'LOAD.ParalletWhenSlideEnd()' be paused
              */
-            if( va.nLoadAtFirst < va.preload && IDToLoad.length ) {
-                LOAD.SlideBegin( va.$s.eq(IDToLoad[0]) );
+            if( IDToLoad.length ) {
+
+                // Condition and function load next slide
+                var isLoadNext = false;
+                if( /^(none|all)$/.test(o.lazyType) ) isLoadNext = true;
+                if( o.lazyType !== 'none' && va.nLoadAtFirst < va.preload ) isLoadNext = true;
+
+                isLoadNext && LOAD.SlideBegin( va.$s.eq(IDToLoad[0]) );
             }
         },
 
@@ -3838,25 +4018,27 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
         ParallelWhenSlideEnd : function($slide) {
 
             // Initialize variable
-            var IDToLoad = va.IDToLoad,
-                oload    = o.load;
+            var IDToLoad   = va.IDToLoad,
+                oLazySmart = o.lazySmart;
 
-            // Variable use for preload
+
+            // Check case loaded all slides
             va.nLoaded++;
+            va.nLoaded === num && LOAD.LoadedAllSlides();
 
             // Complete the process preload
             if( !is.preloaded && va.nLoaded == va.preload ) is.preloaded = true;
 
 
             // Check next load
-            if( !oload.isLazy ) {
+            if( !/^(none|single)$/.test(o.lazyType) ) {
 
                 // LoadAmount only performed when complete preload
                 // Reset value of 'va.nLoadParallet' if 'va.nLoadParallet' == 0
                 if( is.preloaded ) {
 
                     va.nLoadParallel--;
-                    if( !va.nLoadParallel ) va.nLoadParallel = o.load.amountEachLoad;
+                    if( !va.nLoadParallel ) va.nLoadParallel = o.lazySmart.amountEachLoad;
                 }
 
 
@@ -3867,7 +4049,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
                  *  + If is.preloaded == false -> 'LOAD.SlideBegin()' be paused -> load new slide switch to 'LOAD.ParalletWhenSlideBegin()'
                  *  + Additional condition: 'LOAD.Add()' not work -> avoid runing multiple function same time
                  */
-                if( IDToLoad.length && is.preloaded && va.nLoadParallel >= oload.amountEachLoad && !M.Data($slide)['isLoadAdd'] ) {
+                if( IDToLoad.length && is.preloaded && va.nLoadParallel >= oLazySmart.amountEachLoad && !M.Data($slide)['isLoadAdd'] ) {
 
                     for( i = va.nLoadParallel; i > 0; i-- ) {
                         LOAD.Next();
@@ -3954,7 +4136,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             if( !$slide.length ) return;
 
             // Load: setup begin
-            cs.ev.trigger('loadBegin', [$slide, slData.id]);
+            M.RunEvent('loadBegin', $slide, slData.id);
 
             // Setup load all slide same time
             LOAD.ParallelWhenSlideBegin();
@@ -3974,7 +4156,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             if( slData.id === va.idBegin ) {
 
                 // Toggle current slide at first
-                cs.idCur == 0 && cs.ev.trigger('start');
+                cs.idCur == 0 && M.RunEvent('start');
                 M.ToggleSlide();
             }
 
@@ -4150,14 +4332,8 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
              * SETUP EVENTS TRIGGER
              */
             // Events trigger: slide loaded
-            cs.ev.trigger('loadSlide.' + id);
-            cs.ev.trigger('loadEnd', [$slide, id]);
-
-            // Events 'loadAll' : when va.IDToLoad[] empty
-            if( !va.IDToLoad.length ) {
-                is.loadAll = true;
-                cs.ev.trigger('loadAll');
-            }
+            M.RunEvent('loadSlide.' + id);
+            M.RunEvent('loadEnd', $slide, id);
 
 
 
@@ -4167,6 +4343,24 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
              *  + Located at end
              */
             LOAD.ParallelWhenSlideEnd($slide);
+        },
+
+        /**
+         * CASE LOADED ALL SLIDES
+         */
+        LoadedAllSlides : function() {
+
+            // Trigger event 'loadAll'
+            M.RunEvent('loadAll');
+
+            // Add new class to notice on Ruby
+            is.loadAll = true;
+            $ruby
+                .addClass(va.ns + 'loaded')
+                .removeClass(va.ns + 'no-loaded');
+
+            // Remove loader icon
+            RENDER.LoaderRemove($ruby, '$rubyLoader');
         }
     },
 
@@ -4244,7 +4438,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
         LimitInCarouselX : function(x) {
 
             // Conditional execution
-            if( va.layout == 'line' && !is.loop && va.$swipeCur.is(va.$canvas) ) {
+            if( va.fxLayout == 'line' && !is.loop && va.$swipeCur.is(va.$canvas) ) {
                 var p = va.can;
 
                 if     ( x > p.xMin ) x = p.xMin;
@@ -4342,7 +4536,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
                  * VALUE OF TRANSFORM FOR SLIDE IN EACH CASE
                  */
                 // Case: normal
-                if( va.view == 'basic' || va.view == 'mask' ) {
+                if( va.fxView == 'basic' || va.fxView == 'mask' ) {
                     var tl = is.dirsHor ? 'Tlx' : 'Tly';            // Translate by css3
                     tf[cssTf] = M[tl](xCur);
 
@@ -4350,7 +4544,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
                 }
 
                 // Case: view coverflow3D
-                else if( va.view == 'coverflow3D' ) {
+                else if( va.fxView == 'coverflow3D' ) {
                     var cover = o.coverflow3D,
                         z     = cover.isDeepMulti ? cover.zDeep * ((isNext ? va.center.nRight : va.center.nLeft) + 1)
                                                   : cover.zDeep;
@@ -4469,7 +4663,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
 
             // Initialize variable
             var p      = va.can,
-                layout = va.layout,
+                layout = va.fxLayout,
                 isNext = dirs == 'next',
                 sign   = isNext ? -1 : 1,
 
@@ -4573,7 +4767,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
              *  + After resize -> Canvas & slide must reset position
              *  + Ruby center -> xCanvas: calculate back position of Canvas
              */
-            var layout = va.layout,
+            var layout = va.fxLayout,
                 p      = va.can,
                 xBegin = 0;
 
@@ -4582,7 +4776,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
                 var sSlideCur = is.dirsHor ? va.wSlide
                                            : M.OuterHeight(va.$s.eq(cs.idCur), true);
 
-                xBegin = M.R( (va.sRuby - sSlideCur)/2 );
+                xBegin = M.R( (va.sRuby - sSlideCur) / 2);
             }
 
             // Update init position of Canvas
@@ -4642,46 +4836,19 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
          * @param array va.ma Value 1 is margin-left, value 2 is margin-right
          */
         Margin : function() {
+            var wRuby  = va.wRuby;
 
-            /**
-             * CHECK & GET VALUE OF APPROPRIATE MARGIN
-             */
-            var wMin   = 1e5,
-                id     = null,
-                margin = va.maRange,
-                wRuby  = va.wRuby,
-                wWin   = $w.width();
+            // Get the current margin in ResponsiveLevels
+            va.maGridCur = $.isArray(va.maGrid) ? va.maGrid[va.index] : null;
 
-            if( !!va.maRange ) {
-                for( i = margin.num - 1; i >= 0; i-- ) {
-
-                    // Search object have value inside the scrope
-                    // Priority object have value 'to' largest
-                    if( margin[i].from <= wWin && wWin <= margin[i].to ) {
-                        if( wMin >= margin[i].to ) {
-
-                            wMin = margin[i].to;
-                            id   = i;
-                        }
-                    }
-                }
+            // Case: the margin-grid available -> get margin from the option
+            if( va.maGridCur !== null ) {
+                va.ma = [ M.PercentToPixel(va.maGrid[va.index], wRuby), M.PercentToPixel(va.maGrid[va.index], wRuby) ]
             }
 
-            // Get value of margin
-            // Support value of margin according to %
-            if( id !== null )
-                va.ma = [ M.PPercent(margin[id].left, wRuby), M.PPercent(margin[id].right, wRuby) ];
-            else
-                va.ma = [0, 0];
-
-
-
-            /**
-             * AUTO GET MAGIN WHEN VIEWPORT HAVE PADDING
-             *  + Fixed Viewport have CSS styled -> see the slide on Viewport
-             */
-            if( !va.maRange ) {
-                if( is.dirsHor && va.wRuby !== M.InnerWidth($viewport) ) {
+            // Case: margin not available -> get margin from CSS
+            else {
+                if( is.dirsHor && wRuby !== M.InnerWidth($viewport) ) {
                     va.ma[0] = M.PInt($viewport.css('padding-left'));
                     va.ma[1] = M.PInt($viewport.css('padding-right'));
                 }
@@ -4730,10 +4897,22 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
 
 
 
-            /**
-             * WIDTH OF RUBY
-             */
+            // Update position and size for Ruby at first
+            POSSIZE.Anchor();
+
+            // Width of Ruby
             va.wRuby = M.Width($viewport);
+
+
+
+
+            /**
+             * GET THE CURRENT VALUE IN SIZE GRID
+             */
+            var index = va.index = M.GetIndexInResponsive(o.responsiveLevels);
+            va.wGridCur = $.isArray(va.wGrid) ? va.wGrid[index] : null;
+            va.hGridCur = $.isArray(va.hGrid) ? va.hGrid[index] : null;
+            va.paGridCur = $.isArray(va.paGrid) ? va.paGrid[index] : null;
 
 
 
@@ -4744,12 +4923,8 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             // Setup horizontal direction
             var wSlide = null;
             if( is.dirsHor ) {
-
-                // Get value Width of slide from 'range' array
-                wSlide = M.GetValueInRange(va.sSlideRange, 'width');
-
-                // Convert unit % to 'px', unit % in range [0, 1]
-                if( wSlide > 0 && wSlide <= 1 ) wSlide *= va.wRuby;
+                // Get the current width-slide from Grid size
+                wSlide = M.PercentToPixel(va.wSlideGrid[va.index], va.wRuby);
             }
 
             // Setup vertical direction
@@ -4898,31 +5073,35 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             /**
              * SETUP IN FULLSCREEN MODE
              */
-            if( o.isFullscreen ) {
-                var hWin = $w.height();
+            if( is.fullscreen ) {
+
+                // Get height auto for Viewport
+                var hWin      = $w.height(),
+                    offsetTop = va.$anchor.offset().top;
+
+                // Case: offsetTop < height-window
+                if( offsetTop < hWin ) {
+                    hWin -= offsetTop;
+                }
+
+
 
 
                 /**
                  * SETUP HEIGHT WHEN IT HAVE 'OFFSET'
                  */
                 if( o.offsetBy !== null ) {
-                    var hOffset = 0,
-                        isImg   = false;
-
-                    // Get height of $offset
                     var $offset = $(o.offsetBy);
-                    $offset.each(function() {
-                        hOffset += M.OuterHeight($(this), true);
-                    });
-
-                    // Are $offset the image ?
-                    if( $offset.find('img').length ) isImg = true;
 
                     // Height Ruby will substract by height offsetBy container
-                    hWin -= hOffset
+                    $offset.each(function() {
+                        hWin -=  M.OuterHeight($(this), true);
+                    });
 
                     // Reupdate position + size ruby when $offset contain images
-                    if( isImg ) $w.on('load', function() { cs.refresh() });
+                    if( $offset.find('img').length ) {
+                        $w.on('load', function() { cs.refresh() });
+                    }
                 }
 
                 va.hRuby = hWin;
@@ -4934,28 +5113,50 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             /**
              * SETUP NORMAL
              */
+            // else {
+            //
+            //     // Priority level of height ruby: va.hRes > height css > o.height
+            //     // Assign height Viewport when have height repsonsive
+            //     if( va.hRes ) {
+            //         va.hRuby = M.R(va.hRes * va.rate);
+            //         HeightForViewport(va.hRuby);
+            //     }
+            //     else {
+            //
+            //         // Height value in css
+            //         var h = M.Height($viewport);
+            //
+            //         // Check if height in option !== height css
+            //         if( is.heightFixed && h != o.height ) {
+            //            h = o.height;
+            //            HeightForViewport(h);
+            //         }
+            //
+            //         if( !h ) h = 0;
+            //         va.hRuby = h;
+            //     }
+            // }
+
             else {
+                va.hRuby = null;
 
-                // Priority level of height ruby: va.hRes > height css > o.height
-                // Assign height Viewport when have height repsonsive
-                if( va.hRes ) {
-                    va.hRuby = M.R(va.hRes * va.rate);
-                    HeightForViewport(va.hRuby);
-                }
-                else {
+                if( $.isArray(va.hGrid) ) {
 
-                    // Height value in css
-                    var h = M.Height($viewport);
-
-                    // Check if height in option !== height css
-                    if( is.heightFixed && h != o.height ) {
-                       h = o.height;
-                       HeightForViewport(h);
+                    // Case: Height-grid current is available
+                    if( $.isNumeric(va.hGridCur) ) {
+                        va.hRuby = va.hGridCur;
                     }
 
-                    if( !h ) h = 0;
-                    va.hRuby = h;
+                    // Case: The value of current Height-grid is 'null'
+                    else {
+                        if( $.isArray(va.wGrid) ) {
+                            va.hRuby = M.R(va.hGrid[0] * va.rate);
+                        }
+                    }
                 }
+
+                // Set height for Viewport
+                va.hRuby && HeightForViewport(va.hRuby);
             }
         },
 
@@ -4965,9 +5166,21 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
         EndOfRuby : function() {
 
             /**
+             * GET WIDTH OF VIEWPORT IN THE CASE
+             */
+            // Case default
+            var wCur = M.Width($viewport);
+
+            // Case : in layout fullwidth - fullscreen
+            if( is.fullwidth || is.fullscreen ) wCur = $w.width();
+
+
+
+
+            /**
              * IF WIDTH RUBY CHANGE -> UPDATE WIDTH - HEIGHT VALUE
              */
-            if( va.wSlide !== M.Width($viewport) ) {
+            if( va.wSlide !== wCur ) {
 
                 // Get width of ruby at first
                 SIZE.WidthForRuby();
@@ -5010,7 +5223,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             /**
              * CSS WIDTH FOR CANVAS
              */
-            if( va.layout == 'line' || va.layout == 'dot' ) {
+            if( /^(line|dot)$/.test(va.fxLayout) ) {
 
                 // Width of Canvas by swipe direction
                 va.sCanvas = is.dirsHor ? va.wSlide : va.wRuby;
@@ -5025,7 +5238,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             /**
              * SETUP VARIABLES IN LINE LAYOUT
              */
-            if( va.layout == 'line' ) {
+            if( va.fxLayout == 'line' ) {
 
                 /**
                  * IDENTIFY NUMBER OF EDGE SLIDE CAN SEE COMPARE WITH CENTER SLIDE
@@ -5068,6 +5281,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
              * PAGINATION: UPDATE VALUE OF VARIABLE
              */
             if( is.pag && !is.pagList ) {
+                PAG.CSSPosForPag();
                 PAG.PropAndStyle();
                 PAG.PosAndSizeOfItems();
                 PAG.UpdateThumbnail();
@@ -5086,7 +5300,6 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
                 setTimeout(function() { PAG.VerToHor() }, 40);
             }
         },
-
 
         /**
          * SETUP POSITION & SIZE EACH SLIDE IN 'BASIC' VIEW
@@ -5152,6 +5365,31 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
                         pBegin[i] = sSlideMap[i] * i;
                     }
                 }
+            }
+        },
+
+        // POSITION & SIZE FOR ANCHOR IN LAYOUT FULLWIDTH - FULLSCREEN
+        Anchor : function() {
+
+            // Conditional execution
+            if( !(is.fullwidth || is.fullscreen) ) return;
+
+            // Get position and size for Ruby
+            var sizeBody     = $w.width(),
+                sizeAnchor   = va.$anchor.width(),
+                offsetAnchor = va.$anchor.offset().left;
+
+            // Case: remove position & size of ruby if sizeAnchor == sizeBody
+            if( sizeAnchor === sizeBody ) {
+                $ruby.css({ 'width': '', 'left': '' });
+            }
+
+            // Case: set position & size for ruby
+            else {
+                $ruby.css({
+                    'width' : ~~ sizeBody,
+                    'left'  : - Math.ceil(offsetAnchor)
+                });
             }
         }
     },
@@ -5226,7 +5464,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             VIEW.TFSlideBasic();
 
             // Update position of Canvas when update position each slide
-            if( va.layout == 'line' ) POSITION.CanvasBegin();
+            if( va.fxLayout == 'line' ) POSITION.CanvasBegin();
         }
     },
 
@@ -5280,7 +5518,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             $ruby.addClass(va.ns +'fxRun');
 
             is.slideNext = isIDFixed ? (nSlide - cs.idCur > 0) : (nSlide > 0);
-            cs.ev.trigger('fxBegin');
+            M.RunEvent('fxBegin');
 
 
 
@@ -5309,9 +5547,9 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
              * MAIN SETUP
              */
             // Callback func: start && before
-            isIDFixed ? (nSlide == 0) && cs.ev.trigger('start')
-                      : (idCur + nSlide == 0 || idCur + nSlide - num == 0 ) && cs.ev.trigger('start');
-            cs.ev.trigger('before');
+            isIDFixed ? (nSlide == 0) && M.RunEvent('start')
+                      : (idCur + nSlide == 0 || idCur + nSlide - num == 0 ) && M.RunEvent('start');
+            M.RunEvent('before');
 
             // ID: convert to ts.num
             if( isIDFixed ) va.ts.num -= idCur;
@@ -5327,7 +5565,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             }
 
             // Continue setup depends layout
-            TOSLIDE[va.layout]();
+            TOSLIDE[va.fxLayout]();
         },
 
 
@@ -5425,7 +5663,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             !is.heightFixed && SIZE.AnimHeightForRuby();
 
             // Insert 'mask' class to fixed scroll-x bar appear in FxCSS
-            o.isBodyMaskInFxCSS && (va.view === 'css') && va.$body.addClass(va.ns + 'mask-x');
+            o.isBodyMaskInFxCSS && (va.fxView === 'css') && va.$body.addClass(va.ns + 'mask-x');
 
             // Initial setup effect
             FX.Init();
@@ -5476,9 +5714,9 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
 
             // Past new value to current ID
             // Combine with 'swapID' event
-            cs.ev.trigger('beforeSwapIDCur');
+            M.RunEvent('beforeSwapIDCur');
             cs.idCur = idCur;
-            cs.ev.trigger('afterSwapIDCur');
+            M.RunEvent('afterSwapIDCur');
 
 
             // Add timer for effect in 'Dot' layout : browser Chrome error -> slide shake
@@ -5543,12 +5781,12 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             var idCur = cs.idCur;
 
             // Remove 'mask-x' class to remove scroll-x bar appear in FxCSS
-            o.isBodyMaskInFxCSS && (va.view === 'css') && va.$body.removeClass(va.ns + 'mask-x');
+            o.isBodyMaskInFxCSS && (va.fxView === 'css') && va.$body.removeClass(va.ns + 'mask-x');
 
             // Notice of end effect
             is.fxRun = false;
             $ruby.removeClass(va.ns + 'fxRun');
-            cs.ev.trigger('fxEnd');
+            M.RunEvent('fxEnd');
 
             // Update & start play Layer of current slide
             if( is.LAYER ) {
@@ -5563,8 +5801,8 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             is.LAYERPARALLAX && LAYERPARALLAX.ToggleEvent(idCur);
 
             // Other setup
-            cs.ev.trigger('after');                         // Event after()
-            idCur == num - 1 && cs.ev.trigger('end');       // Event end()
+            M.RunEvent('after');                        // Trigger event 'after'
+            idCur == num - 1 && M.RunEvent('end');      // Trigger event 'end'
 
 
 
@@ -5633,6 +5871,9 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             // Event Deeplinking
             is.DEEPLINKING && DEEPLINKING.Events();
 
+            // Event for the elements in layout fullscreen
+            is.FULLSCREEN && FULLSCREEN.Events();
+
             // Event resize Window
             EVENTS.Resize();
         },
@@ -5645,6 +5886,32 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             if( /^touch/.test(e.type) )        i = e.originalEvent.touches[0];
             else if( /pointer/i.test(e.type) ) i = e.originalEvent;
             return i;
+        },
+
+        /**
+         * CHECK MOBILE TAP - PREVENT SCROLL UP, SCROLL DOWN STILL CHANGE SLIDE
+         */
+        CheckMobileTap : function($items) {
+
+            $items.each(function() {
+                var $item = $(this);
+
+                // Register event swipe start
+                $item.on(va.ev.swipe.start, function(e) {
+                    var itemData = M.Data($(this)),
+                        i        = EVENTS.GetEventRight(e);
+
+                    itemData.isMobileTap = true;
+                });
+
+                // Register event swipe move
+                $item.on(va.ev.swipe.move, function(e) {
+                    var itemData = M.Data( $(this) ),
+                        i        = EVENTS.GetEventRight(e);
+
+                    itemData.isMobileTap = false;
+                });
+            });
         },
 
         /**
@@ -5749,13 +6016,14 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             if( o.isKeyboard ) {
                 $doc.on(va.ev.key, function(e) {
 
-                    // Check slideInto
+                    // Check ruby display on the current screen browser
                     M.Scroll.Check(true);
                     if( is.into ) {
+                        var keyCode = e.keyCode,
+                            optsKB  = o.keyboard;
 
-                        var keyruby = e.keyRuby;
-                        if     ( keyruby == 37 ) EVENTS.PrevCore(1);
-                        else if( keyruby == 39 ) EVENTS.NextCore(1);
+                        if     ( keyCode === optsKB.prevKey || keyCode === optsKB.prevAlterKey ) EVENTS.PrevCore(1);
+                        else if( keyCode === optsKB.nextKey || keyCode === optsKB.nextAlterKey ) EVENTS.NextCore(1);
                     }
                 });
             }
@@ -5993,7 +6261,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
                 ti.resize = setTimeout(function() {
 
                     // Fullscreen: find current page at first
-                    if( o.isFullscreen ) va.hRuby = $w.height();
+                    if( is.fullscreen ) va.hRuby = $w.height();
                     // Update variable relative to scroll page
                     is.slideshow && !is.ssPauseAbsolute && M.Scroll.Check();
 
@@ -6025,11 +6293,29 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
              */
             clearInterval(ti.resizeLoop);
             ti.resizeLoop = setInterval(function() {
+                var wCur, hCur;
 
-                var hCur = M.OuterHeight(va.$s.eq(cs.idCur), true),
+                // Get size for layout fullwidth - fullscreen
+                if( is.fullwidth || is.fullscreen ) {
+                    wCur = $w.width();
+
+                    // Get height current of window in layout fullscreen
+                    var hWin      = $w.height(),
+                        offsetTop = $ruby.offset().top;
+
+                    if( is.fullscreen && offsetTop < hWin ) {
+                        hCur = hWin - offsetTop;
+                    }
+                }
+
+                // Get size for layout 'auto'
+                else {
                     wCur = M.Width($viewport);
+                    hCur = M.OuterHeight(va.$s.eq(cs.idCur), true);
+                }
 
-                // Ver 1.6 - 23/10/2016: Support the size 'widht' - 'height' different at least 2px
+
+                // Ver 1.6 - 23/10/2016: Support the size 'width' - 'height' different at least 2px
                 if( !is.fxRun && !is.swiping && ( M.A(wCur - va.wRuby) > 1 || M.A(hCur - va.hRuby) > 1 ) ) {
                     UPDATE.Resize();
                 }
@@ -6189,6 +6475,10 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
         pauseLayer  : function() { is.LAYER && LAYER.Pause(cs.idCur); },
         resumeLayer : function() { is.LAYER && LAYER.Resume(cs.idCur); },
 
+        // API for native fullscreen
+        requestNativeFS : function() { is.FULLSCREEN && FULLSCREEN.RequestNativeFS() },
+        exitNativeFS : function() { is.FULLSCREEN && FULLSCREEN.ExitNativeFS() },
+
 
         // Method update properties
         update : function(options, isNoRefresh) {
@@ -6314,9 +6604,11 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
         /**
          * THE FUNCTION HAVE RETURN VALUE IN RUBY
          */
+        index        : function() { return cs.idCur },
+        indexLast    : function() { return cs.idLast },
         width        : function() { return va.wRuby },
         height       : function() { return va.hRuby },
-        slideLength  : function() { return num },
+        slideLength  : function() { return cs.num },
         slideCur     : function() { return va.$s.eq(cs.idCur) },
         slideAll     : function() { return va.$s },
         opts         : function() { return o },
@@ -6529,7 +6821,7 @@ rs01MODULE.AUTOINIT = function($ruby) {
                                                         : $self.addClass(rs01VA.namespace + 'none');
     });
 };
-$(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) });
+$(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) });
 
 })(jQuery);
 
@@ -6587,7 +6879,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
  * @package         RubyTween
  * @author          HaiBach
  * @link            http://haibach.net
- * @version         1.6
+ * @version         1.7
  */
 (function($) {
 
@@ -7555,7 +7847,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
             /**
              * CONVERT VALUE '%' DEPENDS ON SIZE ITEM
              */
-            var ConvertPercentByItem = function(vString) {
+            function ConvertPercentByItem(vString) {
 
                 // Check name of properties have supported
                 var nameIndex = $.inArray(name, aNamePercent);
@@ -7569,13 +7861,13 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
 
                 // Return result
                 return vString;
-            },
+            }
 
 
             /**
              * CONVERT VALUE '%' DEPENDS ON PARENT ITEM
              */
-            ConvertPercentByParent = function(vNum, selectorParent) {
+            function ConvertPercentByParent(vNum, selectorParent) {
 
                 // Check name of properties have supported
                 var nameIndex = $.inArray(name, aNamePercent);
@@ -7594,7 +7886,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
 
                 // Return result
                 return vNum;
-            };
+            }
 
 
 
@@ -7603,7 +7895,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
             /**
              * CASE: VALUE IS STRING CONTAIN MATH
              *  + Only allow contain special character of Math
-             *  + Limited the lenght of string < 200 characters -> for safe
+             *  + Limited the length of string < 200 characters -> for safe
              */
             var reOnlyContainMath = /^[0-9\(\)\+\-\*\/\%\s]|(\{.+\})+$/;
             if( (typeof valueCur == 'string') && reOnlyContainMath.test(valueCur) && (valueCur.length < 200) ) {
@@ -9947,8 +10239,10 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
             var that = this;
             VariableModule(that);
 
-            // Re-register event on objects
-            var isSwipeSupport = is.swipeSupport,
+            var slData = M.Data(cs.idCur),
+
+                // Re-register event on objects
+                isSwipeSupport = is.swipeSupport,
                 evMouse = va.ev.mouse,
                 evSwipe = va.ev.swipe;
 
@@ -10029,6 +10323,24 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
                         that.EventStart(va.$pag, va.$pagInner, evMouse);
                         isSwipeSupport && that.EventStart(va.$pag, va.$pagInner, evSwipe);
                     }
+                },
+
+
+                /**
+                 * TOGGLE EVENT CLICK ON SLIDE
+                 */
+                offClickOnSlide : function() {
+                    slData.$self.off(va.ev.click);
+                },
+                onClickOnSlide : function() {
+                    fn.offClickOnSlide();
+
+                    // Register event click on slide
+                    if( slData.link ) {
+                        slData.$self.on(va.ev.click, function() {
+                            window.open(slData.link, slData.linkTarget);
+                        });
+                    }
                 }
             };
 
@@ -10042,6 +10354,9 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
             if( status === true ) {
                 fn.onBody();
 
+                // Disable event click on slide
+                fn.offClickOnSlide();
+
                 // Setup swipe on pagination at first
                 if( o.swipe.isAutoOnPag )
                     !va.pag.isViewLarge && fn.onPag();
@@ -10049,6 +10364,11 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
                     fn.onPag();
             }
             else if( status === false ) {
+
+                // Enable event click on slide
+                fn.onClickOnSlide();
+
+                // Disable event swipe on Body & Pagination
                 fn.offBody();
                 fn.offPag();
             }
@@ -10171,7 +10491,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
                 /**
                  * REGISTER SWIPE EVENT ON DOCUMENT WHEN START SWIPE
                  */
-                that.EventMoveEnd(va.ev[evSwipeType]);
+                that.EventMove(va.ev[evSwipeType]);
 
 
                 /**
@@ -10231,10 +10551,10 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
                  *  + pageX1: support for 'tap' swipe start
                  */
                 var i = that.EVENTS.GetEventRight(e);
-                va.x0 = va.x0Fix = va.pageX1 = M.R( i[p.pageX] );
+                va.x0 = va.x0Fix = va.pageX1 = M.R( i[p.pageXY] );
 
                 // Y0 value: recognize swipe ruby or swipe page
-                va.y0 = i.pageY;
+                va.y0 = va.pageY1 = i.pageY;
 
                 // xOffset, xBuffer : reset value
                 va.xOffset = va.xBuffer = 0;
@@ -10249,7 +10569,10 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
                 va.nMoveEvent = 0;
 
                 // Insert 'mask' class to fixed scroll-x bar appear in FxCSS
-                o.isBodyMaskInFxCSS && (va.view === 'css') && va.$body.addClass(va.ns + 'mask-x');
+                o.isBodyMaskInFxCSS && (va.fxView === 'css') && va.$body.addClass(va.ns + 'mask-x');
+
+                // Enable click on slide
+                is.clickOnSlide = true;
 
                 // Canvas grabbing cursor
                 isCanvas && M.ToggleClass('grab', 1);
@@ -10266,7 +10589,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
             });
         },
 
-        EventMoveEnd : function(evName) {
+        EventMove : function(evName) {
             var that = this;
 
             /**
@@ -10295,7 +10618,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
                     if( isCanvas ) is.swiping = true;
 
                     // Trigger event 'swipeBegin'
-                    cs.ev.trigger('swipeBegin');
+                    M.RunEvent('swipeBegin');
                 }
 
                 // Variable to recognize initial swipe
@@ -10313,7 +10636,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
                 // Store old pageX & get new pageX -> recognize swipe 'left' or 'right'
                 var p = M.SwapVaOnSwipe();
                 va.pageX0 = va.pageX1;
-                va.pageX1 = M.R( i[p.pageX] );
+                va.pageX1 = M.R( i[p.pageXY] );
 
 
 
@@ -10370,6 +10693,11 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
 
                 // Lock swipe 'tap', check 'offset' to support 'click' if swipe it
                 if( M.A(va.xOffset) > 10 && is.tapEnable ) is.tapEnable = false;     // Tap event more slowly
+
+                // Disable click on slide if have tap move
+                if( M.A(i.pageX - va.x0) > 10 || M.A(i.pageY - va.y0) > 10 ) {
+                    is.clickOnSlide = false;
+                }
             });
         },
 
@@ -10396,7 +10724,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
                 // Variable to recognize swipe-end on Cavas
                 if( isCanvas ) is.swiping = false;
                 // Callback event end swipe
-                !is.swipeBegin && cs.ev.trigger('swipeEnd');
+                !is.swipeBegin && M.RunEvent('swipeEnd');
 
                 // Get time at swipe-out : calculate fast or slow
                 va.tDrag1 = +new Date();
@@ -10416,6 +10744,16 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
 
                 // Remove class 'grab-stop' when leave swipe
                 o.isViewGrabStop && M.ToggleClass('stop', -1);
+
+
+
+                /**
+                 * CLICK ON SLIDE ACTIVED
+                 */
+                var slData = M.Data(cs.idCur);
+                if( is.clickOnSlide && slData.link ) {
+                    window.open(slData.link, slData.linkTarget);
+                }
             }
 
 
@@ -10454,6 +10792,13 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
             });
         },
 
+        // Event click on slide
+        EventClickOnSlide : function() {
+            VariableModule(this);
+
+
+        },
+
 
 
 
@@ -10464,8 +10809,8 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
             VariableModule(this);
 
             // Initialize variables
-            var layout     = va.layout,
-                view       = va.view,
+            var layout     = va.fxLayout,
+                view       = va.fxView,
                 idCur      = cs.idCur,
                 isRight    = is.swipeNav == 'right',
                 isLeft     = is.swipeNav == 'left',
@@ -10495,7 +10840,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
                 /**
                  * CASE SPECIAL: WHEN SWIPE BUFFER
                  */
-                if( va.fxType == 'math' || va.view == 'css' ) isBufferMove = false;
+                if( va.fxType == 'math' || va.fxView == 'css' ) isBufferMove = false;
 
 
 
@@ -10663,7 +11008,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
 
             // Position & size of $swiping
             var isCanvas = va.$swipeCur.is(va.$canvas),
-                layout   = va.layout,
+                layout   = va.fxLayout,
                 num      = cs.num,
                 p        = isCanvas ? va.can : va.pag,
                 xOffset  = va.xOffset;  // How many moved 'px'
@@ -10805,58 +11150,36 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
         UpdateVars : function() {
             var that = this,
                 o    = that.o,
-                va   = that.va;
+                va   = that.va,
+                M    = that.M;
 
 
             /**
-             * FUNCTION GET VALUE OF 'PADDING' IN VARIABLE 'VA.PARANGE'
+             * GET PADDING IN THE CASES
              */
-            function GetPadding() {
-                var pa = 0;
-                if( !!va.paRange ) {
+            // Case: Padding-grid available
+            if( va.paGridCur !== null ) {
+                va.pa.left = va.paGridCur;
+            }
+            // Case: Padding value depend on Width-grid
+            else {
 
-                    pa = that.M.GetValueInRange(va.paRange);
-                    if( pa === null ) pa = 0;
+                // CaLculate the padding-left from width-grid
+                if( va.wSlide > va.wGridCur ) {
+                    va.pa.left = (va.wSlide - va.wGridCur) / 2;
                 }
-                return pa;
+                else {
+                    va.pa.left = 0;
+                }
             }
 
-
-
-            /**
-             * RANGE SETUP
-             *  + Padding : get
-             *  + Padding only work : 'va.wRuby' < width-responsive
-             */
-            if( !!o.widthRange ) {
-
-                /**
-                 * CONDITION:
-                 * Case 1: wMax < va.wRes -> priority for small width in Range
-                 * Case 2: wMax > va.wRes -> priority for 'width' in Range
-                 */
-                var wMax   = va.sizeRange.wMax,
-                    isCond = (wMax > va.wRes) ? (wMax >= va.wRuby) : (va.wRes > va.wSlide);
-
-                if( isCond ) {
-                    // Get size from Range[]
-                    var sizeRange = that.M.GetValueInRange(va.sizeRange);
-
-                    va.pa.left = (sizeRange === null) ? GetPadding() : (va.wSlide - sizeRange)/2;
-                }
-                else va.pa.left = (va.wSlide - va.wRes)/2;
-            }
-
-            // Not have option 'widthRange'
-            else va.pa.left = (va.wRes > va.wSlide) ? GetPadding() : (va.wSlide - va.wRes)/2;
-
-            // Round number
-            va.pa.left = ~~(va.pa.left);
+            // Round value of Padding
+            va.pa.left = ~~ va.pa.left;
 
 
 
             /**
-             * OTHER SETUP
+             * GET RATE RESPONSIVE
              */
             // Because padding 'left' allways has value so always = width-content / width-responsive
             var rateCur = (va.wSlide - (va.pa.left * 2)) / va.wRes;
@@ -10883,7 +11206,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
     window.rs01MODULE = window.rs01MODULE || {};
 
     // Global variables
-    var that, o, cs, va, is;
+    var that, o, cs, va, is, M;
 
     /**
      * UPDATE GLOBAL VARIABLES
@@ -10894,6 +11217,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
         cs   = self.cs;
         va   = self.va;
         is   = self.is;
+        M    = self.M;
     }
 
 
@@ -10925,12 +11249,12 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
                     va.$nav = $navHTML;
 
                     // Insert object inside of Navigation
-                    va.$nav.append( that.M.NS(o.nav.markupOutside) );
+                    va.$nav.append( M.NS(o.nav.markupOutside) );
                     is.navOutside = true;
                 }
                 else {
                     // Render naviation default if not exist markup
-                    va.$nav = $( that.M.NS(o.nav.markup) );
+                    va.$nav = $( M.NS(o.nav.markup) );
 
                     // Insert $navigation into Ruby
                     that.RENDER.Into(o.markup.navInto, va.$nav);
@@ -10999,7 +11323,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
                     VariableModule(that);
 
                     // Trigger event 'beforeTap'
-                    cs.ev.trigger('beforeTap');
+                    M.RunEvent('beforeTap');
 
                     // Move to prev slide
                     o.nav.isEventTap && that.EVENTS.Prev();
@@ -11010,7 +11334,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
                     VariableModule(that);
 
                     // Trigger event 'beforeTap'
-                    cs.ev.trigger('beforeTap');
+                    M.RunEvent('beforeTap');
 
                     // Move to next slide
                     o.nav.isEventTap && that.EVENTS.Next();
@@ -11102,21 +11426,22 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
                 /**
                  * SEARCH PAGINATION MARKUP OUTSIDE
                  */
-                var ns       = ' '+ va.ns,
-                    nsPag    = ns +'pag-',
+                var ns       = va.ns,
+                    ns2      = ' '+ ns,
+                    nsPag    = ns2 +'pag-',
+                    pagOut   = ns2 +'outside',
                     pag      = o.pag,
-                    pagOut   = ns +'outside',
                     dirs     = pag.direction,
-                    pagClass = ns + o.namePag + ns + pag.type + nsPag + dirs + nsPag + pag.position,
-                    $pagHTML = that.RENDER.SearchNode('.'+ va.ns + o.namePag);
+                    pagClass = ns + o.namePag,
+                    $pagHTML = that.RENDER.SearchNode('.' + pagClass);
 
                 // Check & add class-more in pagination at initial
                 if( typeof pag.moreClass == 'string' ) pagClass += ' '+ pag.moreClass;
 
                 // Pagination: create Node with className -> class 'type' & 'dirs' will update later
                 is.pagOutside = !!$pagHTML.length;
-                va.$pag       = $pagHTML.length ? $pagHTML.addClass(pagClass + pagOut)
-                                                : $('<div/>', { 'class' : pagClass });
+                va.$pag       = is.pagOutside ? $pagHTML.addClass(pagClass + pagOut)
+                                              : $('<div/>', { 'class' : pagClass });
 
 
 
@@ -11132,7 +11457,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
                  * INSERT PAGINATION INTO RUBY
                  */
                 // Insert pagItem & pagInner into ruby
-                va.$pagInner = $('<div/>', {'class' : va.ns +'paginner'});
+                va.$pagInner = $('<div/>', {'class' : ns +'paginner'});
                 va.$pagInner.append(va.$pagItem);
                 va.$pag.prepend(va.$pagInner);
 
@@ -11143,19 +11468,8 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
 
 
 
-
-                /**
-                 * ADD CLASS TO RUBY -> SUPPORT TABS STYLE-CUSTOM
-                 */
-                var classes = nsPag + pag.type;
-                if( !is.pagList ) {
-
-                    // Add class 'dirs' & 'position'
-                    classes += nsPag + dirs + nsPag + pag.position;
-                    if( is.pagOutside ) classes += pagOut;
-                }
-                // Inert all class into ruby
-                cs.$ruby.addClass(classes);
+                // Add new class to Pagination and Ruby at first
+                that.ToggleClass(true, true);
 
                 // Variable to recognize $pagination exist
                 is.$pag = true;
@@ -11258,6 +11572,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
          */
         RenderPagMark : function() {
             VariableModule(this);
+            var ns = va.ns;
 
 
             /**
@@ -11268,7 +11583,16 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
                 // Insert pagMark into pagination
                 va.$pagMark = $( M.NS(o.pag.markupMark) );
                 va.$pagMarkItem = va.$pagMark.children();
-                va.$pag.append(va.$pagMark);
+                va.$pag
+                    .removeClass(ns + 'pagmark-no')
+                    .addClass(ns + 'pagmark-yes')
+                    .prepend(va.$pagMark);
+
+                // Store selector to the global variable
+                va.$pagMarkItemSelf    = va.$pagMark.find(M.NS('.{ns}pagmark-self'));
+                va.$pagMarkItemPadding = va.$pagMark.find(M.NS('.{ns}pagmark-padding'));
+                va.$pagMarkItemBorder  = va.$pagMark.find(M.NS('.{ns}pagmark-border'));
+                va.$pagMarkItemMargin  = va.$pagMark.find(M.NS('.{ns}pagmark-margin'));
 
                 // Variable recognize $pagMark exist
                 is.$pagMark = true;
@@ -11279,9 +11603,18 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
             /**
              * CASE: REMOVE PAG-MARK MARKUP
              */
-            else if( !o.pag.isMark && is.$pagMark ) {
-                va.$pagMark.remove();
-                is.$pagMark = false;
+            else if( !o.pag.isMark ) {
+
+                // Case: have pagmark markup
+                if( is.$pagMark ) {
+                    va.$pagMark.remove();
+                    is.$pagMark = false;
+                }
+
+                // Toggle class to recognize no PagMark
+                va.$pag
+                    .removeClass(ns + 'pagmark-yes')
+                    .addClass(ns + 'pagmark-no');
             }
         },
 
@@ -11420,6 +11753,9 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
                             .removeClass(va.ns + 'imgback')
                             .css({ 'width': '', 'height': '' });
 
+                        if( $thumbItem.data('width') ) $thumbItem.css('width', $thumbItem.data('width'));
+                        if( $thumbItem.data('height') ) $thumbItem.css('height', $thumbItem.data('height'));
+
 
                         // Insert new image into thumbnail
                         $thumbWrap.append($thumbItem);
@@ -11471,14 +11807,15 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
          *  + Check $pag exist, because Ruby start setup, setup properties before 'PAG.RenderSelf()'
          *  + Class on pagination and Ruby is similar
          */
-        ToggleClass : function(isAdd) {
+        ToggleClass : function(isAdd, isForceRun) {
             VariableModule(this);
-
 
             /**
              * CONDITIONAL EXECUTION
              */
-            if( $.isEmptyObject(oo) ) return;
+            if( !(!$.isEmptyObject(oo) || isForceRun) ) return;
+            // Fixed continue without value in oo variable
+            if( $.isEmptyObject(oo) ) oo.pag = {};
 
 
             /**
@@ -11486,9 +11823,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
              */
             var opt         = isAdd ? o : oo,
                 pag         = opt.pag,
-                ns          = ' '+ va.ns,
-                nsPag       = ns +'pag-',
-                dirsCur     = '',
+                ns          = va.ns,
                 classBasic  = '',
                 classOnPag  = '',
                 classOnRuby = '';
@@ -11497,32 +11832,42 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
             /**
              * CLASS IN THE CASES
              */
+            // Check class 'type'
+            if( o.pag.type != oo.pag.type ) {
+                classOnPag  += ' {ns}' + pag.type;
+                classOnRuby += ' {ns}pagtype-' + pag.type;
+            }
+
+            // Check class 'position'
+            if( o.pag.position != oo.pag.position ) {
+                classBasic += ' {ns}pagpos-' + pag.position;
+            }
+
+            // Check class 'direction'
+            if( o.pag.direction != oo.pag.direction && pag.direction ) {
+                classBasic += ' {ns}pagdirs-' + pag.direction;
+            }
+            else if( !!va.addInfo ) {
+                var pagDirs = va.addInfo.pagDirs;
+
+                if( isAdd ) classBasic += ' {ns}pagdirs-' + pagDirs;
+                else        classBasic += ' {ns}pagdirs-' + (pagDirs == 'hor' ? 'ver' : 'hor');
+            }
+
+            // Check CSS position
+            if( o.pag.cssPosition != oo.pag.cssPosition ) {
+                classOnPag += ' {ns}pos-' + pag.cssPosition;
+            }
+
             // Check add more class
             if( o.pag.moreClass != oo.pag.moreClass ) {
                 classOnPag += ' '+ pag.moreClass;
             }
 
-            // Check class 'type'
-            if( o.pag.type != oo.pag.type ) {
-                classOnPag  += ns + pag.type;
-                classOnRuby += nsPag + pag.type;
-            }
-
-            // Check class 'position'
-            if( o.pag.position != oo.pag.position ) {
-                classBasic += nsPag +'pos-'+ pag.position;
-            }
-
-
-            // Check class 'direction'
-            if( o.pag.direction != oo.pag.direction && pag.direction ) {
-                classBasic += nsPag + pag.direction;
-            }
-            else if( !!va.addInfo ) {
-                var pagDirs = va.addInfo.pagDirs;
-
-                if( isAdd ) classBasic += nsPag + pagDirs;
-                else        classBasic += nsPag + (pagDirs == 'hor' ? 'ver' : 'hor');
+            // Check pag-mark transition
+            // Note: isAdd === isMarkTransition ~~ (isAdd && isMarkTransition) || (!isAdd && !isMarkTransition)
+            if( isAdd === o.pag.isMarkTransition ) {
+                classOnPag += ' {ns}pagmark-transition';
             }
 
 
@@ -11532,7 +11877,14 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
              * TOGGLE CLASSES ON PAGINATION
              */
             classOnPag += ' '+ classBasic;
+            classOnPag = M.NS(classOnPag);
             !!va.$pag && va.$pag[ isAdd ? 'addClass' : 'removeClass' ](classOnPag);
+
+            // Toggle class skin for Pagination has markup outside
+            if( is.pagOutside && opt.skin !== null ) {
+                if( isAdd ) va.$pag.parent().addClass(ns + opt.skin);
+                else        va.$pag.parent().removeClass(ns + opt.skin);
+            }
 
 
 
@@ -11540,6 +11892,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
              * TOGGLE CLASSES ON RUBY
              */
             classOnRuby += ' '+ classBasic;
+            classOnRuby = M.NS(classOnRuby);
             cs.$ruby[isAdd ? 'addClass' : 'removeClass'](classOnRuby);
         },
 
@@ -11588,8 +11941,9 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
              *  + Event 'click' : prevent move to new slide when start
              */
             // First, remove event 'tap' on pagItem
-            var evName = va.ev.click +' '+ va.ev.swipe.end;
-            va.$pagItem.off(evName);
+            var evName    = va.ev.click +' '+ va.ev.swipe.end,
+                evNameOff = evName +' '+ va.ev.swipe.start +' '+ va.ev.swipe.move;
+            va.$pagItem.off(evNameOff);
 
             // Register event 'tap' on pagItem (if have)
             if( is.pag ) {
@@ -11611,24 +11965,38 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
 
 
 
+
+                /**
+                 * PREVENT SCROLL PAGE UP, SCROLL DOWN IN MOBILE
+                 */
+                that.EVENTS.CheckMobileTap($pagItem);
+
+
+
+
                 /**
                  * REGISTER EVENT-END FOR PAG-ITEM
                  */
                 $pagItem.on(evName, function(e) {
                     VariableModule(that);
-                    var $item = $(this);
+                    var $item    = $(this),
+                        itemData = M.Data($item);
 
                     // Trigger event 'beforeTap'
-                    cs.ev.trigger('beforeTap');
-
+                    M.RunEvent('beforeTap');
 
                     // Goto slide selected
                     if( o.pag.isEventTap && is.tapEnable ) {
-                        va.moveBy = 'tap';
-                        that.TOSLIDE.Run( M.Data($item)['id'] , true, false, true);
 
-                        // Prevent 2 event 'tap' in same time
-                        that.EVENTS.DelayToTapNext();
+                        // Prevent scroll up, scroll down in the mobile browser still change slide
+                        if( !is.mobile || (is.mobile && /^(touch|pointer)/.test(e.type) && itemData.isMobileTap) ) {
+
+                            va.moveBy = 'tap';
+                            that.TOSLIDE.Run( M.Data($item)['id'] , true, false, true);
+
+                            // Prevent 2 event 'tap' in same time
+                            that.EVENTS.DelayToTapNext();
+                        }
                     }
 
                     // Remove 'touchend' or 'moveup' -> only 1 event allow execute
@@ -11701,6 +12069,38 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
 
 
         /**
+         * CSS Position for the Pagination
+         */
+        CSSPosForPag : function() {
+            VariableModule(this);
+            var opag   = o.pag,
+                styles = { 'margin-left': '', 'margin-right': '', 'margin-top': '', 'margin-bottom': '' };
+
+            // Case horizontal offset
+            if( opag.hOffset !== null ) {
+                if( opag.cssPosition == 'relative' ) {
+                    styles[opag.position == 'begin' ? 'margin-bottom' : 'margin-top'] = opag.hOffset;
+                }
+                else {
+                    styles[opag.position == 'begin' ? 'margin-top' : 'margin-bottom'] = opag.hOffset;
+                }
+            }
+
+            // Case vertical offset
+            if( opag.vOffset !== null ) {
+                if( opag.cssPosition == 'relative' ) {
+                    styles[opag.position == 'begin' ? 'margin-right' : 'margin-left'] = opag.vOffset;
+                }
+                else {
+                    styles[opag.position == 'begin' ? 'margin-left' : 'margin-right'] = opag.vOffset;
+                }
+            }
+
+            // Set margin on the Pagination
+            va.$pag.css(styles);
+        },
+
+        /**
          * SIZE OF WIDTH-HEIGHT FOR PAG-ITEM
          */
         TypeSizeItem : function() {
@@ -11745,7 +12145,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
                 var wInner = isHor  ? (op.typeSizeItem == 'max' ? p.wMax : p.wMin) : p.wMax,
                     hInner = !isHor ? (op.typeSizeItem == 'max' ? p.hMax : p.hMin) : p.hMax,
                     styles = {
-                        'width'  : (is.pagOutside && !isHor) ? '' : wInner,
+                        'width'  : wInner,
                         'height' : hInner
                     };
 
@@ -11753,11 +12153,12 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
                 // Remove width/height on pagInner when pagItem at size before
                 if( isHor ) {
                     styles['margin-bottom'] = p.maBottom;
-                    if( isSizeSelf ) styles.width = '1px';
+                    if( isSizeSelf ) styles.width = p.wSum;
                 }
                 else {
                     styles['margin-right'] = p.maRight;
-                    if( isSizeSelf ) styles.height = '1px';
+                    if( isSizeSelf) styles.height = p.hSum;
+                    if( is.pagOutside ) styles.width = '';
                 }
 
                 // Setup style on pagInner
@@ -11785,11 +12186,9 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
 
             /**
              * GET PADDING & BORDER OF VIEWPORT
-             *  -> support pag-tabs with 'sizeAuto-full' option
+             *  -> support pagtype-tabs with 'sizeAuto-full' option
              */
             function GetSpaceOuterOfViewport() {
-                var pad     = 'padding-',
-                    border  = 'border-';
 
                 function Space(aProp) {
                     var sizeView = 0, sizePag  = 0;
@@ -11801,10 +12200,9 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
                     return sizeView - sizePag;
                 }
 
-
                 va.viewSpace = {
-                    'hor': Space([pad +'left', pad +'right', border +'left-width', border +'right-width']),
-                    'ver': Space([pad +'top', pad +'bottom', border +'top-width', border +'bottom-width'])
+                    'hor': Space(['padding-left', 'padding-right', 'border-left-width', 'border-right-width']),
+                    'ver': Space(['padding-top', 'padding-bottom', 'border-top-width', 'border-bottom-width'])
                 };
             }
 
@@ -12170,6 +12568,9 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
                 rImgItem = iData.rate = M.Data(iData.$imgback)['rate'];
             }
 
+            // Case: It is Image transparent
+            if( $thumbItem.hasClass(va.ns + 'transparent') ) rImgItem = 1;
+
 
 
 
@@ -12259,7 +12660,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
                     // Position need to
                     var disOuter  = (p.dirs == 'hor') ? p.wToMargin : p.hToMargin,
                         disBefore = M.Sum(disOuter, cs.idCur),
-                        xTarget   = - M.R(disBefore - ((p.sViewport - disOuter[cs.idCur])/2));
+                        xTarget   = - M.R(disBefore - ((p.sViewport - disOuter[cs.idCur]) / 2));
 
 
                     // Case the edge of Viewport: move to the edge
@@ -12280,7 +12681,10 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
                 Translate();
             }
             else {
-                var timer = 10 + o.speedHeight;
+                // Ver 1.7 - Jan 17, 2017 timer has value min > 200, fixed for "speedHeight" = null
+                var timer = 10 + (o.speedHeight || 200);
+
+                // Set translate
                 clearTimeout(ti.centerItemCur);
                 ti.centerItemCur = setTimeout(Translate, timer);
             }
@@ -12355,10 +12759,22 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
         MarginOnViewport : function() {
             VariableModule(this);
 
-            var margin = M.OuterWidth(va.$pag, true);
+            // Conditional continue
+            if( is.pagOutside ) return;
 
-            va.pagVer == 'begin' && va.$viewport.css('margin-left', margin);
-            va.pagVer == 'end'   && va.$viewport.css('margin-right', margin);
+            // Case: CSS Position of the Pagination is 'relative'
+            if( o.pag.cssPosition == 'relative' ) {
+
+                // Set margin on Viewport
+                var margin = M.OuterWidth(va.$pag, true);
+                va.pagVer == 'begin' && va.$viewport.css('margin-left', margin);
+                va.pagVer == 'end'   && va.$viewport.css('margin-right', margin);
+            }
+
+            // Case: CSS Position of the Pagination is 'absolute'
+            else {
+                va.$viewport.css({ 'margin-left': '', 'margin-right': '' });
+            }
         },
 
         /**
@@ -12464,7 +12880,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
          */
         SizePosOfMark : function() {
             VariableModule(this);
-            var p = va.pag, xPlus = 0;
+            var p = va.pag;
 
             // Conditional execute
             if( p.margin === undefined ) return;
@@ -12472,71 +12888,79 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
 
 
             /**
-             * FUNCTION : GET SIZE OF PAG-MARK
+             * FUNCTION : GET SIZE AND TRANSLATE ON PAG-MARK
              */
-            function GetSize() {
-                var isHor    = p.dirs == 'hor',
+            function GetSizeAndTranslate(sizeTo) {
+                var nameSizeMark = 'dMark' + sizeTo,
+                    $item        = va[ '$pagMarkItem' + sizeTo ],
+
+                    isHor    = p.dirs == 'hor',
                     ns       = isHor ? 'w' : 'h',
                     ns2      = isHor ? '3' : '0',
-                    sizeTo   = o.pag.sizeMarkTo,
                     idCur    = cs.idCur,
                     styles   = { 'width': '', 'height': '' },
 
                     margin   = p.margin[ns2][idCur],
                     marToBor = margin   + p.border[ns2][idCur],
                     marToPad = marToBor + p.padding[ns2][idCur],
-                    dItemCur;
+                    xPlus, dItemCur;
 
-                // Get size of pagMark depending on option 'sizeMarkTo'
-                if( sizeTo == 'margin' ) {
+
+                // Condition continue: $item not "display: none"
+                if( !$item.is(':visible') ) return;
+
+                // Get size of pagMark depending on sizeTo
+                if( sizeTo == 'Margin' ) {
                     dItemCur = p[ns +'ToMargin'][idCur];
-                    xPlus    = 0;
+                    xPlus = 0;
                 }
-                else if( sizeTo == 'border' ) {
+                else if( sizeTo == 'Border' ) {
                     dItemCur = p[ns +'ToBorder'][idCur];
-                    xPlus    = margin;
+                    xPlus = margin;
                 }
-                else if( sizeTo == 'padding' ) {
+                else if( sizeTo == 'Padding' ) {
                     dItemCur = p[ns +'ToPadding'][idCur];
-                    xPlus    = marToBor;
+                    xPlus = marToBor;
                 }
                 else {
                     dItemCur = p[ns +'Self'][idCur];
-                    xPlus    = marToPad;
+                    xPlus = marToPad;
                 }
 
 
-                // Condition continue
-                if( dItemCur == p.dMark ) return;
+                // Condition to set size on $item
+                if( dItemCur !== p[nameSizeMark] ) {
 
-                // Setup size on pagMark
-                styles[isHor ? 'width' : 'height'] = dItemCur;
-                va.$pagMarkItem.css(styles);
-                p.dMark = dItemCur;
-            }
+                    // Setup size on pagMark
+                    styles[isHor ? 'width' : 'height'] = dItemCur;
+                    $item.css(styles);
+                    p[nameSizeMark] = dItemCur;
+                }
 
 
 
-            /**
-             * FUNCTION : TRANSLATE TO PAG-MARK
-             */
-            function Translate() {
+                /**
+                 * TRANSLATE ON PAG-MARK
+                 */
+                var nameXMark = 'xMark' + sizeTo;
 
                 // Search position for movement of pagMark
                 if( p.pBegin === undefined ) return;
                 var xMove = p.xCanvas + p.pBegin[cs.idCur] + xPlus;
-                if( xMove == p.xMark ) return;
+                if( xMove == p[nameXMark] ) return;
 
                 // Setup translate of pagMark
                 // Store position of pagMark
-                that.POSITION.TranslateX(va.$pagMarkItem, xMove, true, null, p.dirs == 'hor');
-                p.xMark = xMove;
+                that.POSITION.TranslateX($item, xMove, true, null, p.dirs == 'hor');
+                p[nameXMark] = xMove;
             }
 
 
 
-            GetSize();
-            Translate();
+            GetSizeAndTranslate('Self');
+            GetSizeAndTranslate('Padding');
+            GetSizeAndTranslate('Border');
+            GetSizeAndTranslate('Margin');
         },
 
         /**
@@ -12544,14 +12968,26 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
          */
         XBufferOnMark : function(pageX) {
             VariableModule(this);
+            var p = va.pag;
 
 
-            // Change position of pagMark depending on swipe gestures
-            var p     = va.pag,
-                xMove = pageX + p.xMark;
+            function XBuffer(sizeTo) {
+                var nameXMark = 'xMark' + sizeTo,
+                    $item     = va[ '$pagMarkItem' + sizeTo ],
+                    xMove     = pageX + p[nameXMark];
 
-            that.POSITION.TranslateX(va.$pagMarkItem, M.C(xMove), true, null, p.dirs == 'hor');
-            p.xMark = xMove;
+                // Condition continue
+                if( !$item.is(':visible') ) return;
+
+                // Change position of pagMark depending on swipe gestures
+                that.POSITION.TranslateX($item, M.C(xMove), true, null, p.dirs == 'hor');
+                p[nameXMark] = xMove;
+            }
+
+            XBuffer('Self');
+            XBuffer('Padding');
+            XBuffer('Border');
+            XBuffer('Margin');
         }
     };
 })(jQuery);
@@ -13082,8 +13518,17 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
 
 
             /**
-             * FUNCTION: SETUP WHEN IMAGE LOAD FAIL
+             * FUNCTION: SETUP WHEN IMAGE LOAD SUCCESS / FAIL
              */
+            function LoadSuccess() {
+
+                // Image: set properties
+                that.Properties($i);
+
+                // Image: all image loaded
+                SetupAfterAllLoaded();
+            }
+
             function LoadFail(src) {
 
                 // Image: change alt
@@ -13097,12 +13542,25 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
             }
 
 
+            /**
+             * FUNCTION : IMAGE TRANSPARENT - SOLID
+             */
+            function ImageTransparent() {
+                // Image: all image loaded
+                SetupAfterAllLoaded();
+            }
+
+
 
 
             /**
-             * CHECK IMAGE 'SRC' BEFORE SETUP CONTINUE
+             * CHECK IMAGE IN THE SPECIAL CASE
              */
-            if( !iData.src.length ) return LoadFail('image source not found');
+            // Case: It is the transprent / solid image
+            if( $i.hasClass(va.ns + 'transparent') ) return LoadSuccess();
+
+            // Case: not 'scr' attribute found
+            else if( !iData.src.length ) return LoadFail('image source not found');
 
 
 
@@ -13118,13 +13576,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
             // Event image load success
             imageNew.onload = function() {
                 VariableModule(that);
-
-                // Image: set properties
-                // Pass 'this' image-node -> get width - height fast & correct than jQuery selector
-                that.Properties($i, this);
-
-                // Image: all image loaded
-                SetupAfterAllLoaded();
+                LoadSuccess();
             };
 
             // Event: image load fail
@@ -13147,15 +13599,16 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
         /**
          * SETUP PROPERTIES OF IMAGE AFTER LOADED COMPLETE
          */
-        Properties : function($i, i) {
+        Properties : function($i) {
             VariableModule(this);
 
             /**
              * STORE SIZE OF IMAGE ON DATA
              */
             var iData  = M.Data($i),
-                wImage = i.width,
-                hImage = i.height;
+                i      = $i[0],
+                wImage = $i.data('width') || i.width,
+                hImage = $i.data('height') || i.height;
 
             M.Data($i, {
                 'isLoaded' : true,
@@ -13216,7 +13669,8 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
          */
         SizeResponsive : function($imgItem) {
             VariableModule(this);
-            var iData = M.Data($imgItem);
+            var iData  = M.Data($imgItem),
+                slData = M.Data(iData.$slide);
 
             // Conditional execution
             if( !(
@@ -13235,8 +13689,10 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
 
                 // Reset style css for Image-item
                 style = { 'width': '', 'height': '', 'left': '', 'top': '' },
+
                 // Identify type position of Imageback
-                typePosition = iData.opts.position;
+                // Ver 1.7 - 26/11/2016: fixed get type position from Slide data -> support update 'position' option
+                typePosition = slData.opts.imageback.posGrid[va.index];
 
 
 
@@ -13314,11 +13770,13 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
             VariableModule(this);
 
             // Conditional execution
-            var iData = M.Data($imgItem);
+            var iData  = M.Data($imgItem),
+                slData = M.Data(iData.$slide);
             if( !(iData.isImgback && iData.type !== 'videoPoster') ) return;
 
             // Initialize variables
-            var typePosition = iData.opts.position,
+            // Ver 1.7 - 26/11/2016: fixed get type position from Slide data, support update type 'position'
+            var typePosition = slData.opts.imageback.posGrid[va.index],
                 wImage       = iData.width,
                 hImage       = iData.height,
                 rateImage    = iData.rate,
@@ -13583,6 +14041,700 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
                         that[nameFunction]($(this));
                     });
                 });
+        }
+    };
+})(jQuery);
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * MODULE VIDEO BACKGROUND
+ */
+(function($) {
+
+    // Check variable module
+    window.rs01MODULE = window.rs01MODULE || {};
+
+    // Global variables
+    var that, o, cs, va, is, ti, M;
+
+    /**
+     * UPDATE GLOBAL VARIABLES
+     */
+    function VariableModule(self) {
+        that = self;
+        o    = self.o;
+        cs   = self.cs;
+        va   = self.va;
+        is   = self.is;
+        ti   = self.ti;
+        M    = self.M;
+    }
+
+
+    /**
+     * MODULE VIDEO BACKGROUND
+     */
+    rs01MODULE.VIDEOBACK = {
+
+        /**
+         * SETUP TAT CA VIDEO BACKGROUND LUC LOAD SLIDE BEIN
+         */
+        SetupAtLoadSlideBegin : function($slCur) {
+            VariableModule(this);
+            var ns = va.ns;
+
+
+            /**
+             * SETUP TIM KIEM VIDEO BACKGROUND TRONG RUBY
+             */
+            var selectorVideo = 'a.{ns}videoback'.replace(/\{ns\}/g, ns),
+                $videoback    = M.Find($slCur, selectorVideo);
+
+            // Chuyen doi Tag cua Video Thanh Video HTML5
+            $videoback = that.LinkToVideo($videoback);
+
+
+
+
+
+            /**
+             * SETUP VIDEO BACKGROUND TREN SLIDE HIEN TAI
+             */
+            if( $videoback.length ) {
+
+                // Wrap doi tuong Video HTML5
+                that.Wrap($videoback);
+
+                // Render Video Poster
+                that.RenderPoster($videoback);
+
+
+
+
+                /**
+                 * BO SUNG THONG TIN DATA CHO SLIDE + VIDEOBACK
+                 */
+                var $videoWrap   = $slCur.find('.' + ns + 'videoback-wrap'),
+                    $videoPoster = $slCur.find('.' + ns + 'videoposter'),
+
+                    // Bo sung data trong Slide hien tai luc ban dau
+                    slData = M.Data($slCur, {
+                        '$videoback'        : $videoback,
+                        '$videobackWrap'    : $videoWrap,
+                        '$videobackPoster'  : $videoPoster,
+                        'isVideoback'       : true,
+                        'isVideobackLoaded' : false
+                    }),
+
+
+                    optsVideo = $.extend({}, slData.opts.videoback, $videoback.data('videoback'));
+
+                    // Bo sung thuoc tinh vao Video Data
+                    videoData = M.Data($videoback, {
+                        '$slide'       : $slCur,
+                        '$wrap'        : $videoWrap,
+                        '$poster'      : $videoPoster,
+                        'type'         : 'videoback',
+                        'isLoadedMeta' : false,
+                        'styleInline'  : M.PStyleToJson($videoback),
+                        'opts'         : optsVideo
+                    }),
+
+                    // Bo sung thuoc tinh vao Video Poster Data
+                    posterData = M.Data($videoPoster, {
+                        '$videoback' : $videoback,
+                        'type'       : 'videoPoster',
+                        'opts'       : optsVideo
+                    });
+
+
+
+
+                /**
+                 * SETUP EVENT LOAD CHO VIDEOBACK
+                 */
+                that.EventLoad($videoback);
+            }
+        },
+
+        /**
+         * CHUYEN DOI LINK TAG SANG VIDEO HTML5 TAG
+         */
+        LinkToVideo : function($a) {
+            VariableModule(this);
+
+
+            /**
+             * SETUP VIDEO HTML5 MARKUP
+             */
+            // Setup Source cua Video HTML
+            var attrList   = ['href', 'data-video-source1', 'data-video-source2', 'data-video-source3'],
+                sourceHTML = '';
+
+            for( var i = 0, len = attrList.length; i < len; i++ ) {
+                var srcCur = $a.attr(attrList[i]);
+                if( srcCur ) sourceHTML += '<source src="{src}">'.replace(/\{src\}/, srcCur);
+            }
+
+            // Setup toan bo Video HTML
+            var videoHTML = !sourceHTML ? ''
+                                        : '<video>{source}</video>'
+                                            .replace(/\{source\}/, sourceHTML);
+
+
+
+            /**
+             * SETUP VIDEO BACKGROUND TIEP THEO
+             */
+            if( videoHTML ) {
+                var $video = $(videoHTML),
+                    attrs  = {};
+
+
+                /**
+                 * COPY TAT CA THUOC TINH CUA LINK TAG SANG VIDEO HTML5 TAG
+                 */
+                $.each($a[0].attributes, function(key, attr) {
+                    var name  = attr.name,
+                        value = attr.value;
+
+                    // Khong copy thuoc tinh co ten 'data-video-source'
+                    if( !/^data\-video\-source/.test(name) ) {
+
+                        $video.attr(name, value);
+                        attrs[name] = value;
+                    }
+                });
+
+
+                // Thay the doi tuong Linh bang Video HTML5
+                $a.after($video).remove();
+                return $video;
+            }
+
+            // Truong hop khong co Video background
+            else return false;
+        },
+
+        /**
+         * WRAP DOI TUONG VIDEO BACKGROUND
+         */
+        Wrap : function($videoback) {
+            VariableModule(this);
+
+
+            /**
+             * KIEM TRA DOI TUONG VIDEO DA~ WRAP CHUA
+             */
+            var classVideoWrap = va.ns + 'videoback-wrap',
+                $wrap          = $videoback.closest('.' + classVideoWrap);
+
+            // Truong hop doi tuong Wrap chua ton tai
+            if( !$wrap.length ) {
+
+                // Tao doi tuong Wrap
+                $wrap = $('<div/>', { 'class': classVideoWrap });
+
+                // Wrap doi tuong Video back
+                $videoback.wrap($wrap);
+            }
+        },
+
+        /**
+         * RENDER VIDEO POSTER
+         */
+        RenderPoster : function($videoback) {
+            VariableModule(this);
+
+
+            /**
+             * TAO POSTER DUOI DANG IMAGE BACKGROUND LAZYLOAD
+             */
+            var src = $videoback.data('poster');
+            if( src && !/^\s*$/.test(src) ) {
+
+                // Setup markup Video Poster
+                var linkHTML = '<img class="{ns}imgback {ns}videoposter" src="{src}" alt="video poster" />'
+                                    .replace(/\{ns\}/g, va.ns)
+                                    .replace(/\{src\}/, src);
+
+                // Chen Video Poster vao Slide hien tai
+                // Chen them class 'imgback-wrap' vao doi tuong Wrap
+                $videoback
+                    .after($(linkHTML))
+                    .closest('.' + va.ns + 'videoback-wrap')
+                    .addClass(va.ns + 'imgback-wrap');
+            }
+        },
+
+        /**
+         * SETUP STYLE CHO VIDEOBACK
+         */
+        Style : function($videoback) {
+            VariableModule(this);
+
+            var videoData = M.Data
+        },
+
+        /**
+         * SETUP EVENT LOAD CHO VIDEOBACK
+         */
+        EventLoad : function($videoback) {
+            VariableModule(this);
+            var videoData = M.Data($videoback),
+                $slCur    = videoData.$slide,
+                slData    = M.Data($slCur);
+
+
+            /**
+             * FUNCTION KIEM TRA DE LOAD SLIDE END
+             */
+            function CheckLoadSlideEnd() {
+                if( slData.nImage == slData.imageLen
+                && (!slData.isVideoback || (slData.isVideoback && slData.isVideobackLoaded)) ) {
+
+                    that.LOAD.SlideEnd($slCur);
+                }
+            }
+
+
+
+
+            /**
+             * TRUONG HOP VIDEOBACK LOAD THANH CONG
+             */
+            $videoback.on('loadedmetadata', function() {
+                VariableModule(that);
+                var videoback = this;
+
+
+                // Setup bien nhan biet Videoback da~ load xong
+                slData.isVideobackLoaded = true;
+
+                // Setup thuoc tinh Videoback sau khi load xong
+                that.Properties($videoback);
+
+                // Setup kich thuoc cho Videoback tuy theo Responsive
+                that.SizeResponsive($videoback);
+
+                // Kiem tra de setup Slide end
+                CheckLoadSlideEnd();
+            });
+
+
+
+
+
+            /**
+             * TRUONG HOP VIDEOBACK LOAD THAT BAI
+             */
+            $videoback
+                .find('source')
+                .on('error', function(e) {
+                    VariableModule(that);
+
+                    // Bien nhan biet khong ton tai Videoback
+                    slData.isVideoback = false;
+
+                    // Kiem tra setup load Slide end
+                    CheckLoadSlideEnd();
+                });
+        },
+
+
+
+
+
+
+
+
+
+
+
+        /**
+         * SETUP THUOC TINH CUA VIDEOBACK SAU KHI LOAD XONG METADATA
+         */
+        Properties : function($item) {
+            VariableModule(this);
+            var itemData = M.Data($item),
+                type     = itemData.type;
+
+
+            /**
+             * SETUP TUNG TRUONG HOP
+             */
+            switch( type ) {
+
+                /**
+                 * TRUONG HOP VIDEOBACK
+                 */
+                case 'videoback' :
+
+                    // Bo sung thuoc tinh vao Data cua Videoback
+                    var $videoback = $item,
+                        videoback  = $videoback[0],
+                        width      = videoback.videoWidth,
+                        height     = videoback.videoHeight;
+
+                    M.Data($videoback, {
+                        'width'        : width,
+                        'height'       : height,
+                        'rate'         : width / height,
+                        'isLoadedMeta' : true
+                    });
+                    break;
+            }
+        },
+
+        /**
+         * SET KICH THUOC CUA VIDEOBACK TUY THEO RESPONSIVE
+         */
+        SizeResponsive : function($item) {
+            VariableModule(this);
+
+            // Dieu kien thuc hien function
+            if( !($item && $item.length) ) return;
+
+            // Bien setup luc ban dau
+            var itemData = M.Data($item),
+                itemType = itemData.type,
+                rate     = va.rate,
+
+                // Bien tuy thuoc vao Item Type
+                wInline, hInline, wSlide, isHeightFixed,
+
+                // Reset style css cho Videoback
+                style = { 'width': '', 'height': '', 'left': '', 'top': '' };
+
+
+
+
+            /**
+             * SETUP CAC TRUONG HOP ITEM KHAC NHAU
+             */
+            switch( itemType ) {
+
+                // Truong hop Item la Videoback
+                case 'videoback' :
+
+                    wInline       = itemData.styleInline.width;
+                    hInline       = itemData.styleInline.height;
+                    wSlide        = va.wSlide;
+                    typePosition  = itemData.opts.position;
+                    isHeightFixed = is.heightFixed;
+                    break;
+
+
+                // Truong hop Item la Video Poster
+                case 'videoPoster' :
+                    var videoData = M.Data(itemData.$videoback);
+
+                    // Cap nhat bien cho Video Poster
+                    wSlide        = videoData.width;
+                    typePosition  = itemData.opts.posterPosition;
+                    isHeightFixed = true;
+                    break;
+            }
+
+
+
+
+            /**
+             * DIEU KIEN THUC HIEN SETUP KICH THUOC CHO ITEM
+             */
+            if( !itemData.opts.isResponsive ) return;
+
+
+
+
+            /**
+             * FUNCTION CLASS SETUP KICH THUOC CUA IMAGE THEO HUO"NG KHAC NHAU
+             */
+            function SizeDependRate() {
+                if     ( wInline == 'auto' )    style.width = wInline;
+                else if( $.isNumeric(wInline) ) style.width = M.R(wInline * rate);
+                else                            style.width = M.R(itemData.width * rate);
+
+                if     ( hInline == 'auto' )    style.height = hInline;
+                else if( $.isNumeric(hInline) ) style.height = M.R(hInline * rate);
+                else                            style.height = M.R(itemData.height * rate);
+
+                $item.css(style);
+            }
+
+            function SizeDependWidth() {
+                style.width  = wSlide;
+                style.height = M.R( style.width / itemData.rate);
+                $item.css(style);
+            }
+
+
+
+
+
+            /**
+             * SETUP KICH THUOC CHO VIDEOBACK TUY TRUONG HOP
+             */
+            // Kich thuoc theo ti le Responsive, bao gom type ['center']
+            if( typePosition == 'center' ) {
+                SizeDependRate();
+            }
+
+            // Kich thuoc theo Chieu rong cua Viewport, bao gom type ['fill', 'fit']
+            else {
+                !isHeightFixed && SizeDependWidth();
+            }
+        },
+
+        /**
+         * SETUP VI TRI CUA VIDEOBACK
+         */
+        Position : function($item) {
+            VariableModule(this);
+
+            // Dieu kien thuc hien function
+            if( !($item && $item.length) ) return;
+
+            // Bien setup luc ban dau
+            var itemData = M.Data($item),
+                itemType = itemData.type,
+                rateItem = itemData.rate,
+
+                wItemCur, hItemCur, rateCanvas,
+                wRuby, hRuby,
+                typePosition, isHeightFixed;
+
+
+
+
+            /**
+             * SETUP CAC TRUONG HOP BIEN KHAC NHAU TUY THEO DOI TUONG
+             */
+            switch( itemType ) {
+
+                // Truong hop Item la Videoback
+                case 'videoback' :
+                    wRuby      = va.wSlide;
+                    hRuby      = va.hRuby;
+                    rateCanvas = va.wRuby / va.hRuby;
+
+                    typePosition  = itemData.opts.position;
+                    isHeightFixed = is.heightFixed;
+                    break;
+
+
+
+                // Truong hop Item la Video Poster
+                case 'videoPoster' :
+                    var $videoback = itemData.$videoback,
+                        videoData  = M.Data($videoback);
+
+                    wRuby      = M.OuterWidth($videoback);
+                    hRuby      = is.heightFixed ? va.hRuby : M.OuterHeight($videoback);
+                    rateCanvas = videoData.rate;
+
+                    typePosition  = itemData.opts.posterPosition;
+                    isHeightFixed = true;
+                    break;
+            }
+
+
+
+
+
+            /**
+             * FUNCTION CLASS
+             */
+            // Kich thuoc tuy thuoc vao Chieu rong Viewport
+            function SizeDependWidth() {
+                wItemCur = wRuby;
+                hItemCur = M.R( wItemCur / rateItem);
+            }
+
+            // Kich thuoc tuy thuoc vao Chieu cao Ruby
+            function SizeDependHeight() {
+                hItemCur = hRuby;
+                wItemCur = M.R(hItemCur * rateItem);
+            }
+
+            function PosCenterLeft() {
+                var leftOnNode = M.PInt( $item.css('left') ),
+                    leftCur    = ~~( (va.wSlide - M.OuterWidth($item, true)) / 2 );
+
+                // Setup css 'left'
+                if( leftOnNode !== leftCur ) $item.css('left', leftCur);
+            }
+
+            function PosCenterTop() {
+                var top = M.R( (hRuby - M.OuterHeight($item, true)) / 2 );
+                if( top == 0 ) top = '';
+                $item.css('top', top);
+            }
+
+
+
+
+
+
+            /**
+             * TRUONG HOP VI TRI TYPE 'FILL'
+             * Khong phu thuoc vao ti le Responsive
+             */
+            if( typePosition == 'fill' ) {
+
+                // Truong hop co chieu Co dinh
+                if( isHeightFixed ) {
+                    (rateItem > rateCanvas) ? SizeDependHeight() : SizeDependWidth();
+
+                    // Setup kich thuoc cho Image Item
+                    $item.css({ 'width' : wItemCur, 'height' : hItemCur });
+
+                    // Setup vi tri Center Left cho Image back
+                    PosCenterLeft();
+                    // Setup vi tri Center Top cho Image back
+                    PosCenterTop();
+                }
+            }
+
+
+            /**
+             * TRUONG HOP VI TRI TYPE 'FIT'
+             * Khong phu thuoc vao ti le Responsive
+             */
+            else if( typePosition == 'fit' ) {
+
+                // Truong hop co chieu Co dinh
+                if( isHeightFixed ) {
+                    (rateItem > rateCanvas) ? SizeDependWidth() : SizeDependHeight();
+
+                    // Setup kich thuoc cho Image Item
+                    $item.css({ 'width' : wItemCur, 'height' : hItemCur });
+
+
+                    // Setup vi tri Center Left cho Image back
+                    PosCenterLeft();
+                    // Setup vi tri Center Top cho Image back
+                    PosCenterTop();
+                }
+            }
+
+
+            /**
+             * TRUONG HOP VI TRI TYPE 'CENTER'
+             */
+            else {
+
+                // Setup vi tri Center Left cho Image back
+                PosCenterLeft();
+                // Setup vi tri Center Top cho Image back
+                isHeightFixed && PosCenterTop();
+            }
+        },
+
+        /**
+         * CAP NHAT KICH THUOC VA VI TRI CUA VIDEOBACK
+         */
+        UpdateAllVideoBy : function(typeUpdate, itemName) {
+            var that = this;
+            VariableModule(that);
+
+
+            /**
+             * PHAN BIET TEN CUA VIDEOBACK TRONG DATA SLIDE VA TEN FUNCTION CAN THUOC CAT NHAT
+             */
+            var nameFunction;
+            switch( typeUpdate ) {
+
+                // Cap nhat kich thuoc cho doi tuong Item
+                case 'size' :
+                    nameFunction = 'SizeResponsive';
+                    break;
+
+                // Cap nhat vi tri cho doi tuong Item
+                case 'position' :
+                    nameFunction = 'Position';
+                    break;
+
+                default :
+                    return;
+            }
+
+
+
+
+            /**
+             * SETUP KICH THUOC HOAC VI TRI CUA VIDEOBACK
+             */
+            va.$s
+                .each(function() {
+
+                    // Lay Images can setup trong Slide hien tai
+                    var $item = M.Data($(this))[itemName];
+
+                    // Cap nhat kich thuoc hoac vi tri cua Image
+                    $item && $item.each(function() {
+                        that[nameFunction]($(this));
+                    });
+                });
+        },
+
+
+
+
+
+
+
+
+
+
+
+        /**
+         * TOGGLE EVENT PLAY - PAUSE VIDEOBACK
+         */
+        Run : function(status) {
+            VariableModule(this);
+
+            var slData     = M.Data(cs.idCur),
+                $videoback = slData.$videoback;
+
+            // Dieu kien thuc hien Function
+            if( !(slData.isLoaded && $videoback) ) return;
+
+
+
+            /**
+             * SETUP TUY TRUONG HOP KHAC NHAU
+             */
+            var videoback = $videoback[0];
+            switch( status ) {
+
+                // Truong hop Play Videoback
+                case 'play' :
+                    videoback.loop = true;
+                    videoback.play();
+
+                    // $videoback.one('canplaythrough', function() {
+                    // });
+                    break;
+
+
+                // Truong hop Pause Videoback
+                case 'pause' :
+                    videoback.pause();
+
+                    // Reset lai Timecurrent cua Video
+                    videoback.currentTime = 0;
+                    break;
+            }
         }
     };
 })(jQuery);
@@ -14370,6 +15522,2371 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
 
             // Variable to recognize $iframe exist in slide
             slData.isFrame = false;
+        }
+    };
+})(jQuery);
+
+
+
+
+
+
+
+
+
+
+/**
+ * MODULE HOTSPOT
+ */
+(function($) {
+
+    // Check variable module
+    window.rs01MODULE = window.rs01MODULE || {};
+
+    // Global variables
+    var that, o, cs, va, is, ti, M;
+
+    /**
+     * CAT NHAP BIEN TOAN CUC
+     */
+    function VariableModule(self) {
+        that  = self;
+        o     = self.o;
+        cs    = self.cs;
+        va    = self.va;
+        is    = self.is;
+        ti    = self.ti;
+        M     = self.M;
+    }
+
+
+    /**
+     * MODULE HOTSPOT
+     */
+    rs01MODULE.HOTSPOT = {
+
+        /**
+         * KHOI TAO HOTSPOT LUC BAN DAU
+         */
+        Init : function($slCur) {
+            VariableModule(this);
+            var slData = M.Data($slCur);
+
+
+            /**
+             * TIM KIEM MARKUP HOTSPOT ITEM TRONG SLIDE HIEN TAI
+             */
+            var selector      = M.NS('.{ns}hsitem'),
+                $hotspotItems = M.Find($slCur, selector);
+
+
+
+            /**
+             * SETUP TUNG HOTSPOT ITEM
+             */
+            $hotspotItems.each(function() {
+                var $hotspotItem = $(this);
+
+
+                /**
+                 * TAO. DATA CHO HOTSPOT HIEN TAI
+                 */
+                var h = {
+                    $slide       : $slCur,
+                    $hotspotItem : $hotspotItem,
+                    opts         : $.extend(true, {}, o.hotspot, $hotspotItem.data('hotspot')),
+                    tweenAnimate : new RubyTween(),
+                    isActived    : false
+                };
+
+
+
+
+                /**
+                 * SETUP THUOC TINH + EVENT
+                 */
+                // Setup Markup cho Hotspot
+                that.Wrap(h);
+
+                // Setup Kich thuoc ho Hotspot Item
+                that.Size(h);
+
+                // Setup Event cho Hotspot
+                that.Events(h);
+
+
+
+
+                /**
+                 * SETUP KHAC TREN HOTSPOT
+                 */
+                // Luu tru data len Hotspot Wrap
+                M.Data(h.$hotspot)['hotspot'] = h;
+
+                // Chen class de phan biet vi tri
+                h.$hotspot
+                    .addClass( '{ns}hs-{pos}'
+                                    .replace(/\{pos\}/, h['opts']['position'])
+                                    .replace(/\{ns\}/, va.ns) )
+
+                // Loai bo thuoc tinh data-hotspot tren Hotspot Item
+                $hotspotItem
+                    .removeAttr('data-hotspot');
+
+                // Luu tru Hotspot vao bien chung
+                slData['$hotspot'] = (slData['$hotspot'] || $()).add(h.$hotspot);
+
+            });
+        },
+
+
+        /**
+         * SETUP MARKUP DAY DU CHO HOTSPOT
+         */
+        Wrap : function(h) {
+            VariableModule(this);
+
+
+            /**
+             * TIM KIEM DOI TUONG HOTSPOT POINT + HOTSPOT WRAP
+             */
+            var classWrap  = M.NS('{ns}hotspot'),
+                classPoint = M.NS('{ns}hspoint'),
+                $hsItem    = h.$hotspotItem,
+                $hsWrap    = $hsItem.parent('.' + classWrap),
+                $hsPoint   = $hsItem.siblings('.' + classPoint);
+
+
+
+
+            /**
+             * TAO MOI HOTSPOT WRAP + POINT NEU MAKUP KHONG TON TAI
+             */
+            if( !$hsWrap.length ) {
+
+                // Wrap doi tuong moi cho Hotspot Item
+                $hsItem.wrap( $('<div/>', { 'class': classWrap }) );
+
+                // Xac dinh lai doi tuong Hotspot Wrap
+                $hsWrap = $hsItem.closest('.' + classWrap);
+            }
+
+            if( !$hsPoint.length ) {
+
+                // Chen doi tuong Hotspot Point ben canh
+                $hsItem.after( $(M.NS(h['opts']['markupPoint'])) );
+
+                // Xac dinh lai doi tuong Hotspot Point
+                $hsPoint = $hsItem.siblings('.' + classPoint);
+            }
+
+            // Luu tru markup cua Hotspot Wrap + Point vao Data
+            h.$hotspot  = $hsWrap;
+            h.$hotspotPoint = $hsPoint;
+        },
+
+
+        /**
+         * SETUP KICH THUOC CHO HOTSPOT
+         */
+        Size : function(h) {
+            VariableModule(this);
+            var widthItem = h.opts.widthItem;
+
+
+            /**
+             * SETUP KICH THUOC CHO HOTSPOT ITEM
+             */
+            if( $.isNumeric(widthItem) ) {
+                h.$hotspotItem
+                    .addClass(va.ns + 'widthfixed')
+                    .css({ 'width': widthItem });
+            }
+        },
+
+
+
+
+
+
+
+
+
+
+
+        /**
+         * SETUP EVENTS CHO HOTSPOT
+         */
+        Events : function(h) {
+            VariableModule(this);
+            var that             = this,
+                $hsWrap          = h.$hotspot,
+                isActivedAtFirst = h.opts.isActivedAtFirst,
+                eventToOpen      = h.opts.eventToOpen;
+
+
+            /**
+             * SETUP EVENT TAP CHO HOTSPOT POINT
+             */
+            if( eventToOpen === 'tap' ) {
+                h.$hotspotPoint
+                    .on(va.ev.click, function() {
+
+                        // Toggle trang thai actived cho Hotspot
+                        !h.isActived ? that.ToggleToActived(h)
+                                     : that.ToggleToDeactived(h);
+
+                        return false;
+                    });
+            }
+
+
+
+            /**
+             * SETUP EVENT HOVER CHO HOTSPOT POINT
+             */
+            else if( eventToOpen === 'hover' ) {
+
+                h.$hotspotPoint
+                    .on(va.ev.mouseenter, function() {
+                        isActivedAtFirst ? (h.isActived && that.ToggleToDeactived(h))
+                                         : (!h.isActived && that.ToggleToActived(h));
+                    })
+                    .on(va.ev.mouseleave, function() {
+                        isActivedAtFirst ? (!h.isActived && that.ToggleToActived(h))
+                                         : (h.isActived && that.ToggleToDeactived(h));
+                    });
+            }
+        },
+
+
+        /**
+         * SETUP TOGGLE SANG TRANG THAI ACTIVED
+         */
+        ToggleToActived : function(h) {
+            VariableModule(this);
+
+            if( !h.isActived ) {
+
+                // Setup vi tri center cho Hotspot Item
+                that.PosCenterForItem(h);
+
+                // Setup Animate cho Hotspot Item
+                that.TweenAnimate(h);
+
+                // Bat dau play Tween Animate hieu ung In
+                h.tweenAnimate.restart();
+
+                // Chen class Actived vao Hotspot Wrap
+                h.$hotspot.addClass(va.actived);
+                h.isActived = true;
+            }
+        },
+
+
+        /**
+         * SETUP TOGGLE SANG TRANG THAI DEACTIVED
+         *  + Khong can thiet setup lai. vi tri center
+         *  + TweenAnimate co setup Toggle class sau khi ket thuc Animate
+         */
+        ToggleToDeactived :function(h) {
+            VariableModule(this);
+
+            if( h.isActived ) {
+
+                // Setup Animate cho Hotspot Item
+                that.TweenAnimate(h);
+
+                // Bat dau play Tween Animate hieu ung Out
+                h.tweenAnimate.restart();
+            }
+        },
+
+
+        /**
+         * SETUP VI TRI CENTER CHO HOTSPOT ITEM
+         */
+        PosCenterForItem : function(h) {
+            VariableModule(this);
+
+
+            /**
+             * SETUP KICH THUOC LUC BAN DAU
+             */
+            var $hsItem  = h.$hotspotItem,
+                $hsPoint = h.$hotspotPoint,
+                wItem    = M.OuterWidth($hsItem),
+                hItem    = M.OuterHeight($hsItem),
+                wPoint   = M.OuterWidth($hsPoint),
+                hPoint   = M.OuterHeight($hsPoint),
+                sizeArea = h['opts']['sizeArea'],
+                left, top;
+
+
+
+            /**
+             * SETUP VI TRI TUY THEO VI TRI CUA HOTSPOT ITEM
+             */
+            var xCenter = - M.R((wItem - wPoint) / 2),
+                yCenter = - M.R((hItem - hPoint) / 2);
+
+            switch( h['opts']['position'] ) {
+                case 'top' :
+                    left = xCenter;
+                    top  = - M.R(hItem + sizeArea);
+                    break;
+
+                case 'bottom' :
+                    left = xCenter;
+                    top  = M.R( hPoint + sizeArea);
+                    break;
+
+                case 'left' :
+                    left = - M.R( wItem + sizeArea );
+                    top  = yCenter;
+                    break;
+
+                case 'right' :
+                    left = M.R( wPoint + sizeArea);
+                    top = yCenter;
+                    break;
+            }
+
+            // Setup thuoc tinh vi tri css len Hotspot Item
+            h.$hotspotItem.css({ 'left': left, 'top': top });
+        },
+
+
+        /**
+         * SETUP TWEEN ANIMATE CHO HOTSPOT
+         */
+        TweenAnimate : function(h) {
+            VariableModule(this);
+
+            var opts        = h.opts,
+                position    = opts.position,
+                tween       = h.tweenAnimate,
+                RUBYANIMATE = M.Module('RUBYANIMATE');
+
+
+            /**
+             * CHON LUA ANIMATE TUY THEO POSITION
+             */
+            var nameIn  = 'anim{pos}In'.replace(/\{pos\}/, M.ProperCase(position)),
+                nameOut = 'anim{pos}Out'.replace(/\{pos\}/, M.ProperCase(position)),
+                animIn  = opts[nameIn] ? opts[nameIn] : opts['animIn'],
+                animOut = opts[nameOut] ? opts[nameOut] : opts['animOut'],
+                anim    = h.isActived ? animOut : animIn;
+
+
+
+
+            /**
+             * CHUYEN DOI HIEU UNG CSS NEU CO
+             */
+            if( $.isPlainObject(anim)
+                && anim['fx']
+                && is.RUBYANIMATE
+                && RUBYANIMATE.Tween(anim['fx'])
+                ) {
+
+                // Setup cac thuoc tinh Duration - Delay
+                var duration = anim['duration'] || 0,
+                    delay    = anim['delay'] || 0;
+
+                // Thay the thuoc tinh Animate
+                anim = RUBYANIMATE.Tween(anim['fx'], duration, delay);
+            }
+
+
+
+
+
+            /**
+             * SETUP TWEEN ANIMATE CHO HOTSPOT
+             *  + Lay gia tri AnimOut
+             *  + Ho tro setup tu RubyAnimate
+             */
+            if( $.isArray(anim) ) {
+
+                for( var i = 0, len = anim.length ; i < len; i++ ) {
+                    var propCur = $.extend({}, anim[i]['prop'] || anim[i]);
+
+
+                    /**
+                     * TRUONG HOP TRANSFORM LUC DAU CHO LAYER
+                     */
+                    if( i == 0 ) {
+                        tween.css(h.$hotspotItem, propCur, { 'type': 'reset' });
+                    }
+
+
+                    /**
+                     * TRUONG HOP ANIMATE CHO LAYER
+                     */
+                    else {
+
+                        /**
+                         * CHEN THUOC TINH 'COMPLETE' VAO ANIMATE CUOI
+                         */
+                        var optsCur = $.extend({}, anim[i]['opts']);
+                        if( h.isActived && (i == len - 1) ) {
+
+                            optsCur.complete = function() {
+
+                                // Toggle class luc ket thuc Animate
+                                h.$hotspot.removeClass(va.actived);
+                                h.isActived = false;
+                            };
+                        }
+
+                        // Setup Tween Animate
+                        tween.animate(h.$hotspotItem, propCur, optsCur, false);
+                    }
+                }
+            }
+        },
+
+
+
+
+
+
+
+
+
+
+
+
+        /**
+         * RESET TRANG THAI ACTIVED HOTSPOT LUC BAN DAU
+         */
+        Reset : function(slideID) {
+            VariableModule(this);
+            var $hotspot = M.Data(slideID)['$hotspot'];
+
+
+            /**
+             * SETUP TOGGLE ACTIVED TUNG HOTSPOT
+             */
+            $hotspot && $hotspot.each(function() {
+                var h = M.Data($(this))['hotspot'];
+
+                h['opts']['isActivedAtFirst'] ? that.ToggleToActived(h)
+                                              : that.ToggleToDeactived(h);
+            });
+        },
+
+
+        /**
+         * CAP NHAT VI TRI CUA HOTSPOT ACTIVED
+         */
+        UpdatePosition : function(slideID) {
+            VariableModule(this);
+            var $hotspot = M.Data(slideID)['$hotspot'];
+
+
+            /**
+             * SETUP TUNG HOTSPOT
+             */
+            $hotspot && $hotspot.each(function() {
+                var h = M.Data($(this))['hotspot'];
+
+                // Setup vi tri center cho Hotspot Item o tran thai Actived
+                h.isActived && that.PosCenterForItem(h);
+            });
+        }
+    };
+})(jQuery);
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * MODULE LAYER
+ */
+(function($) {
+
+    // Check variable module
+    window.rs01MODULE = window.rs01MODULE || {};
+
+    // Global variables
+    var that, o, cs, va, is, ti, M, IMAGE, i, j,
+        UNDE = undefined;
+
+    /**
+     * UPDATE GLOBAL VARIABLES
+     */
+    function VariableModule(self) {
+        that  = self;
+        o     = self.o;
+        cs    = self.cs;
+        va    = self.va;
+        is    = self.is;
+        ti    = self.ti;
+        M     = self.M;
+        IMAGE = M.Module('IMAGE');
+    }
+
+
+    /**
+     * MODULE LAYER
+     */
+    rs01MODULE.LAYER = {
+
+        /**
+         * INITIALIZATION LAYER OF EACH SLIDE
+         */
+        Init : function($slCur) {
+            VariableModule(this);
+
+            var slData     = M.Data($slCur),
+                slideID    = slData['id'],
+                classLayer = M.NS('.{ns}layeritem'),
+                nameData   = 'data-animate-start',
+                numLayer   = 0;
+
+            /**
+             * SELECTOR LAYER
+             *  + Support selector layer on ruby & slides
+             */
+            var $layers = M.Find(
+                    (slideID == 'home' ? va.$viewport : $slCur),
+                    (slideID == 'home' ? '> layer' : 'layer').replace(/layer/, classLayer)
+                );
+
+
+
+            /**
+             * ARRANGE THE LAYER -> SUPPORT SETUP LAYER IN ORDER
+             *  + Stored in array[]: array[0] for layer-normal, array[>= 1] for layer-nested
+             *  + Support setup layer in order: from nested-layer-nested to layer-normal
+             */
+            var $aLayerItem = [];
+            $layers.each(function(i) {
+
+                var $layer        = $(this),
+                    selectorLayer = '[name]'.replace(/name/, nameData),
+                    $parent       = $layer.parent(selectorLayer),
+                    level         = 0;
+
+                // Check value on 'data-' attribute of Layaer exist
+                var animate = $layer.data('animate-start');
+                if( animate === UNDE || /^\s*$/.test(animate) ) return;
+
+                // Loop to get level of nested layer
+                while( $parent.length ) {
+                    level++;
+                    $parent = $parent.parent(selectorLayer);
+                }
+
+                // Store layer in array[]
+                $aLayerItem[level] = ( $aLayerItem[level] || $() ).add($layer);
+            });
+
+
+
+
+            /**
+             * INITIALIZE THE LAYER
+             *  + Begin from layer-nested
+             */
+            for( var i = $aLayerItem.length - 1; i >= 0; i-- ) {
+                $aLayerItem[i].each(function() {
+
+                    // Initialize variables
+                    var $layerItem = $(this),
+                        animStart  = $layerItem.data('animate-start'),
+                        animEnd    = $.extend([], slData.opts.layer.animateEnd, $layerItem.data('animate-end'));
+
+                    // Number of layer
+                    numLayer++;
+
+
+
+                    /**
+                     * THE INITIAL BASIC OPTIONS ON CURRENT LAYER
+                     */
+                    var l = {
+                        $slide      : $slCur,
+                        $layerItem  : $layerItem,
+                        opts        : $.extend(true, {}, o.layer, $layerItem.data('layer')),
+                        tagName     : $layerItem[0].tagName.toLowerCase(),
+                        styleInline : M.PStyleToJson($layerItem),
+                        css         : {},
+
+                        animStart   : { 'name': 'animStart', 'animRaw' : animStart, 'isCSSAtFirst': true },
+                        animEnd     : { 'name': 'animEnd', 'animRaw' : animEnd, 'isCSSAtFirst': false }
+                    };
+
+                    // Random update check
+                    // var isRaUp = M.ValueName(str, 'isRaUp');
+                    // l.is['raUp'] = (isRaUp === false) ? o.isLayerRaUp : isRaUp;
+
+
+
+
+                    /**
+                     * TRANSFORM & ANIMATION FOR LAYER
+                     */
+                    // Insert $wrapper for Layer
+                    that.InsertWrap(l);
+
+                    // Check 'responsive' option on Layer
+                    that.CheckResponsive(l);
+
+                    // Reset style to support get size of Layer-item at first
+                    that.StyleReset(l);
+
+                    // Get 'font-size', 'width', 'height', 'margin', 'padding' of Layer
+                    that.Size(l);
+
+                    // Parse & convert all animation to Tween-animate
+                    that.AnimateOut(l, l.animStart);
+                    that.AnimateOut(l, l.animEnd);
+
+                    // RubyAnimate for Layer-item
+                    that.FxCSS(l, l.animStart);
+                    that.FxCSS(l, l.animEnd);
+
+                    // Tween-animate for Layer
+                    that.TweenAnimate(l, l.animStart);
+                    // console.log(l);
+
+
+
+
+
+                    /**
+                     * OTHER SETUP ON CURRENT LAYER
+                     */
+                    // Luu tru + loai bo thuoc tinh 'data'
+                    // Store & remove property into Data layer
+                    M.Data(l.$layer)['layer'] = l;
+                    // M.Data(l.$layerInner)['$layer'] = l.$layer;
+                    M.Data(l.$layerItem)['$layer'] = l.$layer;
+
+                    l.$layerItem
+                        .removeAttr('data-layer data-animate-start data-animate-end')
+
+
+                    // Store 'layer' into Data slide
+                    slData['$layer']     = (slData['$layer'] || $('')).add(l.$layer);
+                    // slData['$layerInner'] = (slData['$layerInner'] || $('')).add(l.$layerInner);
+                    slData['$layerItem'] = (slData['$layerItem'] || $('')).add(l.$layerItem);
+
+                    // Variable '$aLayer' : support update layer in order from layer-nested to layer-normal
+                    slData['$aLayer'] = slData['$aLayer'] || [];
+                    slData['$aLayer'].push(l.$layer);
+                });
+            }
+
+
+
+
+            /**
+             * OTHER SETUP AFTER INITIALIZE ALL LAYERS
+             */
+            if( numLayer ) {
+
+                // Start Tween-layer to the begin-position after initialize the layers
+                slData.tweenLayer.go(0);
+            }
+        },
+
+
+        /**
+         * INSERT $WRAPPER OUTSIDE FOR LAYER
+         */
+        InsertWrap : function(l) {
+            VariableModule(this);
+
+
+            /**
+             * CREATE NEW WRAPPER OBJECT
+             */
+            var classLayer = va.ns + o.nameLayer,
+                classInner = classLayer + 'inner',
+                strLayer   = '<div class="{layer}" />'.replace(/\{layer\}/, classLayer);
+                // strInner   = '<div class="{inner}" />'.replace(/\{inner\}/, classInner);
+
+            // Wrap layer
+            // l.$layerItem.wrap(strLayer).wrap(strInner);
+            l.$layerItem.wrap(strLayer);
+
+            // Store $layer &layerInner into Data
+            // l.$layerInner = l.$layerItem.closest('.'+ classInner);
+            l.$layer = l.$layerItem.closest('.'+ classLayer);
+
+            // Add class to identify Layer-item
+            l.$layerItem.addClass(va.ns +'layeritem');
+
+
+
+            /**
+             * INSERT CLASS 'MASK' ON $LAYER
+             */
+            l.opts.isMask && l.$layer.addClass( M.NS('{ns}mask') );
+
+
+
+
+            /**
+             * INSERT CLASS TO IDENTIFY LAYER-HOME
+             */
+            if( l.$layerItem.hasClass( M.NS('{ns}layeritem-home') ) ) {
+                l.$layer.addClass( M.NS('{ns}layerhome') );
+            }
+        },
+
+
+        /**
+         * KIEM TRA DOI TUONG CO HO TRO OPTION RESPONSIVE
+         */
+        CheckResponsive : function(l) {
+            VariableModule(this);
+
+
+            /**
+             * KE THUA NHUNG TU OPTION CUA CAC DOI TUONG
+             */
+            var $layerItem = l.$layerItem,
+                itemData   = M.Data($layerItem);
+
+            // Truong hop uu tien cho doi tuong Imageback - Imagelazy
+            var isResponsive = l.opts.isResponsive
+                                && !$layerItem.hasClass(va.ns + o.nameImageBack)
+                                && !$layerItem.hasClass(va.ns + o.nameImageLazy);
+
+            // Truong hop uu tien cho doi tuong Hotspot
+            if( itemData['hotspot'] ) {
+                isResponsive = isResponsive && itemData.hotspot.opts.isResponsive;
+            }
+
+
+            // Luu tru vao bien chung
+            l.opts.isResponsive = isResponsive;
+        },
+
+
+        /**
+         * SETUP STYLE RESET LUC BAN DAU CHO LAYER ITEM
+         */
+        StyleReset : function(l) {
+            VariableModule(this);
+
+
+            /**
+             * THUOC TINH CAN KIEM SOAT TREN STYLE INLINE
+             */
+            var propControl = [
+                'width', 'height',
+                'font', 'font-size', 'line-height',
+                'padding', 'padding-top', 'padding-right', 'padding-bottom', 'padding-left',
+                'border', 'border-width', 'border-top-width', 'border-right-width', 'border-bottom-width', 'border-left-width'
+            ];
+
+
+
+            /**
+             * SETUP STYLE INLINE RESET : PHUC HOI KICH THUOC CUA ITEM KHI RESPONSIVE >= 1
+             *  + Thuoc tinh co gia tri duoc uu tien phia sau
+             */
+            var resetEmpty = {},
+                resetValue = {};
+
+            for( var i = 0, len = propControl.length; i < len; i++ ) {
+                var name = propControl[i];
+
+                // Copy thuoc tinh co trong Style Inline luc ban dau
+                // Loai bo thuoc tinh neu khong co trong Style Inline
+                if( l.styleInline[name] !== UNDE ) resetValue[name] = l.styleInline[name];
+                else                               resetEmpty[name] = '';
+            }
+
+            // Luu tru thuoc tinh vao bien chung
+            l.styleReset = $.extend(resetEmpty, resetValue);
+        },
+
+
+        /**
+         * SETUP KICH THUOC CHO LAYER
+         * STYLE SUPPORT:
+         *  + font-size
+         *  + line-height
+         *  + border
+         *  + margin
+         *  + padding
+         */
+        Size : function(l) {
+            VariableModule(this);
+
+            var $layerItem  = l.$layerItem,
+                css         = l.css,
+                styleInline = l.styleInline,
+                style       = {},
+                name        = ['left', 'right', 'top', 'bottom'],
+                pixel       = 'px',
+                rate        = va.rate;
+
+
+            /**
+             * DIEU KIEN THUC HIEN FUNCTION
+             *  + Loai bo setup tren Imageback, Imagelazy
+             */
+            if( !l.opts.isResponsive ) return;
+
+
+
+            /**
+             * TRUONG HOP CO RESPONSIVE
+             */
+            if( rate < 1 ) {
+
+                /**
+                 * CHEN CLASS 'HIDE' + SETUP LUC BAN DAU
+                 */
+                $layerItem
+                    .addClass(va.ns + 'hide')
+                    .css(l.styleReset);
+
+
+
+                /**
+                 * LAY KICH THUOC HIEN TAI CUA LAYER ITEM
+                 */
+                // Lay kich thuoc Font - Width - Heigth
+                css.fontsize   = M.PInt( $layerItem.css('font-size') );
+                css.lineheight = M.PInt( $layerItem.css('line-height') );
+                css.width      = M.PInt( M.OuterWidth($layerItem) );
+                css.height     = M.PInt( M.OuterHeight($layerItem) );
+
+
+                // Lay kich thuoc Border - Padding
+                var property = ['border', 'padding'],
+                    position = ['left', 'right', 'top', 'bottom'],
+                    suffix   = ['-width', ''];
+
+                for( var i = 0, len = property.length; i < len; i++ ) {
+                    var styleCur = {},
+                        propCur  = property[i],
+                        vPlus    = 0;
+
+
+                    /**
+                     * TAO VONG LAP DE LAY GIA TRI O VI TRI LEFT - RIGHT - TOP -BOTTOM
+                     */
+                    for( var j = 0, lenJ = position.length; j < lenJ; j++ ) {
+                        var posCur      = position[j],
+                            cssFullname = '{prop}-{pos}{suffix}'
+                                            .replace(/\{prop\}/, propCur)
+                                            .replace(/\{pos\}/, position[j])
+                                            .replace(/\{suffix\}/, suffix[i]);
+
+                        // Lay gia tri cua thuoc tinh hien tai - vidu: 'border-left-width'
+                        styleCur[posCur] = M.PInt( $layerItem.css(cssFullname) );
+                        vPlus += styleCur[posCur];
+                    }
+
+                    css['is'+ propCur] = (vPlus != 0);
+                    css[propCur] = styleCur;
+                }
+
+
+
+
+
+
+                /**
+                 * SETUP FONT-SIZE
+                 *  + Loai bo setup 'font-size' tren Image, Iframe tag
+                 */
+                if( !/^(img|iframe)$/.test(l.tagName) ) {
+
+                    style['font-size']   = M.R(css.fontsize * rate) + pixel;
+                    style['line-height'] = M.R(css.lineheight * rate) + pixel;
+                }
+
+
+
+
+                /**
+                 * SETUP THUOC TINH WIDTH -HEIGHT NEU CO TON TAI TREN STYLE INLINE
+                 */
+                if( styleInline.width !== undefined ) style.width = M.R(css.width * rate);
+                if( styleInline.height !== undefined ) style.height = M.R(css.height * rate);
+
+
+
+
+                /**
+                 * SETUP BORDER - MARGIN - PADDING
+                 */
+                // Border
+                if ( css.isborder ) {
+                    for (i = 0; i < 4; i++) {
+                        var boName = 'border-' + name[i] + '-width',
+                            border;
+
+                        if( css.border[name[i]] != 0 ) {
+                            border = M.R(css.border[name[i]] * rate);
+
+                            // Kich thuoc Border phai lon hon 1px
+                            style[boName] = (border > 1 ? border : 1) + pixel;
+                        }
+                    }
+                }
+
+
+                // Padding
+                if ( css.ispadding ) {
+                    for (i = 0; i < 4; i++) {
+                        if( css.padding[name[i]] != 0 )
+                            style['padding-' + name[i]] = M.R(css.padding[name[i]] * rate) + pixel;
+                    }
+                }
+
+
+
+
+                /**
+                 * SETUP KICH THUOC MOI VUA TIM DUOC VAO LAYER + SETUP CON LAI
+                 */
+                $layerItem
+                    .removeClass(va.ns + 'hide')
+                    .css(style);
+            }
+
+
+
+
+            /**
+             * TRUONG HOP BANG KICH THUOC BAN DAU
+             */
+            else {
+
+                // Phuc hoi Style Inline luc ban dau
+                $layerItem.css(l.styleReset);
+            }
+        },
+
+
+
+
+
+
+
+
+
+
+
+        /**
+         * SETUP VA TONG HOP GIA TRI TUNG THUOC TINH TRANSFORM CUA LAYER
+         */
+        AnimateOut : function(l, anim) {
+            VariableModule(this);
+            var $layer = l.$layer;
+
+
+            // Variable 'animOut' inherit value from 'animRaw'
+            anim.animOut = $.extend([], anim.animRaw);
+
+            // Update properties for the current animation
+            anim.num     = anim.animRaw.length;
+            anim.xyValue = {};
+            anim.update  = { randomTf : [], randomOpacity : [] };
+
+            // Random: update
+            // that.RandomUpdate(l);
+
+
+
+            /**
+             * SETUP GIA TRI VI TRI X-Y-Z
+             *  + Setup chuyen doi gia tri String ['center', 'left', 'top', 'bottom'] thanh Number luu trong Variable
+             *  + Setup cap nhat gia tri String signle len thuoc tinh X-Y-Z
+             */
+            that.XYConvertFromStringSingle(l, anim);
+            that.XYUpdateValue(l, anim);
+
+
+
+            /**
+             * CHUYEN DOI GIA TRI XY TU STRING 'SHORT'
+             *  + Setup XYConvertFromStringSingle() truoc
+             */
+            that.XYConvertFromStringShort(l, anim);
+
+
+
+            /**
+             * SETUP CAC GIA TRI KE THUA
+             *  + Ke thua thuoc tinh 'xyz' luc ban dau
+             *  + Ke thua thuoc tinh 'duration' - 'delay' - 'easing' neu khong co
+             *  + Loai bo thuoc tinh khong can thiet tren AnimOut
+             */
+            that.XYInheritAtFirst(l, anim);
+            that.OptsInheritAndRemove(l, anim);
+        },
+
+
+        /**
+         * CHUYEN DOI GIA TRI CUA XYZ TU STRING: CENTER - TOP - RIGHT - BOTTOM - LEFT
+         */
+        XYConvertFromStringSingle : function(l, anim) {
+            VariableModule(this);
+            var xy = anim.xyValue;
+
+
+            /**
+             * SETUP KICH THUOC CUA LAYER
+             */
+            xy['wSlide'] = '100%{p}';
+            xy['hSlide'] = '100%{p}';
+            xy['wLayer'] = '100%';
+            xy['hLayer'] = '100%';
+
+
+
+            /**
+             * SETUP VI TRI CENTER - TOP - RIGHT - BOTTOM - LEFT CUA LAYER
+             */
+            xy['xleft']   = va.pa.left;
+            xy['xcenter'] = '50%{p} - 50%';
+            xy['xright']  = '100%{p} - 100% - ' + va.pa.left;
+            xy['ytop']    = va.pa.top;
+            xy['ycenter'] = '50%{p} - 50%';
+            xy['ybottom'] = '100%{p} - 100% - ' + va.pa.top;
+        },
+
+
+        /**
+         * CAP NHAT GIA TRI TU STRING SINGLE SANG THUOC TINH CU THE
+         */
+        XYUpdateValue : function(l, anim) {
+            VariableModule(this);
+
+            var animOut = anim.animOut,
+                xyName  = ['x', 'y', 'z'],
+                xyPlus  = [va.pa.left, va.pa.top, 0];
+
+
+            /**
+             * CAP NHAT GIA TRI CUA? TU`NG THUOC TINH' TUY TRUONG HOP CU. THE?
+             */
+             for( i = 0; i < anim.num; i++ ) {
+                for( var j = 0, lenJ = xyName.length; j < lenJ; j++ ) {
+
+                    var nameCur  = xyName[j],
+                        vCur     = animOut[i][nameCur],
+                        vConvert = UNDE;
+
+
+                    /**
+                     * TRUONG HOP GIA TRI HIEN TAI LA NUMBER
+                     *  + Ho tro convert gia tri tuy theo Responsive
+                     */
+                    if( $.isNumeric(vCur) ) {
+
+                        // Setup dam? bao la` Number
+                        vCur = M.PFloat(vCur);
+
+                        // Setup gia tri tuy theo Responsive
+                        vConvert = M.R(vCur * va.rate) + xyPlus[j];
+                    }
+
+
+
+                    /**
+                     * TRUONG HOP GIA TRI HIEN TAI LA STRING
+                     *  + Ho tro setup gia tri ngau~ nhien (random)
+                     *  + Ho tro chuyen doi gia tri theo ten String Single
+                     */
+                    else if( typeof vCur == 'string' ) {
+                        if( vCur == 'random' ) vConvert = anim.update.randomTf[i][nameCur];
+                        else                   vConvert = anim.xyValue[ nameCur + vCur ];
+                    }
+
+
+
+                    // Luu tru gia tri Convert moi vua setup vao` Animate Out
+                    if( vConvert !== UNDE ) animOut[i][nameCur] = vConvert;
+                }
+            }
+        },
+
+
+        /**
+         * CHUYEN DOI GIA TRI CUA XY TU STRING SHORT
+         *  + Khong phu thuoc vao ti? len Responsive
+         */
+        XYConvertFromStringShort : function(l, anim)  {
+            VariableModule(this);
+
+            var $layer  = l.$layer,
+                xyValue = anim.xyValue,
+                x       = null,
+                y       = null;
+
+            // Lay gia tri transform, ket hop va uu tien random
+            // var random  = l.update['randomTf'][id];
+            // if( !random ) random = {};
+            // var tfSetup = $.extend({}, l.tfSetup[id], random);
+
+
+
+
+
+
+
+            /**
+             * CHUYEN DOI GIA TRI TU STRING 'SHORT'
+             */
+            function ConvertFromShort(id, nameCur) {
+                var x = null, y = null,
+
+                    // Vi tri Center + End cua Layer
+                    posCenter = '50%{p} - 50%',
+                    posEnd    = '100%{p} - 100%';
+
+
+                // Type ConvertFromShort, moveOut include transformed
+                switch(nameCur) {
+
+                    /**
+                     * NHUNG GIA TRI CO XY O BEN NGOAI
+                     */
+                    case 'leftOut' :
+                        x = '- 100% - 10';
+                        break;
+
+                    case 'rightOut' :
+                        x = '100%{p} + 10';
+                        break;
+
+                    case 'topOut' :
+                        y = '- 100% - 10';
+                        break;
+
+                    case 'bottomOut' :
+                        y = '100%{p} + 10';
+                        break;
+
+
+
+                    /**
+                     * NHUNG GIA TRI CO XY O BEN TRONG
+                     */
+                    case 'leftTop' :
+                        x = 0;
+                        y = 0;
+                        break;
+
+                    case 'centerTop' :
+                        x = posCenter;
+                        y = 0;
+                        break;
+
+                    case 'rightTop' :
+                        x = posEnd;
+                        y = 0;
+                        break;
+
+                    case 'leftCenter' :
+                        x = 0;
+                        y = posCenter;
+                        break;
+
+                    case 'centerCenter' :
+                    case 'center' :
+                        x = y = posCenter;
+                        break;
+
+                    case 'rightCenter' :
+                        x = posEnd;
+                        y = posCenter;
+                        break;
+
+                    case 'leftBottom' :
+                        x = 0;
+                        y = posEnd;
+                        break;
+
+                    case 'centerBottom' :
+                        x = posCenter;
+                        y = posEnd;
+                        break;
+
+                    case 'rightBottom' :
+                        x = y = posEnd;
+                        break;
+                }
+
+                return [x, y];
+            }
+
+
+
+
+            /**
+             * TAO VONG LAP DE CHUYEN DOI TAT CA GIA TRI SHORT TRONG ANIMATE
+             */
+            // var animOut = l.animOut;
+            var animOut = anim.animOut;
+            // for( i = 0; i < l.num; i++ ) {
+            for( i = 0; i < anim.num; i++ ) {
+                var xyString = animOut[i]['xy'];
+
+                if( typeof xyString == 'string' ) {
+
+                    /**
+                     * CHUYEN DOI GIA TRI
+                     */
+                    xy = ConvertFromShort(i, xyString);
+                    if( xy[0] !== null ) animOut[i]['x'] = xy[0];
+                    if( xy[1] !== null ) animOut[i]['y'] = xy[1];
+                }
+            }
+        },
+
+
+        /**
+         * SETUP GIA TRI KE THUA CUA VI TRI XY LUC BAT DAU
+         */
+        XYInheritAtFirst : function(l, anim) {
+            var aName   = ['x', 'y'],
+                // animOut = l.animOut;
+                animOut = anim.animOut;
+
+
+            // Dieu kien AnimateOut[] phai co co 2 gia tri tro len
+            if( animOut.length > 1 ) {
+
+                for( var i = 0, len = aName.length; i < len; i++ ) {
+                    var nameCur = aName[i];
+
+                    /**
+                     * KE THUA GIA TRI PHIA TRUOC NEU GIA TRI X-Y LUC DAU KHONG TON TAI
+                     */
+                    if( animOut[0][nameCur] === UNDE ) {
+                        animOut[0][nameCur] = animOut[1][nameCur];
+                    }
+                }
+            }
+        },
+
+
+        /**
+         * KE THUA CAC THUOC TINH 'DURATION' - 'DELAY' - 'EASING' NEU KHONG CO
+         * LOAI BO THUOC TINH KHONG CAN THIET
+         */
+        OptsInheritAndRemove : function(l, anim) {
+            VariableModule(this);
+
+            // var animOut      = l.animOut,
+            var animOut      = anim.animOut,
+                optsDefault  = o.layer,
+                aNameInherit = ['duration', 'delay', 'easing'];
+
+
+            /**
+             * VONG LAP KIEM TRA TUNG GIA TRONG []
+             */
+            for( var i = 0, len = anim.num; i < len; i++ ) {
+                for( var name in animOut[i] ) {
+
+                    /**
+                     * COPY GIA TRI MAC DINH TRONG THUOC TINH INHERIT []
+                     *  + Gia tri dau` tien ke' thua` khong co' y' nghia~
+                     */
+                    if( i > 0 ) {
+                        for( var n = 0, lenN = aNameInherit.length; n < lenN; n++ ) {
+                            var nameCur = aNameInherit[n];
+
+                            if( animOut[i][nameCur] === UNDE ) {
+                                animOut[i][nameCur] = optsDefault[nameCur];
+                            }
+                        }
+                    }
+
+
+
+                    /**
+                     * LOAI BO NHUNG THANH PHAN KHONG CAN THIET
+                     */
+                    delete animOut[i]['xy'];
+                }
+            }
+        },
+
+
+
+
+
+
+
+
+
+
+
+        /**
+         * SETUP HIEU UNG RUBYANIMATE CHO LAYER ITEM
+         */
+        FxCSS : function(l, anim) {
+            VariableModule(this);
+            var animOut = anim.animOut,
+                aFxCSS  = [];
+
+            /**
+             * DIEU KIEN THUC HIEN
+             */
+            if( !is.RUBYANIMATE ) return;
+
+
+            /**
+             * THU THAP TEN GOI HIEU UNG + DELAY TRONG ANIMATE
+             */
+            var delayFx      = 0,
+                delayCur     = 0,
+                durationLast = 0;
+
+            for( var i = (anim.isCSSAtFirst ? 1 : 0), len = anim.num; i < len; i++ ) {
+                var animCur  = animOut[i],
+                    delayCur = animCur.delay || 0;
+
+
+                /**
+                 * SETUP THOI GIA 'DELAY' HIEN TAI
+                 */
+                delayFx += delayCur + durationLast;
+                durationLast = animCur.duration;
+
+
+                /**
+                 * LUU TRU HIEU UNG HIEN TAI + 'DURATION' + 'DELAY'
+                 */
+                var isFxNameExist = !!va.rubyAnimateKeyframes[animCur['fx']];
+                if( animCur['fx'] !== UNDE && isFxNameExist ) {
+
+                    aFxCSS.push({
+                        'fx'       : animCur['fx'],
+                        'duration' : animCur['duration'],
+                        'delay'    : delayFx
+                    });
+
+                    // Reset gia tri 'duration' + 'delay'
+                    delayFx = durationLast = 0;
+                }
+
+
+
+                // Remove 'fx' properties on Animate-out
+                // Ver 1.6 - 23/10/2016: don't remove -> fixed setup Tween-css exist when 'LAYER.Update()'
+                // delete animOut[i]['fx'];
+            }
+
+
+
+            /**
+             * CHUYEN DOI TEN HIEU UNG THANH TWEEN
+             */
+            var tweenFx = [];
+            for( var i = 0, len = aFxCSS.length; i < len; i++ ) {
+
+                // Luu tru Tween hien tai
+                var fxCur = aFxCSS[i];
+                tweenFx.push(
+                    M.Module('RUBYANIMATE').Tween(fxCur.fx, fxCur.duration, fxCur.delay)
+                );
+            }
+
+
+
+            /**
+             * LUU TRU TWEEN TREN DATA CUA LAYER
+             */
+            anim.fxCSS = tweenFx;
+        },
+
+
+        /**
+         * TWEEN-ANIMATE FOR LAYER
+         */
+        TweenAnimate : function(l, anim) {
+            VariableModule(this);
+            var $layer = l.$layer,
+
+                // Get Tween-layer on ruby & current slide
+                tween = M.Data(l.$slide)['tweenLayer'];
+
+
+
+            /**
+             * TWEEN-ANIMATE FOR LAYER
+             *  + Get value of 'animOut'
+             */
+            var animOut = $.extend([], anim.animOut);
+            for( var i = 0; i < anim.num; i++ ) {
+                var propCur = animOut[i];
+
+
+                /**
+                 * CASE: THE CSS-TRANSFORM FOR LAYER AT FIRST
+                 */
+                if( i == 0 && anim.isCSSAtFirst ) {
+                    tween.css($layer, propCur, { 'type': 'reset' });
+                }
+
+
+                /**
+                 * CASE: ANIMATION FOR LAYER
+                 */
+                else {
+                    tween.animate($layer, propCur, {}, false);
+                }
+            }
+
+
+
+
+            /**
+             * TWEEN-FXCSS FOR LAYER-ITEM
+             */
+            var fxCSS = $.extend([], anim.fxCSS);
+            for( var i = 0, len = anim.fxCSS.length; i < len; i++ ) {
+                var fxCSSCur = fxCSS[i];
+
+
+                for( var n = 0, lenN = fxCSSCur.length; n < lenN; n++ ) {
+                    var fxCur = fxCSSCur[n];
+
+
+                    /**
+                     * CASE: THE CSS-TRANSFORM FOR LAYER-ITEM AT FIRST
+                     */
+                    if( n == 0 ) {
+
+                        // Type of Tween-css
+                        var optsCur = {};
+                        optsCur['type'] = (i == 0) ? 'reset' : 'point';
+
+                        // Tween-css
+                        tween.css(l.$layerItem, fxCur, optsCur);
+                    }
+
+
+                    /**
+                     * CASE: ANIMATION FOR LAYER-ITEM
+                     */
+                    else {
+                        tween.animate(l.$layerItem, fxCur.prop, fxCur.opts, false);
+                    }
+                }
+            }
+        },
+
+
+
+
+
+
+
+
+
+
+
+
+        /**
+         * CONTROL THE ANIMATION OF LAYER
+         */
+        Run : function(slideID, status) {
+            VariableModule(this);
+
+            /**
+             * GET TWEEN DEPENDING ON SLIDE-ID
+             */
+            var slData = M.Data(slideID),
+                tween  = slData['tweenLayer'];
+
+            // Conditional execution
+            if( !(tween && slData['$layer']) ) return;
+
+
+
+
+            /**
+             * THE CASES
+             */
+            // Case: Play
+            if( status == 'play' ) {
+
+                // Restart Tween-layer
+                tween.restart();
+            }
+
+            // Case: Pause
+            else if( status == 'pause' )  tween.pause();
+            // Case: Reset
+            else if( status == 'reset' )  tween.go(0);
+            // Case: Resume after update
+            else if( status == 'resume' ) tween.resume();
+
+            // Case: Play animate-end
+            else if( status == 'playEnd' ) {
+                // return;
+                // Reset the current tween
+                tween.pause().reset(true);
+
+                // Update Tween-animate-end for all layers in current slide
+                for( var i = 0, len = slData.$aLayer.length; i < len; i++ ) {
+                    var $layer = slData.$aLayer[i],
+                        l      = M.Data($layer).layer;
+
+                    that.TweenAnimate(l, l.animEnd);
+                }
+
+                // Play again tween with new properties
+                tween.restart();
+            }
+        },
+
+        /**
+         * CONTROL TWEEN-ANIMATE OF LAYER BY THE PARTICULAR COMMAND
+         */
+        Play   : function(slideID) { this.Run(slideID, 'play') },
+        Pause  : function(slideID) { this.Run(slideID, 'pause') },
+        Reset  : function(slideID) { this.Run(slideID, 'reset') },
+        Resume : function(slideID) { this.Run(slideID, 'resume') },
+
+        PlayEnd : function(slideID) { this.Run(slideID, 'playEnd') },
+
+
+
+
+
+
+
+
+
+
+
+        /**
+         * UPDATE ALL PROPERTIES OF LAYER WHEN WINDOW RESIZE
+         */
+        Update : function(slideID) {
+            VariableModule(this);
+
+
+            /**
+             * SELECT SLIDE NEED TO UPDATE THE PROPERTIES ON LAYER
+             *  + Included layer-home
+             */
+            var $aSlide = $.isNumeric(slideID) ? va.$s.eq(slideID)
+                                               : (slideID == 'home') ? va.$viewport
+                                                                     : va.$s.add(va.$viewport);
+
+
+
+
+            /**
+             * UPDATE EACH SLIDE
+             */
+            $aSlide.each(function() {
+                var slData  = M.Data( $(this) )
+                    $aLayer = slData['$aLayer'];
+
+                // Conditional execution
+                if( !($aLayer && $aLayer.length) ) return;
+
+                // Reset Tween-layer on the current slide
+                slData.tweenLayer.reset();
+
+
+
+                /**
+                 * UPDATE FOR EACH LAYER
+                 */
+                for( var i = 0, len = $aLayer.length; i < len; i++ ) {
+                    var l = M.Data( $aLayer[i] )['layer'];
+
+
+                    /**
+                     * RESET STYLE FOR LAYER & LAYER-INNER AT FIRST
+                     */
+                    l.$layer.attr('style', '');
+                    l.$layerItem.attr('style', '').css(l.styleInline);
+
+
+
+                    /**
+                     * UPDATE 'RESPONSIVE' PROPERTY
+                     */
+                    if( is.res ) {
+
+                        // Layer: update style
+                        (va.rateLast != va.rate) && that.Size(l);
+                    }
+
+                    // Layer: reset properties
+                    l.animStart.xyValue = null;
+                    l.animEnd.xyValue = null;
+
+
+
+                    /**
+                     * UPDATE TRANSFORM & TWEEN-ANIMATE FOR LAYER
+                     */
+                    that.AnimateOut(l, l.animStart);
+                    that.FxCSS(l, l.animStart);
+                    that.TweenAnimate(l, l.animStart);
+                }
+            });
+        },
+
+
+
+
+
+
+
+
+
+
+        /**
+         * RENDER MARKUP CUA LAYER FIXED
+         */
+        LayerHomeMarkup : function() {
+            VariableModule(this);
+
+            // Tim kiem Layer fixed
+            var selector       = M.NS('> .{ns}layeritem-home'),
+                $layerItemHome = M.Find(va.$canvas, selector);
+
+
+            /**
+             * SETUP LAYER FIXED
+             */
+            if( $layerItemHome.length ) {
+
+                // Di chuyen LayerHome, ngang hang Canvas
+                va.$canvas.after($layerItemHome);
+            }
+        },
+
+        /**
+         * SETUP LOAD TREN RUBY : HO TRO. IMAGE LAYER HOME
+         */
+        LoadHomeBegin : function() {
+            VariableModule(this);
+
+
+            /**
+             * SETUP TAT CA IMAGES TRONG HOME
+             */
+            if( is.IMAGE ) {
+
+                // Selector Image trong Slide Home
+                var selectorImage = '> .{ns}{imglazy}, > img.{ns}{layer}'
+                                        .replace(/\{imglazy\}/, o.nameImageLazy)
+                                        .replace(/\{layer\}/, o.nameLayer)
+                                        .replace(/\{ns\}/g, va.ns);
+
+                // Setup tat ca Image trong Slide Home
+                IMAGE.SetupAtLoadSlideBegin(va.$viewport, selectorImage);
+            }
+
+
+
+            /**
+             * SETUP HOME END NEU KHONG CO IMAGE TRONG VIEWPORT
+             */
+            var viewData = M.Data(va.$viewport);
+            if( !viewData.imageLen ) that.LoadHomeEnd();
+        },
+
+        LoadHomeEnd : function() {
+            VariableModule(this);
+            var $viewport = va.$viewport,
+                viewData  = M.Data($viewport);
+
+            // Slide current: setting data
+            viewData.isLoaded = true;
+
+
+
+            /**
+             * KHOI TAO VIDEO IFRAME
+             */
+            // if( is.VIDEOIFRAME ) {
+
+            //     // Loai bo? trung lap fn 'Init' -> su dung ket hop voi cs.one
+            //     M.Module('VIDEOIFRAME').Init($viewport);
+            // }
+
+
+
+            /**
+             * BAT DAU SETUP LOAD SLIDE DAU TIEN
+             */
+            this.LOAD.Next();
+        }
+    };
+})(jQuery);
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * MODULE PARALLAX
+ */
+(function($) {
+
+    // Check variable module
+    window.rs01MODULE = window.rs01MODULE || {};
+
+    // Global variables
+    var that, o, cs, va, is, ti, M;
+
+    /**
+     * UPDATE GLOBAL VARIABLES
+     */
+    function VariableModule(self) {
+        that  = self;
+        o     = self.o;
+        cs    = self.cs;
+        va    = self.va;
+        is    = self.is;
+        ti    = self.ti;
+        M     = self.M;
+    }
+
+
+    /**
+     * MODULE PARALLAX
+     */
+    rs01MODULE.PARALLAX = {
+
+        /**
+         * KIEM TRA SLIDE HIEN TAI CO HIEU UNG PARALLAX
+         */
+        Check : function($slide) {
+            VariableModule(this);
+
+
+            /**
+             * SETUP KICH THUOC CUA IMGBACK NEU CO HIEU UNNG PARALLAX SCROLL
+             */
+            that.SizeImgbackInScroll($slide);
+
+
+
+            /**
+             * DANG KI EVENT SCROLL
+             */
+            that.Events();
+        },
+
+
+        /**
+         * SETUP KICH THUOC CUA IMAGEBACK TRONG PARALLAX SCROLL
+         */
+        SizeImgbackInScroll : function($slide) {
+            VariableModule(this);
+
+
+            /**
+             * FUNCITON RESET IMGBACK
+             */
+            function ResetSizeImgback($imgCur) {
+
+                // Loai bo kich thuoc 'height' tren Imgback
+                $imgCur.css('height', '');
+                va.tweenParallaxScroll.css($imgCur, { 'y': 0 });
+
+                // Loai bo Imgback trong bien tong quat
+                va.$imgbackParallax = (va.$imgbackParallax || $()).not($imgCur);
+            }
+
+
+
+
+            /**
+             * SETUP TUNG SLIDE (NEU CO)
+             */
+            $slide.each(function() {
+
+                var $slCur   = $(this),
+                    slData   = M.Data($slCur),
+                    optsCur  = slData['opts'],
+                    $imgWrap = slData['$imgbackWrap'],
+                    $imgItem = slData['$imgback'];
+
+
+                if( !!$imgWrap ) {
+
+                    /**
+                     * TRUONG HOP IMGBACK CO HIEU UNG PARALLAX SCROLL
+                     */
+                    if( optsCur.isParallaxScroll ) {
+
+                        /**
+                         * TRUONG HOP HEIGHT FIXED
+                         */
+                        if( is.heightFixed ) {}
+
+
+                        /**
+                         * TRUONG HOP HEIGHT AUTO
+                         */
+                        else {
+                            var hImgItem = M.OuterHeight($imgItem),
+                                hCur     = M.R(hImgItem - (optsCur['parallaxScroll']['bgDepth'] * 2 * va.rate));
+
+                            /**
+                             * DIEU KIEN PHAI CO CHIE`U CAO TOI THIEU
+                             */
+                            if( hCur >= 10 ) {
+                                $imgWrap.css('height', hCur);
+
+                                // Luu tru kich thuoc Height hien tai vao data Image
+                                M.Data($imgWrap, { 'heightCur': hCur });
+                                M.Data($imgItem, { 'heightCur': hImgItem });
+
+                                // Luu tru Imgback tren bien tong quat
+                                va.$imgbackParallax = (va.$imgbackParallax || $()).add($imgWrap);
+                            }
+
+
+                            /**
+                             * RESET LAI IMGBACK KHONG DU? DIEU KIEN
+                             */
+                            else ResetSizeImgback($imgWrap);
+                        }
+                    }
+
+
+
+                    /**
+                     * TRUONG HOP IMGBACK KHONG CO HIEU UNG
+                     */
+                    else {
+                        ResetSizeImgback($imgWrap);
+                    }
+                }
+            });
+        },
+
+
+        /**
+         * SETUP VI TRI CUA IMAGEBACK TRONG PARALLAX SCROLL
+         */
+        PosImgbackInScroll : function() {
+            VariableModule(this);
+
+            var hWin      = M.OuterHeight(va.$w),
+                yBeginWin = va.$w.scrollTop(),
+                yEndWin   = yBeginWin + hWin;
+
+
+            /**
+             * SETUP VI TRI CHO TAT CA IMGBACK CO HIEU UNG PARALLAX
+             */
+            va.$imgbackParallax.each(function(i) {
+                var $imgbackWrap = $(this),
+                    imgWrapData = M.Data($imgbackWrap),
+                    imgItemData = M.Data($imgItem),
+                    $imgItem    = imgWrapData['$imgItem'],
+                    $slCur      = imgWrapData['$slide'],
+                    hImgback    = imgWrapData['heightCur'],
+                    hImgItem    = imgItemData['heightCur'],
+
+                    hSlide      = M.OuterHeight($slCur),
+                    yBeginSlide = $slCur.offset()['top'],
+                    yEndSlide   = yBeginSlide + hSlide,
+
+                    parallax    = M.Data($slCur)['opts']['parallaxScroll'],
+                    depth       = parallax['bgDepth'] * 2 * va.rate,
+                    rateOutside = 0,
+                    rateInside  = 0,
+                    posOutside  = 0,
+                    posInside   = 0,
+                    outsidePlus = 0;
+
+
+                /**
+                 * TI LE DI CHUYEN TUY THUOC VI TRI CUA WINDOW SO VOI SLIDE HIEN TAI
+                 */
+                // Slide nam phia duoi ben ngoai Window
+                if( yEndWin <= yBeginSlide ) {
+                    rateOutside = 1;
+                    rateInside  = 0;
+                }
+
+                // Slide nam phia duoi vua ben ngoai vua ben trong Window
+                else if( yBeginSlide <= yEndWin && yEndWin <= yEndSlide ) {
+
+                    outsidePlus = 5;
+                    rateOutside = (yEndSlide - yEndWin) / hSlide;
+                    rateInside  = 0;
+                }
+
+                // Slide nam phia tren vua ben trong vua ben ngoai Window
+                else if( yBeginSlide <= yBeginWin && yBeginWin <= yEndSlide ) {
+
+                    outsidePlus = -5;
+                    rateOutside = (yBeginSlide - yBeginWin) / hSlide;
+                    rateInside  = 1;
+                }
+
+                // Slide nam` phia tren ben ngoai Window
+                else if( yBeginSlide <= yBeginWin ) {
+                    rateOutside = -1;
+                    rateInside  = 1;
+                }
+
+                // Slide nam trong vung cua Window
+                else {
+                    rateOutside = 0;
+                    rateInside  = (yEndWin - yEndSlide) / (hWin - hImgback);
+                }
+
+
+
+
+                /**
+                 * LAY VI TRI HIEN TAI CUA IMGBACK THEO HUO'NG SCROLL
+                 */
+                if( parallax['direction'] == 'same' ) {
+                    posOutside = - ((hSlide - 30) * rateOutside) + outsidePlus;
+                    posInside  = (depth * rateInside) - depth;
+                }
+                else {
+                    // posOutside = - (hSlide * rateOutside);
+                    posInside  = - depth * rateInside;
+                }
+
+
+
+                /**
+                 * SETUP VI TRI LEN IMGBACK
+                 */
+                va.tweenParallaxScroll.css($imgbackWrap, { 'y': posOutside + posInside });
+            });
+        },
+
+
+
+
+
+
+
+
+
+
+        /**
+         * EVENTS CHO PARALLAX
+         */
+        Events : function() {
+            var that = this;
+            VariableModule(that);
+
+
+            /**
+             * TRUOC TIEN LOAI BO EVENT SCROLL
+             */
+            var evScroll = 'scroll.parallaxXX'.replace(/XX/, va.rubykey);
+            va.$w.off(evScroll);
+
+
+
+            /**
+             * DANG KI EVENT SCROLL NEU TON TAI IMGBACK CO HIEU UNG PARALLAX
+             */
+            if( va.$imgbackParallax && va.$imgbackParallax.length ) {
+                va.$w.on(evScroll, function() { that.PosImgbackInScroll() });
+
+                // Setup vi tri cua Imgback luc moi bat dau
+                that.PosImgbackInScroll();
+            }
+        }
+    };
+})(jQuery);
+
+
+
+
+
+
+
+
+
+
+/**
+ * MODULE PARALLAX FOR LAYER
+ */
+(function($) {
+    'use strict';
+
+    // Check variable module
+    window.rs01MODULE = window.rs01MODULE || {};
+
+    // Global variables
+    var that, o, cs, va, is, ti, M;
+
+    /**
+     * UPDATE GLOBAL VARIABLES
+     */
+    function VariableModule(self) {
+        that = self;
+        o    = self.o;
+        cs   = self.cs;
+        va   = self.va;
+        is   = self.is;
+        ti   = self.ti;
+        M    = self.M;
+    }
+
+
+    /**
+     * MODULE PARALLAX FOR LAYER
+     */
+    rs01MODULE.LAYERPARALLAX = {
+
+        /**
+         * SETUP KHOI TAO LUC BAN DAU
+         */
+        Init : function($slCur) {
+            VariableModule(this);
+            var slData = M.Data($slCur);
+
+
+            /**
+             * KIEM TRA SLIDE HO TRO HIEU UNG PARALLAX LAYER
+             */
+            var isLayerParallax = !!(   slData['opts']['isLayerParallax']
+                                        && slData['$layerItem']
+                                        && slData['$layerItem'].length
+                                    );
+
+
+            /**
+             * SETUP DOI TUONG PARALLAX ITEM
+             */
+            if( isLayerParallax ) {
+                var $layerParallax = $();
+
+
+                /**
+                 * SETUP TUNG DOI TUONG HO TRO HIEU UNG
+                 */
+                slData['$layerItem'].each(function() {
+                    var $item    = $(this),
+                        itemData = M.Data($item);
+
+
+                    /**
+                     * THUOC TINH HO TRO PARALLAX
+                     */
+                    var p = {
+                        opts : $.extend(true, {}, o.layerParallax, $item.data('layerParallax'))
+                    };
+
+
+
+                    /**
+                     * KIEM TRA ITEM HO TRO HIEU UNG PARALLAX
+                     */
+                    if( p.opts.isParallax ) {
+
+                        // Setup thuoc tinh 'radius'
+                        var opts = p.opts;
+                        p.radius = opts.radius
+                                    || opts.radiusLevelValue[opts.radiusLevel]
+                                    || 0;
+
+
+                        // Luu tru doi tuong ho tro hieu ung vao bien chung
+                        $layerParallax = $layerParallax.add($item);
+
+                        // Luu tru option parallax vao Data
+                        itemData['layerParallax'] = p;
+                    }
+
+
+                    // Loai bo thuoc tinh Data tren Layer Item
+                    $item.removeAttr('data-layer-parallax');
+                });
+
+
+
+
+                /**
+                 * SETUP OTHER
+                 */
+                slData.$layerParallax  = $layerParallax
+                slData.isLayerParallax = !!$layerParallax.length;
+            }
+
+
+
+
+            /**
+             * TIEP TUC SETUP TRUONG HOP CO HIEU UNG PARALLAX LAYER
+             */
+            if( slData.isLayerParallax ) {
+
+                // Tao doi tuong Tween Animate cho hieu ung
+                slData.tweenLayerParallax = slData.tweenLayerParallax || new RubyTween();
+            }
+        },
+
+
+
+
+
+
+
+
+
+
+        /**
+         * TOGGLE EVENT TREN HIEU UNG PARALLAX LAYER KHI TOGGLE SLIDE
+         */
+        ToggleEvent : function(idCur) {
+            VariableModule(this);
+            var slData = M.Data(idCur);
+
+
+
+            /**
+             * SETUP DANG KI - LOAI BO HIEU UNG PARALLAX LAYER
+             */
+            var isLayerParallaxCur = slData.isLayerParallax;
+            if( va.isLayerParallaxLast != isLayerParallaxCur ) {
+
+                // Dang ki - loai bo Event
+                that.Events(isLayerParallaxCur ? 'on' : 'off');
+
+                // Luu tru trang thai hieu ung hien tai
+                va.isLayerParallaxLast = isLayerParallaxCur;
+            }
+        },
+
+
+        /**
+         * SETUP EVENT CHO HIEU UNG PARALLAX LAYER
+         */
+        Events : function(status) {
+            var that = this;
+            VariableModule(that);
+
+            // Setup ten goi Event mouse move
+            var evMouseMove = 'mousemove.{ns}{key}parallaxlayer'
+                                .replace(/\{ns\}/, va.ns)
+                                .replace(/\{key\}/, va.rubykey);
+
+
+
+            /**
+             * FUNCTION DANG KI - LOAI BO EVENT CHO HIEU UNG PARALLAX LAYER
+             */
+            var Event = {
+
+                /**
+                 * DANG KI EVENT MOVE
+                 */
+                on : function() {
+                    va.$viewport.on(evMouseMove, function(e) {
+                        VariableModule(that);
+
+                        // Lay dung loai bie'n tuy theo thiet bi
+                        var i = that.EVENTS.GetEventRight(e);
+
+                        // Setup Tween Animate cho hieu ung
+                        that.TweenAnimate(i);
+                    });
+                },
+
+
+                /**
+                 * LOAI BO EVENT MOVE
+                 */
+                off : function() { va.$viewport.off(evMouseMove); }
+            };
+
+
+
+
+            /**
+             * LUA CHO.N TUNG TRUONG HOP CU THE
+             */
+            Event[status]();
+        },
+
+
+
+
+
+
+
+
+
+
+
+
+        /**
+         * SETUP TWEEN ANIMATE CHO HIEU UNG
+         */
+        TweenAnimate : function(i) {
+            VariableModule(this);
+            var $slCur = va.$s.eq(cs.idCur),
+                slData = M.Data($slCur);
+
+            // Dieu kien thuc hien function
+            if( !slData.isLayerParallax ) return;
+
+
+
+            /**
+             * SETUP VI TRI + KICH THUOC LUC BAN DAU
+             */
+            var xPoint  = i.pageX,
+                yPoint  = i.pageY,
+                xySlide = $slCur.offset(),
+                xSlide  = xySlide.left,
+                ySlide  = xySlide.top,
+                wSlide  = M.OuterWidth($slCur),
+                hSlide  = M.OuterHeight($slCur),
+
+                xCenter = M.R((xSlide + wSlide) / 2),
+                yCenter = M.R((ySlide + hSlide) / 2),
+                wMax    = M.R(wSlide / 2),
+                hMax    = M.R(hSlide / 2),
+                wPercent = (xPoint - xCenter) / wMax,
+                hPercent = (yPoint - yCenter) / hMax;
+
+
+
+
+            /**
+             * TIEP TUC KIEM TRA VI TRI CUA POINTER THUOC SLIDE HIEN TAI
+             */
+            if( !( xSlide <= xPoint && xPoint <= (xSlide + wSlide)
+                && ySlide <= yPoint && yPoint <= (ySlide + hSlide) ))
+                return;
+
+
+
+
+
+            /**
+             * SETUP TWEEN ANIMATE CHO DOI TUONG PARALLAX ITEM
+             */
+            slData.$layerParallax.each(function() {
+                var $item    = $(this),
+                    itemData = M.Data($item),
+                    p        = itemData['layerParallax'];
+
+
+                /**
+                 * VI TRI PARALLAX HIEN TAI CUA DOI TUONG
+                 */
+                var radius    = p.radius,
+                    direction = (p.opts.direction === 'reverse') ? -1 : 1,
+                    xItem     = M.R(wPercent * radius * va.rate) * direction,
+                    yItem     = M.R(hPercent * radius * va.rate) * direction;
+
+
+
+
+                /**
+                 * LAY VI TRI CUA DOI TUONG DA~ SETUP LUC TRUOC
+                 */
+                var animData = window.rt00VA.GetData($item);
+
+                if( animData && animData['tfCur'] ) {
+                    var tfCur = animData['tfCur'];
+
+                    itemData['xParallax'] = tfCur['x'] || tfCur['left'] || 0;
+                    itemData['yParallax'] = tfCur['y'] || tfCur['top'] || 0;
+                }
+
+
+
+
+
+                /**
+                 * SETUP RUBYTWEEN CHO ITEM
+                 */
+                // Truong hop khoang cach giua hien tai va luc' truoc xa nhau
+                if(    itemData['xParallax'] === undefined
+                    || itemData['yParallax'] === undefined
+                    || M.A(xItem - itemData['xParallax']) > 5
+                    || M.A(yItem - itemData['yParallax']) > 5 ) {
+
+                    // Setup Tween Animate cho Item
+                    slData.tweenLayerParallax.animate($item, {
+                        'x' : xItem,
+                        'y' : yItem,
+                        'duration' : 200,
+                        'isNew'    : true
+                    });
+                }
+
+                // Truong hop khoang cach giua hien tai va luc truoc gan` nhau
+                else {
+
+                    // Setup Tween CSS cho Item
+                    slData.tweenLayerParallax.css($item, { 'x': xItem, 'y': yItem });
+
+                    // Luu tru vi tri cua hieu ung Parallax vao Data luc setup Tween CSS
+                    itemData['xParallax'] = xItem;
+                    itemData['yParallax'] = yItem;
+                }
+            });
+        },
+
+
+        /**
+         * RESET VI TRI CUA PARALLAX ITEM SAU KHI TOGGLE SLIDE
+         */
+        Reset : function(idCur) {
+            VariableModule(this);
+            var slData = M.Data(idCur);
+
+            // Dieu kien thuc hien function
+            if( !slData.isLayerParallax ) return;
+
+
+
+            /**
+             * RESET VI TRI CUA CAC DOI TUONG PARALLAX ITEM
+             */
+            slData.$layerParallax.each(function() {
+                var $item    = $(this),
+                    itemData = M.Data($item);
+
+                // Setup Tween CSS cho Item hien tai
+                slData.tweenLayerParallax.css($item, { 'x': 0, 'y': 0 });
+
+                // Luu tru vi tri hien tai cua doi tuong vao Data
+                itemData['xParallax'] = 0;
+                itemData['yParallax'] = 0;
+            });
         }
     };
 })(jQuery);
@@ -17176,7 +20693,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
                  */
                 var $slNext         = va.$s.eq(idNext),
                     slData          = M.Data($slNext),
-                    isLazy          = slData.opts.load.isLazy,
+                    isLazy          = !/^(none|single)$/.test(slData.opts.lazyType),
                     isGotoNextSlide = isLazy || (!isLazy && slData.isLoaded);
 
 
@@ -17345,7 +20862,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
                     // Execute 'go' command when not play slideshow
                     !is.fxRun && that.Go('apiPlay');
                     // Trigger event 'slideshowPlay'
-                    cs.ev.trigger('slideshowPlay');
+                    M.RunEvent('slideshowPlay');
                 }
             }
 
@@ -17363,7 +20880,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
                     is.ssPauseAbsolute = true;
                     that.Go('apiPause');
                     // Trigger event 'slideshowPause'
-                    cs.ev.trigger('slideshowPause');
+                    M.RunEvent('slideshowPause');
                 }
             }
 
@@ -17382,7 +20899,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
                     is.stop = is.ssPauseAbsolute = true;
                     that.Pause(true);
                     // Trigger event 'slideshowStop'
-                    cs.ev.trigger('slideshowStop');
+                    M.RunEvent('slideshowStop');
                 }
             }
         },
@@ -17944,6 +21461,1190 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
 
 
 /**
+ * MODULE FLICKR
+ */
+(function($) {
+
+    // Check variable module
+    window.rs01MODULE = window.rs01MODULE || {};
+
+    // Global variables
+    var that, o, cs, va, is, ti, M;
+
+    /**
+     * UPDATE GLOBAL VARIABLES
+     */
+    function VariableModule(self) {
+        that = self;
+        o    = self.o;
+        cs   = self.cs;
+        va   = self.va;
+        is   = self.is;
+        ti   = self.ti;
+        M    = self.M;
+    }
+
+
+    /**
+     * MODULE FEED FLICKR
+     */
+    rs01MODULE.FLICKR = {
+
+        /**
+         * KHOI TAO LUC DAU
+         */
+        Init : function() {
+            VariableModule(this);
+
+
+            /**
+             * SETUP URL REQUEST LUC BAN DAU
+             */
+            va.flickrNum = 0;
+            va.flickrUrlRequest = o.flickr.urlRequest
+                                    .replace(/\{key\}/, o.flickr.apiKey);
+
+
+            /**
+             * TIM KIEM ID CUA USER - ALBUM
+             */
+            that.SearchIDDependType();
+        },
+
+
+        /**
+         * TIM KIEM ID TUY THEO TUNG` LOAI
+         */
+        SearchIDDependType : function() {
+            VariableModule(this);
+            var oflickr  = o.flickr,
+                recentID = oflickr['recentID'],
+                albumID  = oflickr['albumID'],
+                favesID  = oflickr['favesID'],
+
+                userURL  = oflickr['getPhotoRecentByUrl'],
+                albumURL = oflickr['getPhotoAlbumByUrl'],
+                favesURL = oflickr['getPhotoFavesByUrl'],
+
+                /**
+                 * REGULAR HO TRO CAC LOAI USER URL
+                 *  + https://www.flickr.com/photos/{userID}/...
+                 */
+                reUser = /^.*(?:flickr\.com).*photos\/(\w+@?\w*)\/.*/,
+
+                /**
+                 * REGULAR HO TRO CAC' LOAI ALBUM URL
+                 *  + https://www.flickr.com/photos/{userID}/sets/{albumID}
+                 *  + https://www.flickr.com/photos/{userID}/albums/{albumID}
+                 *  + https://www.flickr.com/photos/{userID}/{photoID}/in/album-{albumID}/
+                 */
+                reAlbum = /^.*(?:flickr\.com).*photos\/(\w+@?\w*)\/(?:(?:sets\/)|(?:albums\/)|(?:\d*\/in\/album\-))(\d*)/,
+
+                /**
+                 * REGULAR HO TRO CAC LOAI FAVES URL
+                 *  + https://www.flickr.com/photos/{userID}/favorites/...
+                 *  + https://www.flickr.com/photos/{ownPhotoID}/{photoID}/in/faves-{userID}/
+                 */
+                reFaves1 = /^.*(?:flickr\.com).*photos\/(\w+@?\w*)\/favorites.*/,
+                reFaves2 = /^.*(?:flickr\.com).*photos\/\w+@?\w*\/(?:\d*\/in\/faves\-)(\w+@?\w*)/,
+
+                match, dataID;
+
+
+
+
+            /**
+             * SETUP BIEN HIEN THI SO LUO.NG AJAX REQUEST USER ID
+             */
+            va.flickrNumUserIDSend   = 0;
+            va.flickrNumUserIDRecive = 0;
+
+
+
+            /**
+             * SETUP LAY USERNAME
+             */
+            function GetUsername(id, dataID, isForceRequest) {
+
+                // Truong hop ID la 'NSID' -> Tim kiem Username
+                if( /^\d+@\w+/.test(id) || isForceRequest ) {
+
+                    // Tim kiem User Name cua Photo Recent
+                    va.flickrNumUserIDSend++;
+                    that.SearchUserInfo(dataID);
+                }
+
+                // Truong hop ID la 'Path name'
+                else {
+
+                    // Luu tru Path Name cua Photo Recent
+                    va.flickrData[dataID]['pathName'] = id;
+                }
+            }
+
+
+
+
+
+            /**
+             * TRUONG HOP LAY 'PHOTO RECENT' BANG ID CO SAN HOAC URL
+             */
+            var tamthoiRecentID;
+            if( !!recentID && /^\w+@?w*$/.test(recentID) ) {
+
+                // Tam thoi luu tru Album ID
+                tamthoiRecentID = recentID;
+            }
+
+            // Truong hop lay Recent ID bang URL
+            else if( reUser.test(userURL) ) {
+
+                // Tim kiem User ID trong URL
+                match = userURL.match(reUser);
+
+                // Tam thoi luu tru Recent ID
+                tamthoiRecentID = match[1];
+            }
+
+            // Luu tru Recent ID neu ton tai
+            if( !!tamthoiRecentID ) {
+
+                // Luu tru vao bien chung
+                dataID = va.flickrNum++;
+                va.flickrData[dataID] = { 'id': tamthoiRecentID, 'name' : 'recent' };
+
+                // Setup ajax lay Username
+                GetUsername(tamthoiRecentID, dataID);
+            }
+
+
+
+
+            /**
+             * TRUONG HOP SETUP 'ALBUM ID' BANG ID CO' SAN HOAC URL
+             *  + Truong hop Album ID co san~ la Number
+             */
+            var tamthoiAlbumID;
+            if( !!albumID && /^\d+$/.test(albumID) ) {
+
+                // Tam thoi luu tru Album ID
+                tamthoiAlbumID = albumID;
+            }
+
+            // Truong hop lay Album ID bang URL
+            else if( reAlbum.test(albumURL) ) {
+
+                // Tim kiem Album ID trong URL
+                match = albumURL.match(reAlbum);
+
+                // Tam thoi luu tru Album ID
+                tamthoiAlbumID = match[2];
+            }
+
+            // Luu tru Album ID neu ton tai
+            if( !!tamthoiAlbumID ) {
+
+                // Luu tru Album ID vao bien cung
+                dataID = va.flickrNum++;
+                va.flickrData[dataID] = { 'id': tamthoiAlbumID, 'name': 'album' };
+            }
+
+
+
+
+            /**
+             * TRUONG HOP SETUP LAY FAVORITES ID BANG ID CO SANG + URL
+             *  + Tam thoi chi? lay Faves ID da.ng 'NSID'
+             */
+            var tamthoiFavesID;
+            if( !!favesID && /^\w+@?w*$/.test(favesID) ) {
+
+                // Tam thoi luu tru~ Faves ID
+                tamthoiFavesID = favesID;
+            }
+
+            // Truong hop lay Favorites ID bang URL
+            else if( reFaves1.test(favesURL) || reFaves2.test(favesURL) ) {
+                var match1 = favesURL.match(reFaves1),
+                    match2 = favesURL.match(reFaves2);
+
+                // Tam thoi luu tru~ Faves ID
+                tamthoiFavesID = !!match2 ? match2[1] : match1[1];
+            }
+
+            // Luu tru Faves ID neu ton tai
+            if( !!tamthoiFavesID ) {
+
+                // Luu tru Faves ID vao bien chung
+                dataID = va.flickrNum++;
+                va.flickrData[dataID] = { 'id': tamthoiFavesID, 'name': 'faves' };
+
+                // Setup ajax lay Username
+                GetUsername(tamthoiFavesID, dataID, true);
+            }
+
+
+
+
+            /**
+             * TIEP TUC SETUP DANH SACH PHOTO ID
+             */
+            if( va.flickrNumUserIDSend == 0 ) {
+                that.SearchListPhotoID();
+            }
+        },
+
+
+        /**
+         * TIM KIEM THONG TIN VE USER
+         */
+        SearchUserInfo : function(dataID) {
+            VariableModule(this);
+            var that       = this,
+                flickrData = va.flickrData[dataID];
+
+
+            /**
+             * SETUP URL REQUEST
+             */
+            var oflickr    = o.flickr,
+                urlRequest = va.flickrUrlRequest
+                                .replace(/\{method\}/, 'urls.lookupUser')
+                                .replace(/\{typeID\}/, '&url=www.flickr.com/photos/' + flickrData['id']);
+
+
+            /**
+             * SETUP SETTING CHO AJAX
+             */
+            var settings = {
+                type    : 'GET',
+                success : function(ajaxData) {
+                    VariableModule(that);
+                    va.flickrNumUserIDRecive++;
+
+                    // Dam bao chuyen doi du~ lieu sang Json
+                    ajaxData = M.StringToJson(ajaxData);
+
+
+                    /**
+                     * TRUONG HOP AJAX REQUEST THANH CONG
+                     */
+                    if( ajaxData.stat == 'ok' ) {
+
+                        // Luu tru NSID va Username
+                        ajaxData               = ajaxData['user'];
+                        flickrData['nsid']     = ajaxData['id'];
+                        flickrData['username'] = ajaxData['username'] && ajaxData['username']['_content'];
+
+                        // Tiep tuc Tim kiem danh sach Photo neu Ajax UserID da~ yeu cau` day` du?
+                        if( va.flickrNumUserIDRecive == va.flickrNumUserIDSend ) {
+                            that.SearchListPhotoID();
+                        }
+                    }
+
+
+                    /**
+                     * TRUONG HOP AJAX REQUEST THAT BAI
+                     */
+                    else if( ajaxData.stat == 'fail' ) {
+                        M.Message('flickr error 4', ajaxData.message);
+                    }
+                },
+
+                // Request khong duoc
+                error : function(e) {}
+            }
+
+            // Setup Ajax
+            $.ajax(urlRequest, settings);
+        },
+
+
+        /**
+         * TIM KIEM DANH SACH PHOTO CUA ALBUM
+         */
+        SearchListPhotoID : function() {
+            var that = this;
+            VariableModule(that);
+
+            // Dieu kien thuc hien Function
+            if( $.isEmptyObject(va.flickrData) ) return false;
+
+
+
+            /**
+             * LUU TRU DANH SACH PHOTO TUY THEO TYPE
+             */
+            function SaveListPhotoByID(dataID, ajaxData) {
+                var flickrData = va.flickrData[dataID];
+
+                switch( flickrData['name'] ) {
+
+                    case 'recent' :
+                        flickrData['photos'] = ajaxData['photos'];
+                        break;
+
+                    case 'album' :
+                        flickrData['photos'] = ajaxData['photoset'];
+                        break;
+
+                    case 'faves' :
+                        flickrData['photos'] = ajaxData['photos'];
+                        break;
+                }
+            }
+
+
+
+
+            /**
+             * SETUP VONG LAP DE LAY TAT CA DANH SACH PHOTO THEO TUNG LOAI
+             */
+            var nRequested = 0;
+            for( var id in va.flickrData ) {
+                var flickrData = va.flickrData[id];
+
+
+                /**
+                 * SETUP URL REQUEST TUY THEO TUNG LOAI
+                 */
+                var urlRequest  = va.flickrUrlRequest;
+                switch( flickrData['name'] ) {
+
+                    case 'recent' :
+                        urlRequest = urlRequest
+                            .replace(/\{method\}/, 'people.getPhotos')
+                            .replace(/\{typeID\}/, '&user_id=' + flickrData['nsid']);
+
+                        break;
+
+                    case 'album' :
+                        urlRequest = urlRequest
+                            .replace(/\{method\}/, 'photosets.getPhotos')
+                            .replace(/\{typeID\}/, '&photoset_id=' + flickrData['id']);
+
+                        break;
+
+                    case 'faves' :
+                        urlRequest = urlRequest
+                            .replace(/\{method\}/, 'favorites.getList')
+                            .replace(/\{typeID\}/, '&user_id=' + flickrData['nsid']);
+
+                        break;
+                }
+
+
+
+                /**
+                 * SETUP SETTING CHO AJAX
+                 */
+                var settings = {
+                    type    : 'GET',
+                    dataID  : id,
+
+                    success : function(ajaxData) {
+                        VariableModule(that);
+                        nRequested++;
+
+                        // Dam bao chuyen doi du~ lieu sang Json
+                        ajaxData = M.StringToJson(ajaxData);
+
+
+                        /**
+                         * TRUONG HOP AJAX REQUEST THANH CONG
+                         */
+                        if( ajaxData.stat == 'ok' ) {
+
+                            // Luu tru danh sach Photo tuy thoe Flickr Type
+                            SaveListPhotoByID(this.dataID, ajaxData);
+
+
+                            /**
+                             * TIEP TUC SETUP NEU DA~ LOAD XONG DANH SACH PHOTO
+                             */
+                            if( nRequested == va.flickrNum ) {
+
+                                // Cap nhat nhung thong tin ca`n thiet vao Photo
+                                that.UpdateInfoToPhoto();
+
+                                // Render markup danh sach Photo can thiet
+                                that.RenderListPhoto();
+                            }
+                        }
+
+
+                        /**
+                         * TRUONG HOP AJAX REQUEST THAT BAI
+                         */
+                        else if( ajaxData.stat == 'fail' ) {
+                            M.Message('flickr error 1', ajaxData.message);
+                        }
+                    },
+
+                    // Request khong duoc
+                    error : function(e) {}
+                }
+
+                // Setup Ajax
+                $.ajax(urlRequest, settings);
+            }
+        },
+
+
+        /**
+         * CAP NHAT NHUNG THONG TIN CAN THIET VAO PHOTO
+         *  + Cap nhat ten Album
+         *  + Cap nhat ten Tac gia
+         */
+        UpdateInfoToPhoto : function() {
+            VariableModule(this);
+
+
+            /**
+             * CAP NHAT THONG TIN TREN TUONG TRUONG TRONG 'FLICKR DATA'
+             */
+            for( var id in va.flickrData ) {
+
+                var flickrData = va.flickrData[id],
+                    dataPhotos = flickrData['photos'];
+
+
+
+                /**
+                 * VONG LAP DE SETUP TUNG PHOTO
+                 */
+                for( var i = 0, len = dataPhotos['photo'].length; i < len; i++ ) {
+                    var photoCur = dataPhotos['photo'][i];
+
+
+                    /**
+                     * BO SUNG THONG TIN CHONG CHO TUNG` PHOTO
+                     */
+                    // Bien nhan biet render Photo nhu la` 1 Slide doc. lap
+                    photoCur['isRenderAsSlide'] = true;
+
+
+
+
+                    /**
+                     * BO SUNG THONG TIN KHAC CHO TUNG` PHOTO CAC TRUONG HOP KHAC NHAU
+                     */
+                    switch( flickrData['name'] ) {
+
+                        case 'recent' :
+                            photoCur['owner'] = { 'nsid': flickrData['nsid'], 'username': flickrData['username'] };
+                            break;
+
+                        case 'album' :
+                            photoCur['owner']      = { 'nsid': dataPhotos['owner'], 'username': dataPhotos['ownername'] };
+                            photoCur['albumID']    = dataPhotos['id'];
+                            photoCur['albumTitle'] = dataPhotos['title'];
+                            break;
+
+                        case 'faves' :
+                            photoCur['owner'] = { 'nsid': photoCur['owner'] };
+                            break;
+                    }
+                }
+            }
+        },
+
+
+
+
+
+
+
+
+
+
+
+        /**
+         * GIAI MA~ + MA~ HOA BASE58 CHO SHORT URL
+         */
+        Base58 : function(ID, action) {
+            VariableModule(this);
+            var alphabet = '123456789abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ',
+                alphaLen = alphabet.length;
+
+
+            /**
+             * SATUP MA~ HOA' ID THANH STRING BASE58
+             */
+            function Enruby() {
+
+                // Dieu kien ID phai la Number hoa.c String number
+                if( !(typeof ID === 'number' || ID == M.PInt(ID)) ) return false;
+                var IDEnruby = '';
+
+
+                /**
+                 * VONG LAP DE LAY TU`NG KI TU DUOC MA~ TRONG TRONG NUMBER
+                 */
+                while( ID ) {
+
+                    // Lay ki tu trong Alphabet
+                    var index = ID % alphaLen;
+                    IDEnruby = alphabet[index].toString() + IDEnruby;
+
+                    // Gia?m gia tri ID
+                    ID = Math.floor(ID / alphaLen);
+                }
+
+                // Tra ve ID da~ ma~ hoa'
+                return IDEnruby;
+            }
+
+
+
+            /**
+             * SETUP GIAI? MA~ ID BASE58 THANH NUMBER
+             */
+            function Deruby() {
+
+                // Dieu kien ID co gia tri la String
+                if( typeof ID !== 'string' ) return false;
+                var IDDeruby = 0,
+                    powerNum = 1;
+
+
+                /**
+                 * SETUP CHUYEN DOI TUNG KI TU. THANH GIA TRI NUMBER
+                 */
+                while( ID ) {
+
+                    // Kiem tra ki' tu hien tai co trong Alphabet
+                    var characterCur = ID[ID.length - 1],
+                        characterPos = alphabet.indexOf(characterCur);
+
+                    if( characterPos == -1 ) return false;
+
+                    // Chuyen doi gia tri Ki' tu hien tai thanh Number
+                    var characterValue = that.BigIntegerMulti(powerNum, characterPos);
+
+                    // Setup co.ng gia tri vao bien chung + setup so' luy~ thua`
+                    IDDeruby = that.BigIntegerAdd(IDDeruby, characterValue);
+                    powerNum = that.BigIntegerMulti(powerNum, alphaLen);
+
+                    // Giam gia tri ID
+                    ID = ID.substr(0, ID.length - 1);
+                }
+
+                // Tra ve gia tri. da~ chuyen doi
+                return IDDeruby;
+            }
+        },
+
+
+        /**
+         * THUC HIEN PHEP CONG. VOI SO' BIG INTEGER
+         */
+        BigIntegerAdd : function(num1, num2) {
+
+            /**
+             * CHUYEN DOI NUMBER THANH NHUNG CON SO TRONG ARRAY
+             */
+            var one = num1.toString().split(''),
+                two = num2.toString().split('');
+
+
+
+            /**
+             * TOI UU PHEP TOAN NEU NHO? HON 'INTEGER SAFE'
+             */
+            var lenOne = one.length,
+                lenTwo = two.length;
+
+            if( lenOne < 15 || lenTwo < 15 ) {
+                return parseFloat(num1) + parseFloat(num2);
+            }
+
+
+
+            /**
+             * TIEP TUC SETUP NEU LA 'BIG INTEGER'
+             */
+            var lenMax = Math.max(lenOne, lenTwo),
+                numMin = (lenOne > lenTwo) ? two : one;
+
+            // Chen gia tri vao Number nho?
+            for( var i = 0, len = Math.abs(lenOne - lenTwo); i < len; i++ ) {
+                numMin.unshift('0');
+            }
+
+
+
+            /**
+             * SETUP PHEP' CO.NG TUNG THANH PHAN TRONG MA?NG
+             */
+            var total = [], plus = 0;
+            for( var i = lenMax - 1; i >= 0; i-- ) {
+
+                // Phep co.ng voi tung gia tung gia tri cua 2 ma?ng va` so' nho'
+                var digitCur = parseFloat(one[i]) + parseFloat(two[i]) + plus;
+                plus = 0;
+
+                // Chuyen doi so hien tai neu lon hon 9
+                if( digitCur > 9 ) {
+                    digitCur -= 10;
+                    plus = 1;
+                }
+
+                // Luu tru vao bien
+                total.unshift(digitCur);
+            }
+
+            // Cong them vao so' nho cuoi cung
+            if( plus > 0 ) total.unshift(plus);
+
+            // Tra lai ket qua? setup + Chuyen doi ma?ng thanh String
+            return total.join('');
+        },
+
+        BigIntegerMulti: function(num1, num2) {
+
+            // Chuyen doi kieu gia tri luc ban dau
+            var one = parseFloat(num1),
+                two = parseFloat(num2);
+
+            /**
+             * TRUONG HOP PHEP NHAN 'SMALL INTEGER'
+             */
+            var total = one * two;
+            if( total.toString().split('').length < 15 ) return total;
+
+
+
+            /**
+             * TRUONG HOP PHEP NHAN VOI 'BIG INTEGER'
+             */
+            total = one;
+            for( var i = 1; i < two; i++ ) {
+
+                // Setup phep nhan bang co.ng lien tuc tu`ng so' voi nhau
+                total = this.BigIntegerAdd(one, total);
+            }
+
+            // Tra ve` ket qua? ti`m duoc
+            return total;
+        },
+
+
+
+
+
+
+
+
+
+
+
+
+        /**
+         * SETUP SO LUONG DANH SACH PHOTO CAN THIET
+         */
+        NumberOfPhoto : function() {
+            VariableModule(this);
+            var oflickr = o.flickr, photoNum;
+
+
+            /**
+             * SETUP VONG LAP DE LAY DANH SACH PHOTO CAN THIET THEO TUNG LOAI
+             */
+            for( var id in va.flickrData ) {
+                var flickrData = va.flickrData[id];
+
+
+                /**
+                 * SETUP CAC BIEN TUY THEO LOAI
+                 */
+                switch( flickrData['name'] ) {
+                    case 'recent' :
+                        photoNum = oflickr['photoRecentNum'] || oflickr['photoNum'];
+                        break;
+
+                    case 'album' :
+                        photoNum = oflickr['photoAlbumNum'] || oflickr['photoNum'];
+                        break;
+
+                    case 'faves' :
+                        photoNum = oflickr['photoFavesNum'] || oflickr['photoNum'];
+                        break;
+                }
+
+                // Tiep tuc setup So luong Photo neu Ma?ng photo khong co'
+                var aPhoto = flickrData['photos']['photo'];
+                if( !aPhoto ) continue;
+
+
+
+
+                /**
+                 * TRUONG HOP LAY SO LUONG PHOTO NGA~U NHIEN
+                 */
+                if( oflickr.isRandomPhoto && (photoNum > 0) && (aPhoto.length > photoNum) ) {
+
+                    var aPhotoCopy      = $.extend({}, aPhoto),
+                        listPhotoRandom = [];
+
+
+                    /**
+                     * TAO VONG LAP DE LAY TUNG PHOTO RANDOM TRONG ALBUM
+                     */
+                    for( var i = 0; i < photoNum; i++ ) {
+
+                        // Lay gia tri random hien tai
+                        // Luu tru Item random trong Array[] copy
+                        var itemCur = M.RandomInArray(aPhoto, aPhotoCopy);
+                        listPhotoRandom.push(itemCur);
+                    }
+
+                    // Luu tru vao bien chung
+                    $.merge(va.flickrListPhoto, listPhotoRandom);
+                }
+
+
+
+                /**
+                 * TRUONG HOP LAY SO LUONG PHOTO VO VI TRI CUOI CUNG`
+                 */
+                else {
+                    var photoPos  = oflickr['photoPosition'],
+                        isReverse = false,
+
+                        // Truong hop lay tat ca? Photo trong Album
+                        // Truong hop so luong Photo trong Album nho? hon gia trin PhotoNum option
+                        posBegin = 0,
+                        posEnd   = aPhoto.length;
+
+
+                    /**
+                     * TRUONG HOP LAY PHOTO O VI TRI 'BEGIN'
+                     */
+                    if( photoPos == 'begin' ) {
+
+                        // Truong hop binh thuong
+                        if( (aPhoto.length > photoNum) && (photoNum != 'all') && (photoNum !== -1) ) {
+                            posEnd = photoNum;
+                        }
+                    }
+
+
+                    /**
+                     * TRUONG HOP LAY PHOTO CO VI TRI 'LAST'
+                     */
+                    else if( photoPos == 'last' ) {
+
+                        // Dao nguoc danh sach Photo
+                        isReverse = true;
+
+                        // Truong hop binh thuong
+                        if( (aPhoto.length > photoNum) && (photoNum != 'all') && (photoNum !== -1) ) {
+                            posBegin = aPhoto.length - photoNum;
+                            posEnd   = aPhoto.length;
+                        }
+                    }
+
+
+
+                    // Setup lay danh sach Photo can` thiet
+                    // Dao nguoc danh sach Photo tuy theo option
+                    var listPhotoNeeded = aPhoto.slice(posBegin, posEnd);
+                    if( isReverse ) listPhotoNeeded.reverse();
+
+                    // Chen` danh sach Photo vua` lay duoc vao bien chung
+                    $.merge(va.flickrListPhoto, listPhotoNeeded);
+                }
+            }
+        },
+
+
+        /**
+         * RENDER MARKUP TAT CA PHOTO CAN THIET
+         */
+        RenderListPhoto : function() {
+            VariableModule(this);
+            var oflickr = o.flickr;
+
+            // Dieu kien thuc hien Function
+            if( $.isEmptyObject(va.flickrData) ) return false;
+
+
+
+            /**
+             * SETUP SO LUONG DANH SACH PHOTO CAN THIET
+             */
+            that.NumberOfPhoto();
+
+
+
+            /**
+             * SETUP HTML TUNG PHOTO
+             */
+            var aHTML = [];
+            for( var i = 0, len = va.flickrListPhoto.length; i < len; i++ ) {
+
+                // Dieu kien thuc hien
+                var photoCur = va.flickrListPhoto[i];
+                if( !photoCur['isRenderAsSlide'] ) continue;
+
+
+
+                /**
+                 * KET HOP MARKUP VOI NHAU
+                 */
+                var username     = photoCur['owner'] && photoCur['owner']['username'],
+                    nsid         = photoCur['owner'] && photoCur['owner']['nsid'],
+
+                    isPhotoTitle = oflickr.isPhotoTitle && !!photoCur['title'],
+                    isAlbumTitle = oflickr.isAlbumTitle && !!photoCur['albumTitle'],
+                    isAuthor     = oflickr.isAuthor && !!username,
+                    isInfo       = oflickr.isInfo && (isPhotoTitle || isAlbumTitle || isAuthor),
+
+                    html = oflickr.markupSlide
+
+                            // Thay the cac cu.m markup Title - Album
+                            .replace(/\{markupInfo\}/,
+                                (isInfo ? oflickr.markupInfo : ''))
+                            .replace(/\{markupPhotoTitle\}/,
+                                (isPhotoTitle ? oflickr.markupPhotoTitle : ''))
+                            .replace(/\{markupAlbumTitle\}/,
+                                (isAlbumTitle ? oflickr.markupAlbumTitle : ''))
+                            .replace(/\{markupAuthor\}/,
+                                (oflickr.isAuthor && username ? oflickr.markupAuthor : ''))
+                            .replace(/\{markupSplit\}/,
+                                (isPhotoTitle && isAlbumTitle ? oflickr.markupSplit : ''))
+
+                            // Thay the data layer tren Flickr Info
+                            .replace(/\{infoLayer\}/,
+                                M.JsonToString(oflickr.infoLayer))
+
+                            // Thay the URL cua Photo - Album - Author
+                            .replace(/\{photoURL\}/g, 'https://www.flickr.com/photos/{authorID}/{photoID}')
+                            .replace(/\{albumURL\}/g, 'https://www.flickr.com/photos/{authorID}/albums/{albumID}')
+                            .replace(/\{authorURL\}/g, 'https://www.flickr.com/photos/{authorID}')
+                            .replace(/\{albumID\}/g, photoCur['albumID'])
+                            .replace(/\{authorID\}/g, nsid)
+
+                            // Thay the thong tin tren Photo hien tai
+                            .replace(/\{numID\}/g, i)
+                            .replace(/\{photoID\}/g, photoCur['id'])
+                            .replace(/\{photoTitle\}/g, photoCur['title'])
+                            .replace(/\{albumTitle\}/g, photoCur['albumTitle'])
+                            .replace(/\{author\}/g, username)
+
+                            .replace(/\{ns\}/g, va.ns);
+
+                // Luu tru vao Array[]
+                aHTML.push(html);
+            }
+
+
+
+
+            /**
+             * CHEN NHUNG PHOTO VAO RUBY BANG 'API.ADDSLIDE()'
+             */
+            cs.addSlide(aHTML);
+        },
+
+
+
+
+
+
+
+
+
+
+        /**
+         * LAY LINK URL BANG ID DUOC LUU TRU TRONG DATA PHOTO
+         */
+        GetLinkByPhotoID : function($i) {
+            VariableModule(this);
+            var oflickr = o.flickr,
+                iData   = M.Data($i);
+
+            // Luu tru thuoc tinh 'data-flickr' vao Data cua Image
+            var iDataFlickr = iData['flickr'] = $i.data('flickr');
+
+
+            /**
+             * FUNCTION TIEP TUC SETUP IMAGE TRONG FUNCTION 'IMAGE.SetupAtLoadSlideBegin()'
+             */
+            function EventLoad() {
+                M.Module('IMAGE').EventLoad($i);
+            }
+
+
+
+            /**
+             * FUNCTION AJAX LAY TAT CA KICH THUOC CUA PHOTO
+             */
+            function AjaxGetAllSizePhoto() {
+
+                // Setup URL Request cho Ajax
+                var urlRequest = va.flickrUrlRequest
+                                    .replace(/\{method\}/, 'photos.getSizes')
+                                    .replace(/\{typeID\}/, '&photo_id=' + iDataFlickr['photoID']);
+
+
+                var settings = {
+                    type : 'GET',
+
+                    success : function(ajaxData) {
+                        VariableModule(that);
+
+                        // Dam bao chuyen doi sang Json
+                        ajaxData = M.StringToJson(ajaxData);
+
+
+                        /**
+                         * TRUONG HOP AJAX REQUEST THANH CONG
+                         */
+                        if( ajaxData.stat == 'ok' ) {
+
+                            // Setup lay link url cua Photo tuy thuoc vao kich thuoc
+                            var photoURL = that.GetLinkBySizePhoto(iDataFlickr['id'], ajaxData);
+
+                            // Luu tru Photo URL vua moi setup
+                            iData['src'].push(photoURL);
+
+                            // Reset SRC de hien thi Photo trong qua' trinh Loading
+                            // Loai bo thuoc tinh 'data-flickr' tren Photo
+                            $i
+                                .attr('src', '')
+                                .removeAttr('data-flickr');
+
+
+                            // Tiep tuc setup Image
+                            EventLoad();
+                        }
+
+
+                        /**
+                         * TRUONG HOP AJAX REQUEST THAT BAI
+                         */
+                        else if( ajaxData.stat == 'fail' ) {
+                            M.Message('flickr error 2', ajaxData.message);
+                        }
+                    },
+                    error : function(e) {}
+                };
+
+                // Setup Ajax lay kich thuoc cua Photo
+                $.ajax(urlRequest, settings);
+            }
+
+
+
+
+
+            /**
+             * TRUONG HOP DATA FLICKR CO GIA TRI {}
+             */
+            if( $.isPlainObject(iDataFlickr) && !!iDataFlickr['photoID'] ) {
+
+                var photoID = iDataFlickr['photoID'],
+                    numID   = iDataFlickr['numID'];
+
+
+                // Truong hop Photo co ID trong Album || Bien chung
+                // Setup Ajax lay tat ca Kich thuoc cua Photo
+                if( $.isNumeric(numID) && va.flickrListPhoto[numID] && va.flickrListPhoto[numID]['id'] == photoID ) {
+                    AjaxGetAllSizePhoto();
+                }
+
+                // Truong hop Photo co ID khong co trong Album || Photo ID rieng le
+                // Setup Ajax lay thong tin chi tiet ve Photo
+                else {
+                    that.GetPhotoInfoByID($i);
+                }
+            }
+
+
+
+
+            /**
+             * TRUONG HOP DATA FLICKR CO GIA TRI 'STRING'
+             *  + Tim kiem Photo ID trong URL
+             */
+            else if( typeof iDataFlickr == 'string' && !/^\s*$/.test(iDataFlickr) ) {
+
+                /**
+                 * REGULAR HO TRO. CAC' LOAI URL
+                 *  + https://www.flickr.com/photos/{userID}/{photoID}/
+                 *  + https://www.flickr.com/photos/{userID}/{photoID}/in/photostream/
+                 *  + https://www.flickr.com/photos/{userID}/{photoID}/in/album-{albumID}/
+                 */
+                var rePhoto = /^.*(?:flickr\.com).*photos\/(\w+@?\w*)\/(\d*)/,
+                    match   = iDataFlickr.match(rePhoto);
+
+
+                // Truong hop Photo ID hop le
+                if( match && !!match[2] ) {
+
+                    // Cap nhat lai 'data-flickr' tren Photo
+                    iData['flickr'] = { 'photoID': match[2] };
+
+                    // Setup lai. Function nay` voi data vua` cap nhat
+                    that.GetLinkByPhotoID($i);
+                }
+
+                // Truong hop Photo ID khong hop le
+                // Tiep tuc setup Photo
+                else EventLoad();
+            }
+
+
+
+            /**
+             * TRUONG HOP KHAC
+             *  + Tiep tuc setup Photo
+             */
+            else EventLoad();
+        },
+
+
+        /**
+         * LAY THONG TIN CHI TIET VE PHOTO BANG ID
+         */
+        GetPhotoInfoByID : function($i) {
+            VariableModule(this);
+            var oflickr     = o.flickr,
+                iDataFlickr = M.Data($i)['flickr'];
+
+
+            /**
+             * SETUP AJAX DE LAY THONG TIN CHI TIET PHOTO
+             */
+            // Setup URL Request cho Ajax
+            var urlRequest = va.flickrUrlRequest
+                                .replace(/\{method\}/, 'photos.getInfo')
+                                .replace(/\{typeID\}/, '&photo_id=' + iDataFlickr['photoID']);
+
+
+            var settings = {
+                type : 'GET',
+
+                success : function(ajaxData) {
+                    VariableModule(that);
+
+                    // Dam bao chuyen doi sang Json
+                    ajaxData = M.StringToJson(ajaxData);
+
+
+                    /**
+                     * TRUONG HOP AJAX REQUEST THANH CONG
+                     */
+                    if( ajaxData.stat == 'ok' ) {
+
+                        // Rut gon data tu Ajax
+                        ajaxData = ajaxData['photo'];
+
+                        // Copy ajaxData tu Ajax request
+                        var photoData = $.extend({}, ajaxData);
+
+                        // Cap nhat Photo ajaxData cho gio'ng Photo trong Album
+                        photoData['title'] = ajaxData['title']['_content'];
+
+                        // Cap nhat thuoc tinh 'alt' cua Photo bang Title
+                        $i.attr('alt', photoData['title']);
+
+                        // Cap nhat lai bien chung
+                        iDataFlickr['numID'] = va.flickrListPhoto.length;
+                        va.flickrListPhoto.push(photoData);
+
+                        // Setup lai. Photo sau khi cap nhat du~ lieu
+                        that.GetLinkByPhotoID($i);
+                    }
+
+
+                    /**
+                     * TRUONG HOP AJAX REQUEST THAT BAI
+                     */
+                    else if( ajaxData.stat == 'fail' ) {
+                        M.Message('flickr error 3', ajaxData.message);
+
+                        // Tiep tuc setup Image
+                        M.Module('IMAGE').EventLoad($i);
+                    }
+                },
+                error : function(e) {}
+            };
+
+            // Setup Ajax lay kich thuoc cua Photo
+            $.ajax(urlRequest, settings);
+        },
+
+
+        /**
+         * SETUP LAY LINK URL CUA PHOTO TUY THUOC VAO KICH THUOC
+         */
+        GetLinkBySizePhoto : function(photoID, photoData) {
+            VariableModule(this);
+
+
+            /**
+             * SETUP BIEN LUC BAN DAU
+             *  + Kich thuoc bao gom: ['Square', 'Large Square', 'Thumbnail', 'Small', 'Small 320', 'Medium', 'Medium 640', 'Medium 800', 'Large', 'Large 1600', 'Large 2048', 'Original']
+             */
+            var photoCur  = va.flickrListPhoto[photoID],
+                photoSize = photoData['sizes']['size'],
+                urlMatch;
+
+            // Tao bie'n tam thoi neu 'photoID' khong ton tai tren bien chung
+            if( !photoCur ) photoCur = va.flickrListPhoto[ va.flickrListPhoto.length ] = [];
+
+            // Luu tru tat ca kich thuoc vao bien chung
+            photoCur['size'] = photoSize;
+
+
+
+
+            /**
+             * KIEM TRA TEN KICH THUOC CO TRONG DANH SACH
+             */
+            for( var i = photoSize.length - 1; i >= 0; i-- ) {
+
+                // Luu tru kich thuoc phu hop
+                if( photoSize[i]['label'] == o['flickr']['photoSize'] ) {
+                    urlMatch = photoSize[i]['source'];
+                    break;
+                }
+            }
+
+
+
+            /**
+             * LAY LINK LON NHAT NEU KHONG TON TAI SIZE PHU HOP
+             *  + Loai bo gia tri co' label 'Original'
+             */
+            if( !urlMatch ) {
+                urlMatch = photoSize[photoSize.length - 1]['source'];
+            }
+
+
+
+            /**
+             * LUU TRU URL VUA SETUP
+             */
+            photoCur['url'] = urlMatch;
+            return urlMatch;
+        }
+    };
+})(jQuery);
+
+
+
+
+
+
+
+
+
+
+/**
  * MODULE FULLSCREEN
  */
 (function($) {
@@ -17951,15 +22652,30 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
     // Check variable module
     window.rs01MODULE = window.rs01MODULE || {};
 
+    // Global variables
+    var that, o, cs, va, is, ti, M;
+
+    /**
+     * UPDATE GLOBAL VARIABLES
+     */
+    function VariableModule(self) {
+        that = self;
+        o    = self.o;
+        cs   = self.cs;
+        va   = self.va;
+        is   = self.is;
+        ti   = self.ti;
+        M    = self.M;
+    }
+
+
     /**
      * MODULE FULLSCREEN
      */
     rs01MODULE.FULLSCREEN = {
 
         Variable : function() {
-            var that = this,
-                va   = that.va,
-                M    = that.M;
+            VariableModule(this);
 
             // Get retio of Width / height content
             va.wContent = va.wRuby - (va.pa.left * 2);
@@ -17967,7 +22683,6 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
 
             // Case: height-content < height-page
             if( va.hContent < va.hRuby ) {
-
                 va.pa.top = M.R( (va.hRuby - va.hContent) / 2 );
             }
 
@@ -17979,7 +22694,186 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
                 va.wContent = M.R(va.hContent * va.rRes);
 
                 va.rate = va.wContent / va.wRes;
-                va.pa.left = M.R( (va.wRuby - va.wContent)/2 );
+                va.pa.left = M.R( (va.wRuby - va.wContent) / 2 );
+            }
+        },
+
+
+
+
+
+
+
+
+
+
+
+        // Render Elements
+        Render : function() {
+            VariableModule(this);
+
+            /**
+             * RENDER BUTTON TOGGLE FOR FULLSCREEN MODE
+             */
+            // Check Native fullscreen api the browser support
+            var element         = cs.$ruby[0],
+                isFullscreenAPI = element.requestFullscreen
+                               || element.webkitRequestFullscreen
+                               || element.mozRequestFullScreen
+                               || element.msRequestFullscreen;
+
+            // Render markup of button toggle
+            if( o.isNativeFS && o.nativeFS.isButton && isFullscreenAPI  ) {
+                va.$btnFS = $(M.NS(o.nativeFS.markupButton));
+                va.$viewport.append(va.$btnFS);
+            }
+        },
+
+        // Event for elements on layout fullscreen
+        Events : function() {
+            var that = this;
+            VariableModule(that);
+
+
+            /**
+             * EVENT TAP FOR BUTTON TOGGLE IN FULLSCREEN MODE
+             */
+            if( va.$btnFS ) {
+                va.$btnFS.off(va.ev.click).on(va.ev.click, function(e) {
+
+                    // Toggle request native fullscreen
+                    that.IsNativeFS() ? that.ExitNativeFS()
+                                      : that.RequestNativeFS();
+                    return false;
+                });
+            }
+
+
+
+            /**
+             * EVENT TRIGGER NATIVE FULLSCREEN CHANGE
+             */
+            if( o.isNativeFS ) {
+                function ExitNativeFS() {
+                    !that.IsNativeFS() && that.ExitNativeFS();
+                }
+                document.onfullscreenchange       = ExitNativeFS;
+                document.onwebkitfullscreenchange = ExitNativeFS;
+                document.onmozfullscreenchange    = ExitNativeFS;
+                document.onmsfullscreenchange     = ExitNativeFS;
+            }
+        },
+
+        // Check current status the native fullscreen
+        IsNativeFS : function() {
+            VariableModule(this);
+            var el = document.fullscreenElement
+                  || document.webkitFullscreenElement
+                  || document.mozFullScreenElement
+                  || document.msFullscreenElement;
+
+            return el && cs.$ruby.is( $(el) ) ? true : false;
+        },
+
+        // Request native fullscreen
+        RequestNativeFS : function() {
+            var that = this;
+            VariableModule(that);
+
+            // Conditional execution
+            if( that.IsNativeFS() ) return;
+            is.nativeFSExit = false;
+
+            // Continue setup
+            // Function request native fullscreen
+            var el            = cs.$ruby[0],
+                requestMethod = el.requestFullscreen
+                             || el.webkitRequestFullscreen
+                             || el.mozRequestFullScreen
+                             || el.msRequestFullscreen;
+
+            requestMethod && requestMethod.call(el);
+
+            // Add class to recognize native fullscreen
+            cs.$ruby.addClass( M.NS('{ns}nativeFS {ns}hide') );
+
+
+
+
+            /**
+             * PART NEXT
+             */
+            // Store options and properties before request
+            va.nativeFSBefore = {
+                opts : $.extend(true, {}, o)
+            };
+
+            // Update new options & properties after request
+            setTimeout(function() {
+                VariableModule(that);
+
+                // Check pagination exist & valid
+                var isPagHor   = va.pag.dirs == 'hor',
+                    isPagValid = o.isPag
+                              && !is.pagOutside
+                              && (!isPagHor || (isPagHor && !/^(absolute|fixed)$/.test(va.$pag.css('position')) ));
+
+                // Size default for ruby
+                var wWin    = va.$w.width(),
+                    hWin    = va.$w.height(),
+                    sizeNew = { 'width': wWin, 'height': hWin };
+
+                // Case Pagination exit & valid
+                if( isPagValid ) {
+                    if( isPagHor ) {
+                        sizeNew.width = wWin;
+                        sizeNew.height = hWin - M.OuterHeight(va.$pag, true);
+                    }
+                    else {
+                        sizeNew.width = wWin - M.OuterWidth(va.$pag, true);
+                        sizeNew.height = hWin;
+                    }
+                }
+
+
+                // New options in native fullscreen mode
+                var optsNew = $.extend(true, {}, o.updateOptsInNativeFS, sizeNew);
+
+                // Update new options before request
+                cs.update(optsNew);
+                // Remove class 'hide'
+                cs.$ruby.removeClass(va.ns + 'hide');
+            }, 300);
+        },
+
+        // Exit native fullscreen
+        ExitNativeFS : function() {
+            VariableModule(this);
+
+            // Conditional execution
+            if( is.nativeFSExit ) return;
+
+            // Support execute this function only once at the same time
+            is.nativeFSExit = true;
+
+            // Function exit native fullscreen
+            var exitMethod = document.exitFullscreen
+                          || document.webkitExitFullscreen
+                          || document.mozCancelFullScreen
+                          || document.msExitFullscreen;
+
+            exitMethod && exitMethod.call(document);
+
+            // Remove class 'native fullscreen'
+            cs.$ruby.removeClass(va.ns + 'nativeFS');
+
+            // Restore options and properties after exit
+            var optsBefore = va.nativeFSBefore;
+            if( optsBefore && optsBefore.opts ) {
+
+                // Remove 'height' inline css before retore options
+                va.$viewport.css('height', '');
+                cs.update(optsBefore.opts);
             }
         }
     };
@@ -18528,7 +23422,6 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
             }
         },
 
-
         /**
          * WRITE NEW HASH IN BROWSER
          */
@@ -18821,7 +23714,8 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
             that.LOAD.Way();
 
             // Load slide ke tiep
-            !o.load.isLazy && that.LOAD.Next();
+            // !o.load.isLazy && that.LOAD.Next();
+            !/^(none|single)$/.test(o.lazyType) && that.LOAD.Next();
         },
 
 
@@ -18949,18 +23843,18 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
 
                 // idCur : idCur at end, remove will reduce -> idCur switch to ID ahead
                 if( cs.idCur == cs.num - 1 ) {
-                    cs.ev.trigger('beforeSwapIDCur');
+                    M.RunEvent('beforeSwapIDCur');
                     cs.idCur = cs.num - 2;
-                    cs.ev.trigger('afterSwapIDCur');
+                    M.RunEvent('afterSwapIDCur');
                 }
             }
 
             // Case: aIndex is array[]
             else {
                 // idCur switch to the first slide
-                cs.ev.trigger('beforeSwapIDCur');
+                M.RunEvent('beforeSwapIDCur');
                 cs.idLast = cs.idCur = 0;
-                cs.ev.trigger('afterSwapIDCur');
+                M.RunEvent('afterSwapIDCur');
 
                 // Toggle slide: remove actived on current slide
                 M.ToggleSlide();
@@ -19098,9 +23992,9 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
                 // Reset $pagItem
                 if( is.pag ) va.$pagItem = va.$pag.find('.'+ va.ns +'pagitem');
                 // Reset id-current
-                cs.ev.trigger('beforeSwapIDCur');
+                M.RunEvent('beforeSwapIDCur');
                 cs.idCur = $.inArray(cs.idCur, inOrder);
-                cs.ev.trigger('afterSwapIDCur');
+                M.RunEvent('afterSwapIDCur');
 
                 // Reset & update variables & properties
                 cs.update();
@@ -19322,7 +24216,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.'+ rs01VA.namespace) ) }
                     dataNodeNew.push({
                         name    : dataNodeCur,
 
-                        // Value 'checkRubyOne' -> check current page has only 1 ruby exist
+                        // Value 'checkRubyOne' -> check currrent page has only 1 ruby exist
                         isSetup : isInRuby ? true : 'checkRubyOne'
                     });
                 }

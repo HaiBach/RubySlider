@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Page Infomations -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Best Slider - Tabs premium jQuery plugin">
+    <meta name="keywords" content="tabs, slider, carousel, gallery, touch, swipe, drag, css3, responsive, transform, transition, lazyload, fullscreen, revolution slider, master slider, layer slider">
+    <meta name="author" content="Ruby Slider - HaiBach">
+    
+    <!-- Title of page -->
+    <title>CSS ONE EFFECT | RUBY SLIDER</title>
+
+    <!-- Favicon & apple-icon -->
+    <link rel="shortcut icon" href="../libs/imgs/icons/favicon.ico">
+    <link rel="icon" sizes="192x192" href="../libs/imgs/icons/icon-highres.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="../libs/imgs/icons/touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../libs/imgs/icons/touch-icon-ipad-retina.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="../libs/imgs/icons/touch-icon-ipad-pro.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../libs/imgs/icons/touch-icon-iphone-6-plus.png">
+
+
+    <!-- CSS link -->
+    <link rel="stylesheet" href="../libs/css/ruby00.css">
+    <link rel="stylesheet" href="../libs/css/ruby01.css">
+    <link rel="stylesheet" href="../libs/css/styles.custom.css">
+    <link rel="stylesheet" href="../ruby/rubyslider.css">
+
+
+</head>
+<body>
+
+
+    <!-- TEMPLATE PREVIEW - begin
+    ======================================================================== -->
+    <div class="wrapper">
+    <div class="container">
+
+        <!-- Title heading - begin -->
+        <div class="title-head"><div class="title-head-inner">
+            <h1>CSS ONE EFFECT</h1>
+        </div></div>
+        <!-- Title heading - end -->
+
+
+
+        <!-- FORM EFFECT - begin -->
+        <div class="fx-form ma-b-50">
+            <h4 class="muted">Choosing effects:</h4>
+            
+
+            <div class="row">
+            <div class="col5">
+
+                <form class="block" action="">
+                    <select id="effects" class="form-control"></select>
+                </form>
+                
+            </div>
+            </div>
+        </div>
+        <!-- FORM EFFECT - end -->
+
+        
+
+        <!-- SLIDER PREVIEW - begin -->
+        <div class="slider-preview rs01"
+            data-slider='{
+                "isAutoInit"  : true,
+                "type" : "slider",
+                "fx"          : "cssOne",
+                "cssOne0"      : "foldHor",
+                "cssOne"      : "fade",
+
+                "speed"       : 800,
+                "width"       : 940,
+                "isKeyboard"  : true
+            }'>
+
+            <a class="rs01imgback" href="imgs/vietnam1.jpg">vietnam 1</a>
+            <a class="rs01imgback" href="imgs/vietnam2.jpg">vietnam 2</a>
+            <a class="rs01imgback" href="imgs/vietnam3.jpg">vietnam 3</a>
+            <a class="rs01imgback" href="imgs/vietnam4.jpg">vietnam 4</a>
+            <a class="rs01imgback" href="imgs/vietnam5.jpg">vietnam 5</a>
+            <a class="rs01imgback" href="imgs/vietnam6.jpg">vietnam 6</a>
+
+        </div>
+        <!-- SLIDER PREVIEW - end -->
+
+    </div>
+    </div>
+    <!-- TEMPLATE PREVIEW - end
+    ======================================================================== -->
+
+
+
+
+
+
+
+    <!-- EFFECT TABLES - begin
+    ======================================================================== -->
+    <style>
+        .fx {
+            position: relative;
+            margin-bottom: 32px;
+        }
+        .fx-name {
+            position: absolute;
+            width: 100%;
+            padding-top: 28px;
+            text-align: center;
+            color: #fff;
+        }
+        .fx-live {
+            position: relative;
+            height: 80px;
+            cursor: pointer;
+        }
+        .fx-slide {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border-radius: 4px;
+            -webkit-box-sizing: border-box;
+                    box-sizing: border-box;
+        }
+        .fx-slide.fx-slide1 {
+            background-color: #00c0dc;
+        }
+        .fx-slide.fx-slide2 {
+            background-color: #ff006a;
+        }
+
+        @media only screen and (max-width: 959px) {
+            .fx {
+                margin-bottom: 20px;
+            }
+        }
+
+
+        /* Effect select */
+        .fx-select {
+            position: absolute;
+            top: 0; right: 0;
+            z-index: 99999;
+        }
+        .fx-select > span {
+            display: block;
+            float: left;
+            width: 20px; height: 12px;
+            padding: 5px;
+            margin-left: 2px;
+
+            background-color: hsla(0,0%,100%,.1);
+            border-radius: 0 4px 0 0;
+            color: hsla(0,0%,0%,.4);
+            font-size: 11px;
+            line-height: 12px;
+            cursor: pointer;
+
+            -webkit-box-sizing: content-box;
+                    box-sizing: content-box;
+        }
+
+        .fx-one.actived      { background-color: #0cf; color: #fff; }
+        .fx-br               { float: left; width: 100%; height: 80px; }
+    </style>
+
+    <div class="wrapper ma-b-50">
+    <div class="container">
+
+        <div class="hr circle ma-b-100"></div>
+
+        
+        <!-- Heading -->
+        <div class="title-big-wrap">
+            <h1 class="">EXAMPLES OF LIVE EFFECT</h1>
+        </div>
+        
+
+        <!-- Template gallery -->
+        <div class="fx-table row"></div>
+    </div>
+    </div>
+    <!-- EFFECT TABLES - end
+    ======================================================================== -->
+
+
+
+
+
+    
+
+    <!-- Footer -->
+    <div data-rubyfooter></div>
+
+    <!-- Script - begin
+    ======================================================================== -->
+    <script type="text/javascript" src="../libs/scripts/jquery-last.min.js"></script>
+    <script type="text/javascript" src="../libs/scripts/ruby01.js"></script>
+    <!-- <script type="text/javascript" src="../ruby/rubyanimate.js"></script> -->
+    <script type="text/javascript" src="../ruby/rubyslider.js"></script> <!-- RubySlider Plugin -->
+
+
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+
+            var code     = $('.slider-preview').data('rubyslider'),
+                actived  = 'actived',
+                speed    = 1000,
+                $effect  = $('#effects'),
+                $fxTable = $('.fx-table'),
+                fxNext   = 'ruby-slideNext',
+                fxPrev   = 'ruby-slidePrev',
+                fxIn     = 'ruby-slideIn',
+                fxOut    = 'ruby-slideOut',
+                fxAnim   = 'ruby-animated',
+                $fxLast,
+
+                aFx = ['glueHor', 'glueVer', 'foldHor', 'foldVer', 'foldFromHor', 'foldFromVer', 'roomHor', 'roomVer', 'flitHor', 'flitVer',
+                       'hinge', 'roll', 'br',
+                       'moveHor', 'moveVer', 'fade', 'fadeHor', 'fadeVer', 'scaleInHor', 'scaleInVer', 'scaleOutHor', 'scaleOutVer', 'scalePulse',
+                       'scaleWave', 'roEdgeHor', 'roEdgeVer', 'newspaper', 'pushFromHor', 'pushFromVer', 'slide', 'br',
+                       'fall', 'pulseShort', 'roSoft', 'roDeal', 'wheelHor', 'wheelVer', 'snakeHor', 'snakeVer', 'shuffle', 'browseLeft', 'browseRight',
+                        'slideBehind', 'vacuumHor', 'vacuumVer', 'br',
+                        'scaleSoft', 'snapHor', 'snapVer', 'letInHor', 'letInVer', 'stickHor', 'stickVer', 'growthHor', 'growthVer', 'soEdgeHor', 'soEdgeVer', 'shake', 'tinHor', 'tinVer' ];
+
+
+
+
+            /* Render markup
+            ************************************************************** */
+            var strOptions = '', strFx = '', numFx = 0;
+            for(var i = 0, len = aFx.length-1; i <= len; i++) {
+                var fxCur     = aFx[i];
+
+                if( fxCur === 'br' ) {
+                    strFx += '<div class="fx-br"></div>';
+                }
+
+                else {
+                    numFx++;
+
+                    // Markup form options
+                    strOptions  += '<option value="'+ fxCur + '">'+ numFx +'. '+ fxCur +'</option>';
+
+                    // Markup effect live
+                    strFx += '<div class="col3 col-xxs-6">'
+                           + '<div class="fx" data-fx="'+ fxCur +'">'
+                           + '<div class="fx-live">'
+                           + '<div class="fx-slide fx-slide1 ruby-animated"><span class="fx-name">'+ numFx +'. '+ fxCur +'</span></div>'
+                           + '<div class="fx-slide fx-slide2 ruby-animated"><span class="fx-name">'+ numFx +'. '+ fxCur +'</span></div>'
+                           + '</div>'
+                           + '<div class="fx-select">'
+                           + '<span class="fx-one">one</span>'
+                           + '</div>'
+                           + '</div>'
+                           + '</div>';
+                }
+            }
+            $effect.html(strOptions);
+            $fxTable.html(strFx);
+
+
+
+
+            /* Effects select
+            ************************************************************** */
+            $effect.change(function() {
+                var value = $(this).val();
+                
+                // Remove object fxlast if have
+                if( !!$fxLast ) $fxLast.removeClass(actived);
+
+                // Slider: update properties
+                code.update({ 'cssOne': value });
+                return false;
+            });
+
+
+
+
+            /* Effects live show
+            ************************************************************** */
+            var $fx = $('.fx');
+            $fx.each(function() {
+
+                var $el     = $(this),
+                    $fxName = $el.find('.fx-name'),
+                    $fxLive = $el.find('.fx-live'),
+                    $fxOne  = $el.find('.fx-one'),
+                    $slide  = $el.find('.fx-slide'),
+                    $slide1 = $el.find('.fx-slide1'),
+                    $slide2 = $el.find('.fx-slide2'),
+                    fxName  = $el.data('fx'),
+                    fxAdd   = 'rubyone-' + fxName,
+                    timerClear;
+
+                var nextFn = function() {
+                        if( !$fxLive.hasClass(fxNext) ) {
+                            $slide1.removeClass(fxOut).addClass(fxIn);
+                            $slide2.removeClass(fxIn).addClass(fxOut);
+                            $fxLive.removeClass(fxPrev).addClass(fxNext);
+                        }
+                    },
+
+                    prevFn = function() {
+                        if( !$fxLive.hasClass(fxPrev) ) {
+                            $slide2.removeClass(fxOut).addClass(fxIn);
+                            $slide1.removeClass(fxIn).addClass(fxOut);
+                            $fxLive.removeClass(fxNext).addClass(fxPrev);
+
+
+                            // Remove effect on sample live
+                            clearTimeout(timerClear);
+                            timerClear = setTimeout(function() {
+                                $fxLive.removeClass(fxPrev);
+                                $el.removeClass(actived);
+                                $slide1.removeClass(fxOut);
+                                $slide2.removeClass(fxIn);
+                            }, speed);
+                        }
+                    };
+
+
+                // Events hover
+                $fxLive.addClass(fxAdd);
+
+                var timerPrev;
+                $fxLive.on('click', function(e) {
+
+                    // Run effect next
+                    $el.addClass(actived);
+                    $fxLive.removeClass(fxNext);
+                    setTimeout(nextFn, 10);
+
+                    // Setup timer to run effect prev
+                    clearTimeout(timerPrev);
+                    timerPrev = setTimeout(prevFn, speed + 200);
+
+                    return false;
+                });
+
+                
+                // Events click
+                $fxOne.on('click', function() {
+
+                    if( $fxOne.hasClass(actived) ) {
+                        $fxOne.removeClass(actived);
+                    }
+                    else {
+                        if( !!$fxLast ) $fxLast.removeClass(actived);
+                        $fxOne.addClass(actived);
+
+                        // Assign to varible fxlast
+                        $fxLast = $fxOne;
+
+                        // Update options
+                        code.update({ 'cssOne': fxName });
+                    }
+                });
+            });
+
+
+
+            /* Events resize --> support reset size
+            ************************************************************** */
+            var $fxLiveAll = $('.fx-live'), tResize;
+            $(window).resize(function(e) {
+
+                clearTimeout(tResize);
+                tResize = setTimeout(function() {
+
+                    $fxLiveAll.removeClass('ruby-slideNext ruby-slidePrev');
+                }, 200);
+            });
+        });
+    </script>
+    <!-- Script - end
+    ======================================================================== -->
+
+</body>
+</html>

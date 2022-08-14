@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-<!--[if IE 7]> <html class="ie ie7"> <![endif]-->
-<!--[if IE 8]> <html class="ie ie8"> <![endif]-->
-<!--[if (gt IE 8)|!(IE)]> <html> <![endif]-->
+<html lang="en">
 <head>
 
     <!-- Page Infomations -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Best Slider - Tabs premium jQuery plugin">
     <meta name="keywords" content="tabs, slider, carousel, gallery, touch, swipe, drag, css3, responsive, transform, transition, lazyload, fullscreen, revolution slider, master slider, layer slider">
     <meta name="author" content="Ruby Slider - HaiBach">
@@ -34,19 +32,8 @@
 </head>
 <body>
 
-    <!-- HEADER - begin
-    ======================================================================== -->
-    <div class="wrapper header logo-left"><div class="container">
-        
-        <!-- Logo -->
-        <a class="logo" href="../templates/" data-mScale="100">RubySlider</a>
-
-        <!-- Menu -->
-        <nav data-rubymenu></nav>
-        
-    </div></div>
-    <!-- HEADER - end
-    ======================================================================== -->
+    <!-- Header -->
+    <div data-rubyheader></div>
 
 
 
@@ -75,9 +62,11 @@
         <!-- SLIDER PREVIEW - begin -->
         <div class="slider-preview rs01"
             data-slider='{
-                "fx"          : "coverflow3D",
+                "fx"          : "line",
                 "widthSlide0" : 0.5,
-                "coverflow3D" : { "widthSlide" : [0.8, [940, 960, 10000]] },
+                "coverflow3D" : {
+                    "widthSlide" : [0.8, [940, 960, 10000]]
+                },
                 "speed"       : 800,
                 "width"       : 940
             }'>
@@ -173,37 +162,22 @@
 
     
 
-    <!-- Footer - begin
-    ======================================================================== -->
-    <div class="wrapper footer"><div class="container">
-        
-        <!-- Copyright -->
-        <section class="copyright">
-            <p>&copy; HaiBach. All Rights Reserved.</p>
-        </section>
-        
-    </div></div>
-    <!-- Footer - end
-    ======================================================================== -->
-
-
-
-
-
-
+    <!-- Footer -->
+    <div data-rubyfooter></div>
 
     <!-- Script - begin
     ======================================================================== -->
-    <script src="../libs/scripts/jquery-last.min.js"></script>
-    <script src="../libs/scripts/ruby01.js"></script>
-    <script src="../libs/scripts/prettify.min.js"></script>
-    <script src="../ruby/rubyanimate.js"></script> <!-- Ruby Animate -->
-    <script src="../ruby/rubyslider.js"></script> <!-- RubySlider Plugin -->
-    <script src="../libs/scripts/custom.js"></script> <!-- Page custom script -->
+    <script type="text/javascript" src="../libs/scripts/jquery-last.min.js"></script>
+    <script type="text/javascript" src="../libs/scripts/ruby01.js"></script>
+    <script type="text/javascript" src="../libs/scripts/prettify.min.js"></script>
+    <script type="text/javascript" src="../ruby/rubyanimate.js"></script> <!-- Ruby Animate -->
+    <script type="text/javascript" src="../ruby/rubyslider-full.js"></script> <!-- RubySlider Plugin -->
+    <script type="text/javascript" src="../libs/scripts/custom.js"></script> <!-- Page custom script -->
 
 
     <script type="text/javascript">
     jQuery(document).ready(function($) {
+        return;
 
         var code     = $('.slider-preview').data('rubyslider'),
             actived  = 'actived',
@@ -211,7 +185,7 @@
 
             fxDefault   = code.optsCur().fx,
             optsDefault = {
-                optionsPlus : 'slider',
+                type : 'slider',
                 fx          : 'coverflow3D',
                 coverflow3D : {
                                 widthSlide : 0.7

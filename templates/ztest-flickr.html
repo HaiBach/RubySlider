@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Page Infomations -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Best Slider - Tabs premium jQuery plugin">
+    <meta name="keywords" content="tabs, slider, carousel, gallery, touch, swipe, drag, css3, responsive, transform, transition, lazyload, fullscreen, revolution slider, master slider, layer slider">
+    <meta name="author" content="Ruby Slider - HaiBach">
+    
+    <!-- Title of page -->
+    <title>TEST FLICKR | RUBY SLIDER</title>
+
+
+
+    <!-- CSS link -->
+    <link rel="stylesheet" href="../libs/css/ruby00.css">
+    <link rel="stylesheet" href="../libs/css/ruby01.css">
+    <link rel="stylesheet" href="../libs/css/styles.custom.css">
+    <link rel="stylesheet" href="../ruby/rubyslider.css">
+
+
+</head>
+<body>
+
+
+    <!-- TEMPLATE PREVIEW - begin
+    ======================================================================== -->
+    <div class="wrapper" style="overflow: hidden;">
+    <div class="container">
+
+        <!-- TITLE HEADING - begin -->
+        <div class="title-head">
+            <h1>TEST FLICKR</h1>
+        </div>
+        <!-- TITLE HEADING - end -->
+
+        
+
+        <!-- SLIDER PREVIEW - begin -->
+        <style>
+            .slide-5 img {
+                width: 200px !important;
+                height: 100px !important;
+            }
+
+            .rs01timer {
+                background-color: red;
+            }
+            .rs01timer-line.rs01timer {
+                height: 35px;
+            }
+        </style>
+
+        <div class="slider-preview rs01 rs01timer-lineBottom"
+            data-slider='{
+                "fx"          : "line",
+                "speed"       : 600,
+                "width"       : 940,
+                "height0"      : 300,
+                "isKeyboard"  : true,
+                "isMask"      : "auto",
+                "load"        : { "isLazy": false, "amountEachLoad": 2 },
+                "isLoop"      : true,
+                "idBegin0"     : "center",
+
+                "flickr"      : {
+                    "getPhotoRecentByUrl" : "https://www.flickr.com/photos/43368164@N06/",
+                    "getPhotoAlbumByUrl0" : "https://www.flickr.com/photos/mushroomgod/albums/72157647474624038",
+                    "getPhotoFavesByUrl0" : "https://www.flickr.com/photos/mushroomgod/favorites/with/26900808014/",
+                    "recentID0" : "mushroomgod",
+                    "albumID" : null,
+                    "photoNum" : 10,
+                    "photoRecentNum" : 2,
+                    "photoAlbumNum" : 3,
+                    "photoFavesNum" : 2,
+                    "photoSize" : "Large",
+                    "photoPosition" : "last",
+                    "isRandomPhoto" : false,
+                    "isInfo"       : true,
+                    "isPhotoTitle" : true,
+                    "isAlbumTitle" : true,
+                    "isAuthor": true
+                },
+
+                "isSlideshow" : false,
+                "slideshow"   : { "timer": "line", "delay": 5000 }
+            }'>
+
+
+            <!-- <a class="rs01imgback" href="imgs/season-landscape2.jpg">Season 2</a>
+            <a class="rs01imgback" href="imgs/season-landscape3.jpg">Season 3</a>
+            <a class="rs01imgback" href="imgs/season-landscape4.jpg">Season 4</a>
+            <a class="rs01imgback" href="imgs/season-landscape5.jpg">Season 5</a> -->
+            <!-- <a class="rs01imgback" href="imgs/season-landscape6.jpg">Season 6</a> -->
+            <!-- <a class="rs01imgback" href="imgs/season-landscape7.jpg">Season 7</a> -->
+
+            
+            <!-- <a class="rs01imgback" href="https://farm8.staticflickr.com/7424/26678797433_4be1b0098b_b.jpg">Flickr</a> -->
+            <!-- <a class="rs01imgback" href="https://farm8.staticflickr.com/7386/26657000634_e37316a827_b.jpg">Flickr</a>
+            <a class="rs01imgback" href="https://farm8.staticflickr.com/7334/26966829940_76afcef43d_b.jpg">Flickr</a>
+            <a class="rs01imgback" href="https://farm8.staticflickr.com/7588/26562935594_ae397c7b6f_b.jpg">Flickr</a>
+            <a class="rs01imgback" href="https://farm8.staticflickr.com/7554/27035717112_b1ed723cbf_b.jpg">Flickr</a> -->
+
+    
+
+            <!-- <a class="rs01imgback" href="https://farm8.staticflickr.com/7386/26657000634_e37316a827_b.jpg">Flickr</a> -->
+
+            <a class="rs01imgback" data-flickr='{ "photoID": "26562935594" }'>Flickr photo ajax</a>
+            <!-- <a class="rs01imgback" data-flickr='{ "photoID": "27158204262" }'>Flickr photo ajax</a> -->
+
+            <!-- <a class="rs01imgback" data-flickr="https://www.flickr.com/photos/luisfer1974/7622647390/">Flickr photo ajax</a> -->
+            <!-- <a class="rs01imgback" data-flickr="https://www.flickr.com/photos/paulinajackiewicz/27643648135/in/faves-43368164@N06/">Flickr photo ajax</a> -->
+            <!-- <a class="rs01imgback" data-flickr="https://www.flickr.com/photos/38971900@N08/27096735900/in/faves-135393034@N06/">Flickr photo ajax</a> -->
+
+
+
+
+            <!-- <div>
+                <a class="rs01imgback" data-flickr='{ "photoID": "26562935594" }'>Flickr photo ajax</a>
+                <h3 class="rs01layer"
+                    data-layer-animate='[
+                        { "x": 30, "y": "50%{parent} - 100%" }
+                    ]'
+                    >No matter how long the winter, spring is sure to follow</h3>
+            </div>
+
+            <a class="rs01imgback" data-flickr='{ "photoID": "27158204262" }'>Flickr photo ajax</a> -->
+
+            <!-- ,
+                        { "xy": "center", "duration": 10000 } -->
+            
+        </div>
+        <!-- SLIDER PREVIEW - end -->
+    
+    </div>
+    </div>
+    <!-- TEMPLATE PREVIEW - end
+    ======================================================================== -->
+
+
+
+
+
+
+    <div class="container">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est consequuntur atque ullam magni, ut sequi deleniti fugit explicabo. Illo natus cumque vitae fuga voluptate excepturi explicabo pariatur facere, incidunt laudantium?</p>
+        <p>Pariatur, temporibus voluptate ex! Laborum fugiat porro quisquam eaque autem necessitatibus maiores architecto vitae laudantium magni, soluta tempora aspernatur quis, temporibus quia illum explicabo obcaecati nisi! Dolorem assumenda omnis eaque.</p>
+        <p>Soluta neque eos molestiae, velit ratione quia ab, quibusdam facilis fuga unde adipisci voluptatem dolorem facere ducimus ea doloribus voluptatum nobis corporis eum, animi perferendis! Porro excepturi, optio saepe tempora.</p>
+        <p>Ea dignissimos fuga quasi culpa esse ad neque tenetur accusantium assumenda consequatur optio quas voluptates similique nostrum earum sequi tempora, aut, sapiente expedita explicabo. Voluptates aspernatur natus fuga, vel temporibus.</p>
+    </div>
+
+
+
+
+
+
+
+    <!-- Script - begin
+    ======================================================================== -->
+    <script type="text/javascript" src="../libs/scripts/jquery-last.min.js"></script>
+    <script type="text/javascript" src="../libs/scripts/ruby01.js"></script>
+    <script type="text/javascript" src="../ruby/rubyanimate.js"></script> <!-- Ruby Animate -->
+    <script type="text/javascript" src="../ruby/rubyslider.js"></script> <!-- RubySlider Plugin -->
+    <!-- Script - end
+    ======================================================================== -->
+
+</body>
+</html>

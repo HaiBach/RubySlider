@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Page Infomations -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Best Slider - Tabs premium jQuery plugin">
+    <meta name="keywords" content="tabs, slider, carousel, gallery, touch, swipe, drag, css3, responsive, transform, transition, lazyload, fullscreen, revolution slider, master slider, layer slider">
+    <meta name="author" content="Ruby Slider - HaiBach">
+    
+    <!-- Title of page -->
+    <title>DEVICE LAYOUT | RUBY SLIDER</title>
+
+    <!-- CSS link -->
+    <link rel="stylesheet" href="../libs/css/ruby00.css">
+    <link rel="stylesheet" href="../libs/css/ruby01.css">
+    <link rel="stylesheet" href="../libs/css/styles.custom.css">
+    <link rel="stylesheet" href="../ruby/rubyslider.css">
+
+
+</head>
+<body>
+
+    <!-- TEMPLATE PREVIEW - begin
+    ======================================================================== -->
+    <div class="wrapper">
+    <div class="container">
+
+        <!-- Title heading - begin -->
+        <div class="title-head"><div class="title-head-inner">
+            <h1>DEVICE LAYOUT</h1>
+        </div></div>
+        <!-- Title heading - end -->
+
+
+
+
+        <!-- LAYOUT DEVICE - begin -->
+        <style>
+
+            .layout-device {
+                position: relative;
+                width: 430px;
+                margin: 0 auto;
+            }
+            .device {
+                overflow: hidden;
+                height: 620px;
+                box-shadow: inset 0 -10px 25px -20px hsla(0,0%,0%,.5);
+                border-bottom: 1px solid #f9f9f9;
+            }
+            .device > img {
+                display: block;
+            }
+
+
+
+            /* TABS PREVIEW */
+            .tabs-preview {
+                visibility: hidden;
+                position: absolute;
+                left: 0; right: 0; top: 103px;
+                width: 376px;
+                margin: 0 auto;
+            }
+            .tabs-preview.rs01ready {
+                visibility: visible;
+            }
+            .tabs-preview > .rs01viewport {
+                padding-left: 10px; padding-right: 10px;
+            }
+
+            /* TABS TITLE */
+            .tabs-preview > .rs01tabs .rs01pagitem {
+                padding: 0;
+                text-indent: -99999px;
+            }
+            .rs01pagmark {
+                position: absolute;
+                left: 0; top: 0;
+                height: 100%;
+                z-index: -1;
+            }
+            .rs01pagmark-item {
+                height: 100% !important;
+                padding-right: 1px;
+            }
+
+            .icon {
+                display: block;
+                width: 50px; height: 50px;
+                margin: 0 auto;
+                background: url(imgs/icon-tabs-title.svg) no-repeat;
+
+                -webkit-transition: background-position .3s;
+                        transition: background-position .3s;
+            }
+            .ie8 .icon {
+                background-image: url(imgs/icon-tabs-title.png);
+            }
+            .icon-overview { background-position: -5px -5px; }
+            .icon-slider { background-position: -65px -5px; }
+            .icon-prevent { background-position: -125px -5px; }
+            .icon-lazy { background-position: -185px -5px; }
+            .icon-video { background-position: -245px -5px; }
+
+            .rs01cur > .icon-overview { background-position: -5px -65px; }
+            .rs01cur > .icon-slider { background-position: -65px -65px; }
+            .rs01cur > .icon-prevent { background-position: -125px -65px; }
+            .rs01cur > .icon-lazy { background-position: -185px -65px; }
+            .rs01cur > .icon-video { background-position: -245px -65px; }
+
+
+
+            /* MEDIA WIDTH */
+            @media only screen and (max-width: 479px) {
+                .layout-device {
+                    width: auto;
+                }
+                .device {
+                    display: none;
+                }
+                .tabs-preview {
+                    position: static;
+                    width: auto;
+                }
+                .tabs-preview .rs01viewport {
+                    padding-left: 0; padding-right: 0;
+                }
+                .tabs-preview > .rs01pag > .rs01paginner > .rs01pagitem {
+                    /*padding-left: 20px; padding-right: 20px;*/
+                }
+                .tabs-preview .rs01pagmark-item {
+                    border-radius: 4px;
+                }
+            }
+        </style>
+        
+        <div class="layout-device">
+
+            <!-- DEVICE -->
+            <div class="device">
+                <img src="imgs/iphone.png" alt="iphone device">
+            </div>
+
+
+            <!-- TABS PREVIEW - begin -->
+            <div class="tabs-preview rs01"
+                data-slider='{
+                    "type" : "tabs",
+                    "fx"         : "line",
+                    "speed"      : 600,
+                    "width"      : 940,
+
+                    "pag"        : { "align": "justify", "isJustifyWhenLarge": true, "isMark": true },
+                    "isKeyboard" : true
+                }'>
+
+
+                <div>
+                    <div class="rs01pagitem">
+                        <span class="icon icon-overview">Overview</span>
+                    </div>
+
+                    <div class="font-blokk">
+
+                        <div class="card-outline">
+                            <a class="rs01img card-thumbnail" href="imgs/animal-focus-landscape1.jpg">Animal 1</a>
+                            <div class="card-content">Pellentesque habitant morbi.</div>
+                        </div>
+
+                        <div class="card-outline">
+                            <a class="rs01img card-thumbnail" href="imgs/animal-focus-landscape2.jpg">Animal 2</a>
+                            <div class="card-content">Lorem ipsum dolor sit amet, consectetur adipisi elit.</div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div>
+                    <div class="rs01pagitem">
+                        <span class="icon icon-slider">Slider Nested</span>
+                    </div>
+                    
+
+                    <!-- Slider Nested - begin -->
+                    <div class="rs01 slider-nested ruby-mark rs01nav-dark ma-b-30"
+                        data-slider='{
+                            "isAutoInit"    : true,
+                            "type"   : "slider",
+                            "fx"            : "randomMath",
+                            "speed"         : 1000,
+                            "width"         : 940,
+                            "pag"           : { "type" : "bullet", "isMark" : true },
+                            "isNav"         : true
+                        }'>
+
+                        <a class="rs01imgback" href="imgs/season-landscape2.jpg">season 2</a>
+                        <a class="rs01imgback" href="imgs/season-landscape4.jpg">season 4</a>
+                        <a class="rs01imgback" href="imgs/season-landscape6.jpg">season 6</a>
+                        <a class="rs01imgback" href="imgs/season-landscape7.jpg">season 7</a>                    
+                    </div>
+                    <!-- Slider Nested - end -->
+
+
+                    <!-- Dummy Content - begin -->
+                    <div class="font-blokk">
+                        <p class="dropcap">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti, pariatur aliquam molestias aspernatur non. Facere, quibusdam, reiciendis, natus laudantium debitis suscipit consequatur voluptatibus.</p>
+                    </div>
+                    <!-- Dummy Content - end -->
+                </div>
+
+
+                <div>
+                    <div class="rs01pagitem">
+                        <span class="icon icon-prevent">Swipe Prevent</span>
+                    </div>
+
+
+                    <div class="bg-wrap">
+                        <div class="rs01swipe-prevent area-highlight">
+                            <p class="ma-b-10"><i>Insert class "{ns}swipe-prevent" to stop swipe gestures on that element</i></p>
+                        </div>
+
+                        <form class="block clearfix">
+                        
+                            <input type="text" class="large" placeholder="Username">
+                            <input type="text" class="large" placeholder="Password">
+                            <input type="text" class="large" placeholder="Repeat Password">
+                            <input type="text" class="large" placeholder="Email">
+                
+                            <input class="btn large pull-right no-ma" type="submit" value="Register">
+                        </form>
+                    </div>
+                </div>
+
+
+                <div>
+                    <div class="rs01pagitem">
+                        <span class="icon icon-lazy">Image Lazyload</span>
+                    </div>
+
+                    <div class="row">
+                        <div class="col6 col-xs-6">
+                            <a class="rs01img card-img" href="imgs/food-thumbnail1.jpg">Food 1</a>
+                        </div>
+
+                        <div class="col6 col-xs-6">
+                            <a class="rs01img card-img" href="imgs/food-thumbnail2.jpg">Food 2</a>
+                        </div>
+
+                        <div class="col6 col-xs-6">
+                            <a class="rs01img card-img" href="imgs/food-thumbnail3.jpg">Food 3</a>
+                        </div>
+
+                        <div class="col6 col-xs-6">
+                            <a class="rs01img card-img" href="imgs/food-thumbnail4.jpg">Food 4</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div>
+                    <div class="rs01pagitem">
+                        <span class="icon icon-video">Video</span>
+                    </div>
+                    
+                        
+                    <!-- Video - begin -->
+                    <a class="rs01imgback ma-b-30 video" href="imgs/video-preview.jpg" data-video-link="https://www.youtube.com/watch?v=2O0nz6o_oAE">Pictures of South East Asia</a>
+                    <!-- Video - end -->
+                    
+
+                    <!-- Dummy Content - begin -->
+                    <div class="font-blokk">
+                        <p class="dropcap">Vorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti, pariatur aliquam molestias aspernatur non. Facere, quibusdam, reiciendis, natus laudantium debitis suscipit consequatur voluptatibus mollitia temporibus quia ratione dignissimos magnam provident.</p>
+                    </div>
+                    <!-- Dummy Content - end -->
+                </div>
+            </div>
+            <!-- TABS PREVIEW - end -->
+
+        </div>
+        <!-- LAYOUT DEVICE - end -->
+
+    </div>
+    </div>
+    <!-- TEMPLATE PREVIEW - end
+    ======================================================================== -->
+
+
+
+
+
+
+    <!-- Script - begin
+    ======================================================================== -->
+    <script type="text/javascript" src="../libs/scripts/jquery-last.min.js"></script>
+    <script type="text/javascript" src="../libs/scripts/ruby01.js"></script>
+    <script type="text/javascript" src="../ruby/rubyanimate.js"></script> <!-- Ruby Animate -->
+    <script type="text/javascript" src="../ruby/rubyslider.js"></script> <!-- RubySlider Plugin -->
+    <!-- Script - end
+    ======================================================================== -->
+
+</body>
+</html>

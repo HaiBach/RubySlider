@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Page Infomations -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Best Slider - Tabs premium jQuery plugin">
+    <meta name="keywords" content="tabs, slider, carousel, gallery, touch, swipe, drag, css3, responsive, transform, transition, lazyload, fullscreen, revolution slider, master slider, layer slider">
+    <meta name="author" content="Ruby Slider - HaiBach">
+
+    
+</head>
+<body>
+
+
+<style>
+
+div {
+  margin-top: 3px;
+  padding: 0 10px;
+}
+
+button {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 8px 18px 10px;
+  line-height: 1;
+  color: #fff;
+  background: #345;
+  border: 0;
+  border-radius: 4px;
+  margin-left: 0.75em;
+}
+
+p {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+</style>
+
+
+
+
+<iframe id="player1" src="https://player.vimeo.com/video/76979871?api=1&player_id=player1" width="630" height="354" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+<div>
+  <button>Play</button>
+  <button>Pause</button>
+  <p>Status: <span class="status">&hellip;</span></p>
+</div>
+
+
+
+
+
+<script type="text/javascript" src="../libs/scripts/jquery-last.min.js"></script>
+
+<script>
+jQuery(document).ready(function($) {
+
+
+	$(function() {
+
+
+    var player = $('iframe');
+    var playerOrigin = '*';
+    var status = $('.status');
+
+    
+
+    // Helper function for sending a message to the player
+    var post = function(action, value) {
+        var data = {
+          method: action
+        };
+        
+        if (value) {
+            data.value = value;
+        }
+        
+        var message = JSON.stringify(data);
+        console.log(message, data);
+        player[0].contentWindow.postMessage(message, playerOrigin);
+    };
+
+    var onReady = function() {
+        status.text('ready');
+        
+        post('addEventListener', 'pause');
+        post('addEventListener', 'finish');
+        post('addEventListener', 'playProgress');
+    };
+
+    var onPause = function() {
+        status.text('paused');
+    };
+
+    var onFinish = function() {
+        status.text('finished');
+    };
+
+    var onPlayProgress = function(data) {
+        status.text(data.seconds + 's played');
+    };
+
+
+    // Handle messages received from the player
+    var onMessageReceived = function(event) {
+        // Handle messages from the vimeo player only
+        if (!(/^https?:\/\/player.vimeo.com/).test(event.origin)) {
+            return false;
+        }
+        
+        if (playerOrigin === '*') {
+            playerOrigin = event.origin;
+        }
+        
+        var data = JSON.parse(event.data);
+        console.log(event);
+        
+        switch (data.event) {
+            case 'ready':
+                onReady();
+                break;
+               
+            case 'playProgress':
+                onPlayProgress(data.data);
+                break;
+                
+            case 'pause':
+                onPause();
+                break;
+               
+            case 'finish':
+                onFinish();
+                break;
+        }
+    };
+
+
+
+    // Listen for messages from the player
+    if (window.addEventListener) {
+        window.addEventListener('message', onMessageReceived, false);
+    }
+    else {
+        window.attachEvent('onmessage', onMessageReceived, false);
+    }
+
+    
+
+    // Call the API when a button is pressed
+    $('button').on('click', function() {
+        post($(this).text().toLowerCase());
+    });
+});
+
+
+});
+
+</script>
+
+
+</body>
+</html>

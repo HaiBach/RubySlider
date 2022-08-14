@@ -1,0 +1,36 @@
+
+/** NEW VERSION */
++ Added: new "desktop" option
++ Added: new option "layout"
++ Added: support layout fullwidth
++ Changed : using cursor 'grab/grabbing' native of modern browser
++ Added: support native fullscreen
++ Added: api for native fullscreen
++ Fixed: keyboard navigation
++ Added: new options "keyboard"
++ Added: Image transparent / solid / gradient
++ Changed: name "optionsPlus" to "type"
++ Changed: the default value of option "widthSlide" from number-float to string-percent
+
+
+
+
+
+
+
+
+
+/** GHI CHU **/
++ Nen tach tu RubyTabs thanh "Ruby Slider" : de tim kiem
+
+
+
+/** DU KIEN UPDATE **/
++ Add module layer
++ Add new template for layer
++ Add module Flickr
++ Update all content of documentation
++ Add content layer into documentation
++ Add content Flickr into documentation
++ Add module "autoScrollTo"
++ Add content "autoScrollTo" into documentaion

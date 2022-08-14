@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Page Infomations -->
+    <meta charset="utf-8">
+    <meta name="theme-color" content="transparent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="one of the best tabs plugins">
+    <meta name="author" content="rubyslider - thystudio - Nguyen Van Thy">
+    
+    <!-- Title of page -->
+    <title>TEST</title>
+
+    <!-- Favicon & apple-icon -->
+    <link rel="shortcut icon" href="../libs/imgs/icons/favicon.ico">
+    <link rel="icon" sizes="192x192" href="../libs/imgs/icons/icon-highres.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="../libs/imgs/icons/touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="../libs/imgs/icons/touch-icon-ipad-retina.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="../libs/imgs/icons/touch-icon-ipad-pro.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../libs/imgs/icons/touch-icon-iphone-6-plus.png">
+
+
+    <!-- CSS link -->
+    <link rel="stylesheet" href="../libs/css/ruby00.css">
+    <link rel="stylesheet" href="../libs/css/ruby01.css">
+    <link rel="stylesheet" href="../libs/css/styles.custom.css">
+
+
+    <!-- CSS embed -->
+    <style>
+
+    </style>
+    
+
+    
+</head>
+<body>
+
+    <!-- HEADER - begin
+    ============================================================== -->
+    <div class="wrapper header logo-left">
+    <div class="container">
+        
+        <!-- Logo - begin
+        .......................................................... -->
+        <a class="logo" href="../templates/" data-mScale="100">FOO TEST</a>
+        <!-- Logo - end
+        .......................................................... -->
+
+    </div>
+    </div>
+    <!-- HEADER - end
+    ============================================================== -->
+
+
+
+
+
+
+
+
+
+
+    <!-- Script - begin
+    ============================================================== -->
+    <script type="text/javascript" src="../libs/scripts/jquery-1.9.0.min.js"></script>
+
+
+    <script type="text/javascript">
+    jQuery(document).ready(function($) {
+
+        
+    });
+
+
+        var Car = function(sColor, iDoors, iMpg) {
+            this.color = sColor;
+            this.doors = iDoors;
+            this.mpg   = iMpg;
+            this.foo   = null;
+            this.foo2  = undefined;
+            this.showColor = function() {
+                console.log(this.color);
+            }
+
+            console.log('run Car function');
+        };
+
+        Car.prototype = {
+            newFn : function() {
+                console.log('new Funciton');
+            }
+        };
+
+        var extend = function(destination, source) {
+            for( var key in  source ) {
+                if( source.hasOwnProperty(key) ) {
+                    destination[key] = source[key];
+                }
+            }
+        };
+
+        var clickEvents = {
+            hover : function() {
+                console.log('hovering');
+            },
+            press : function() {
+                console.log('pressing');
+            },
+            release : function() {
+                console.log('releasing');
+            },
+            fire : function() {
+                console.log('firing');
+            }
+        };
+
+
+        
+        extend(Car.prototype, clickEvents);
+        var car1 = new Car('blue', 4, 25);
+
+        car1.foo3 = function() {
+            console.log('foo3');
+        }
+
+        // car1;
+        // for( var key in car1 ) {
+        //     console.log(key);
+        // }
+
+        // console.log(car1.mpg);
+        // Car();
+        // console.log(Car.prototype);
+
+    </script>
+    <!-- Script - end
+    ============================================================== -->
+
+</body>
+</html>

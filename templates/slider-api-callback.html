@@ -1,16 +1,14 @@
 <!DOCTYPE html>
-<!--[if IE 7]> <html class="ie ie7"> <![endif]-->
-<!--[if IE 8]> <html class="ie ie8"> <![endif]-->
-<!--[if (gt IE 8)|!(IE)]> <html> <![endif]-->
+<html lang="en">
 <head>
 
     <!-- Page Infomations -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Best Slider - Tabs premium jQuery plugin">
     <meta name="keywords" content="tabs, slider, carousel, gallery, touch, swipe, drag, css3, responsive, transform, transition, lazyload, fullscreen, revolution slider, master slider, layer slider">
     <meta name="author" content="Ruby Slider - HaiBach">
-    
+
     <!-- Title of page -->
     <title>CALLBACK API | RUBY SLIDER</title>
 
@@ -78,24 +76,13 @@
         .log-swipeEnd   { color: #aaa; }
 
     </style>
-    
-    
+
+
 </head>
 <body>
 
-    <!-- HEADER - begin
-    ======================================================================== -->
-    <div class="wrapper header logo-left"><div class="container">
-        
-        <!-- Logo -->
-        <a class="logo" href="../templates/" data-mScale="100">RubySlider</a>
-
-        <!-- Menu -->
-        <nav data-rubymenu></nav>
-        
-    </div></div>
-    <!-- HEADER - end
-    ======================================================================== -->
+    <!-- Header -->
+    <div data-rubyheader></div>
 
 
 
@@ -107,15 +94,13 @@
     <div class="wrapper">
     <div class="container">
 
-        <!-- TITLE HEADING - begin -->
-        <div class="title-head">
-        <div class="title-head-inner">
+        <!-- Title heading - begin -->
+        <div class="title-head"><div class="title-head-inner">
             <h1>CALLBACK API</h1>
-        </div>
-        </div>
-        <!-- TITLE HEADING - end -->
+        </div></div>
+        <!-- Title heading - end -->
 
-        
+
 
         <!-- SLIDER PREVIEW - begin -->
         <div class="slider-preview rs01"
@@ -136,7 +121,7 @@
         <!-- SLIDER PREVIEW - end -->
 
 
-        
+
         <!-- LOG SHOW -->
         <a id="clear" class="btn btn-default ma-t-50" href="#">Clear text</a>
         <div id="log" class="log"><span class="log-begin">Do something...</span></div>
@@ -150,34 +135,18 @@
 
 
 
-    
-
-    <!-- Footer - begin
-    ======================================================================== -->
-    <div class="wrapper footer"><div class="container">
-        
-        <!-- Copyright -->
-        <section class="copyright">
-            <p>&copy; HaiBach. All Rights Reserved.</p>
-        </section>
-        
-    </div></div>
-    <!-- Footer - end
-    ======================================================================== -->
 
 
-
-
-
-
+    <!-- Footer -->
+    <div data-rubyfooter></div>
 
     <!-- Script - begin
     ======================================================================== -->
-    <script src="../libs/scripts/jquery-last.min.js"></script>
-    <script src="../libs/scripts/ruby01.js"></script>
-    <script src="../ruby/rubyanimate.js"></script> <!-- Ruby Animate -->
-    <script src="../ruby/rubyslider.js"></script> <!-- RubySlider Plugin -->
-    <script src="../libs/scripts/custom.js"></script> <!-- Page custom script -->
+    <script type="text/javascript" src="../libs/scripts/jquery-last.min.js"></script>
+    <script type="text/javascript" src="../libs/scripts/ruby01.js"></script>
+    <script type="text/javascript" src="../ruby/rubyanimate.js"></script> <!-- Ruby Animate -->
+    <script type="text/javascript" src="../ruby/rubyslider.js"></script> <!-- RubySlider Plugin -->
+    <script type="text/javascript" src="../libs/scripts/custom.js"></script> <!-- Page custom script -->
 
 
     <script type="text/javascript">
@@ -185,7 +154,7 @@
 
             /* CUSTOM SCRIPT FOR THEME
             ------------------------------------------------------- */
-            var code   = $('.slider-preview').data('rubyslider'),
+            var ruby   = $('.slider-preview').data('rubyslider'),
                 $log   = $('#log'),
                 text0  = '<span class="log-begin">Do something...</span><br>',
                 strLog = text0;
@@ -199,58 +168,58 @@
             });
 
             // Events list
-            code.ev.on('start', function() {
+            ruby.ev.on('start', function() {
                 strLog += '<br><span class="log-start">FIRST slide event</span>';
                 $log.html(strLog);
             });
 
-            code.ev.on('end', function() {
+            ruby.ev.on('end', function() {
                 strLog += '<br><span class="log-end">END slide event</span>';
                 $log.html(strLog);
             });
 
-            code.ev.on('before', function() {
+            ruby.ev.on('before', function() {
                 strLog += '<br><span class="log-before">Before effect run event</span>';
                 $log.html(strLog);
             });
 
-            code.ev.on('after', function() {
+            ruby.ev.on('after', function() {
                 strLog += '<br><span class="log-after">After effect run event</span>';
                 $log.html(strLog);
             });
 
-            // code.ev.on('init', function() {
-            //     strLog += '<br><span class="log-loadall">Codetabs begin initialize</span>';
+            // ruby.ev.on('init', function() {
+            //     strLog += '<br><span class="log-loadall">RubySlider begin initialize</span>';
             //     $log.html(strLog);
             // });
-            
-            code.ev.on('loadAll', function() {
+
+            ruby.ev.on('loadAll', function() {
                 strLog += '<br><span class="log-loadall">Loaded all elements event</span>';
                 $log.html(strLog);
             });
 
-            code.ev.on('resize', function() {
+            ruby.ev.on('resize', function() {
                 strLog += '<br><span class="log-resize">RESIZE window event</span>';
                 $log.html(strLog);
             });
 
 
-            code.ev.on('swipeBegin', function() {
+            ruby.ev.on('swipeBegin', function() {
                 strLog += '<br><span class="log-swipeBegin">Begin swipe event</span>';
                 $log.html(strLog);
             });
 
-            code.ev.on('swipeEnd', function() {
+            ruby.ev.on('swipeEnd', function() {
                 strLog += '<br><span class="log-swipeEnd">End swipe event</span>';
                 $log.html(strLog);
             });
 
-            code.ev.on('deselectID', function(e, ID) {
+            ruby.ev.on('deselectID', function(e, ID) {
                 strLog += '<br><span class="log-id0">ID unselect: '+ ID +'</span> |';
                 $log.html(strLog);
             });
 
-            code.ev.on('selectID', function(e, ID) {
+            ruby.ev.on('selectID', function(e, ID) {
                 strLog += ' <span class="log-id1">ID select: '+ ID +'</span>';
                 $log.html(strLog);
             });
