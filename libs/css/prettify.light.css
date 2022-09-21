@@ -1,6 +1,0 @@
-/* Pretty printing styles. Used with prettify.js.
- *
- * This version is slight modified based on the original version.
- */
-
-.pln{color:#48484C}.str{color:#D14}.kwd{color:#1E347B}.com{color:#93A1A1}.typ{color:teal}.lit{color:#195F91}.clo,.opn,.pun{color:#93A1A1}.tag{color:#008}.atn{color:teal}.atv{color:#D14}.dec,.var{color:teal}.fun{color:#DC322F}ol.linenums{color:#1E347B;}ol.linenums li{margin-bottom:0;padding:5px 0 5px 10px;color:#BEBEC5;line-height:18px}

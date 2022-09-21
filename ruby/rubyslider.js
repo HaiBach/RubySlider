@@ -1,10 +1,10 @@
 /**
  * RUBYSLIDER JQUERY PLUGIN
  * @package         RubySlider
- * @author          HaiBach
+ * @author          HaiBach | Nguyễn Văn Thy
  * @link            http://haibach.net/rubyslider
- * @version         1.7
- * @lastUpdate      Feb 11, 2017
+ * @version         1.8
+ * @lastUpdate      16/08/2022
  */
 
 
@@ -20,7 +20,7 @@ if( !window.rs01VA ) {
 
     window.rs01VA = {
         "rubyName"  : "rubyslider",
-        "rubyData"  : "tabs",
+        "rubyData"  : "slider",
         "namespace" : "rs01",
 
         "$ruby"     : $(),
@@ -66,7 +66,7 @@ if( !window.rs01VA ) {
          * OPTIONS TYPE OF ELEMENTS
          */
         // Change multiple options at once, like shortcut to a group priority options. included value: ["slider", "tabs"]
-        "type"          : "tabs",
+        "type"          : "slider",
 
         // Option beta: layout size. List of value: "auto", "fullwidth", "fullscreen"
         "layout"        : "auto",
@@ -178,7 +178,7 @@ if( !window.rs01VA ) {
          * SETUP WITH BOOLEAN VALUE
          */
         // Option exclusively for HTML5 data. RubySlider is automatically initialized after markup have loaded.
-        "isAutoInit"    : true,
+        "isAutoInit"    : false,
 
         // Enable layout center in effect "line"
         "isCenter"      : true,
@@ -218,7 +218,7 @@ if( !window.rs01VA ) {
 
                             // The number next slides will load after rubyslider appears, the slides will load in parallel.
                             "amountEachLoad": 2
-                          },
+                        },
 
         // Enable swipe (touch) gestures on rubyslider
         "isSwipe"       : true,
@@ -232,7 +232,7 @@ if( !window.rs01VA ) {
                             // Turn on/off auto swipe gestures on pagination when the total size of pagItems larger size pagination.
                             "isAutoOnPag"   : true,
                             "isLiveEffect"  : true
-                          },
+                        },
 
         /**
          * OPTIONS FOR ONLY 1 SLIDE EXIST
@@ -241,13 +241,13 @@ if( !window.rs01VA ) {
                             "isNav"         : false,
                             "isPag"         : true,
                             "isSwipe"       : false
-                          },
+                        },
 
         "className"     : {
                             "grab"          : ["grab", "grabbing"],
                             "swipe"         : ["", "swiping"],
                             "stop"          : ["stopLeft", "stopRight"]
-                          },
+                        },
 
         /**
          * RUBYANIMATE KEYFRAMES FOR RUBYSLIDER
@@ -255,14 +255,14 @@ if( !window.rs01VA ) {
         "rubyAnimateKeyframes"   : {
                             "fadeOut"       : [{ "pos": 100, "opacity": 0 }],
                             "fadeIn"        : [{ "pos": 0, "opacity": 0 }]
-                          },
+                        },
 
         "rubyAnimateOne" : {
                             "fade" : {
                                 "next" : [ "fadeOut", "fadeIn" ],
                                 "prev" : [ "fadeOut", "fadeIn" ]
                             }
-                          },
+                        },
 
         /**
          * LIST NAME OF MATH EFFECTS
@@ -273,7 +273,7 @@ if( !window.rs01VA ) {
                             "rubyFade", "rubyMove", "rubyRun", "rubyScale",
                             "zigzagRun",
                             "randomMath"
-                          ],
+                        ],
 
         "coverflow3D"   : {
                             "widthSlide"  : "80%",
@@ -282,7 +282,7 @@ if( !window.rs01VA ) {
                             "rotate"      : 30,
                             "opacity"     : 1,
                             "isDeepMulti" : true
-                          },
+                        },
 
         // Enable navigation control: next/previous button.
         "isNav"         : false,
@@ -290,7 +290,7 @@ if( !window.rs01VA ) {
                             "isEventTap"    : true,
                             "markup"        : "<div class='{ns}nav'><div class='{ns}nav-prev'>prev</div><div class='{ns}nav-next'>next</div></div>",
                             "markupOutside" : "<div class='{ns}nav-prev'>prev</div><div class='{ns}nav-next'>next</div>"
-                          },
+                        },
 
         /**
          * PAGINATION
@@ -374,11 +374,11 @@ if( !window.rs01VA ) {
                             "markupArrow"   : "<div class='{ns}pagarrow-item {ns}pagarrow-{dirs}'><div class='{ns}pagarrow-icon'></div></div>",
                             "markupMark"    : "<div class='{ns}pagmark'><div class='{ns}pagmark-item {ns}pagmark-margin'></div><div class='{ns}pagmark-item {ns}pagmark-border'></div><div class='{ns}pagmark-item {ns}pagmark-padding'></div><div class='{ns}pagmark-item {ns}pagmark-self'></div></div>"
 
-                          },
+                        },
 
         "image"         : {
                             "isResponsive"  : true
-                          },
+                        },
 
         /**
          * IMAGEBACK
@@ -389,13 +389,13 @@ if( !window.rs01VA ) {
                             "position"      : "center",
                             "pixelRatio"    : 1,
                             "isResponsive"  : true
-                          },
+                        },
 
         "video"         : {
                             "height"        : 480,
                             "isBtnPause"    : false,
                             "isPauseThenRemove" : false
-                          },
+                        },
 
         /**
          * VIDEOBACK
@@ -409,7 +409,7 @@ if( !window.rs01VA ) {
                             "posterPosition": "fill",
                             "opacity"       : 0.3,
                             "isResponsive"  : true
-                          },
+                        },
 
         /**
          * HOTSPOT
@@ -442,7 +442,7 @@ if( !window.rs01VA ) {
                             "markupPoint"   : "<div class='{ns}hspoint'></div>",
                             "isActivedAtFirst" : false,
                             "isResponsive"  : false
-                          },
+                        },
 
         /**
          * LAYER
@@ -471,7 +471,7 @@ if( !window.rs01VA ) {
 
                             // Animate-end for layer before toggle to the other slide
                             "animateEnd"    : [{ "opacity": 0, "duration": 400 }]
-                          },
+                        },
 
         /**
          * LAYER PARALLAX
@@ -484,7 +484,7 @@ if( !window.rs01VA ) {
 
                             // List of value : "reverse", "same"
                             "direction"     : "reverse"
-                          },
+                        },
 
         "parallax"      : {
                             "scrollDirection"   : "same",
@@ -493,7 +493,7 @@ if( !window.rs01VA ) {
                             "scrollLayerDepth"  : 50,
                             "isScroll"          : false,
                             "isScrollLayerFade" : true
-                          },
+                        },
 
         "parallaxScroll" : {
                             "direction"     : "same",
@@ -501,7 +501,7 @@ if( !window.rs01VA ) {
                             "layerDepth"    : 50,
                             "isLayerEnable" : true,
                             "isLayerFade"   : true
-                          },
+                        },
 
         // Enable slideshow
         "isSlideshow"   : false,
@@ -522,7 +522,7 @@ if( !window.rs01VA ) {
                             // Only play slideshow when rubyslider in the display area.
                             "isRunInto"     : false,
                             "isRandom"      : false
-                          },
+                        },
 
         "timerArc"      : {
                             "width"         : null,
@@ -539,7 +539,7 @@ if( !window.rs01VA ) {
                             "weightOuter"   : 2,
                             "strokeOuter"   : "hsla(0,0%,0%,.1)",
                             "fillOuter"     : "transparent"
-                          },
+                        },
 
         /**
          * FLICKR
@@ -592,7 +592,7 @@ if( !window.rs01VA ) {
                             "isPhotoTitle"     : true,
                             "isAlbumTitle"     : true,
                             "isAuthor"         : true
-                          },
+                        },
 
         "markup"        : {
                             "loader"        : "<div class='{ns}loader'><svg class='{ns}loader-circular'><circle class='{ns}loader-path' cx='50%' cy='50%' r='20' fill='none' stroke-width='4' stroke-miterlimit='15'/></svg></div>",
@@ -606,7 +606,7 @@ if( !window.rs01VA ) {
                             "ssControlInto" : "ruby",
                             "timerInto"     : "ssControl",
                             "playInto"      : "ssControl"
-                          },
+                        },
 
         // Enable keyboard navigation, left/right arrow on keyboard to go prev/next slide.
         "isKeyboard"    : false,
@@ -616,7 +616,7 @@ if( !window.rs01VA ) {
                             "prevKey"       : 37,
                             "nextAlterKey"  : null,
                             "prevAlterKey"  : null
-                          },
+                        },
 
         // Enable deep-linking features
         "isDeeplinking" : false,
@@ -634,7 +634,7 @@ if( !window.rs01VA ) {
 
                             // URL only change if slide have ID on dom
                             "isOnlyShowID"  : true
-                          },
+                        },
 
         // Enable cookie features
         "isCookie"      : false,
@@ -645,7 +645,7 @@ if( !window.rs01VA ) {
 
                             // Days storing of cookie on the browser
                             "days"          : 7
-                          },
+                        },
 
         // Options in the native fullscreen mode
         "nativeFS"      : {
@@ -654,11 +654,11 @@ if( !window.rs01VA ) {
 
                             // Markup of button toggle
                             "markupButton"   : "<a class='{ns}toggle-nativeFS'></a>"
-                          },
+                        },
 
         "updateOptsInNativeFS" : {
                             // "imageback"      : { "position": "fit" }
-                          },
+                        },
 
         // Trigger events
         events          : {},
@@ -670,14 +670,14 @@ if( !window.rs01VA ) {
         "mobile"        : {
                             "speedHeight"   : null,
                             "direction"     : "hor"
-                          },
+                        },
 
         // Options for the browser not support CSS Transform
         "fallback"      : {
                             "markup" : {
                                 "loader" : "<div class='{ns}loader {ns}loader-old'>loading</div>"
                             }
-                          },
+                        },
 
         "rev"           : ["erp"],          // ["omed", "ten.hcabiah"], ["eerf"], ["erp"]
         "versionBrand"  : "1",
@@ -708,7 +708,7 @@ if( !window.rs01VA ) {
                             "type"      : "tabs",
                             "position"  : "begin",
                             "align"     : "begin"
-                          }
+                        }
         },
 
         /**
@@ -721,23 +721,7 @@ if( !window.rs01VA ) {
                             "type"      : "thumbnail",
                             "position"  : "end",
                             "align"     : "center"
-                          }
-        },
-
-        /**
-         * OPTIONS PLUG DEFAULT FOR CAROUSEL
-         */
-        "carousel" : {
-            "lazyType"   : "smart",
-            "fx"         : "line",
-            "speed"      : 600,
-            "widthSlide" : 300,
-            "margin"     : 15,
-
-            "isCenter"   : false,
-            "isLoop"     : false,
-            "isPag"      : false,
-            "isNav"      : true
+                        }
         }
     };
 
@@ -788,7 +772,7 @@ if( !window.rs01VA ) {
             // Return value depending on each case
             return $.isPlainObject(str) ? $.extend(true, {}, str)
                                         : $.isArray(str) ? $.extend(true, [], str)
-                                                         : {};
+                                                        : {};
         },
 
         /**
@@ -873,13 +857,13 @@ if( !window.rs01VA ) {
                 size    = el[isWidth ? 'offsetWidth' : 'offsetHeight'],
 
                 padding = isWidth ? that.PFloat(style.paddingLeft) + that.PFloat(style.paddingRight)
-                                  : that.PFloat(style.paddingTop) + that.PFloat(style.paddingBottom),
+                                : that.PFloat(style.paddingTop) + that.PFloat(style.paddingBottom),
 
                 border  = isWidth ? that.PFloat(style.borderLeftWidth) + that.PFloat(style.borderRightWidth)
-                                  : that.PFloat(style.borderTopWidth) + that.PFloat(style.borderBottomWidth),
+                                : that.PFloat(style.borderTopWidth) + that.PFloat(style.borderBottomWidth),
 
                 margin  = isWidth ? that.PFloat(style.marginLeft) + that.PFloat(style.marginRight)
-                                  : that.PFloat(style.marginTop) + that.PFloat(style.marginBottom);
+                                : that.PFloat(style.marginTop) + that.PFloat(style.marginBottom);
 
 
 
@@ -1261,8 +1245,8 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
 
             // Check whether Android native browser (not Chrome) & version < 4.4
             is.androidNative = is.mobile && /Mozilla\/5\.0/i.test(navAgent) && /Android/i.test(navAgent)
-                                         && /AppleWebKit/i.test(navAgent) && !(/Chrome/i.test(navAgent))
-                                         && !(/Android\s+4\.4/i.test(navAgent));
+                                        && /AppleWebKit/i.test(navAgent) && !(/Chrome/i.test(navAgent))
+                                        && !(/Android\s+4\.4/i.test(navAgent));
             // Check iOS
             is.iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
@@ -2433,7 +2417,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             var wName  = 'widthSlide',
                 fxName = o.fx,
                 wSlide = (!!o[fxName] && !!o[fxName][wName]) ? o[fxName][wName]
-                                                             : o[wName];
+                                                            : o[wName];
 
             va.wSlideGrid = M.ParseGrid(wSlide, true);
 
@@ -2541,7 +2525,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
 
                 // Name of transform, support for fallback
                 va[name].cssTf = is.tf ? cssTf
-                                       : (isHor ? 'left' : 'top');
+                                        : (isHor ? 'left' : 'top');
 
                 // Name of pageX changes depending on direction of canvas & pagination
                 va[name].pageXY = isHor ? 'pageX' : 'pageY';
@@ -2790,7 +2774,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
 
             // CHECK TYPE OF VERTICAL TABS
             va.pagVer = IsPagVer(o, o.pag) && va.pag.dirs == 'ver' ? (o.pag.position == 'begin' ? 'begin' : 'end')
-                                                                     : null;
+                                                                    : null;
 
             // Reset margin oin Viewport if before is vertical tabs
             if( !!va.stepSetupInit && IsPagVer(oo, oo.pag) ) {
@@ -2979,8 +2963,8 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
                 slData['opts'] = optsCur;
 
                 // Check minimum value of 'speed' & 'delay'
-                if( va.speed[i] < 200 ) va.speed[i] = 200;
-                if( va.delay[i] < 500 ) va.delay[i] = 500;
+                // if( va.speed[i] < 200 ) va.speed[i] = 200;
+                // if( va.delay[i] < 500 ) va.delay[i] = 500;
 
 
 
@@ -3568,7 +3552,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
 
             // Store object into data slide then remove
             slData.$pagItem = $pagItem;
-            $pagItem.remove();
+            // $pagItem.remove();
         },
 
 
@@ -3709,7 +3693,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
                     // Check image inside container
                     var src = $ruby.data('img'+ name),
                         tag = (!!src) ? '<div class="'+ classes +'"><img src="'+ src +'" alt="['+ name +']"></div>'
-                                      : '<div class="'+ classes +'"></div>';
+                                    : '<div class="'+ classes +'"></div>';
 
                     // Select insert after || before compare with parent object
                     isAfter && parent.after($(tag)) || parent.before($(tag));
@@ -4466,7 +4450,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             // Setup Tween CSS for object
             var isHor = isHorCustom === undefined ? is.dirsHor : isHorCustom,
                 tf    = isHor ? { 'x' : x }
-                              : { 'y' : x };
+                            : { 'y' : x };
 
             M.GetTween($obj).css($obj, tf);
         },
@@ -4498,7 +4482,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
 
                 // Variable store different between of translate 'next' or 'prev'
                 a = isNext ? { 's' : 1, 'id0': 0, 'idN': num - 1 }
-                           : { 's' : -1, 'id0': num - 1, 'idN': 0 },
+                            : { 's' : -1, 'id0': num - 1, 'idN': 0 },
 
                 // Number of slide translate combine with 'isOne' parameter, default is 'va.nMove'
                 nMove = isOne ? 1 : M.A(va.nMove);
@@ -4547,7 +4531,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
                 else if( va.fxView == 'coverflow3D' ) {
                     var cover = o.coverflow3D,
                         z     = cover.isDeepMulti ? cover.zDeep * ((isNext ? va.center.nRight : va.center.nLeft) + 1)
-                                                  : cover.zDeep;
+                                                : cover.zDeep;
 
                     va.tweenSlide.css($slCur, {
                         'x'       : xCur,
@@ -4724,7 +4708,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
                  *  + Inside scope of Viewport
                  *  + Duration of swipe < 200ms
                  *  + Moved temporarily must larger 1 'sTranslatel' -> case main slide
-                */
+                 */
                 var tDrag      = va.tDrag1 - va.tDrag0,
                     isContinue = (va.xBuffer < 0 && va.xBuffer > p.xMax) && (tDrag < 200) && (M.A(va.xOffset) > 10);
                 if( !isContinue ) return;
@@ -4774,7 +4758,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             // Init position of line layout
             if( layout == 'line' && is.center ) {
                 var sSlideCur = is.dirsHor ? va.wSlide
-                                           : M.OuterHeight(va.$s.eq(cs.idCur), true);
+                                            : M.OuterHeight(va.$s.eq(cs.idCur), true);
 
                 xBegin = M.R( (va.sRuby - sSlideCur) / 2);
             }
@@ -5076,13 +5060,14 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             if( is.fullscreen ) {
 
                 // Get height auto for Viewport
-                var hWin      = $w.height(),
-                    offsetTop = va.$anchor.offset().top;
+                // var hWin      = $w.height(),
+                //     offsetTop = va.$anchor.offset().top;
 
-                // Case: offsetTop < height-window
-                if( offsetTop < hWin ) {
-                    hWin -= offsetTop;
-                }
+                // // Case: offsetTop < height-window
+                // if( offsetTop < hWin ) {
+                //     hWin -= offsetTop;
+                // }
+                var hWin = $w.height()
 
 
 
@@ -5094,9 +5079,11 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
                     var $offset = $(o.offsetBy);
 
                     // Height Ruby will substract by height offsetBy container
+                    console.log('#1', hWin)
                     $offset.each(function() {
-                        hWin -=  M.OuterHeight($(this), true);
+                        hWin -= M.OuterHeight($(this), true);
                     });
+                    console.log('#2', hWin)
 
                     // Reupdate position + size ruby when $offset contain images
                     if( $offset.find('img').length ) {
@@ -5104,6 +5091,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
                     }
                 }
 
+                console.log('#hRuby', hWin)
                 va.hRuby = hWin;
                 HeightForViewport(va.hRuby);
             }
@@ -5188,7 +5176,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
                 is.res && RESPONSIVE.UpdateVars();
                 // Get height of ruby at first -> Support for image features autoFit/autoFill
                 is.heightFixed ? SIZE.HeightFixedForRuby()
-                               : SIZE.HeightAutoForRuby( M.OuterHeight(va.$s.eq(cs.idCur), true) );
+                                : SIZE.HeightAutoForRuby( M.OuterHeight(va.$s.eq(cs.idCur), true) );
             }
 
 
@@ -5548,7 +5536,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
              */
             // Callback func: start && before
             isIDFixed ? (nSlide == 0) && M.RunEvent('start')
-                      : (idCur + nSlide == 0 || idCur + nSlide - num == 0 ) && M.RunEvent('start');
+                    : (idCur + nSlide == 0 || idCur + nSlide - num == 0 ) && M.RunEvent('start');
             M.RunEvent('before');
 
             // ID: convert to ts.num
@@ -6032,25 +6020,25 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
         /**
          * EVENT TOGGLE SLIDE BY WHEEL EVENT
          *  + Reference value Wheel Delta (http://stackoverflow.com/q/5527601/6397436) :
-
-                              | evt.wheelDelta | evt.detail
+ 
+                            | evt.wheelDelta | evt.detail
             ------------------+----------------+------------
-              Safari v5/Win7  |       120      |      0
-              Safari v5/OS X  |       120      |      0
-              Safari v7/OS X  |        12      |      0
-             Chrome v11/Win7  |       120      |      0
-             Chrome v37/Win7  |       120      |      0
-             Chrome v11/OS X  |         3 (!)  |      0      (possibly wrong)
-             Chrome v37/OS X  |       120      |      0
+            Safari v5/Win7  |       120      |      0
+            Safari v5/OS X  |       120      |      0
+            Safari v7/OS X  |        12      |      0
+            Chrome v11/Win7  |       120      |      0
+            Chrome v37/Win7  |       120      |      0
+            Chrome v11/OS X  |         3 (!)  |      0      (possibly wrong)
+            Chrome v37/OS X  |       120      |      0
                     IE9/Win7  |       120      |  undefined
-              Opera v11/OS X  |        40      |     -1
-              Opera v24/OS X  |       120      |      0
-              Opera v11/Win7  |       120      |     -3
-             Firefox v4/Win7  |    undefined   |     -3
-             Firefox v4/OS X  |    undefined   |     -1
+            Opera v11/OS X  |        40      |     -1
+            Opera v24/OS X  |       120      |      0
+            Opera v11/Win7  |       120      |     -3
+            Firefox v4/Win7  |    undefined   |     -3
+            Firefox v4/OS X  |    undefined   |     -1
             Firefox v30/OS X  |    undefined   |     -1
 
-         */
+        */
         Wheel : function(opts) {
             var suffix         = '.' + va.ns + va.rubykey,
                 nameWheel      = 'wheel' + suffix,
@@ -6504,7 +6492,7 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
         },
 
         refresh : function() {
-            // console.log('refresh');
+            console.log('refresh');
             PROP.MergeAllModules();
             UPDATE.RemoveClass();
 
@@ -6521,6 +6509,11 @@ $[rs01VA.rubyName] = function($ruby, OptsJS) {
             is.PAG && PAG.RenderSelf();                 // Pagination: update markup
             is.CAP && CAPTION.Render();                 // Caption: update markup
 
+            // va.$s.each(function() {
+            //     var $imgback = $(this).find('.rs01imgback');
+            //     console.log($imgback)
+            //     $imgback.css({ width: '', height: '', left: '', top: '' })
+            // })
             PROP.Slides();
             LOAD.IDMap();
 
@@ -6824,56 +6817,56 @@ rs01MODULE.AUTOINIT = function($ruby) {
 $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) });
 
 })(jQuery);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 /**
  * RUBYTWEEN
  * @package         RubyTween
@@ -6884,8 +6877,8 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
 (function($) {
 
     /*
-     * jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/
-     */
+    * jQuery Easing v1.3 - http://gsgd.co.uk/sandbox/jquery/easing/
+    */
     $.GSGDEasing = $.GSGDEasing || {
         def: 'easeOutQuad',
         swing: function (x, t, b, c, d) {
@@ -7023,16 +7016,16 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
     };
 
 }(jQuery));
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 (function($) {
 'use strict';
 
@@ -7823,7 +7816,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
                         tf['skewX'] = prop[name];
                     }
                     else {
-                       tf[name] = prop[name];
+                        tf[name] = prop[name];
                     }
                 }
             }
@@ -8794,8 +8787,8 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
         function ConvertValue(name, valueCur) {
 
             /*
-             * CASE: STRING
-             */
+            * CASE: STRING
+            */
             if( typeof valueCur == 'string' ) {
 
                 /**
@@ -10076,56 +10069,56 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
         }
     }
 }(jQuery));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 /**
  * MODULE SWIPE
  */
@@ -10646,7 +10639,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
                  */
                 if( va.pageX0 != va.pageX1 ) {
 
-                   // Value 'offset' of moved temporarily
+                    // Value 'offset' of moved temporarily
                     va.xOffset = va.pageX1 - va.x0;
 
                     // Recognize swipe 'left' or 'right' -> use for swipe limit
@@ -11119,16 +11112,16 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
         }
     };
 })(jQuery);
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 /**
  * MODULE RESPONSIVE
  */
@@ -11187,15 +11180,15 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
         }
     };
 })(jQuery);
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
 
 /**
  * MODULE NAVIGATION
@@ -11366,16 +11359,16 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
         }
     };
 })(jQuery);
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 /**
  * MODULE PAGINATION
  *  + Support Pagination Mark
@@ -11417,6 +11410,9 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
             var that = this;
             VariableModule(that);
 
+        //   if (cs.$ruby.find('.rs01pag').length) return;
+        //   console.log(va.$pag, cs.$ruby.find('.rs01pag'))
+
 
             /**
              * CASE: INSERT PAGINATION INTO RUBY
@@ -11441,7 +11437,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
                 // Pagination: create Node with className -> class 'type' & 'dirs' will update later
                 is.pagOutside = !!$pagHTML.length;
                 va.$pag       = is.pagOutside ? $pagHTML.addClass(pagClass + pagOut)
-                                              : $('<div/>', { 'class' : pagClass });
+                                            : $('<div/>', { 'class' : pagClass });
 
 
 
@@ -11459,7 +11455,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
                 // Insert pagItem & pagInner into ruby
                 va.$pagInner = $('<div/>', {'class' : ns +'paginner'});
                 va.$pagInner.append(va.$pagItem);
-                va.$pag.prepend(va.$pagInner);
+                va.$pag.append(va.$pagInner);
 
                 // Insert pagination into ruby depends on position
                 if( !is.pagOutside ) {
@@ -12596,7 +12592,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
 
             /**
              *SETUP STYLE TO IMAGE-ITEM
-             */
+            */
             $thumbItem.css(style);
 
             // Toggle class 'fit' for Thumbnail
@@ -12991,16 +12987,16 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
         }
     };
 })(jQuery);
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 /**
  * MODULE CAPTION
  */
@@ -13052,7 +13048,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
                 // setup markup for Caption
                 is.capOutside = !!$capHTML.length;
                 va.$cap       = is.capOutside ? $capHTML
-                                              : $(divdiv, {'class' : va.ns + o.nameCap});
+                                            : $(divdiv, {'class' : va.ns + o.nameCap});
 
 
 
@@ -13161,16 +13157,16 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
         }
     };
 })(jQuery);
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 /**
  * MODULE IMAGE
  */
@@ -13285,7 +13281,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
                     'src'          : [],
                     'styleInline'  : M.PStyleToJson($i),
                     'opts'         : isImgback ? $.extend({}, slData.opts.imageback, $i.data('imageback'))
-                                               : $.extend({}, slData.opts.image, $i.data('image'))
+                                                : $.extend({}, slData.opts.image, $i.data('image'))
                 });
 
 
@@ -13511,7 +13507,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
                         VariableModule(that);
 
                         (slData['id'] == 'home') ? M.Module('LAYER').LoadHomeEnd()
-                                                 : that.LOAD.SlideEnd($slCur);
+                                                : that.LOAD.SlideEnd($slCur);
                     }, 10);
                 }
             }
@@ -14044,17 +14040,17 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
         }
     };
 })(jQuery);
-
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 /**
  * MODULE VIDEO BACKGROUND
  */
@@ -14738,16 +14734,16 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
         }
     };
 })(jQuery);
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 /**
  * MODULE VIDEO IFRAME
  */
@@ -15380,17 +15376,17 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
         }
     };
 })(jQuery);
-
-
-
-
-
-
-
-
-
-
-/**
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  /**
  * MODULE IFRAME
  */
 (function($) {
@@ -15525,16 +15521,16 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
         }
     };
 })(jQuery);
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 /**
  * MODULE HOTSPOT
  */
@@ -15734,7 +15730,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
 
                         // Toggle trang thai actived cho Hotspot
                         !h.isActived ? that.ToggleToActived(h)
-                                     : that.ToggleToDeactived(h);
+                                    : that.ToggleToDeactived(h);
 
                         return false;
                     });
@@ -15750,11 +15746,11 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
                 h.$hotspotPoint
                     .on(va.ev.mouseenter, function() {
                         isActivedAtFirst ? (h.isActived && that.ToggleToDeactived(h))
-                                         : (!h.isActived && that.ToggleToActived(h));
+                                        : (!h.isActived && that.ToggleToActived(h));
                     })
                     .on(va.ev.mouseleave, function() {
                         isActivedAtFirst ? (!h.isActived && that.ToggleToActived(h))
-                                         : (h.isActived && that.ToggleToDeactived(h));
+                                        : (h.isActived && that.ToggleToDeactived(h));
                     });
             }
         },
@@ -15973,7 +15969,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
                 var h = M.Data($(this))['hotspot'];
 
                 h['opts']['isActivedAtFirst'] ? that.ToggleToActived(h)
-                                              : that.ToggleToDeactived(h);
+                                            : that.ToggleToDeactived(h);
             });
         },
 
@@ -15998,17 +15994,17 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
         }
     };
 })(jQuery);
-
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 /**
  * MODULE LAYER
  */
@@ -16581,7 +16577,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
             /**
              * CAP NHAT GIA TRI CUA? TU`NG THUOC TINH' TUY TRUONG HOP CU. THE?
              */
-             for( i = 0; i < anim.num; i++ ) {
+            for( i = 0; i < anim.num; i++ ) {
                 for( var j = 0, lenJ = xyName.length; j < lenJ; j++ ) {
 
                     var nameCur  = xyName[j],
@@ -17089,8 +17085,8 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
              *  + Included layer-home
              */
             var $aSlide = $.isNumeric(slideID) ? va.$s.eq(slideID)
-                                               : (slideID == 'home') ? va.$viewport
-                                                                     : va.$s.add(va.$viewport);
+                                                : (slideID == 'home') ? va.$viewport
+                                                                    : va.$s.add(va.$viewport);
 
 
 
@@ -17239,17 +17235,17 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
         }
     };
 })(jQuery);
-
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 /**
  * MODULE PARALLAX
  */
@@ -17525,16 +17521,16 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
         }
     };
 })(jQuery);
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 /**
  * MODULE PARALLAX FOR LAYER
  */
@@ -17890,17 +17886,17 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
         }
     };
 })(jQuery);
-
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 /**
  * MODULE MATH EFFECTS
  */
@@ -19131,16 +19127,16 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
         }
     };
 })(jQuery);
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 /**
  * MODULE CSS EFFECTS
  */
@@ -19623,17 +19619,17 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
         }
     };
 })(jQuery);
-
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 /**
  * MODULE RUBYANIMATE KEYFRAMES
  */
@@ -20003,17 +19999,17 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
         }
     };
 })(jQuery);
-
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 /**
  * MODULE FX COVERFLOW3D
  */
@@ -20091,14 +20087,14 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
                 // Case: the left slide
                 else if( i < idCur ) {
                     z    = isDeepMulti ? zDeep * (center.nLeft - i)
-                                       : zDeep;
+                                        : zDeep;
                     nDeg = cover.rotate;
                 }
 
                 // Case: the right slide
                 else if( i > idCur ) {
                     z    = isDeepMulti ? zDeep * (i - center.nLeft)
-                                       : zDeep;
+                                        : zDeep;
                     nDeg = -cover.rotate;
                 }
 
@@ -20180,14 +20176,14 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
                 // Case: the left slide
                 else if( i < idNext ) {
                     z    = isDeepMulti ? zDeep * (idCur - i) + (zDeep * ratio * sign)
-                                       : zDeep;
+                                        : zDeep;
                     nDeg = cover.rotate;
                 }
 
                 // Case: the right slide
                 else if( i > idNext ) {
                     z    = isDeepMulti ? zDeep * (i - idCur) - (zDeep * ratio * sign)
-                                       : zDeep;
+                                        : zDeep;
                     nDeg = -cover.rotate;
                 }
 
@@ -20253,14 +20249,14 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
                 // Case: the left slide
                 else if( i < idNext ) {
                     z    = isDeepMulti ? zDeep * (idNext - i)
-                                       : zDeep;
+                                        : zDeep;
                     nDeg = cover.rotate;
                 }
 
                 // Case: the right slide
                 else if( i > idNext ) {
                     z    = isDeepMulti ? zDeep * (i - idNext)
-                                       : zDeep;
+                                        : zDeep;
                     nDeg = -cover.rotate;
                 }
 
@@ -20378,17 +20374,17 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
         }
     };
 })(jQuery);
-
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 /**
  * MODULE SLIDESHOW
  */
@@ -20855,7 +20851,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
                 // Add 'is.ssPauseAobsolute' condition -> avoid play command in the pause mode
                 if( is.ssPauseAbsolute ) {
 
-                   // Remove class 'actived' on PlayPause button
+                    // Remove class 'actived' on PlayPause button
                     !!va.$playpause && va.$playpause.removeClass(va.actived);
                     // Remove variale prevent play slideshow
                     is.stop = is.ssPauseAbsolute = false;
@@ -20968,16 +20964,16 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
         }
     };
 })(jQuery);
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 /**
  * MODULE TIMER
  */
@@ -21450,16 +21446,16 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
         }
     };
 })(jQuery);
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 /**
  * MODULE FLICKR
  */
@@ -22634,16 +22630,16 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
         }
     };
 })(jQuery);
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 /**
  * MODULE FULLSCREEN
  */
@@ -22718,9 +22714,9 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
             // Check Native fullscreen api the browser support
             var element         = cs.$ruby[0],
                 isFullscreenAPI = element.requestFullscreen
-                               || element.webkitRequestFullscreen
-                               || element.mozRequestFullScreen
-                               || element.msRequestFullscreen;
+                                || element.webkitRequestFullscreen
+                                || element.mozRequestFullScreen
+                                || element.msRequestFullscreen;
 
             // Render markup of button toggle
             if( o.isNativeFS && o.nativeFS.isButton && isFullscreenAPI  ) {
@@ -22743,7 +22739,7 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
 
                     // Toggle request native fullscreen
                     that.IsNativeFS() ? that.ExitNativeFS()
-                                      : that.RequestNativeFS();
+                                    : that.RequestNativeFS();
                     return false;
                 });
             }
@@ -22768,9 +22764,9 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
         IsNativeFS : function() {
             VariableModule(this);
             var el = document.fullscreenElement
-                  || document.webkitFullscreenElement
-                  || document.mozFullScreenElement
-                  || document.msFullscreenElement;
+                || document.webkitFullscreenElement
+                || document.mozFullScreenElement
+                || document.msFullscreenElement;
 
             return el && cs.$ruby.is( $(el) ) ? true : false;
         },
@@ -22788,9 +22784,9 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
             // Function request native fullscreen
             var el            = cs.$ruby[0],
                 requestMethod = el.requestFullscreen
-                             || el.webkitRequestFullscreen
-                             || el.mozRequestFullScreen
-                             || el.msRequestFullscreen;
+                            || el.webkitRequestFullscreen
+                            || el.mozRequestFullScreen
+                            || el.msRequestFullscreen;
 
             requestMethod && requestMethod.call(el);
 
@@ -22815,8 +22811,8 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
                 // Check pagination exist & valid
                 var isPagHor   = va.pag.dirs == 'hor',
                     isPagValid = o.isPag
-                              && !is.pagOutside
-                              && (!isPagHor || (isPagHor && !/^(absolute|fixed)$/.test(va.$pag.css('position')) ));
+                            && !is.pagOutside
+                            && (!isPagHor || (isPagHor && !/^(absolute|fixed)$/.test(va.$pag.css('position')) ));
 
                 // Size default for ruby
                 var wWin    = va.$w.width(),
@@ -22858,9 +22854,9 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
 
             // Function exit native fullscreen
             var exitMethod = document.exitFullscreen
-                          || document.webkitExitFullscreen
-                          || document.mozCancelFullScreen
-                          || document.msExitFullscreen;
+                        || document.webkitExitFullscreen
+                        || document.mozCancelFullScreen
+                        || document.msExitFullscreen;
 
             exitMethod && exitMethod.call(document);
 
@@ -22878,16 +22874,16 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
         }
     };
 })(jQuery);
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 /**
  * MODULE NESTED
  */
@@ -22942,16 +22938,16 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
         }
     };
 })(jQuery);
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 /**
  * MODULE CLASSADD
  */
@@ -22992,16 +22988,16 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
         }
     };
 })(jQuery);
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 /**
  * MODULE DISPLAY
  */
@@ -23206,16 +23202,16 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
         }
     };
 })(jQuery);
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 /**
  * MODULE DEEPLINKING
  */
@@ -23387,8 +23383,8 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
                  * ELEEMENTS OF HASH IF IN THE CASES
                  *  + Replace '#+' at first place by '#'
                  +  + Replace '+' at end place by ''
-                 *  + Replace '++' by '+'
-                 */
+                *  + Replace '++' by '+'
+                */
                 hash = hash.replace(/^#\+/g, '#').replace(/\+$/g, '').replace(/\++/g, '+');
 
                 // Add '#' character at first place if not exist
@@ -23505,16 +23501,16 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
         }
     };
 })(jQuery);
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 /**
  * MODULE COOKIE
  */
@@ -23559,16 +23555,16 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
         }
     };
 })(jQuery);
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 /**
  * MODULE API MORE
  */
@@ -24025,16 +24021,16 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
         }
     };
 })(jQuery);
-
-
-
-
-
-
-
-
-
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 /**
  * MODULE API REMOTE CONTROL
  */
@@ -24209,8 +24205,8 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
 
                 /**
                  * CASE: VALUE DATA IS 'STRING'
-                  * + Support command line only 1 ruby on page browser
-                 */
+                * + Support command line only 1 ruby on page browser
+                */
                 else if( typeof dataNodeCur === 'string' ) {
 
                     dataNodeNew.push({
@@ -24286,3 +24282,4 @@ $(document).ready(function() { rs01MODULE.AUTOINIT( $('.' + rs01VA.namespace) ) 
         }
     };
 })(jQuery);
+  
