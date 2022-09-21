@@ -18,7 +18,7 @@ Plugin bao gồm 1 file css chính, hãy chèn nó vào thẻ `<header>`
 
 ### 2. Cài đặt JS
 
-Plugin bao gồm 1 file `rubyslider.js` chính và 1 file rubyanimate.js hỗ trợ hiệu ứng CSS.
+Plugin bao gồm 1 file `rubyslider.js` chính và 1 file rubyanimate.js hỗ trợ hiệu ứng CSS.<br>
 Nếu không sử dụng hiệu ứng CSS thì không cần chèn file `rubyanimate.js` vào trang web.
 
 ``` html
@@ -35,7 +35,7 @@ Nếu không sử dụng hiệu ứng CSS thì không cần chèn file `rubyanim
 
 ### 3. Thiết lập HTML
 
-Mặc định RubySlider sử dụng thẻ <a> để lazyload hình ảnh.
+Mặc định RubySlider sử dụng thẻ `<a>` để lazyload hình ảnh.<br>
 Chỉ cần thiết lập cấu trúc HTML đơn giản ở bên dưới.
 
 ``` html
@@ -62,5 +62,6 @@ Bên dưới là đoạn mã khởi tạo RubySlider trong function với các t
 })(jQuery)
 ```
 
-※RubySlider của bạn đã sẵn sàng hoạt động.
+<br>
+※RubySlider của bạn đã sẵn sàng hoạt động.<br>
 Chúc các bạn thiết lập RubySlider thành công 🎉🎉🎉
